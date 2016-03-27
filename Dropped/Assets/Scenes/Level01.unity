@@ -364,8 +364,11 @@ BoxCollider2D:
 Transform:
   m_PrefabParentObject: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
   m_PrefabInternal: {fileID: 1029382811}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!1 &1178072736
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +427,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+<<<<<<< HEAD
 --- !u!1 &1422079051
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +456,8 @@ Transform:
   m_Father: {fileID: 153548318}
   m_RootOrder: 2
 >>>>>>> Stashed changes
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!1 &1485289237
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,8 +505,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 26a6b781878133e4a8cbd8d409a2448b, type: 3}
-  m_Color: {r: 0.6544118, g: 0.20309332, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 74f769fc9cd627840a8f85f53530281b, type: 3}
+  m_Color: {r: 0.9921569, g: 0.9921569, b: 0.9921569, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!4 &1485289239
@@ -510,9 +516,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1485289237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: -0.016, y: 0.85, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1178072737}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!114 &1485289240
@@ -546,7 +553,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.16, y: 0.45}
 --- !u!50 &1485289242
 Rigidbody2D:
   serializedVersion: 2
