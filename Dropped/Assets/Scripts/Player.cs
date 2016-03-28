@@ -63,6 +63,7 @@ public class Player : Entity
 		}
 
 		//Just for now, so that at least SOMETHING happens.
+		//In the future make a die method.
 		if(!isAlive)
 		{
 			Application.LoadLevel(Application.loadedLevel);

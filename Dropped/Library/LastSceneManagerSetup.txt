@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/EthansTestScene.unity
-=======
-- path: Assets/Scenes/Jeremy Scene.unity
->>>>>>> parent of 6bf31ef... Revert "Made Jeremy Scene"
   isLoaded: 1
   isActive: 1
