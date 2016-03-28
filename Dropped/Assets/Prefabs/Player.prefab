@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 447140}
   - 212: {fileID: 21265870}
+  - 114: {fileID: 11408848}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -75,6 +76,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.21, y: 0.44}
+--- !u!114 &11408848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab4df81349a33d468dd0465a01dc75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 164600, guid: 2473cc459ee1f9d4abfc1120d139ef03, type: 2}
 --- !u!114 &11448838
 MonoBehaviour:
   m_ObjectHideFlags: 1
