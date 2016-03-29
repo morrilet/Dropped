@@ -5,7 +5,9 @@ public class Bullet : MonoBehaviour {
 
 	public float bulletSpeed;
 	public float maxRange;
-	Vector3 startPos;
+	public float damage;
+	[HideInInspector]
+	public Vector3 startPos;
 
 	void Start()
 	{
@@ -14,9 +16,9 @@ public class Bullet : MonoBehaviour {
 
 	void Update () 
 	{
-		transform.position += bulletSpeed * Vector3.right * Time.deltaTime;
+		transform.position += bulletSpeed * transform.right * Time.deltaTime;
 
-		if (maxRange <= startPos.x + transform.position.x)
+		if (maxRange <= Mathf.Abs(startPos.x - transform.position.x))
 		{
 			Destroy (gameObject);
 		}
