@@ -1,11 +1,16 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: c441d4929eab7534385eb7a353f07dab
 timeCreated: 1459121787
 =======
 guid: 971d06ed57fd10446988e794f9be6993
 timeCreated: 1459121589
 >>>>>>> origin/master
+=======
+guid: c441d4929eab7534385eb7a353f07dab
+timeCreated: 1459121787
+>>>>>>> parent of 6bf31ef... Revert "Made Jeremy Scene"
 licenseType: Free
 NativeFormatImporter:
   userData: 

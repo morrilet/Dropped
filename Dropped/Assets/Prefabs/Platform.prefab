@@ -9,11 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400992}
   - 212: {fileID: 21250060}
-<<<<<<< HEAD
   - 61: {fileID: 6119256}
-=======
-  - 61: {fileID: 6182064}
->>>>>>> origin/master
   m_Layer: 8
   m_Name: Platform
   m_TagString: Platforms
@@ -33,11 +29,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-<<<<<<< HEAD
 --- !u!61 &6119256
-=======
---- !u!61 &6182064
->>>>>>> origin/master
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
