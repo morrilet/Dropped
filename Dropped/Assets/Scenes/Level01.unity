@@ -378,6 +378,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1178072737}
   - 212: {fileID: 1178072738}
+  - 114: {fileID: 1178072739}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -428,6 +429,20 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
 <<<<<<< HEAD
+--- !u!114 &1178072739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1178072736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab4df81349a33d468dd0465a01dc75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 164600, guid: 2473cc459ee1f9d4abfc1120d139ef03, type: 2}
+=======
+<<<<<<< HEAD
 --- !u!1 &1422079051
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +472,7 @@ Transform:
   m_RootOrder: 2
 >>>>>>> Stashed changes
 =======
+>>>>>>> refs/remotes/origin/master
 >>>>>>> refs/remotes/origin/master
 --- !u!1 &1485289237
 GameObject:
