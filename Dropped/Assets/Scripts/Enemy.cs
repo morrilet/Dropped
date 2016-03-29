@@ -15,7 +15,8 @@ public class Enemy : Entity
 
 	public enum EnemyAIMode
 	{
-		walkLeftRight
+		walkLeftRight,
+		walkLeftRightOnPlatform
 	}
 	EnemyAIMode enemyAIMode = new EnemyAIMode();
 
@@ -24,7 +25,7 @@ public class Enemy : Entity
 		base.Start ();
 
 		controller = GetComponent<Controller2D> ();
-		enemyAIMode = EnemyAIMode.walkLeftRight;
+		enemyAIMode = EnemyAIMode.walkLeftRightOnPlatform;
 		velocity = Vector3.zero;
 		velocity.x = speed;
 	}
@@ -38,13 +39,22 @@ public class Enemy : Entity
 		if (controller.collisions.right && !controller.collisions.rightPrev)
 			enemyInfo.JustHitWall = true;
 
-		velocity.y += gravity * Time.deltaTime;
+		if (!controller.collisions.belowLeft && controller.collisions.belowLeftPrev)
+			enemyInfo.IsOnEdgeOfPlatform = true;
+		if (!controller.collisions.belowRight && controller.collisions.belowRightPrev)
+			enemyInfo.IsOnEdgeOfPlatform = true;
+
+		if (!controller.collisions.below)
+			velocity.y += gravity * Time.deltaTime;
 
 		switch (enemyAIMode) 
 		{
 		case EnemyAIMode.walkLeftRight:
 			WalkLeftRight ();
-				break;
+			break;
+		case EnemyAIMode.walkLeftRightOnPlatform:
+			WalkLeftRightOnPlatform ();
+			break;
 		}
 
 		controller.Move (velocity * Time.deltaTime);
@@ -55,19 +65,26 @@ public class Enemy : Entity
 	//Walks to the side until it hits a wall and then turns around and walks more.
 	void WalkLeftRight()
 	{
-		
 		if (enemyInfo.JustHitWall)
+			velocity.x *= -1f;
+	}
+
+	void WalkLeftRightOnPlatform()
+	{
+		if (enemyInfo.IsOnEdgeOfPlatform || enemyInfo.JustHitWall)
 			velocity.x *= -1f;
 	}
 
 	public struct EnemyInfo
 	{
 		public bool JustHitWall;
+		public bool IsOnEdgeOfPlatform;
 
 		//Resets info.
 		public void Reset()
 		{
 			JustHitWall = false;
+			IsOnEdgeOfPlatform = false;
 		}
 	}
 }
