@@ -57,11 +57,24 @@ public class Enemy : Entity
 			break;
 		}
 
+		if (!isAlive)
+			Die ();
+
 		controller.Move (velocity * Time.deltaTime);
 
 		enemyInfo.Reset ();
 	}
 
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		if (other.gameObject.tag == "Bullet") 
+		{
+			health -= other.gameObject.GetComponent<Bullet> ().damage;
+			Destroy (other.gameObject);
+		}
+	}
+
+	#region AIModes
 	//Walks to the side until it hits a wall and then turns around and walks more.
 	void WalkLeftRight()
 	{
@@ -73,6 +86,12 @@ public class Enemy : Entity
 	{
 		if (enemyInfo.IsOnEdgeOfPlatform || enemyInfo.JustHitWall)
 			velocity.x *= -1f;
+	}
+	#endregion
+
+	void Die()
+	{
+		Destroy (gameObject);
 	}
 
 	public struct EnemyInfo

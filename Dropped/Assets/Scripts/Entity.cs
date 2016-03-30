@@ -4,7 +4,7 @@ using System.Collections;
 public class Entity : MonoBehaviour 
 {
 	[HideInInspector]
-	public int health;
+	public float health;
 	public int maxHealth;
 
 	[HideInInspector]
