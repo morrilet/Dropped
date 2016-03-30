@@ -41,9 +41,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAuto: 1
+  bulletsPerShot: 0
   rotationDeviation: 14
   bulletPrefab: {fileID: 196362, guid: 2645079516817fe409f313bf3955997f, type: 2}
+  muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
   fireRate: 0.001
+  bulletOffSetX: 0
+  bulletOffSetY: 0
+  muzzleFlashOffSetX: 0
+  muzzleFlashOffSetY: 0
 --- !u!212 &21264996
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -80,7 +86,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: muzzleFlashPrefab
+      value: 
+      objectReference: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 150308}
