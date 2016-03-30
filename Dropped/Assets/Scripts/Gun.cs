@@ -5,6 +5,7 @@ public class Gun : MonoBehaviour {
 
 	public bool isAuto; //True for full auto, false for semi auto.
 
+	public float rotationDeviation;//Innacuracy of gun 
 	public GameObject bulletPrefab; //Insert different bullet prefabs here for different guns
 	public float fireRate; //Fire rate of this gun (lower = faster!)
 	float fireRateCount;
@@ -36,7 +37,9 @@ public class Gun : MonoBehaviour {
 
 	void Shoot()
 	{
-		GameObject bullet = Instantiate (bulletPrefab, transform.position, transform.rotation) as GameObject;
+		Quaternion rotationDeviationBuffer = new Quaternion ();
+		rotationDeviationBuffer.eulerAngles = new Vector3 (0, 0, Random.Range (-1 * rotationDeviation, rotationDeviation));
+		GameObject bullet = Instantiate (bulletPrefab, transform.position, transform.rotation * rotationDeviationBuffer) as GameObject;
 		Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D> (), transform.parent.GetComponent<Collider2D> ());
 	}
 }

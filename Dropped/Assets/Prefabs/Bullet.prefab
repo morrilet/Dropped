@@ -73,8 +73,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd7e08de95a3a84cb885695e09f9e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 4.5
-  maxRange: 5
+  bulletSpeed: 13.5
+  maxRange: 10
+  startPos: {x: 0, y: 0, z: 0}
 --- !u!212 &21272010
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -114,7 +115,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: bulletSpeed
-      value: 4.5
+      value: 13.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsKinematic
@@ -126,7 +127,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxRange
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
