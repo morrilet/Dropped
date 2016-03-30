@@ -13,6 +13,8 @@ public class Enemy : Entity
 	[HideInInspector]
 	public EnemyInfo enemyInfo;
 
+	public GameObject corpsePrefab;
+
 	public enum EnemyAIMode
 	{
 		walkLeftRight,
@@ -91,6 +93,7 @@ public class Enemy : Entity
 
 	void Die()
 	{
+		GameObject corpse = Instantiate (corpsePrefab, transform.position, Quaternion.Euler (new Vector3 (0, 0, 90))) as GameObject;
 		Destroy (gameObject);
 	}
 
