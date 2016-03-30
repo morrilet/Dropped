@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour {
 
-	public float bulletSpeed;
+	public float bulletSpeed; //Speed of bullet
+	public float bulletSpeedDeviation; //Useful for shotguns
 	public float maxRange;
 	public float damage;
 	[HideInInspector]
@@ -12,6 +13,7 @@ public class Bullet : MonoBehaviour {
 	void Start()
 	{
 		startPos = transform.position;
+		bulletSpeed += Random.Range (-1 * bulletSpeedDeviation, bulletSpeedDeviation);
 	}
 
 	void Update () 

@@ -430,7 +430,7 @@ GameObject:
   - 212: {fileID: 1956569579}
   - 114: {fileID: 1956569578}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: Gun_Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -460,9 +460,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAuto: 1
-  rotationDeviation: 6
-  bulletPrefab: {fileID: 164600, guid: 2473cc459ee1f9d4abfc1120d139ef03, type: 2}
-  fireRate: 0.1
+  bulletsPerShot: 8
+  rotationDeviation: 10
+  bulletPrefab: {fileID: 104414, guid: ff0a033fb330ab14fad0810cdd515215, type: 2}
+  fireRate: 1
 --- !u!212 &1956569579
 SpriteRenderer:
   m_ObjectHideFlags: 0
