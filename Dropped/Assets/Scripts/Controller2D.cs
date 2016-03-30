@@ -71,6 +71,13 @@ public class Controller2D : RaycastController
 				//Set the apropriate collision value to true based on which way we were going.
 				collisions.below = (directionY == -1);
 				collisions.above = (directionY == 1);
+
+				//If this is the leftmost raycastOrigin then our bottom left corner is in a collision.
+				if (i == 0)
+					collisions.belowLeft = true;
+				//If this is the rightmost raycastOrigin then our bottom right corner is in a collision.
+				if (i == verticalRayCount)
+					collisions.belowRight = true;
 			}
 		}
 
@@ -213,9 +220,11 @@ public class Controller2D : RaycastController
 	{
 		public bool above, below;
 		public bool left, right;
+		public bool belowLeft, belowRight;
 
 		public bool abovePrev, belowPrev;
 		public bool leftPrev, rightPrev;
+		public bool belowLeftPrev, belowRightPrev;
 
 		public bool climbingSlope;
 		public bool descendingSlope;
@@ -230,9 +239,12 @@ public class Controller2D : RaycastController
 			belowPrev = below;
 			leftPrev  = left;
 			rightPrev = right;
+			belowLeftPrev = belowLeft;
+			belowRightPrev = belowRight;
 
 			above = below   = false;
 			left  = right   = false;
+			belowLeft = belowRight = false;
 
 			climbingSlope   = false;
 			descendingSlope = false;
