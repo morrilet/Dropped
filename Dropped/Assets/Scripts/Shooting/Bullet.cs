@@ -3,11 +3,14 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour {
 
-	public float bulletSpeed; //Speed of bullet
-	public float bulletSpeedDeviation; //Useful for shotguns
-	public float maxRange;
-	public float damage;
 	[HideInInspector]
+	public float bulletSpeed; //Speed of bullet
+	[HideInInspector]
+	public float bulletSpeedDeviation; //Useful for shotguns
+	[HideInInspector]
+	public float maxRange;
+	[HideInInspector]
+	public float damage;
 	public Vector3 startPos;
 
 	void Start()

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Gun : MonoBehaviour {
 
+	//Gun data
 	public bool isAuto; //True for full auto, false for semi auto.
 	public float bulletsPerShot;//Amount of bullets in a shot (for shotguns mostly)
 	public float rotationDeviation;//Innacuracy of gun 
@@ -15,6 +16,12 @@ public class Gun : MonoBehaviour {
 
 	public float muzzleFlashOffSetX;//Controls origin point of muzzle flash
 	public float muzzleFlashOffSetY;
+
+	//Bullet Data
+	public float bulletSpeed; //Speed of bullet
+	public float bulletSpeedDeviation; //Random variance in projectile speed
+	public float maxRange; //Weapon maximum range
+	public float damage; //damage of bullet
 
 	float fireRateCount;
 
@@ -53,7 +60,12 @@ public class Gun : MonoBehaviour {
 			Quaternion rotationDeviationBuffer = new Quaternion ();
 			rotationDeviationBuffer.eulerAngles = new Vector3 (0, 0, Random.Range (-1 * rotationDeviation, rotationDeviation));
 			GameObject bullet = Instantiate (bulletPrefab, new Vector3(bulletOffSetX + transform.position.x, bulletOffSetY + transform.position.y), transform.rotation * rotationDeviationBuffer) as GameObject;
+			bullet.GetComponent<Bullet> ().bulletSpeed = bulletSpeed;
+			bullet.GetComponent<Bullet> ().bulletSpeedDeviation = bulletSpeedDeviation;
+			bullet.GetComponent<Bullet> ().maxRange = maxRange;
+			bullet.GetComponent<Bullet> ().damage = damage;
 			Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D> (), transform.parent.GetComponent<Collider2D> ());
+
 		}
 	}
 }
