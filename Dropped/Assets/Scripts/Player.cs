@@ -30,6 +30,8 @@ public class Player : Entity
 	[HideInInspector]
 	public JumpAbility jumpAbility;
 
+	GameObject corpseCarried; //The corpse that is being carried.
+
 	public override void Start()
 	{
 		base.Start ();
@@ -110,6 +112,46 @@ public class Player : Entity
 				jumpAbility.Jump(ref velocity);
 			}
 		}
+
+		if (Input.GetKeyDown (KeyCode.C)) 
+		{
+			if (corpseCarried == null) 
+			{
+				GameObject[] corpses = GameObject.FindGameObjectsWithTag ("Corpse");
+				for (int i = 0; i < corpses.Length; i++) 
+				{
+					if (controller.coll.IsTouching (corpses [i].GetComponent<Collider2D> ())) 
+					{
+						PickupCorpse (corpses [i]);
+						break;
+					}
+				}
+			} 
+			else 
+			{
+				DropCorpse ();
+			}
+		}
+	}
+
+	void PickupCorpse(GameObject corpse)
+	{
+		corpseCarried = corpse;
+		corpseCarried.transform.SetParent (this.transform);
+		corpseCarried.transform.position = transform.position + new Vector3(0, 1, 0);
+		corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = true;
+		corpseCarried.transform.rotation = Quaternion.identity;
+		Physics2D.IgnoreCollision (controller.coll, corpseCarried.GetComponent<Collider2D>());
+	}
+
+	void DropCorpse()
+	{
+		corpseCarried.transform.SetParent (null);
+		corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = false;
+		//Add force with a throw button.
+		//corpseCarried.GetComponent<Rigidbody2D> ().AddForce (new Vector2(10, 5) + (Vector2)transform.right, ForceMode2D.Impulse);
+		Physics2D.IgnoreCollision (controller.coll, corpseCarried.GetComponent<Collider2D>(), false);
+		corpseCarried = null;
 	}
 
 	public struct PlayerInfo

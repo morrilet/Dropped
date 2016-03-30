@@ -88,6 +88,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAuto: 0
+  bulletsPerShot: 0
+  rotationDeviation: 0
   bulletPrefab: {fileID: 164600, guid: 2473cc459ee1f9d4abfc1120d139ef03, type: 2}
   fireRate: 0
 --- !u!114 &11448838
@@ -137,7 +139,7 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
-  horizontalRayCount: 4
+  horizontalRayCount: 8
   verticalRayCount: 4
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
@@ -216,6 +218,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: horizontalRayCount
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
