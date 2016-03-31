@@ -16,7 +16,7 @@ public class Player : Entity
 	Vector2 input;
 
 	[HideInInspector]
-	public bool canMove; //Determines whether or not the play is allowed to move.
+	public bool canMove; //Determines whether or not the player is allowed to move.
 
 	[HideInInspector]
 	public float gravity;
@@ -33,6 +33,9 @@ public class Player : Entity
 	public JumpAbility jumpAbility;
 
 	GameObject corpseCarried; //The corpse that is being carried.
+	bool throwingCorpse = false; //Whether we should count up on the counter or not.
+	float corpseThrowTime; //Max time to hold the throw button before it has no effect.
+	float corpseThrowCount; //Counter for throw hold.
 
 	public override void Start()
 	{
@@ -41,6 +44,8 @@ public class Player : Entity
 		jumpAbility = GetComponent<JumpAbility> ();
 		controller = GetComponent<Controller2D> ();
 		baseScaleX = transform.localScale.x;
+
+		corpseThrowTime = 1.5f;
 
 		canMove = true;
 	}
@@ -79,6 +84,15 @@ public class Player : Entity
 		{
 			velocity.y = 0;
 		}
+
+		if (throwingCorpse) 
+		{
+			corpseThrowCount += Time.deltaTime;
+			Debug.Log (corpseThrowCount / corpseThrowTime);
+		}
+
+		if (corpseThrowCount >= corpseThrowTime)
+			corpseThrowCount = corpseThrowTime;
 
 		if (canMove)
 			HandleInput ();
@@ -137,8 +151,15 @@ public class Player : Entity
 			} 
 			else 
 			{
-				DropCorpse ();
+				throwingCorpse = true;
 			}
+		}
+
+		if (Input.GetKeyUp (KeyCode.C) && throwingCorpse) 
+		{
+			DropCorpse (corpseThrowCount / corpseThrowTime);
+			throwingCorpse = false;
+			corpseThrowCount = 0;
 		}
 	}
 
@@ -152,12 +173,15 @@ public class Player : Entity
 		Physics2D.IgnoreCollision (controller.coll, corpseCarried.GetComponent<Collider2D>());
 	}
 
-	void DropCorpse()
+	void DropCorpse(float forceModifier)
 	{
 		corpseCarried.transform.SetParent (null);
 		corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = false;
-		//Add force with a throw button.
-		//corpseCarried.GetComponent<Rigidbody2D> ().AddForce (new Vector2(10, 5) + (Vector2)transform.right, ForceMode2D.Impulse);
+
+		Vector2 force = new Vector2 (10, 5) + (Vector2)transform.right;
+		force *= forceModifier;
+		corpseCarried.GetComponent<Rigidbody2D> ().AddForce (force, ForceMode2D.Impulse);
+
 		Physics2D.IgnoreCollision (controller.coll, corpseCarried.GetComponent<Collider2D>(), false);
 		corpseCarried = null;
 	}

@@ -59,9 +59,6 @@ public class Enemy : Entity
 			break;
 		}
 
-		if (!isAlive)
-			Die ();
-
 		controller.Move (velocity * Time.deltaTime);
 
 		enemyInfo.Reset ();
@@ -72,6 +69,8 @@ public class Enemy : Entity
 		if (other.gameObject.tag == "Bullet") 
 		{
 			health -= other.gameObject.GetComponent<Bullet> ().damage;
+			if (health <= 0)
+				Die (other.gameObject.GetComponent<Bullet> ());
 			Destroy (other.gameObject);
 		}
 	}
@@ -91,9 +90,11 @@ public class Enemy : Entity
 	}
 	#endregion
 
-	void Die()
+	void Die(Bullet bullet) //The bullet that killed us! DAMN YOU, BULLET!
 	{
 		GameObject corpse = Instantiate (corpsePrefab, transform.position, Quaternion.Euler (new Vector3 (0, 0, 90))) as GameObject;
+
+		corpse.gameObject.GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2(bullet.bulletSpeed, 0f), (Vector2)bullet.transform.position, ForceMode2D.Impulse);
 		Destroy (gameObject);
 	}
 
