@@ -30,8 +30,13 @@ public class Bullet : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D coll)
 	{
-		if (coll.gameObject.tag == "Platforms" || coll.gameObject.tag == "Corpse")
+		if (coll.gameObject.tag == "Platforms")
 		{
+			Destroy (gameObject);
+		}
+		if (coll.gameObject.tag == "Corpse") 
+		{
+			coll.gameObject.GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2(bulletSpeed / 5f, 0f), transform.position, ForceMode2D.Impulse);
 			Destroy (gameObject);
 		}
 	}

@@ -242,7 +242,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: fireRate
-      value: 0.1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: bulletSpeed
@@ -254,7 +254,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: damage
-      value: 3.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: bulletOffset.x
@@ -283,6 +283,14 @@ Prefab:
     - target: {fileID: 11450682, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: jumpHeight
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
+      propertyPath: bulletSpeedDeviation
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
+      propertyPath: rotationDeviation
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
