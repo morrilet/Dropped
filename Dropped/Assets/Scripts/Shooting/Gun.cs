@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Gun : MonoBehaviour {
+public class Gun : MonoBehaviour
+{
 
 	//Gun data
 	public bool isAuto; //True for full auto, false for semi auto or burst.
 	public bool isFlamethrower; //If true, bullets transform relative to parent
 	[Range(1, int.MaxValue)]
 	public float bulletsPerShot;//Amount of bullets in a shot (for shotguns mostly)
+	[Range(1, int.MaxValue)]
 	public float shotsPerBurst; //Amount of times Shoot() is called per input (overrriden if isAuto = true)
 	public float rotationDeviation;//Innacuracy of gun 
 	public GameObject bulletPrefab; //Insert different bullet prefabs here for different guns
 	public GameObject muzzleFlashPrefab;//Insert your preffered muzzle flash here
 	public float fireRate; //Fire rate of this gun (lower = faster!)
 	float direction;//Direction player is facing
+	public float playerKnockBack; //Pushback on player when fired
 
 	public Vector2 bulletOffset;//Controls origin point of bullet
 
@@ -74,6 +77,7 @@ public class Gun : MonoBehaviour {
 			if (isFlamethrower)
 				bullet.transform.SetParent (this.transform);
 			Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D> (), transform.parent.GetComponent<Collider2D> ()); //Bullet will ignore collisions with the gun that instantiated it
+			transform.parent.GetComponent<Player>().velocity = new Vector3(transform.parent.GetComponent<Player>().velocity.x - (playerKnockBack * direction), 0);
 
 		}
 	}
