@@ -22,7 +22,6 @@ public class CameraFollowTrap : MonoBehaviour
 
 	void Start()
 	{
-		cameraLockMode = CameraLockMode.Free;
 		trap = this.GetComponent<CameraTrap> ();
 
 		cameraExtents.y = this.GetComponent<Camera> ().orthographicSize;
