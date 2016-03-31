@@ -11,6 +11,7 @@ public class Player : Entity
 	float accelerationTimeAirborne = .2f;
 	float accelerationTimeGrounded = .1f;
 	float moveSpeed = 6;
+	float baseScaleX;
 
 	Vector2 input;
 
@@ -20,7 +21,8 @@ public class Player : Entity
 	[HideInInspector]
 	public float gravity;
 
-	Vector3 velocity;
+	[HideInInspector]
+	public Vector3 velocity;
 	float velocityXSmoothing;
 
 	[HideInInspector]
@@ -38,6 +40,7 @@ public class Player : Entity
 
 		jumpAbility = GetComponent<JumpAbility> ();
 		controller = GetComponent<Controller2D> ();
+		baseScaleX = transform.localScale.x;
 
 		canMove = true;
 	}
@@ -85,6 +88,11 @@ public class Player : Entity
 		float targetVelocityX = input.x * moveSpeed;
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
 		velocity.y += gravity * Time.deltaTime;
+
+		if (velocity.x != 0)
+		{
+			transform.localScale = new Vector3 (baseScaleX * Mathf.Sign (velocity.x), transform.localScale.y, transform.localScale.z);
+		}
 
 		controller.Move (velocity * Time.deltaTime);
 

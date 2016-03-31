@@ -13,6 +13,7 @@ public class Gun : MonoBehaviour {
 	public GameObject bulletPrefab; //Insert different bullet prefabs here for different guns
 	public GameObject muzzleFlashPrefab;//Insert your preffered muzzle flash here
 	public float fireRate; //Fire rate of this gun (lower = faster!)
+	float direction;//Direction player is facing
 
 	public Vector2 bulletOffset;//Controls origin point of bullet
 
@@ -48,7 +49,9 @@ public class Gun : MonoBehaviour {
 			}
 		}
 		fireRateCount += Time.deltaTime;
-		
+
+		if (transform.parent.GetComponent<Player> ().velocity.x != 0)
+			direction = Mathf.Sign (transform.parent.GetComponent<Player> ().velocity.x);
 	}
 
 	void Shoot(float bullets)
@@ -59,7 +62,10 @@ public class Gun : MonoBehaviour {
 		for (float i = 0; i < bullets; i++)
 		{
 			Quaternion rotationDeviationBuffer = new Quaternion ();//Buffer to hold bullet rotation with deviation applied before bullet is instantiated
-			rotationDeviationBuffer.eulerAngles = new Vector3 (0, 0, Random.Range (-1 * rotationDeviation, rotationDeviation));
+			if(direction == 1)
+				rotationDeviationBuffer.eulerAngles = new Vector3 (0, 0, Random.Range (-rotationDeviation, rotationDeviation));
+			else if(direction == -1)
+				rotationDeviationBuffer.eulerAngles = new Vector3 (0, 0, Random.Range (-rotationDeviation, rotationDeviation) + 180);
 			GameObject bullet = Instantiate (bulletPrefab, (Vector3)bulletOffset + transform.position, transform.rotation * rotationDeviationBuffer) as GameObject;
 			bullet.GetComponent<Bullet> ().bulletSpeed = bulletSpeed;
 			bullet.GetComponent<Bullet> ().bulletSpeedDeviation = bulletSpeedDeviation;
