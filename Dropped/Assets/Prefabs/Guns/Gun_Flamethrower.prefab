@@ -41,15 +41,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAuto: 1
-  bulletsPerShot: 0
+  isFlamethrower: 1
+  bulletsPerShot: 1
+  shotsPerBurst: 0
   rotationDeviation: 14
   bulletPrefab: {fileID: 196362, guid: 2645079516817fe409f313bf3955997f, type: 2}
   muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
   fireRate: 0.001
-  bulletOffSetX: 0
-  bulletOffSetY: 0
-  muzzleFlashOffSetX: 0
-  muzzleFlashOffSetY: 0
+  bulletOffSetX: 0.9
+  bulletOffSetY: 0.1
+  muzzleFlashOffSetX: 0.24
+  muzzleFlashOffSetY: 0.05
+  bulletSpeed: 5
+  bulletSpeedDeviation: 0.5
+  maxRange: 5
+  damage: 0.5
 --- !u!212 &21264996
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -91,6 +97,46 @@ Prefab:
       propertyPath: muzzleFlashPrefab
       value: 
       objectReference: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bulletOffSetX
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bulletOffSetY
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: muzzleFlashOffSetX
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: muzzleFlashOffSetY
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bulletSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bulletSpeedDeviation
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isFlamethrower
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bulletsPerShot
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 150308}

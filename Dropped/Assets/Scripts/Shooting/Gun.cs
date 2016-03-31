@@ -4,8 +4,10 @@ using System.Collections;
 public class Gun : MonoBehaviour {
 
 	//Gun data
-	public bool isAuto; //True for full auto, false for semi auto.
+	public bool isAuto; //True for full auto, false for semi auto or burst.
+	public bool isFlamethrower; //If true, bullets transform relative to parent
 	public float bulletsPerShot;//Amount of bullets in a shot (for shotguns mostly)
+	public float shotsPerBurst; //Amount of times Shoot() is called per input (overrriden if isAuto = true)
 	public float rotationDeviation;//Innacuracy of gun 
 	public GameObject bulletPrefab; //Insert different bullet prefabs here for different guns
 	public GameObject muzzleFlashPrefab;//Insert your preffered muzzle flash here
@@ -57,14 +59,16 @@ public class Gun : MonoBehaviour {
 
 		for (float i = 0; i < bullets; i++)
 		{
-			Quaternion rotationDeviationBuffer = new Quaternion ();
+			Quaternion rotationDeviationBuffer = new Quaternion ();//Buffer to hold bullet rotation with deviation applied before bullet is instantiated
 			rotationDeviationBuffer.eulerAngles = new Vector3 (0, 0, Random.Range (-1 * rotationDeviation, rotationDeviation));
-			GameObject bullet = Instantiate (bulletPrefab, new Vector3(bulletOffSetX + transform.position.x, bulletOffSetY + transform.position.y), transform.rotation * rotationDeviationBuffer) as GameObject;
-			bullet.GetComponent<Bullet> ().bulletSpeed = bulletSpeed;
+			GameObject bullet = Instantiate (bulletPrefab, new Vector3(bulletOffSetX + transform.position.x, bulletOffSetY + transform.position.y), transform.rotation * rotationDeviationBuffer) as GameObject;//Instantiate bullet
+			bullet.GetComponent<Bullet> ().bulletSpeed = bulletSpeed;//Pass data to bullets
 			bullet.GetComponent<Bullet> ().bulletSpeedDeviation = bulletSpeedDeviation;
 			bullet.GetComponent<Bullet> ().maxRange = maxRange;
 			bullet.GetComponent<Bullet> ().damage = damage;
-			Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D> (), transform.parent.GetComponent<Collider2D> ());
+			if (isFlamethrower)
+				bullet.transform.SetParent (this.transform);
+			Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D> (), transform.parent.GetComponent<Collider2D> ()); //Bullet will ignore collisions with the gun that instantiated it
 
 		}
 	}
