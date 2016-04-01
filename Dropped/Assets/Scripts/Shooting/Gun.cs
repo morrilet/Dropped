@@ -37,7 +37,8 @@ public class Gun : MonoBehaviour
 
 	void Update ()
 	{
-		if (isAuto) { //Auto Fire
+		if (isAuto) 
+		{ 	//Auto Fire
 			if (Input.GetKey (KeyCode.X) && fireRateCount >= fireRate) {
 				Shoot (bulletsPerShot);
 				fireRateCount = 0;
@@ -65,20 +66,25 @@ public class Gun : MonoBehaviour
 		for (float i = 0; i < bullets; i++)
 		{
 			Quaternion rotationDeviationBuffer = new Quaternion ();//Buffer to hold bullet rotation with deviation applied before bullet is instantiated
+
 			if(direction == 1)
 				rotationDeviationBuffer.eulerAngles = new Vector3 (0, 0, Random.Range (-rotationDeviation, rotationDeviation));
 			else if(direction == -1)
 				rotationDeviationBuffer.eulerAngles = new Vector3 (0, 0, Random.Range (-rotationDeviation, rotationDeviation) + 180);
+			
 			GameObject bullet = Instantiate (bulletPrefab, (Vector3)bulletOffset + transform.position, transform.rotation * rotationDeviationBuffer) as GameObject;
 			bullet.GetComponent<Bullet> ().bulletSpeed = bulletSpeed;
 			bullet.GetComponent<Bullet> ().bulletSpeedDeviation = bulletSpeedDeviation;
 			bullet.GetComponent<Bullet> ().maxRange = maxRange;
 			bullet.GetComponent<Bullet> ().damage = damage;
+
 			if (isFlamethrower)
 				bullet.transform.SetParent (this.transform);
-			Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D> (), transform.parent.GetComponent<Collider2D> ()); //Bullet will ignore collisions with the gun that instantiated it
-			transform.parent.GetComponent<Player>().velocity = new Vector3(transform.parent.GetComponent<Player>().velocity.x - (playerKnockBack * direction), 0);
 
+			Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D> (), transform.parent.GetComponent<Collider2D> ()); //Bullet will ignore collisions with the gun that instantiated it
+
+			//transform.parent.GetComponent<Player>().velocity += new Vector3(playerKnockBack * direction, 0, 0);
+			transform.parent.GetComponent<Player>().controller.Move(new Vector3(playerKnockBack * -direction, 0, 0));
 		}
 	}
 
