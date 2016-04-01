@@ -47,6 +47,7 @@ public class Player : Entity
 		jumpAbility = GetComponent<JumpAbility> ();
 		controller = GetComponent<Controller2D> ();
 		baseScaleX = transform.localScale.x;
+		direction = 1;
 
 		corpseThrowTime = 1.5f;
 
