@@ -26,6 +26,7 @@ public class Gun : MonoBehaviour
 	public float bulletSpeedDeviation; //Random variance in projectile speed
 	public float maxRange; //Weapon maximum range
 	public float maxDamage; //damage of bullet
+	public float damageFalloff; //Damage reduction after passing through a corpse.
 
 	float fireRateCount;
 
@@ -73,6 +74,7 @@ public class Gun : MonoBehaviour
 			bullet.GetComponent<Bullet> ().bulletSpeedDeviation = bulletSpeedDeviation;
 			bullet.GetComponent<Bullet> ().maxRange = maxRange;
 			bullet.GetComponent<Bullet> ().maxDamage = maxDamage;
+			bullet.GetComponent<Bullet> ().damageFalloff = damageFalloff;
 
 			if (isFlamethrower)
 				bullet.transform.SetParent (this.transform);

@@ -234,7 +234,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: bulletsPerShot
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: isAuto
@@ -242,7 +242,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: fireRate
-      value: 1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: bulletSpeed
@@ -290,11 +290,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: rotationDeviation
-      value: 15
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: playerKnockBack
-      value: 0.1
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 164396, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: m_TagString
@@ -302,7 +302,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: maxDamage
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c441d4929eab7534385eb7a353f07dab, type: 2}

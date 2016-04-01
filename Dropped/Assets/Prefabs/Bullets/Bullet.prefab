@@ -48,7 +48,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6154408
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -95,6 +95,8 @@ MonoBehaviour:
   bulletSpeedDeviation: 0
   maxRange: 10
   damage: 5
+  maxDamage: 0
+  damageFalloff: 0
   startPos: {x: 0, y: 0, z: 0}
 --- !u!212 &21289302
 SpriteRenderer:
@@ -140,6 +142,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

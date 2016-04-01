@@ -13,6 +13,8 @@ public class Bullet : MonoBehaviour {
 	public float damage;
 	[HideInInspector]
 	public float maxDamage;
+	[HideInInspector]
+	public float damageFalloff;
 
 	public Vector3 startPos;
 
@@ -51,6 +53,8 @@ public class Bullet : MonoBehaviour {
 	//Reduces the damage done by the bullet. Primarily used when the bullet passes through something.
 	public void ReduceDamage()
 	{
-		damage -= .15f * maxDamage; //-15%
+		damage -= damageFalloff * maxDamage; //-15%
+		if (damage <= 0)
+			Destroy (gameObject);
 	}
 }

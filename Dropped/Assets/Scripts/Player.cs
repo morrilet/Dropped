@@ -49,7 +49,7 @@ public class Player : Entity
 		baseScaleX = transform.localScale.x;
 		direction = 1;
 
-		corpseThrowTime = 1.5f;
+		corpseThrowTime = 1f;
 
 		canMove = true;
 	}
@@ -190,8 +190,8 @@ public class Player : Entity
 		corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = false;
 
 		Vector2 force = new Vector2 (10, 5) + (Vector2)transform.right;
-		force *= forceModifier;
-		corpseCarried.GetComponent<Rigidbody2D> ().AddForce (force, ForceMode2D.Impulse);
+		force *= Mathf.Clamp(forceModifier, 0.2f, 1f);
+		corpseCarried.GetComponent<Rigidbody2D> ().AddForce (force * direction, ForceMode2D.Impulse);
 
 		//Physics2D.IgnoreCollision (controller.coll, corpseCarried.GetComponent<Collider2D>(), false);
 		corpseCarried.layer = LayerMask.NameToLayer("Obstacle");
