@@ -56,7 +56,7 @@ public class Gun : MonoBehaviour
 
 	void Shoot(float bullets)
 	{
-		GameObject muzzleFlash = Instantiate (muzzleFlashPrefab, (Vector3)muzzleFlashOffset + transform.position, transform.rotation) as GameObject;
+		GameObject muzzleFlash = Instantiate (muzzleFlashPrefab, new Vector3(muzzleFlashOffset.x * transform.parent.GetComponent<Player>().direction, muzzleFlashOffset.y) + transform.position, transform.rotation) as GameObject;
 		muzzleFlash.transform.SetParent (this.transform);
 
 		for (float i = 0; i < bullets; i++)
@@ -68,7 +68,7 @@ public class Gun : MonoBehaviour
 			else if(transform.parent.GetComponent<Player>().direction == -1)
 				rotationDeviationBuffer.eulerAngles = new Vector3 (0, 0, Random.Range (-rotationDeviation, rotationDeviation) + 180);
 			
-			GameObject bullet = Instantiate (bulletPrefab, (Vector3)bulletOffset + transform.position, transform.rotation * rotationDeviationBuffer) as GameObject;
+			GameObject bullet = Instantiate (bulletPrefab, new Vector3(bulletOffset.x * transform.parent.GetComponent<Player>().direction, bulletOffset.y) + transform.position, transform.rotation * rotationDeviationBuffer) as GameObject;
 			bullet.GetComponent<Bullet> ().bulletSpeed = bulletSpeed;
 			bullet.GetComponent<Bullet> ().bulletSpeedDeviation = bulletSpeedDeviation;
 			bullet.GetComponent<Bullet> ().maxRange = maxRange;
@@ -88,16 +88,16 @@ public class Gun : MonoBehaviour
 	{
 		//Draw the muzzleFlashOffset display.
 		Gizmos.color = Color.magenta;
-		Gizmos.DrawLine (new Vector3(muzzleFlashOffset.x - .2f, muzzleFlashOffset.y, 0) + transform.position, 
-			new Vector3(muzzleFlashOffset.x + .2f, muzzleFlashOffset.y, 0) + transform.position); //Horizontal line
-		Gizmos.DrawLine (new Vector3(muzzleFlashOffset.x, muzzleFlashOffset.y - .2f, 0) + transform.position, 
-			new Vector3(muzzleFlashOffset.x, muzzleFlashOffset.y + .2f, 0) + transform.position); //Vertical line
+		Gizmos.DrawLine (new Vector3(muzzleFlashOffset.x - .2f * transform.parent.GetComponent<Player>().direction, muzzleFlashOffset.y, 0) + transform.position, 
+			new Vector3(muzzleFlashOffset.x + .2f * transform.parent.GetComponent<Player>().direction, muzzleFlashOffset.y, 0) + transform.position); //Horizontal line
+		Gizmos.DrawLine (new Vector3(muzzleFlashOffset.x * transform.parent.GetComponent<Player>().direction, muzzleFlashOffset.y - .2f, 0) + transform.position, 
+			new Vector3(muzzleFlashOffset.x * transform.parent.GetComponent<Player>().direction, muzzleFlashOffset.y + .2f, 0) + transform.position); //Vertical line
 
 		//Draw the bulletOffset display.
 		Gizmos.color = Color.yellow;
-		Gizmos.DrawLine (new Vector3(bulletOffset.x - .15f, bulletOffset.y, 0) + transform.position, 
-			new Vector3(bulletOffset.x + .15f, bulletOffset.y, 0) + transform.position); //Horizontal line
-		Gizmos.DrawLine (new Vector3(bulletOffset.x, bulletOffset.y - .15f, 0) + transform.position, 
-			new Vector3(bulletOffset.x, bulletOffset.y + .15f, 0) + transform.position); //Vertical line
+		Gizmos.DrawLine (new Vector3(bulletOffset.x - .15f * transform.parent.GetComponent<Player>().direction, bulletOffset.y, 0) + transform.position, 
+			new Vector3(bulletOffset.x + .15f * transform.parent.GetComponent<Player>().direction, bulletOffset.y, 0) + transform.position); //Horizontal line
+		Gizmos.DrawLine (new Vector3(bulletOffset.x * transform.parent.GetComponent<Player>().direction, bulletOffset.y - .15f, 0) + transform.position, 
+			new Vector3(bulletOffset.x * transform.parent.GetComponent<Player>().direction, bulletOffset.y + .15f, 0) + transform.position); //Vertical line
 	}
 }
