@@ -15,7 +15,6 @@ public class Gun : MonoBehaviour
 	public GameObject bulletPrefab; //Insert different bullet prefabs here for different guns
 	public GameObject muzzleFlashPrefab;//Insert your preffered muzzle flash here
 	public float fireRate; //Fire rate of this gun (lower = faster!)
-	float direction;//Direction player is facing
 	public float playerKnockBack; //Pushback on player when fired
 
 	public Vector2 bulletOffset;//Controls origin point of bullet
@@ -53,9 +52,6 @@ public class Gun : MonoBehaviour
 			}
 		}
 		fireRateCount += Time.deltaTime;
-
-		if (transform.parent.GetComponent<Player> ().velocity.x != 0)
-			direction = Mathf.Sign (transform.parent.GetComponent<Player> ().velocity.x);
 	}
 
 	void Shoot(float bullets)
@@ -67,9 +63,9 @@ public class Gun : MonoBehaviour
 		{
 			Quaternion rotationDeviationBuffer = new Quaternion ();//Buffer to hold bullet rotation with deviation applied before bullet is instantiated
 
-			if(direction == 1)
+			if(transform.parent.GetComponent<Player>().direction == 1)
 				rotationDeviationBuffer.eulerAngles = new Vector3 (0, 0, Random.Range (-rotationDeviation, rotationDeviation));
-			else if(direction == -1)
+			else if(transform.parent.GetComponent<Player>().direction == -1)
 				rotationDeviationBuffer.eulerAngles = new Vector3 (0, 0, Random.Range (-rotationDeviation, rotationDeviation) + 180);
 			
 			GameObject bullet = Instantiate (bulletPrefab, (Vector3)bulletOffset + transform.position, transform.rotation * rotationDeviationBuffer) as GameObject;
@@ -84,7 +80,7 @@ public class Gun : MonoBehaviour
 			Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D> (), transform.parent.GetComponent<Collider2D> ()); //Bullet will ignore collisions with the gun that instantiated it
 
 			//transform.parent.GetComponent<Player>().velocity += new Vector3(playerKnockBack * direction, 0, 0);
-			transform.parent.GetComponent<Player>().controller.Move(new Vector3(playerKnockBack * -direction, 0, 0));
+			transform.parent.GetComponent<Player>().controller.Move(new Vector3(playerKnockBack * -transform.parent.GetComponent<Player>().direction, 0, 0));
 		}
 	}
 

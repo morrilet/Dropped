@@ -37,6 +37,9 @@ public class Player : Entity
 	float corpseThrowTime; //Max time to hold the throw button before it has no effect.
 	float corpseThrowCount; //Counter for throw hold.
 
+	[HideInInspector]
+	public float direction;//Direction player is facing
+
 	public override void Start()
 	{
 		base.Start ();
@@ -71,6 +74,9 @@ public class Player : Entity
 			jumpAbility.countdownLeniency = false;
 			jumpAbility.ResetLeniency ();
 		}
+			
+		if (GetComponent<Player> ().velocity.x != 0)
+			direction = Mathf.Sign (velocity.x);
 
 		//Just for now, so that at least SOMETHING happens.
 		//In the future make a die method.
@@ -93,6 +99,9 @@ public class Player : Entity
 
 		if (corpseThrowCount >= corpseThrowTime)
 			corpseThrowCount = corpseThrowTime;
+
+		if (corpseCarried)
+			corpseCarried.transform.position = transform.position + new Vector3 (0, .75f, 0);
 
 		if (canMove)
 			HandleInput ();
@@ -166,7 +175,7 @@ public class Player : Entity
 	void PickupCorpse(GameObject corpse)
 	{
 		corpseCarried = corpse;
-		corpseCarried.transform.SetParent (this.transform);
+		//corpseCarried.transform.SetParent (this.transform);
 		corpseCarried.transform.position = transform.position + new Vector3(0, 1, 0);
 		corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = true;
 		corpseCarried.transform.rotation = Quaternion.identity;
@@ -175,7 +184,7 @@ public class Player : Entity
 
 	void DropCorpse(float forceModifier)
 	{
-		corpseCarried.transform.SetParent (null);
+		//corpseCarried.transform.SetParent (null);
 		corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = false;
 
 		Vector2 force = new Vector2 (10, 5) + (Vector2)transform.right;
