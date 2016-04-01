@@ -71,7 +71,8 @@ public class Enemy : Entity
 			health -= other.gameObject.GetComponent<Bullet> ().damage;
 			if (health <= 0)
 				Die (other.gameObject.GetComponent<Bullet> ());
-			Destroy (other.gameObject);
+			else
+				Destroy (other.gameObject);
 		}
 	}
 
@@ -94,7 +95,10 @@ public class Enemy : Entity
 	{
 		GameObject corpse = Instantiate (corpsePrefab, transform.position, Quaternion.Euler (new Vector3 (0, 0, 90))) as GameObject;
 
-		corpse.gameObject.GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2(bullet.bulletSpeed, 0f), (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+		corpse.gameObject.GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2(bullet.bulletSpeed, 0f) 
+			* GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+		Physics2D.IgnoreCollision (controller.coll, bullet.GetComponent<Collider2D> ());
+		bullet.ReduceDamage ();
 		Destroy (gameObject);
 	}
 

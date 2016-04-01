@@ -11,12 +11,16 @@ public class Bullet : MonoBehaviour {
 	public float maxRange;
 	[HideInInspector]
 	public float damage;
+	[HideInInspector]
+	public float maxDamage;
+
 	public Vector3 startPos;
 
 	void Start()
 	{
 		startPos = transform.position;
 		bulletSpeed += Random.Range (-1 * bulletSpeedDeviation, bulletSpeedDeviation);
+		damage = maxDamage;
 	}
 
 	void Update () 
@@ -28,6 +32,7 @@ public class Bullet : MonoBehaviour {
 			Destroy (gameObject);
 		}
 	}
+
 	void OnCollisionEnter2D(Collision2D coll)
 	{
 		if (coll.gameObject.tag == "Platforms")
@@ -36,8 +41,16 @@ public class Bullet : MonoBehaviour {
 		}
 		if (coll.gameObject.tag == "Corpse") 
 		{
-			coll.gameObject.GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2(bulletSpeed / 5f, 0f), transform.position, ForceMode2D.Impulse);
-			Destroy (gameObject);
+			coll.gameObject.GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2(bulletSpeed / 5f, 0f)
+				* GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().direction, transform.position, ForceMode2D.Impulse);
+			Physics2D.IgnoreCollision (GetComponent<Collider2D> (), coll.gameObject.GetComponent<Collider2D>());
+			ReduceDamage ();
 		}
+	}
+
+	//Reduces the damage done by the bullet. Primarily used when the bullet passes through something.
+	public void ReduceDamage()
+	{
+		damage -= .15f * maxDamage; //-15%
 	}
 }

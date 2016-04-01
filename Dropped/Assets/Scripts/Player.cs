@@ -179,7 +179,8 @@ public class Player : Entity
 		corpseCarried.transform.position = transform.position + new Vector3(0, 1, 0);
 		corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = true;
 		corpseCarried.transform.rotation = Quaternion.identity;
-		Physics2D.IgnoreCollision (controller.coll, corpseCarried.GetComponent<Collider2D>());
+		corpseCarried.layer = LayerMask.NameToLayer("Default");
+		//Physics2D.IgnoreCollision (controller.coll, corpseCarried.GetComponent<Collider2D>());
 	}
 
 	void DropCorpse(float forceModifier)
@@ -191,7 +192,8 @@ public class Player : Entity
 		force *= forceModifier;
 		corpseCarried.GetComponent<Rigidbody2D> ().AddForce (force, ForceMode2D.Impulse);
 
-		Physics2D.IgnoreCollision (controller.coll, corpseCarried.GetComponent<Collider2D>(), false);
+		//Physics2D.IgnoreCollision (controller.coll, corpseCarried.GetComponent<Collider2D>(), false);
+		corpseCarried.layer = LayerMask.NameToLayer("Obstacle");
 		corpseCarried = null;
 	}
 
