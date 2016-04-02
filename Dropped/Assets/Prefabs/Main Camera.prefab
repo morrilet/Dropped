@@ -93,9 +93,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 0}
-  dampTime: 0
-  cameraLockMode: 0
-  cameraFollowMode: 0
+  dampTime: 0.1
+  cameraLockMode: 1
+  cameraFollowMode: 1
 --- !u!114 &11477300
 MonoBehaviour:
   m_ObjectHideFlags: 1

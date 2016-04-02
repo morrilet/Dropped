@@ -8,6 +8,7 @@ TagManager:
   - Level
   - Bullet
   - Corpse
+  - Ladder
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - 
   - Obstacle
   - Projectile
-  - 
+  - Ladder
   - 
   - 
   - 
@@ -44,4 +45,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ladder
+    uniqueID: 460011057
+    locked: 0
+  - name: Player
+    uniqueID: 3694127023
+    locked: 0
+  - name: Enemies
+    uniqueID: 621622263
     locked: 0

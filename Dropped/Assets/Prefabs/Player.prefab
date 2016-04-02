@@ -44,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.048, y: 0.477, z: 0}
+  m_LocalPosition: {x: -23.5, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 447140}
@@ -88,10 +88,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAuto: 0
+  isFlamethrower: 0
   bulletsPerShot: 0
+  shotsPerBurst: 0
   rotationDeviation: 0
   bulletPrefab: {fileID: 164600, guid: 2473cc459ee1f9d4abfc1120d139ef03, type: 2}
+  muzzleFlashPrefab: {fileID: 0}
   fireRate: 0
+  playerKnockBack: 0
+  bulletOffset: {x: 0, y: 0}
+  muzzleFlashOffset: {x: 0, y: 0}
+  bulletSpeed: 0
+  bulletSpeedDeviation: 0
+  maxRange: 0
+  maxDamage: 0
+  damageFalloff: 0
 --- !u!114 &11448838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,8 +119,10 @@ MonoBehaviour:
   isAlive: 0
   canMove: 0
   gravity: 0
+  velocity: {x: 0, y: 0, z: 0}
   controller: {fileID: 0}
   jumpAbility: {fileID: 0}
+  direction: 0
 --- !u!114 &11450682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,7 +181,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -600840273
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 74f769fc9cd627840a8f85f53530281b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

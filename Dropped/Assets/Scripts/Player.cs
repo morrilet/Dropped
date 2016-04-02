@@ -32,7 +32,9 @@ public class Player : Entity
 	[HideInInspector]
 	public JumpAbility jumpAbility;
 
-	GameObject corpseCarried; //The corpse that is being carried.
+	GameObject ladder; //The ladder that the player is on. Null if not on a ladder.
+
+	GameObject corpseCarried; //The corpse that is being carried. Null if no corpse is carried.
 	bool throwingCorpse = false; //Whether we should count up on the counter or not.
 	float corpseThrowTime; //Max time to hold the throw button before it has no effect.
 	float corpseThrowCount; //Counter for throw hold.
@@ -70,7 +72,7 @@ public class Player : Entity
 		if (playerInfo.JustFell)
 			jumpAbility.countdownLeniency = true;
 		//If we just landed, stop counting down. This also resets it.
-		else if (playerInfo.JustLanded)
+		else if (playerInfo.JustLanded || ladder != null)
 		{
 			jumpAbility.countdownLeniency = false;
 			jumpAbility.ResetLeniency ();
@@ -86,8 +88,8 @@ public class Player : Entity
 			Application.LoadLevel(Application.loadedLevel);
 		}
 
-		//Don't apply gravity if we're on the ground.
-		if(controller.collisions.above || controller.collisions.below)
+		//Don't apply gravity if we're on the ground or on a ladder.
+		if(controller.collisions.above || controller.collisions.below || ladder != null)
 		{
 			velocity.y = 0;
 		}
@@ -111,11 +113,30 @@ public class Player : Entity
 
 		float targetVelocityX = input.x * moveSpeed;
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
-		velocity.y += gravity * Time.deltaTime;
+		if(ladder == null)
+			velocity.y += gravity * Time.deltaTime;
 
 		if (velocity.x != 0)
 		{
 			transform.localScale = new Vector3 (baseScaleX * Mathf.Sign (velocity.x), transform.localScale.y, transform.localScale.z);
+		}
+
+		if (ladder != null) 
+		{
+			velocity.y = input.y * moveSpeed / 2f;
+			velocity.x = 0;
+			transform.position = new Vector3 (ladder.transform.position.x, transform.position.y, transform.position.z);
+
+			if (transform.position.y - controller.coll.bounds.extents.y
+				> ladder.transform.position.y + ladder.GetComponent<Collider2D> ().bounds.extents.y)  //If bottom is higher than ladder top... 
+			{
+				ladder = null;
+			} 
+			else if (transform.position.y + controller.coll.bounds.extents.y
+				< ladder.transform.position.y - ladder.GetComponent<Collider2D> ().bounds.extents.y) //If top is lower than ladder bottom...
+			{ 
+				ladder = null;
+			}
 		}
 
 		controller.Move (velocity * Time.deltaTime);
@@ -124,7 +145,7 @@ public class Player : Entity
 			Debug.Log ("JustJumped");
 		if (playerInfo.JustLanded)
 			Debug.Log ("JustLanded");
-		if(playerInfo.JustFell)
+		if (playerInfo.JustFell)
 			Debug.Log ("JustFell");
 		playerInfo.Reset ();
 	}
@@ -137,17 +158,20 @@ public class Player : Entity
 		input = new Vector2 (Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
 		//Jumping.
-		if(jumpAbility != null)
+		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			if(Input.GetKeyDown(KeyCode.Space) && jumpAbility.canJump)
+			if(jumpAbility != null && jumpAbility.canJump)
 			{
 				jumpAbility.Jump(ref velocity);
 			}
+
+			if (ladder != null)
+				ladder = null;
 		}
 
 		if (Input.GetKeyDown (KeyCode.C)) 
 		{
-			if (corpseCarried == null) 
+			if (corpseCarried == null)
 			{
 				GameObject[] corpses = GameObject.FindGameObjectsWithTag ("Corpse");
 				for (int i = 0; i < corpses.Length; i++) 
@@ -171,29 +195,36 @@ public class Player : Entity
 			throwingCorpse = false;
 			corpseThrowCount = 0;
 		}
+
+		if (input.y > 0) 
+		{
+			foreach (GameObject ladderObj in GameObject.FindGameObjectsWithTag("Ladder")) 
+			{
+				if (controller.coll.IsTouching (ladderObj.GetComponent<Collider2D> ())) 
+				{
+					ladder = ladderObj;
+				}
+			}
+		}
 	}
 
 	void PickupCorpse(GameObject corpse)
 	{
 		corpseCarried = corpse;
-		//corpseCarried.transform.SetParent (this.transform);
 		corpseCarried.transform.position = transform.position + new Vector3(0, 1, 0);
 		corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = true;
 		corpseCarried.transform.rotation = Quaternion.identity;
 		corpseCarried.layer = LayerMask.NameToLayer("Default");
-		//Physics2D.IgnoreCollision (controller.coll, corpseCarried.GetComponent<Collider2D>());
 	}
 
 	void DropCorpse(float forceModifier)
 	{
-		//corpseCarried.transform.SetParent (null);
 		corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = false;
 
 		Vector2 force = new Vector2 (10, 5) + (Vector2)transform.right;
 		force *= Mathf.Clamp(forceModifier, 0.2f, 1f);
 		corpseCarried.GetComponent<Rigidbody2D> ().AddForce (force * direction, ForceMode2D.Impulse);
 
-		//Physics2D.IgnoreCollision (controller.coll, corpseCarried.GetComponent<Collider2D>(), false);
 		corpseCarried.layer = LayerMask.NameToLayer("Obstacle");
 		corpseCarried = null;
 	}
