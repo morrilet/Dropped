@@ -8,8 +8,10 @@ public class Player : Entity
 	[HideInInspector]
 	public PlayerInfo playerInfo;
 
-	float accelerationTimeAirborne = .2f;
-	float accelerationTimeGrounded = .1f;
+	[HideInInspector]
+	public float accelerationTimeAirborne = .2f;
+	[HideInInspector]
+	public float accelerationTimeGrounded = .1f;
 	float moveSpeed = 6;
 	float baseScaleX;
 

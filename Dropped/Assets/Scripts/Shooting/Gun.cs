@@ -30,6 +30,9 @@ public class Gun : MonoBehaviour
 
 	float fireRateCount;
 
+	Vector3 knockBackVelocity; //Velocity to use for knockback.
+	float velocityXSmoothing; //Smoothing to apply to knockback movement. 0.
+
 	void Start()
 	{
 		fireRateCount = fireRate;
@@ -82,8 +85,14 @@ public class Gun : MonoBehaviour
 
 			Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D> (), transform.parent.GetComponent<Collider2D> ()); //Bullet will ignore collisions with the gun that instantiated it
 
-			//transform.parent.GetComponent<Player>().velocity += new Vector3(playerKnockBack * direction, 0, 0);
-			transform.parent.GetComponent<Player>().controller.Move(new Vector3(playerKnockBack * -transform.parent.GetComponent<Player>().direction, 0, 0));
+			knockBackVelocity = Vector3.zero;
+
+			float targetVelocityX = playerKnockBack * -transform.parent.GetComponent<Player> ().direction;
+			knockBackVelocity.x = Mathf.Lerp(0f, targetVelocityX, 
+				(transform.parent.GetComponent<Player>().controller.collisions.below)?transform.GetComponentInParent<Player>().accelerationTimeGrounded:transform.GetComponentInParent<Player>().accelerationTimeAirborne * 2f);
+
+			transform.parent.GetComponent<Player>().controller.Move(knockBackVelocity * Time.deltaTime);
+			Debug.Log (knockBackVelocity.x);
 		}
 	}
 

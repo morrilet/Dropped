@@ -498,7 +498,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: playerKnockBack
-      value: 0.01
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: bulletOffset.x
@@ -518,7 +518,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: maxRange
-      value: 100000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: maxDamage
@@ -539,6 +539,14 @@ Prefab:
     - target: {fileID: 11408848, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: muzzleFlashOffset.y
       value: 0.045
+      objectReference: {fileID: 0}
+    - target: {fileID: 11468344, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
+      propertyPath: verticalRayCount
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11468344, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
+      propertyPath: horizontalRayCount
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
