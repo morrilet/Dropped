@@ -8,9 +8,9 @@ public class Gun : MonoBehaviour
 	public bool isAuto; //True for full auto, false for semi auto or burst.
 	public bool isFlamethrower; //If true, bullets transform relative to parent
 	[Range(1, int.MaxValue)]
-	public float bulletsPerShot;//Amount of bullets in a shot (for shotguns mostly)
+	public int bulletsPerShot;//Amount of bullets in a shot (for shotguns mostly)
 	[Range(1, int.MaxValue)]
-	public float shotsPerBurst; //Amount of times Shoot() is called per input (overrriden if isAuto = true)
+	public int shotsPerBurst; //Amount of times Shoot() is called per input (overrriden if isAuto = true)
 	public float rotationDeviation;//Innacuracy of gun 
 	public GameObject bulletPrefab; //Insert different bullet prefabs here for different guns
 	public GameObject muzzleFlashPrefab;//Insert your preffered muzzle flash here
@@ -59,6 +59,7 @@ public class Gun : MonoBehaviour
 	{
 		GameObject muzzleFlash = Instantiate (muzzleFlashPrefab, new Vector3(muzzleFlashOffset.x * transform.parent.GetComponent<Player>().direction, muzzleFlashOffset.y) + transform.position, transform.rotation) as GameObject;
 		muzzleFlash.transform.SetParent (this.transform);
+		muzzleFlash.GetComponent<SpriteRenderer>().sortingLayerName = "Gun";
 
 		for (float i = 0; i < bullets; i++)
 		{
