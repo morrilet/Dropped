@@ -173,6 +173,11 @@ public class Player : Entity
 			break;
 		}
 
+		if (direction == 1)
+			Camera.main.GetComponent<CameraFollowTrap> ().cameraFollowMode = CameraFollowTrap.CameraFollowMode.Right;
+		if (direction == -1)
+			Camera.main.GetComponent<CameraFollowTrap> ().cameraFollowMode = CameraFollowTrap.CameraFollowMode.Left;
+
 		controller.Move (velocity * Time.deltaTime);
 
 		if (playerInfo.JustJumped)
