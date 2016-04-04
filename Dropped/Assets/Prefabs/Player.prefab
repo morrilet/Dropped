@@ -44,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.5, y: 0, z: 0}
+  m_LocalPosition: {x: -38.93, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 447140}
@@ -87,22 +87,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab4df81349a33d468dd0465a01dc75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAuto: 0
+  isAuto: 1
   isFlamethrower: 0
-  bulletsPerShot: 0
-  shotsPerBurst: 0
+  bulletsPerShot: 1
+  shotsPerBurst: 1
   rotationDeviation: 0
-  bulletPrefab: {fileID: 164600, guid: 2473cc459ee1f9d4abfc1120d139ef03, type: 2}
-  muzzleFlashPrefab: {fileID: 0}
-  fireRate: 0
-  playerKnockBack: 0
-  bulletOffset: {x: 0, y: 0}
-  muzzleFlashOffset: {x: 0, y: 0}
-  bulletSpeed: 0
+  bulletPrefab: {fileID: 118666, guid: 2473cc459ee1f9d4abfc1120d139ef03, type: 2}
+  muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
+  fireRate: 0.15
+  playerKnockBack: 25
+  bulletOffset: {x: 0.285, y: 0.045}
+  muzzleFlashOffset: {x: 0.285, y: 0.045}
+  bulletSpeed: 10
   bulletSpeedDeviation: 0
-  maxRange: 0
-  maxDamage: 0
-  damageFalloff: 0
+  maxRange: 500
+  maxDamage: 4.5
+  damageFalloff: 0.2
 --- !u!114 &11448838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,6 +117,8 @@ MonoBehaviour:
   health: 0
   maxHealth: 100
   isAlive: 0
+  accelerationTimeAirborne: 0.2
+  accelerationTimeGrounded: 0.1
   canMove: 0
   gravity: 0
   velocity: {x: 0, y: 0, z: 0}
@@ -152,8 +154,8 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
-  horizontalRayCount: 8
-  verticalRayCount: 4
+  horizontalRayCount: 16
+  verticalRayCount: 8
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
   coll: {fileID: 0}
@@ -211,7 +213,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -457241561
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8b04b12a98a2da147aba0c52f6c6d6a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
