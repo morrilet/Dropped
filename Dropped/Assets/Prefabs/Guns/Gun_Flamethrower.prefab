@@ -48,14 +48,14 @@ MonoBehaviour:
   bulletPrefab: {fileID: 196362, guid: 2645079516817fe409f313bf3955997f, type: 2}
   muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
   fireRate: 0.001
-  bulletOffSetX: 0.9
-  bulletOffSetY: 0.1
-  muzzleFlashOffSetX: 0.24
-  muzzleFlashOffSetY: 0.05
+  playerKnockBack: 0
+  bulletOffset: {x: 0, y: 0}
+  muzzleFlashOffset: {x: 0, y: 0}
   bulletSpeed: 5
   bulletSpeedDeviation: 0.5
   maxRange: 5
-  damage: 0.5
+  maxDamage: 0
+  damageFalloff: 0
 --- !u!212 &21264996
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -457241561
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8b04b12a98a2da147aba0c52f6c6d6a1, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -136,6 +136,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: bulletsPerShot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SortingLayerID
+      value: -457241561
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

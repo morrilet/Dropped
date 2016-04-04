@@ -54,7 +54,8 @@ MonoBehaviour:
   bulletSpeed: 14
   bulletSpeedDeviation: 4
   maxRange: 8
-  damage: 2
+  maxDamage: 0
+  damageFalloff: 0
 --- !u!212 &21266792
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -457241561
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8b04b12a98a2da147aba0c52f6c6d6a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -111,6 +112,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: playerKnockBack
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SortingLayerID
+      value: -457241561
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

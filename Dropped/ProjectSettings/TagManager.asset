@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Corpse
   - Ladder
+  - Gun
   layers:
   - Default
   - TransparentFX

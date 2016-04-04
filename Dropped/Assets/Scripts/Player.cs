@@ -44,9 +44,25 @@ public class Player : Entity
 	[HideInInspector]
 	public float direction;//Direction player is facing
 
+	public enum CurrentGun
+	{
+		None,
+		MachineGun,
+		Shotgun
+	}
+	public CurrentGun currentGun;
+
+	GameObject machineGun;
+	GameObject shotGun;
+
 	public override void Start()
 	{
 		base.Start ();
+
+		machineGun = transform.FindChild ("Gun").gameObject;
+		shotGun = transform.FindChild ("Gun_Shotgun").gameObject;
+
+		currentGun = CurrentGun.None;
 
 		jumpAbility = GetComponent<JumpAbility> ();
 		controller = GetComponent<Controller2D> ();
@@ -139,6 +155,22 @@ public class Player : Entity
 			{ 
 				ladder = null;
 			}
+		}
+
+		switch (currentGun)
+		{
+		case CurrentGun.None:
+			machineGun.SetActive (false);
+			shotGun.SetActive (false);
+			break;
+		case CurrentGun.MachineGun:
+			machineGun.SetActive (true);
+			shotGun.SetActive (false);
+			break;
+		case CurrentGun.Shotgun:
+			machineGun.SetActive (false);
+			shotGun.SetActive (true);
+			break;
 		}
 
 		controller.Move (velocity * Time.deltaTime);
