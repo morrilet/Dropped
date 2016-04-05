@@ -23,7 +23,8 @@ public class Door : MonoBehaviour
 	{
 		if (openCloseColliderLeft.IsTouching (player.GetComponent<Collider2D> ()))
 		{
-			if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<Player>().direction == 1) 
+			GUI.Instance.actionText.text = "'E' to Open/Close Door";
+			if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<Player> ().direction == 1)
 			{
 				if (isOpen)
 					CloseDoor ();
@@ -32,11 +33,11 @@ public class Door : MonoBehaviour
 
 				isOpen = !isOpen;
 			}
-		}
-
-		if (openCloseColliderRight.IsTouching (player.GetComponent<Collider2D> ()))
+		} 
+		else if (openCloseColliderRight.IsTouching (player.GetComponent<Collider2D> ())) 
 		{
-			if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<Player>().direction == -1)
+			GUI.Instance.actionText.text = "'E' to Open/Close Door";
+			if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<Player> ().direction == -1) 
 			{
 				if (isOpen)
 					CloseDoor ();
@@ -45,7 +46,9 @@ public class Door : MonoBehaviour
 
 				isOpen = !isOpen;
 			}
-		}
+		} 
+		else
+			GUI.Instance.actionText.text = "";
 	}
 
 	void OpenDoor()
