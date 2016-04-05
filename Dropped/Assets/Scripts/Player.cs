@@ -184,10 +184,15 @@ public class Player : Entity
 		corpseThrowDirection = new Vector3 (10, 5, 0) + transform.right;
 		corpseThrowDirection.x *= direction;
 
-		if (direction == 1)
-			Camera.main.GetComponent<CameraFollowTrap> ().cameraFollowMode = CameraFollowTrap.CameraFollowMode.Right;
-		if (direction == -1)
-			Camera.main.GetComponent<CameraFollowTrap> ().cameraFollowMode = CameraFollowTrap.CameraFollowMode.Left;
+		if (currentGun != CurrentGun.None)
+		{
+			if (direction == 1)
+				Camera.main.GetComponent<CameraFollowTrap> ().cameraFollowMode = CameraFollowTrap.CameraFollowMode.Right;
+			if (direction == -1)
+				Camera.main.GetComponent<CameraFollowTrap> ().cameraFollowMode = CameraFollowTrap.CameraFollowMode.Left;
+		}
+		else
+			Camera.main.GetComponent<CameraFollowTrap> ().cameraFollowMode = CameraFollowTrap.CameraFollowMode.Center;
 
 		controller.Move (velocity * Time.deltaTime);
 
