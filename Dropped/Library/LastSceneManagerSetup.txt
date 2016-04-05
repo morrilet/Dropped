@@ -1,12 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/Level01.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/level03.unity
-=======
-- path: Assets/Scenes/EthansTestScene.unity
->>>>>>> origin/master
->>>>>>> origin/master
   isLoaded: 1
   isActive: 1

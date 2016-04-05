@@ -7,6 +7,8 @@ public class Player : Entity
 {
 	[HideInInspector]
 	public PlayerInfo playerInfo;
+	[HideInInspector]
+	public PlayerAmmo playerAmmo;
 
 	[HideInInspector]
 	public float accelerationTimeAirborne = .2f;
@@ -59,6 +61,7 @@ public class Player : Entity
 	}
 	public CurrentGun currentGun;
 
+	Gun activeGun; //The gun object currently in use.
 	GameObject machineGun;
 	GameObject shotGun;
 
@@ -70,6 +73,12 @@ public class Player : Entity
 		shotGun = transform.FindChild ("Gun_Shotgun").gameObject;
 
 		currentGun = CurrentGun.None;
+		activeGun = null;
+
+		playerAmmo.machineGunAmmo.maxAmmo = 50;
+		playerAmmo.machineGunAmmo.Refill ();
+		playerAmmo.shotgunAmmo.maxAmmo = 25;
+		playerAmmo.shotgunAmmo.Refill ();
 
 		jumpAbility = GetComponent<JumpAbility> ();
 		controller = GetComponent<Controller2D> ();
@@ -169,14 +178,17 @@ public class Player : Entity
 		case CurrentGun.None:
 			machineGun.SetActive (false);
 			shotGun.SetActive (false);
+			activeGun = null;
 			break;
 		case CurrentGun.MachineGun:
 			machineGun.SetActive (true);
 			shotGun.SetActive (false);
+			activeGun = machineGun.GetComponent<Gun>();
 			break;
 		case CurrentGun.Shotgun:
 			machineGun.SetActive (false);
 			shotGun.SetActive (true);
+			activeGun = shotGun.GetComponent<Gun>();
 			break;
 		}
 
@@ -261,6 +273,43 @@ public class Player : Entity
 				}
 			}
 		}
+
+		if (activeGun != null) 
+		{
+			if (activeGun.isAuto) 
+			{
+				if (Input.GetKey (KeyCode.X))
+					ShootGun ();
+			} 
+			else if(!activeGun.isAuto)
+			{
+				if (Input.GetKeyDown (KeyCode.X))
+					ShootGun ();
+			}
+		}
+	}
+
+	void ShootGun()
+	{
+		switch (currentGun) 
+		{
+		case CurrentGun.None:
+			break;
+		case CurrentGun.MachineGun:
+			if (playerAmmo.machineGunAmmo.currentAmmo > 0) 
+			{
+				if(activeGun.Shoot ())
+					playerAmmo.machineGunAmmo.ModifyAmmo (-1);
+			}
+			break;
+		case CurrentGun.Shotgun:
+			if (playerAmmo.shotgunAmmo.currentAmmo > 0) 
+			{
+				if(activeGun.Shoot ())
+					playerAmmo.shotgunAmmo.ModifyAmmo (-1);
+			}
+			break;
+		}
 	}
 
 	void PickupCorpse(GameObject corpse)
@@ -283,6 +332,38 @@ public class Player : Entity
 		corpseCarried = null;
 	}
 
+	#region Custom Data
+	public struct PlayerAmmo
+	{
+		public AmmoType machineGunAmmo;
+		public AmmoType shotgunAmmo;
+
+		public void RefillAll()
+		{
+			machineGunAmmo.Refill ();
+			shotgunAmmo.Refill ();
+		}
+	}
+
+	public struct AmmoType
+	{
+		public int maxAmmo;
+		public int currentAmmo;
+
+		public void Refill()
+		{
+			currentAmmo = maxAmmo;
+		}
+
+		public void ModifyAmmo(int change)
+		{
+			if (currentAmmo + change >= 0 && currentAmmo + change <= maxAmmo) 
+			{
+				currentAmmo += change;
+			}
+		}
+	}
+
 	public struct PlayerInfo
 	{
 		public bool JustJumped;
@@ -297,4 +378,5 @@ public class Player : Entity
 			JustLanded = false;
 		}
 	}
+	#endregion
 }

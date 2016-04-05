@@ -38,27 +38,24 @@ public class Gun : MonoBehaviour
 		fireRateCount = fireRate;
 	}
 
-	void Update ()
+	void Update()
 	{
-		if (isAuto) 
-		{ 	//Auto Fire
-			if (Input.GetKey (KeyCode.X) && fireRateCount >= fireRate) {
-				Shoot (bulletsPerShot);
-				fireRateCount = 0;
-			}
-		}
-		if (!isAuto) //Semi Auto Fire
-		{
-			if (Input.GetKeyDown (KeyCode.X) && fireRateCount >= fireRate)
-			{
-				Shoot (bulletsPerShot);
-				fireRateCount = 0;
-			}
-		}
 		fireRateCount += Time.deltaTime;
 	}
 
-	void Shoot(float bullets)
+	//Shoots the gun. Returns true if a shot was fired.
+	public bool Shoot()
+	{
+		if (fireRateCount >= fireRate) 
+		{
+			InstantiateShot (bulletsPerShot);
+			fireRateCount = 0;
+			return true;
+		}
+		return false;
+	}
+
+	void InstantiateShot(float bullets)
 	{
 		GameObject muzzleFlash = Instantiate (muzzleFlashPrefab, new Vector3(muzzleFlashOffset.x * transform.parent.GetComponent<Player>().direction, muzzleFlashOffset.y) + transform.position, transform.rotation) as GameObject;
 		muzzleFlash.transform.SetParent (this.transform);
@@ -72,7 +69,7 @@ public class Gun : MonoBehaviour
 				rotationDeviationBuffer.eulerAngles = new Vector3 (0, 0, Random.Range (-rotationDeviation, rotationDeviation));
 			else if(transform.parent.GetComponent<Player>().direction == -1)
 				rotationDeviationBuffer.eulerAngles = new Vector3 (0, 0, Random.Range (-rotationDeviation, rotationDeviation) + 180);
-			
+
 			GameObject bullet = Instantiate (bulletPrefab, new Vector3(bulletOffset.x * transform.parent.GetComponent<Player>().direction, bulletOffset.y) + transform.position, transform.rotation * rotationDeviationBuffer) as GameObject;
 			bullet.GetComponent<Bullet> ().bulletSpeed = bulletSpeed;
 			bullet.GetComponent<Bullet> ().bulletSpeedDeviation = bulletSpeedDeviation;
