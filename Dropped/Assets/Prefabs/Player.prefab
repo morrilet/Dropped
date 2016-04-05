@@ -61,7 +61,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.5, y: 0, z: 0}
+  m_LocalPosition: {x: -2.2805297, y: -1.340922, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 465316}
@@ -125,14 +125,14 @@ MonoBehaviour:
   bulletPrefab: {fileID: 118666, guid: 2473cc459ee1f9d4abfc1120d139ef03, type: 2}
   muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
   fireRate: 0.22
-  playerKnockBack: 0
+  playerKnockBack: 8
   bulletOffset: {x: 0.28, y: 0.055}
   muzzleFlashOffset: {x: 0.28, y: 0.055}
   bulletSpeed: 18
   bulletSpeedDeviation: 0.3
   maxRange: 10
-  maxDamage: 0
-  damageFalloff: 0
+  maxDamage: 3.5
+  damageFalloff: 0.5
 --- !u!114 &11448838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab4df81349a33d468dd0465a01dc75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAuto: 1
+  isAuto: 0
   isFlamethrower: 0
   bulletsPerShot: 8
   shotsPerBurst: 0
@@ -209,14 +209,14 @@ MonoBehaviour:
   bulletPrefab: {fileID: 104414, guid: ff0a033fb330ab14fad0810cdd515215, type: 2}
   muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
   fireRate: 0.8
-  playerKnockBack: 0.15
+  playerKnockBack: 14
   bulletOffset: {x: 0.28, y: 0.055}
   muzzleFlashOffset: {x: 0.28, y: 0.055}
   bulletSpeed: 14
   bulletSpeedDeviation: 4
   maxRange: 8
-  maxDamage: 0
-  damageFalloff: 0
+  maxDamage: 1.2
+  damageFalloff: 0.8
 --- !u!212 &21203018
 SpriteRenderer:
   m_ObjectHideFlags: 1
