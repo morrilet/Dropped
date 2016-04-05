@@ -10,6 +10,7 @@ TagManager:
   - Corpse
   - Ladder
   - Gun
+  - Enemy
   layers:
   - Default
   - TransparentFX

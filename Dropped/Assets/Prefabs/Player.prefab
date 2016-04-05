@@ -161,7 +161,7 @@ MonoBehaviour:
   bulletSpeed: 18
   bulletSpeedDeviation: 0.3
   maxRange: 10
-  maxDamage: 3.5
+  maxDamage: 5
   damageFalloff: 0.5
 --- !u!114 &11448838
 MonoBehaviour:
@@ -409,6 +409,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: horizontalRayCount
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDamage
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
