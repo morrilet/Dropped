@@ -19,6 +19,8 @@ public class ScrollingBackground : MonoBehaviour
 	Camera mainCamera;
 
 	bool tilesInStartingPlaces;
+	float tilesInStartingPlacesTime;
+	float tilesInStartingPlacesCount;
 
 	void Start()
 	{
@@ -52,6 +54,7 @@ public class ScrollingBackground : MonoBehaviour
 		backgroundTile2.transform.localScale = newLocalScale;
 
 		tilesInStartingPlaces = false;
+		tilesInStartingPlacesTime = .15f;
 	}
 
 	void Update()
@@ -69,9 +72,12 @@ public class ScrollingBackground : MonoBehaviour
 
 		if (!tilesInStartingPlaces) 
 		{
-			tilesInStartingPlaces = true;
+			if(tilesInStartingPlacesCount >= tilesInStartingPlacesTime)
+				tilesInStartingPlaces = true;
+
 			backgroundTile1.transform.position = right;
-			backgroundTile2.transform.position = center; //Adding a small offset here so there are no gaps.
+			backgroundTile2.transform.position = center;
+			tilesInStartingPlacesCount += Time.deltaTime;
 		}
 
 		cameraPositionPrev = cameraPosition;

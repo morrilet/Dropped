@@ -1621,7 +1621,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 485868, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -33.31
+      value: -33.34025
       objectReference: {fileID: 0}
     - target: {fileID: 485868, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1659,6 +1659,14 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1512188217}
+    - target: {fileID: 11407702, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
+      propertyPath: cameraLockMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11407702, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
+      propertyPath: cameraFollowMode
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
   m_IsPrefabParent: 0
