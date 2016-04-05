@@ -36,10 +36,17 @@ public class Player : Entity
 
 	GameObject ladder; //The ladder that the player is on. Null if not on a ladder.
 
-	GameObject corpseCarried; //The corpse that is being carried. Null if no corpse is carried.
-	bool throwingCorpse = false; //Whether we should count up on the counter or not.
+	[HideInInspector]
+	public GameObject corpseCarried; //The corpse that is being carried. Null if no corpse is carried.
+	[HideInInspector]
+	public bool throwingCorpse = false; //Whether we should count up on the counter or not.
 	float corpseThrowTime; //Max time to hold the throw button before it has no effect.
 	float corpseThrowCount; //Counter for throw hold.
+
+	[HideInInspector]
+	public Vector3 corpseThrowDirection; //The direction to throw the corpse in.
+	[HideInInspector]
+	public float corpseThrowForce; //The strength with which to throw the corpse.
 
 	[HideInInspector]
 	public float direction;//Direction player is facing
@@ -69,7 +76,7 @@ public class Player : Entity
 		baseScaleX = transform.localScale.x;
 		direction = 1;
 
-		corpseThrowTime = 1f;
+		corpseThrowTime = 1.5f;
 
 		canMove = true;
 	}
@@ -115,14 +122,14 @@ public class Player : Entity
 		if (throwingCorpse) 
 		{
 			corpseThrowCount += Time.deltaTime;
-			Debug.Log (corpseThrowCount / corpseThrowTime);
+			//Debug.Log (corpseThrowCount / corpseThrowTime);
 		}
 
 		if (corpseThrowCount >= corpseThrowTime)
 			corpseThrowCount = corpseThrowTime;
 
 		if (corpseCarried)
-			corpseCarried.transform.position = transform.position + new Vector3 (0, .75f, 0);
+			corpseCarried.transform.position = transform.position + new Vector3 (0, .9f, 0);
 
 		if (canMove)
 			HandleInput ();
@@ -172,6 +179,10 @@ public class Player : Entity
 			shotGun.SetActive (true);
 			break;
 		}
+
+		corpseThrowForce = Mathf.Clamp((corpseThrowCount / corpseThrowTime), .2f, 1f);
+		corpseThrowDirection = new Vector3 (10, 5, 0) + transform.right;
+		corpseThrowDirection.x *= direction;
 
 		controller.Move (velocity * Time.deltaTime);
 
@@ -225,7 +236,7 @@ public class Player : Entity
 
 		if (Input.GetKeyUp (KeyCode.C) && throwingCorpse) 
 		{
-			DropCorpse (corpseThrowCount / corpseThrowTime);
+			DropCorpse (corpseThrowForce);
 			throwingCorpse = false;
 			corpseThrowCount = 0;
 		}
@@ -255,9 +266,8 @@ public class Player : Entity
 	{
 		corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = false;
 
-		Vector2 force = new Vector2 (10, 5) + (Vector2)transform.right;
-		force *= Mathf.Clamp(forceModifier, 0.2f, 1f);
-		corpseCarried.GetComponent<Rigidbody2D> ().AddForce (force * direction, ForceMode2D.Impulse);
+		Vector2 force = corpseThrowDirection * forceModifier;
+		corpseCarried.GetComponent<Rigidbody2D> ().AddForce (force, ForceMode2D.Impulse);
 
 		corpseCarried.layer = LayerMask.NameToLayer("Obstacle");
 		corpseCarried = null;
