@@ -93,6 +93,8 @@ public class Enemy : Entity
 	{
 		GameObject corpse = Instantiate (corpsePrefab, transform.position, Quaternion.Euler (new Vector3 (0, 0, 90))) as GameObject;
 
+		Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
+
 		corpse.gameObject.GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2(bullet.bulletSpeed, 0f) 
 			* GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
 		Physics2D.IgnoreCollision (controller.coll, bullet.GetComponent<Collider2D> ());

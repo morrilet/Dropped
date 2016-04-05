@@ -106,6 +106,22 @@ public class CameraFollowTrap : MonoBehaviour
 		cameraSides.Bottom = transform.position.y - cameraExtents.y;
 	}
 
+	public void ScreenShake(float duration, float intensity)
+	{
+		StartCoroutine(CameraShake(duration, intensity));
+	}
+
+	private IEnumerator CameraShake(float duration, float intensity)
+	{
+		Vector3 startPos = transform.position;
+		for (float t = 0; t < duration; t += Time.deltaTime) 
+		{
+			transform.position = startPos;
+			transform.position += new Vector3 (Random.Range (-intensity, intensity), Random.Range (-intensity, intensity), 0f);
+			yield return null;
+		}
+	}
+
 	#region Custom Data
 	public enum CameraLockMode
 	{
