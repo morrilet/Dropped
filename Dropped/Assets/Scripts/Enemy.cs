@@ -71,8 +71,6 @@ public class Enemy : Entity
 			health -= other.gameObject.GetComponent<Bullet> ().damage;
 			if (health <= 0)
 				Die (other.gameObject.GetComponent<Bullet> ());
-			else
-				Destroy (other.gameObject);
 		}
 	}
 

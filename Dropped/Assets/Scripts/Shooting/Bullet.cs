@@ -46,6 +46,9 @@ public class Bullet : MonoBehaviour {
 			coll.gameObject.GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2(bulletSpeed / 5f, 0f)
 				* GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().direction, transform.position, ForceMode2D.Impulse);
 			Physics2D.IgnoreCollision (GetComponent<Collider2D> (), coll.gameObject.GetComponent<Collider2D>());
+		}
+		if (coll.gameObject.tag == "Enemy")
+		{
 			ReduceDamage ();
 		}
 	}
