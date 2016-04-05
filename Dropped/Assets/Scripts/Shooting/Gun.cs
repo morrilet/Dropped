@@ -32,15 +32,21 @@ public class Gun : MonoBehaviour
 
 	Vector3 knockBackVelocity; //Velocity to use for knockback.
 	float velocityXSmoothing; //Smoothing to apply to knockback movement. 0.
+	Vector3 kickBackOffset; //Amount the gun "kicks" per shot
+	Vector3 defaultPos;
+	bool isKnockingBack;
 
 	void Start()
 	{
 		fireRateCount = fireRate;
+		kickBackOffset = new Vector3 (-.15f, 0, 0);
+		Debug.Log (defaultPos);
 	}
 
 	void Update()
 	{
 		fireRateCount += Time.deltaTime;
+		defaultPos = transform.parent.position + new Vector3 (.0259f, .0187f, 0);
 	}
 
 	//Shoots the gun. Returns true if a shot was fired.
@@ -48,6 +54,9 @@ public class Gun : MonoBehaviour
 	{
 		if (fireRateCount >= fireRate) 
 		{
+			if(isKnockingBack)
+				StopCoroutine (KickBack());
+			StartCoroutine (KickBack ());
 			InstantiateShot (bulletsPerShot);
 			fireRateCount = 0;
 			return true;
@@ -90,6 +99,22 @@ public class Gun : MonoBehaviour
 
 			transform.parent.GetComponent<Player>().controller.Move(knockBackVelocity * Time.deltaTime);
 			Debug.Log (knockBackVelocity.x);
+		}
+	}
+
+	IEnumerator KickBack()
+	{
+		float duration = fireRate;
+		isKnockingBack = true;
+
+		for (float t = 0; t < duration; t += Time.deltaTime)
+		{
+			transform.position = Vector3.Lerp (defaultPos, kickBackOffset + defaultPos, Mathf.PingPong(t, duration / 2) / (duration / 2));
+
+			if (t >= duration)
+				isKnockingBack = false;
+
+			yield return null;
 		}
 	}
 
