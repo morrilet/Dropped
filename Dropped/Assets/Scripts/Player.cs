@@ -360,7 +360,9 @@ public class Player : Entity
 			if (currentAmmo + change >= 0 && currentAmmo + change <= maxAmmo) 
 			{
 				currentAmmo += change;
-			}
+			} 
+			else if (currentAmmo + change > maxAmmo)
+				currentAmmo = maxAmmo;
 		}
 	}
 
