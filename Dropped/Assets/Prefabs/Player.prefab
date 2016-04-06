@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 2
-  timeToJumpApex: 0.5
+  timeToJumpApex: 0.35
   canJump: 0
   countdownLeniency: 0
 --- !u!114 &11468344
@@ -413,6 +413,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: maxDamage
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timeToJumpApex
+      value: 0.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
