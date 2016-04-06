@@ -19,6 +19,9 @@ public class Door : MonoBehaviour
 		//openCloseCollider = transform.FindChild ("OpenCloseCollider").GetComponent<Collider2D>();
 		openCloseColliderLeft = transform.FindChild ("OpenCloseColliderLeft").GetComponent<Collider2D> ();
 		openCloseColliderRight = transform.FindChild ("OpenCloseColliderRight").GetComponent<Collider2D> ();
+
+		openCloseColliderLeft.gameObject.layer = LayerMask.NameToLayer ("Default_Hotspot");
+		openCloseColliderRight.gameObject.layer = LayerMask.NameToLayer ("Default_Hotspot");
 	}
 
 	void Update()
@@ -66,7 +69,7 @@ public class Door : MonoBehaviour
 
 	void OpenDoor()
 	{
-		this.gameObject.layer = LayerMask.NameToLayer ("Default");
+		this.gameObject.layer = LayerMask.NameToLayer ("Default_Hotspot");
 		GetComponent<SpriteRenderer> ().color = new Color (255, 255, 255, .25f);
 	}
 
