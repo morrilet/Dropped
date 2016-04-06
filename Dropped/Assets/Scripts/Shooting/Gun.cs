@@ -56,7 +56,7 @@ public class Gun : MonoBehaviour
 		{
 			if(isKnockingBack)
 				StopCoroutine (KickBack());
-			StartCoroutine (KickBack ());
+//			StartCoroutine (KickBack ());
 			InstantiateShot (bulletsPerShot);
 			fireRateCount = 0;
 			return true;
