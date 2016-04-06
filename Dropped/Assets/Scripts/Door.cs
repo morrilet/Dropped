@@ -4,6 +4,7 @@ using System.Collections;
 public class Door : MonoBehaviour 
 {
 	bool isOpen;
+	bool playerFacingCorrectDirection;
 
 	GameObject player; //The player gameObject.
 	Collider2D openCloseColliderLeft; //The left collider used for opening and closing the door.
@@ -12,6 +13,7 @@ public class Door : MonoBehaviour
 	void Start()
 	{
 		isOpen = false;
+		playerFacingCorrectDirection = false;
 
 		player = GameObject.FindGameObjectWithTag ("Player");
 		//openCloseCollider = transform.FindChild ("OpenCloseCollider").GetComponent<Collider2D>();
@@ -21,10 +23,14 @@ public class Door : MonoBehaviour
 
 	void Update()
 	{
-		if (openCloseColliderLeft.IsTouching (player.GetComponent<Collider2D> ()))
+		if (openCloseColliderLeft.IsTouching (player.GetComponent<Collider2D> ())) 
 		{
-			GUI.Instance.actionText.text = "'E' to Open/Close Door";
-			if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<Player> ().direction == 1)
+			if (player.GetComponent<Player> ().direction == 1)
+				playerFacingCorrectDirection = true;
+			else
+				playerFacingCorrectDirection = false;
+			
+			if (Input.GetKeyDown (KeyCode.E) && playerFacingCorrectDirection) 
 			{
 				if (isOpen)
 					CloseDoor ();
@@ -36,8 +42,12 @@ public class Door : MonoBehaviour
 		} 
 		else if (openCloseColliderRight.IsTouching (player.GetComponent<Collider2D> ())) 
 		{
-			GUI.Instance.actionText.text = "'E' to Open/Close Door";
-			if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<Player> ().direction == -1) 
+			if (player.GetComponent<Player> ().direction == -1)
+				playerFacingCorrectDirection = true;
+			else
+				playerFacingCorrectDirection = false;
+			
+			if (Input.GetKeyDown (KeyCode.E) && playerFacingCorrectDirection) 
 			{
 				if (isOpen)
 					CloseDoor ();
@@ -46,9 +56,12 @@ public class Door : MonoBehaviour
 
 				isOpen = !isOpen;
 			}
-		} 
+		}
+
+		if (Vector3.Distance (transform.position, player.transform.position) <= 1.5f && playerFacingCorrectDirection)
+			GUI.Instance.openDoorText.enabled = true;
 		else
-			GUI.Instance.actionText.text = "";
+			GUI.Instance.openDoorText.enabled = false;
 	}
 
 	void OpenDoor()

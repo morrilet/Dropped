@@ -9,7 +9,8 @@ public class GUI : MonoBehaviour
 	public Text shotGunAmmoText;
 	public Text machineGunAmmoText;
 
-	public Text actionText; //Text used to display an action. IE: "Press 'E' to open the door"
+	public Text openDoorText;
+	public Text grabAmmoText;
 
 	public static GUI Instance { get; private set; }
 
@@ -26,7 +27,8 @@ public class GUI : MonoBehaviour
 	{
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
 
-		actionText.text = "";
+		openDoorText.enabled = false;
+		grabAmmoText.enabled = false;
 	}
 
 	void Update()
