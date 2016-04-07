@@ -997,6 +997,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67bd84b40e22736469afe49e46222a80, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &791272751 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 490572, guid: d43855c4d283ad449af726ca74fb30eb, type: 2}
+  m_PrefabInternal: {fileID: 1482527620}
 --- !u!4 &804848572 stripped
 Transform:
   m_PrefabParentObject: {fileID: 433298, guid: d43855c4d283ad449af726ca74fb30eb, type: 2}
@@ -1334,11 +1338,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 451676, guid: d43855c4d283ad449af726ca74fb30eb, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11460996, guid: d43855c4d283ad449af726ca74fb30eb, type: 2}
       propertyPath: xMax
-      value: 30
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 11460996, guid: d43855c4d283ad449af726ca74fb30eb, type: 2}
       propertyPath: xMin
@@ -1510,7 +1514,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 4.47
+      value: 7.37
       objectReference: {fileID: 0}
     - target: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1542,7 +1546,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
       propertyPath: m_LocalScale.x
-      value: 321.95047
+      value: 358.22726
       objectReference: {fileID: 0}
     - target: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
       propertyPath: m_LocalScale.y
@@ -1554,6 +1558,60 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1752855422
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 791272751}
+    m_Modifications:
+    - target: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 19.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 131018, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
+      propertyPath: m_Name
+      value: FadeWall bridge
+      objectReference: {fileID: 0}
+    - target: {fileID: 131018, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087950, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1796358845 stripped
 Transform:
