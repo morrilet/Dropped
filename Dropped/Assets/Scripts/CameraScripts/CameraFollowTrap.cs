@@ -46,7 +46,7 @@ public class CameraFollowTrap : MonoBehaviour
 	}
 
 	#region CameraFollowing
-	private void FollowTrap()
+	private Vector3 FollowTrap()
 	{
 		Vector3 newPos = transform.position; //The new position of the camera after this frame.
 		Vector2 velocity = Vector2.zero; //Here for use in smooth damp.
@@ -79,6 +79,8 @@ public class CameraFollowTrap : MonoBehaviour
 		newPos.x = newPosXY.x;
 		newPos.y = newPosXY.y;
 		transform.position = newPos;
+
+		return newPos;
 	}
 	#endregion
 
@@ -116,7 +118,10 @@ public class CameraFollowTrap : MonoBehaviour
 		Vector3 startPos = transform.position;
 		for (float t = 0; t < duration; t += Time.deltaTime) 
 		{
-			transform.position = startPos;
+			if (t % .05 <= .15f)
+				transform.position = FollowTrap ();
+			else
+				transform.position = startPos;
 			transform.position += new Vector3 (Random.Range (-intensity, intensity), Random.Range (-intensity, intensity), 0f);
 			yield return null;
 		}

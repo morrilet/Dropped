@@ -41,16 +41,20 @@ public class Bullet : MonoBehaviour {
 		{
 			Destroy (gameObject);
 		}
+		if (coll.gameObject.tag == "Door" && !coll.gameObject.GetComponent<Door> ().isOpen) 
+		{
+			Destroy (gameObject);
+		}
 		if (coll.gameObject.tag == "Corpse") 
 		{
 			coll.gameObject.GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2(bulletSpeed / 5f, 0f)
 				* GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().direction, transform.position, ForceMode2D.Impulse);
 			Physics2D.IgnoreCollision (GetComponent<Collider2D> (), coll.gameObject.GetComponent<Collider2D>());
-			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.075f, .015f);
+			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.075f, .025f);
 		}
 		if (coll.gameObject.tag == "Enemy")
 		{
-			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .05f);
+			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
 			ReduceDamage ();
 		}
 	}

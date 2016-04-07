@@ -14,7 +14,7 @@ public class Level : MonoBehaviour
 
 	void Start()
 	{
-		InitializeLists ();
+		//InitializeLists ();
 	}
 
 	private void InitializeLists()
