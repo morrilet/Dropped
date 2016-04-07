@@ -111,7 +111,7 @@ public class Player : Entity
 			jumpAbility.countdownLeniency = false;
 			jumpAbility.ResetLeniency ();
 		}
-			
+
 		if (GetComponent<Player> ().velocity.x != 0)
 			direction = Mathf.Sign (velocity.x);
 
