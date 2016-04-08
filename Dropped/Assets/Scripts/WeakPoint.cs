@@ -3,23 +3,20 @@ using System.Collections;
 
 public class WeakPoint : Entity 
 {
-	Animator weakpointAnimator; //The animator that this weakpoint will trigger.
+	public Animator weakpointAnimator; //The animator that this weakpoint will trigger.
+	public string parameterName; //The parameter to set to true.
 
 	void Start()
 	{
 		base.Start ();
 
-		weakpointAnimator = transform.parent.GetComponent<Animator> ();
+		//weakpointAnimator = GameObject.FindGameObjectWithTag("Level").GetComponent<Animator> ();
+		//Debug.Log (weakpointAnimator.gameObject);
 	}
 
 	void Update()
 	{
 		base.Update ();
-
-		if (!isAlive) 
-		{
-			weakpointAnimator.SetBool ("Weakpoint_Destroyed", true);
-		}
 	}
 
 	void OnCollisionEnter2D(Collision2D other)
@@ -34,6 +31,11 @@ public class WeakPoint : Entity
 		{
 			health -= Mathf.Abs (other.gameObject.GetComponent<Rigidbody2D> ().velocity.magnitude);
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
+		}
+
+		if (!isAlive) 
+		{
+			weakpointAnimator.SetTrigger (parameterName);
 		}
 	}
 }
