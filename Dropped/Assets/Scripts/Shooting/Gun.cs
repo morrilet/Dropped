@@ -115,18 +115,17 @@ public class Gun : MonoBehaviour
 		else if(!isAuto)
 			duration = .15f;
 
-
 		isKnockingBack = true;
 
-		for (float t = 0; t < duration; t += Time.deltaTime)
+		for (float t = 0; t <= duration; t += Time.deltaTime)
 		{
-			transform.position = Vector3.Lerp (defaultPos, kickBackOffset + defaultPos, Mathf.PingPong(t, duration / 2) / (duration / 2));
-
-			if (t >= duration)
-				isKnockingBack = false;
+			Vector3 pos = transform.position;
+			pos.x = Mathf.Lerp (defaultPos.x, kickBackOffset.x + defaultPos.x, Mathf.PingPong(t, duration / 2) / (duration / 2));
+			transform.position = pos;
 
 			yield return null;
 		}
+		isKnockingBack = false;
 	}
 
 	void OnDrawGizmos()

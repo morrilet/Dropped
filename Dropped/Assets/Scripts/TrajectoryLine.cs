@@ -7,6 +7,8 @@ public class TrajectoryLine : MonoBehaviour
 	Player player;
 	LineRenderer lineRenderer;
 
+	public LayerMask mask;
+
 	void Start()
 	{
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
@@ -45,9 +47,9 @@ public class TrajectoryLine : MonoBehaviour
 
 			velocity += dragForceVector;
 
-			RaycastHit2D hit = Physics2D.Linecast ((Vector2)position, (Vector2)position + (Vector2)velocity * timeDelta + 0.5f * (Vector2)gravity * timeDelta * timeDelta);
+			RaycastHit2D hit = Physics2D.Linecast ((Vector2)position, (Vector2)position + (Vector2)velocity * timeDelta + 0.5f * (Vector2)gravity * timeDelta * timeDelta, mask);
 
-			if (hit && hit.collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+			if (hit)
 			{
 				lineRenderer.SetVertexCount (i + 1);
 				//lineRenderer.SetPosition (i, velocity.normalized * hit.distance);
