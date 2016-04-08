@@ -26,7 +26,7 @@ TagManager:
   - Ladder
   - Default_Hotspot
   - Player
-  - 
+  - Foreground
   - 
   - 
   - 
@@ -63,4 +63,7 @@ TagManager:
     locked: 0
   - name: Enemies
     uniqueID: 621622263
+    locked: 0
+  - name: Foreground
+    uniqueID: 1424110809
     locked: 0
