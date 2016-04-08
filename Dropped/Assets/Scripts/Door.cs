@@ -27,11 +27,6 @@ public class Door : MonoBehaviour
 		verts = GetVertexPositions ();
 	}
 
-	void Update()
-	{
-		Debug.Log(GetPlayerInsideDoor ());
-	}
-
 	//Returns whether the player is within the bounds of the door or not.
 	public bool GetPlayerInsideDoor()
 	{
