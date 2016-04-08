@@ -15,6 +15,8 @@ public class Bullet : MonoBehaviour {
 	public float maxDamage;
 	[HideInInspector]
 	public float damageFalloff;
+	[HideInInspector]
+	public float corpseKnockback;
 
 	public Vector3 startPos;
 

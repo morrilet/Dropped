@@ -95,7 +95,7 @@ public class Enemy : Entity
 
 		Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
 
-		corpse.gameObject.GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2(bullet.bulletSpeed, 0f) 
+		corpse.gameObject.GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2(bullet.corpseKnockback, 0f) 
 			* GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
 		Physics2D.IgnoreCollision (controller.coll, bullet.GetComponent<Collider2D> ());
 		bullet.ReduceDamage ();

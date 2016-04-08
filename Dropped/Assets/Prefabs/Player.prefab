@@ -186,6 +186,7 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
   fireRate: 0.22
   playerKnockBack: 8
+  corpseKnockBack: 12
   bulletOffset: {x: 0.28, y: 0.055}
   muzzleFlashOffset: {x: 0.28, y: 0.055}
   bulletSpeed: 18
@@ -255,6 +256,7 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
   fireRate: 0.5
   playerKnockBack: 10
+  corpseKnockBack: 13
   bulletOffset: {x: 0.28, y: 0.055}
   muzzleFlashOffset: {x: 0.28, y: 0.055}
   bulletSpeed: 22
@@ -315,6 +317,7 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
   fireRate: 0.8
   playerKnockBack: 14
+  corpseKnockBack: 0
   bulletOffset: {x: 0.28, y: 0.055}
   muzzleFlashOffset: {x: 0.28, y: 0.055}
   bulletSpeed: 14
@@ -507,6 +510,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: timeToJumpApex
       value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: corpseKnockBack
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
