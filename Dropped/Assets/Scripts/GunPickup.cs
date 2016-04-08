@@ -28,6 +28,9 @@ public class GunPickup : MonoBehaviour
 			case Player.CurrentGun.Shotgun:
 				coll.gameObject.GetComponent<Player>().currentGun = Player.CurrentGun.Shotgun;
 				break;
+			case Player.CurrentGun.Pistol:
+				coll.gameObject.GetComponent<Player> ().currentGun = Player.CurrentGun.Pistol;
+				break;
 			}
 			Destroy(gameObject);
 		}

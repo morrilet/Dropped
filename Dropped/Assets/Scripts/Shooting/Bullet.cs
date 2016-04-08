@@ -58,7 +58,6 @@ public class Bullet : MonoBehaviour {
 		if (coll.gameObject.tag == "Enemy")
 		{
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
-			ReduceDamage ();
 		}
 	}
 

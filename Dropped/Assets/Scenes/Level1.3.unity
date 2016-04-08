@@ -1851,7 +1851,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11478094, guid: 54494ad9ee2170d4f86ba9aa39c5b677, type: 2}
       propertyPath: pickUpGun
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54494ad9ee2170d4f86ba9aa39c5b677, type: 2}
