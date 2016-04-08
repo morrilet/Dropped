@@ -26,7 +26,6 @@ public class Door : MonoBehaviour
 
 		verts = GetVertexPositions ();
 	}
-		
 
 	//Returns whether the player is within the bounds of the door or not.
 	public bool GetPlayerInsideDoor()
@@ -43,8 +42,8 @@ public class Door : MonoBehaviour
 		topLeftCorner     = RotatePoint (topLeftCorner);
 		topRightCorner    = RotatePoint (topRightCorner);
 
-		RaycastHit2D hitLeftSide  = Physics2D.Raycast (verts[1], (verts[2] - verts[1]).normalized, Vector2.Distance(transform.InverseTransformPoint(verts[2]), transform.InverseTransformPoint(verts[1])), mask);
-		RaycastHit2D hitRightSide = Physics2D.Raycast (verts[3], (verts[0] - verts[3]).normalized, Vector2.Distance(transform.InverseTransformPoint(verts[3]), transform.InverseTransformPoint(verts[0])), mask);
+		RaycastHit2D hitLeftSide = Physics2D.Linecast ((Vector2)verts[1], (Vector2)verts[2], mask);
+		RaycastHit2D hitRightSide = Physics2D.Linecast ((Vector2)verts [3], (Vector2)verts [0], mask);
 
 		if (!isOpen)
 			return false;
