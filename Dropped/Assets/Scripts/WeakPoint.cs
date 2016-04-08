@@ -17,6 +17,11 @@ public class WeakPoint : Entity
 	void Update()
 	{
 		base.Update ();
+
+		if (!isAlive) 
+		{
+			weakpointAnimator.SetTrigger (parameterName);
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D other)
@@ -31,11 +36,6 @@ public class WeakPoint : Entity
 		{
 			health -= Mathf.Abs (other.gameObject.GetComponent<Rigidbody2D> ().velocity.magnitude);
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
-		}
-
-		if (!isAlive) 
-		{
-			weakpointAnimator.SetTrigger (parameterName);
 		}
 	}
 }
