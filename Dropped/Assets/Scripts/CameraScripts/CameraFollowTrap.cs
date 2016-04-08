@@ -13,6 +13,7 @@ public class CameraFollowTrap : MonoBehaviour
 	public float dampTime;
 
 	CameraTrap trap; //The trap to follow.
+	ExtendedTrap extendedTrap;
 
 	Vector2 cameraExtents;
 	CameraSides cameraSides;
@@ -23,6 +24,7 @@ public class CameraFollowTrap : MonoBehaviour
 	void Start()
 	{
 		trap = this.GetComponent<CameraTrap> ();
+		extendedTrap.Offset = new Vector2 (2.6f, 2.6f);
 
 		cameraExtents.y = this.GetComponent<Camera> ().orthographicSize;
 		cameraExtents.x = (cameraExtents.y * Screen.width) / Screen.height;
@@ -42,6 +44,7 @@ public class CameraFollowTrap : MonoBehaviour
 
 		FollowTrap ();
 		CalculateCameraSides ();
+		CalculateExtendedTrapBounds ();
 		BindCameraToLevel ();
 	}
 
@@ -71,6 +74,18 @@ public class CameraFollowTrap : MonoBehaviour
 			break;
 		case CameraFollowMode.Right:
 			targetPositionXY = new Vector2 (trap.Trap.Right, trap.Trap.Center.y);
+			break;
+		case CameraFollowMode.Top_Extended:
+			targetPositionXY = new Vector2 (trap.Trap.Center.x, extendedTrap.Top);
+			break;
+		case CameraFollowMode.Bottom_Extended:
+			targetPositionXY = new Vector2 (trap.Trap.Center.x, extendedTrap.Bottom);
+			break;
+		case CameraFollowMode.Left_Extended:
+			targetPositionXY = new Vector2 (extendedTrap.Left, trap.Trap.Center.y);
+			break;
+		case CameraFollowMode.Right_Extended:
+			targetPositionXY = new Vector2 (extendedTrap.Right, trap.Trap.Center.y);
 			break;
 		}
 
@@ -108,6 +123,14 @@ public class CameraFollowTrap : MonoBehaviour
 		cameraSides.Bottom = transform.position.y - cameraExtents.y;
 	}
 
+	private void CalculateExtendedTrapBounds()
+	{
+		extendedTrap.Top = trap.Trap.Top + extendedTrap.Offset.y;
+		extendedTrap.Bottom = trap.Trap.Bottom - extendedTrap.Offset.y;
+		extendedTrap.Left = trap.Trap.Left - extendedTrap.Offset.x;
+		extendedTrap.Right = trap.Trap.Right + extendedTrap.Offset.x;
+	}
+
 	public void ScreenShake(float duration, float intensity)
 	{
 		StartCoroutine(CameraShake(duration, intensity));
@@ -140,7 +163,11 @@ public class CameraFollowTrap : MonoBehaviour
 		Center,
 		Bottom,
 		Left,
-		Right
+		Right,
+		Top_Extended,
+		Bottom_Extended,
+		Left_Extended,
+		Right_Extended
 	}
 
 	struct CameraSides
@@ -148,5 +175,25 @@ public class CameraFollowTrap : MonoBehaviour
 		public float Left, Right;
 		public float Top, Bottom;
 	}
+
+	struct ExtendedTrap
+	{
+		public Vector2 Offset; //Amount this trap extends the default trap
+		public float Top, Bottom;
+		public float Left, Right;
+	}
 	#endregion
+
+	void OnDrawGizmos()
+	{
+		Gizmos.color = Color.magenta;
+
+		//Horiz lines.
+		Gizmos.DrawLine (new Vector3 (extendedTrap.Left, extendedTrap.Top), new Vector3 (extendedTrap.Right, extendedTrap.Top));
+		Gizmos.DrawLine (new Vector3 (extendedTrap.Left, extendedTrap.Bottom), new Vector3 (extendedTrap.Right, extendedTrap.Bottom));
+
+		//Vert lines.
+		Gizmos.DrawLine (new Vector3 (extendedTrap.Left, extendedTrap.Top), new Vector3 (extendedTrap.Left, extendedTrap.Bottom));
+		Gizmos.DrawLine (new Vector3 (extendedTrap.Right, extendedTrap.Top), new Vector3 (extendedTrap.Right, extendedTrap.Bottom));
+	}
 }
