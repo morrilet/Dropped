@@ -56,6 +56,12 @@ public class Controller2D : RaycastController
 			//If the ray hit something...
 			if(hit)
 			{
+				if (hit.collider.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle") && directionY == 1)
+					break;
+
+				if (hit.collider.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle") && Input.GetAxis ("Vertical") < 0)
+					break;
+
 				if(hit.transform.tag == "MovingPlatform")
 					collisions.movingPlatform = hit.transform.GetComponent<PlatformController>();
 
@@ -73,10 +79,10 @@ public class Controller2D : RaycastController
 				collisions.above = (directionY == 1);
 
 				//If this is the leftmost raycastOrigin then our bottom left corner is in a collision.
-				if (i == 0)
+				if (i == 0 && directionY == -1)
 					collisions.belowLeft = true;
 				//If this is the rightmost raycastOrigin then our bottom right corner is in a collision.
-				if (i == verticalRayCount)
+				if (i == verticalRayCount && directionY == -1)
 					collisions.belowRight = true;
 			}
 		}
@@ -120,6 +126,9 @@ public class Controller2D : RaycastController
 			//If the ray hit something...
 			if(hit)
 			{
+				if (hit.collider.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle") && Input.GetAxis ("Vertical") < 0)
+					break;
+
 				if(hit.distance == 0)
 				{
 					continue;
@@ -146,6 +155,7 @@ public class Controller2D : RaycastController
 						distanceToSlopeStart = hit.distance - skinWidth;
 						velocity.x -= distanceToSlopeStart * directionX;
 					}
+						
 					ClimbSlope(ref velocity, slopeAngle);
 					velocity.x += distanceToSlopeStart * directionX;
 				}
@@ -162,7 +172,7 @@ public class Controller2D : RaycastController
 					}
 
 					//Set the apropriate collision value to true based on which way we were going.
-					collisions.left  = (directionX == -1);
+					collisions.left = (directionX == -1);
 					collisions.right = (directionX == 1);
 				}
 			}

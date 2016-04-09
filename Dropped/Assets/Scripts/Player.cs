@@ -37,6 +37,8 @@ public class Player : Entity
 	public JumpAbility jumpAbility;
 
 	GameObject ladder; //The ladder that the player is on. Null if not on a ladder.
+	float ladderExitTime;  //How long it takes to get off of the ladder via left and right input.
+	float ladderExitTimer; //Timer to count up to ladderExitTime.
 
 	[HideInInspector]
 	public GameObject corpseCarried; //The corpse that is being carried. Null if no corpse is carried.
@@ -89,6 +91,9 @@ public class Player : Entity
 		direction = 1;
 
 		corpseThrowTime = 1.5f;
+
+		ladderExitTime = .25f;
+		ladderExitTimer = 0;
 
 		canMove = true;
 	}
@@ -223,6 +228,17 @@ public class Player : Entity
 		else
 			Camera.main.GetComponent<CameraFollowTrap> ().cameraFollowMode = CameraFollowTrap.CameraFollowMode.Center;
 
+		if (ladder != null) 
+		{
+			if (ladderExitTimer >= ladderExitTime)
+				ladderExitTimer = ladderExitTime;
+			ladderExitTimer += Time.deltaTime;
+		} 
+		else 
+		{
+			ladderExitTimer = 0f;
+		}
+
 		controller.Move (velocity * Time.deltaTime);
 
 		if (playerInfo.JustJumped)
@@ -280,7 +296,7 @@ public class Player : Entity
 			corpseThrowCount = 0;
 		}
 
-		if (input.y > 0) 
+		if (input.y != 0) 
 		{
 			foreach (GameObject ladderObj in GameObject.FindGameObjectsWithTag("Ladder")) 
 			{
@@ -289,6 +305,12 @@ public class Player : Entity
 					ladder = ladderObj;
 				}
 			}
+		}
+
+		if (input.x != 0 && ladder != null && ladderExitTimer >= ladderExitTime) 
+		{
+			ladderExitTimer = 0f;
+			ladder = null;
 		}
 
 		if (activeGun != null) 
