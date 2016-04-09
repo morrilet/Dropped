@@ -28,10 +28,8 @@ public class Enemy : Entity
 	}
 	EnemyAIMode enemyAIMode = new EnemyAIMode();
 
-	public override void Start()
+	void Start()
 	{
-		base.Start ();
-
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
 
 		controller = GetComponent<Controller2D> ();

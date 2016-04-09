@@ -67,23 +67,21 @@ public class Player : Entity
 	GameObject shotGun;
 	GameObject pistol;
 
-	public override void Start()
+	void Start()
 	{
-		base.Start ();
-
 		machineGun = transform.FindChild ("Gun_Machinegun").gameObject;
 		shotGun = transform.FindChild ("Gun_Shotgun").gameObject;
 		pistol = transform.FindChild ("Gun_Pistol").gameObject;
 
-		currentGun = CurrentGun.None;
+		currentGun = GameManager.instance.playerStoredGun;
 		activeGun = null;
 
-		playerAmmo.machineGunAmmo.maxAmmo = 50;
-		playerAmmo.machineGunAmmo.Refill ();
-		playerAmmo.shotgunAmmo.maxAmmo = 25;
-		playerAmmo.shotgunAmmo.Refill ();
-		playerAmmo.pistolAmmo.maxAmmo = 30;
-		playerAmmo.pistolAmmo.Refill ();
+		GameManager.instance.player = transform.gameObject; //On level load, this will allow the gamemanger to track the new player game object
+
+		playerAmmo = GameManager.instance.playerStoredAmmo;
+
+		if (GameManager.instance.playerStoredHealth != 0)
+			health = GameManager.instance.playerStoredHealth;
 
 		jumpAbility = GetComponent<JumpAbility> ();
 		controller = GetComponent<Controller2D> ();

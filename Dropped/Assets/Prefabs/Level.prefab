@@ -211,13 +211,18 @@ MonoBehaviour:
   xMax: 10
   yMin: -10
   yMax: 10
+  GameManagerInstance: {fileID: 124706, guid: 19a0c8dd707687845abbb4a230b7af63, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: GameManagerInstance
+      value: 
+      objectReference: {fileID: 124706, guid: 19a0c8dd707687845abbb4a230b7af63, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 138102}

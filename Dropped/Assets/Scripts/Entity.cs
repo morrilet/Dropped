@@ -5,12 +5,12 @@ public class Entity : MonoBehaviour
 {
 	[HideInInspector]
 	public float health;
-	public int maxHealth;
+	public float maxHealth;
 
 	[HideInInspector]
 	public bool isAlive;
 
-	public virtual void Start()
+	public virtual void Awake()
 	{
 		health = maxHealth;
 		isAlive = true;

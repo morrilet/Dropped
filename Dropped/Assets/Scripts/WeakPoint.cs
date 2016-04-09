@@ -6,9 +6,9 @@ public class WeakPoint : Entity
 	public Animator weakpointAnimator; //The animator that this weakpoint will trigger.
 	public string parameterName; //The parameter to set to true.
 
-	void Start()
+	void Awake()
 	{
-		base.Start ();
+		base.Awake ();
 
 		//weakpointAnimator = GameObject.FindGameObjectWithTag("Level").GetComponent<Animator> ();
 		//Debug.Log (weakpointAnimator.gameObject);

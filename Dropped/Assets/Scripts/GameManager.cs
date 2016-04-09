@@ -2,22 +2,30 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
-
+public class GameManager : Singleton<GameManager>
+{
 	public Player.PlayerAmmo playerStoredAmmo;
+	public Player.CurrentGun playerStoredGun;
+	public float playerStoredHealth;
+	public GameObject player;
 
-	//Static Singleton property
-	public static GameManager Instance { get; private set; }
-
-	void Awake()
+	public override void Awake()
 	{
-		//Find and destroy and conflicting singleton instances
-		if (Instance != null && Instance != this)
-			Destroy (GameManager.Instance.gameObject);
-		//Store singelton instance
-		Instance = this;
-		//GameManager prefab persists between scenes
-		DontDestroyOnLoad (gameObject);
+		isPersistant = true;
+
+		base.Awake();
+	}
+
+	public void Start()
+	{
+		playerStoredAmmo.machineGunAmmo.maxAmmo = 50;
+		playerStoredAmmo.machineGunAmmo.Refill ();
+		playerStoredAmmo.shotgunAmmo.maxAmmo = 25;
+		playerStoredAmmo.shotgunAmmo.Refill ();
+		playerStoredAmmo.pistolAmmo.maxAmmo = 30;
+		playerStoredAmmo.pistolAmmo.Refill ();
+		playerStoredHealth = player.GetComponent<Player> ().maxHealth;
+		playerStoredGun = Player.CurrentGun.None;
 	}
 
 	void Update ()
@@ -29,15 +37,21 @@ public class GameManager : MonoBehaviour {
 	{
 		if (Input.GetKeyDown (KeyCode.R))
 		{
-			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
-
+			RestartLevel ();
 		}
 			
 	}
 
 	public void ChangeLevel(string levelToChangeTo)
 	{
-//		playerStoredAmmo = player.GetComponent<Player> ().playerAmmo;
+		playerStoredAmmo = player.GetComponent<Player> ().playerAmmo;
+		playerStoredGun = player.GetComponent<Player> ().currentGun;
+		playerStoredHealth = player.GetComponent<Player> ().health;
 		SceneManager.LoadScene (levelToChangeTo, LoadSceneMode.Single);
+	}
+
+	public void RestartLevel()
+	{
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex, LoadSceneMode.Single);
 	}
 }
