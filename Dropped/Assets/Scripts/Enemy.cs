@@ -69,6 +69,7 @@ public class Enemy : Entity
 		if (other.gameObject.tag == "Bullet") 
 		{
 			health -= other.gameObject.GetComponent<Bullet> ().damage;
+			other.gameObject.GetComponent<Bullet>().ReduceDamage ();
 			if (health <= 0)
 				Die (other.gameObject.GetComponent<Bullet> ());
 		}
@@ -98,7 +99,6 @@ public class Enemy : Entity
 		corpse.gameObject.GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2(bullet.corpseKnockback, 0f) 
 			* GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
 		Physics2D.IgnoreCollision (controller.coll, bullet.GetComponent<Collider2D> ());
-		bullet.ReduceDamage ();
 		Destroy (gameObject);
 	}
 

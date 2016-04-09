@@ -42,9 +42,9 @@ public class CameraFollowTrap : MonoBehaviour
 			break;
 		}
 
+		CalculateExtendedTrapBounds ();
 		FollowTrap ();
 		CalculateCameraSides ();
-		CalculateExtendedTrapBounds ();
 		BindCameraToLevel ();
 	}
 

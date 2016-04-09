@@ -21,6 +21,7 @@ public class WeakPoint : Entity
 		if (!isAlive) 
 		{
 			weakpointAnimator.SetTrigger (parameterName);
+			Destroy (GetComponent<WeakPoint>());
 		}
 	}
 

@@ -256,7 +256,7 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
   fireRate: 0.5
   playerKnockBack: 10
-  corpseKnockBack: 13
+  corpseKnockBack: 8
   bulletOffset: {x: 0.28, y: 0.055}
   muzzleFlashOffset: {x: 0.28, y: 0.055}
   bulletSpeed: 22
@@ -317,7 +317,7 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
   fireRate: 0.8
   playerKnockBack: 14
-  corpseKnockBack: 0
+  corpseKnockBack: 16
   bulletOffset: {x: 0.28, y: 0.055}
   muzzleFlashOffset: {x: 0.28, y: 0.055}
   bulletSpeed: 14

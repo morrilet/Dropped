@@ -54,7 +54,7 @@ public class ScrollingBackground : MonoBehaviour
 		backgroundTile2.transform.localScale = newLocalScale;
 
 		tilesInStartingPlaces = false;
-		tilesInStartingPlacesTime = .15f;
+		tilesInStartingPlacesTime = .5f;
 	}
 
 	void Update()
