@@ -4,6 +4,8 @@ using System.Collections;
 [RequireComponent (typeof (Controller2D))]
 public class Enemy : Entity 
 {
+	Player player;
+
 	public float speed;
 	public float gravity;
 
@@ -14,6 +16,10 @@ public class Enemy : Entity
 	public EnemyInfo enemyInfo;
 
 	public GameObject corpsePrefab;
+
+	float attackRate;
+	float attackTimer;
+	float attackDamage;
 
 	public enum EnemyAIMode
 	{
@@ -26,10 +32,16 @@ public class Enemy : Entity
 	{
 		base.Start ();
 
+		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+
 		controller = GetComponent<Controller2D> ();
 		enemyAIMode = EnemyAIMode.walkLeftRightOnPlatform;
 		velocity = Vector3.zero;
 		velocity.x = speed;
+
+		attackRate = 1.5f;
+		attackTimer = attackRate;
+		attackDamage = 15f;
 	}
 
 	public override void Update()
@@ -58,6 +70,17 @@ public class Enemy : Entity
 			WalkLeftRightOnPlatform ();
 			break;
 		}
+
+		if (controller.coll.IsTouching (player.controller.coll)) 
+		{
+			if (attackTimer >= attackRate) 
+			{
+				attackTimer = 0;
+				player.health -= attackDamage;
+				Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.075f, .075f);
+			}
+		}
+		attackTimer += Time.deltaTime;
 
 		controller.Move (velocity * Time.deltaTime);
 
