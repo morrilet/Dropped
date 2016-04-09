@@ -57,20 +57,23 @@ public class Player : Entity
 	{
 		None,
 		MachineGun,
-		Shotgun
+		Shotgun,
+		Pistol
 	}
 	public CurrentGun currentGun;
 
 	Gun activeGun; //The gun object currently in use.
 	GameObject machineGun;
 	GameObject shotGun;
+	GameObject pistol;
 
 	public override void Start()
 	{
 		base.Start ();
 
-		machineGun = transform.FindChild ("Gun").gameObject;
+		machineGun = transform.FindChild ("Gun_Machinegun").gameObject;
 		shotGun = transform.FindChild ("Gun_Shotgun").gameObject;
+		pistol = transform.FindChild ("Gun_Pistol").gameObject;
 
 		currentGun = CurrentGun.None;
 		activeGun = null;
@@ -79,6 +82,8 @@ public class Player : Entity
 		playerAmmo.machineGunAmmo.Refill ();
 		playerAmmo.shotgunAmmo.maxAmmo = 25;
 		playerAmmo.shotgunAmmo.Refill ();
+		playerAmmo.pistolAmmo.maxAmmo = 30;
+		playerAmmo.pistolAmmo.Refill ();
 
 		jumpAbility = GetComponent<JumpAbility> ();
 		controller = GetComponent<Controller2D> ();
@@ -178,17 +183,26 @@ public class Player : Entity
 		case CurrentGun.None:
 			machineGun.SetActive (false);
 			shotGun.SetActive (false);
+			pistol.SetActive (false);
 			activeGun = null;
 			break;
 		case CurrentGun.MachineGun:
 			machineGun.SetActive (true);
 			shotGun.SetActive (false);
+			pistol.SetActive (false);
 			activeGun = machineGun.GetComponent<Gun>();
 			break;
 		case CurrentGun.Shotgun:
 			machineGun.SetActive (false);
 			shotGun.SetActive (true);
+			pistol.SetActive (false);
 			activeGun = shotGun.GetComponent<Gun>();
+			break;
+		case CurrentGun.Pistol:
+			machineGun.SetActive (false);
+			shotGun.SetActive (false);
+			pistol.SetActive (true);
+			activeGun = pistol.GetComponent<Gun>();
 			break;
 		}
 
@@ -309,6 +323,12 @@ public class Player : Entity
 					playerAmmo.shotgunAmmo.ModifyAmmo (-1);
 			}
 			break;
+		case CurrentGun.Pistol:
+			if (playerAmmo.pistolAmmo.currentAmmo > 0) {
+				if (activeGun.Shoot ())
+					playerAmmo.pistolAmmo.ModifyAmmo (-1);
+			}
+			break;
 		}
 	}
 
@@ -337,11 +357,13 @@ public class Player : Entity
 	{
 		public AmmoType machineGunAmmo;
 		public AmmoType shotgunAmmo;
+		public AmmoType pistolAmmo;
 
 		public void RefillAll()
 		{
 			machineGunAmmo.Refill ();
 			shotgunAmmo.Refill ();
+			pistolAmmo.Refill ();
 		}
 	}
 

@@ -5656,13 +5656,25 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 11411980, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
-      propertyPath: damageFalloff
-      value: 0.5
+    - target: {fileID: 476634, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11476772, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
-      propertyPath: mask.m_Bits
-      value: 256
+    - target: {fileID: 476634, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 476634, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.0259
+      objectReference: {fileID: 0}
+    - target: {fileID: 476634, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.0187
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450846, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
+      propertyPath: damageFalloff
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
@@ -6476,10 +6488,6 @@ Prefab:
     - target: {fileID: 22433216, guid: cc7cd3f8da870a647ab747ad0c96dda7, type: 2}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 115576, guid: cc7cd3f8da870a647ab747ad0c96dda7, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc7cd3f8da870a647ab747ad0c96dda7, type: 2}
@@ -7550,6 +7558,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 428798, guid: 54494ad9ee2170d4f86ba9aa39c5b677, type: 2}
       propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478094, guid: 54494ad9ee2170d4f86ba9aa39c5b677, type: 2}
+      propertyPath: pickUpGun
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []

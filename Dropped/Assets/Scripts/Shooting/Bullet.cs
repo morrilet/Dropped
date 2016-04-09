@@ -15,6 +15,8 @@ public class Bullet : MonoBehaviour {
 	public float maxDamage;
 	[HideInInspector]
 	public float damageFalloff;
+	[HideInInspector]
+	public float corpseKnockback;
 
 	public Vector3 startPos;
 
@@ -58,7 +60,6 @@ public class Bullet : MonoBehaviour {
 		if (coll.gameObject.tag == "Enemy")
 		{
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
-			ReduceDamage ();
 		}
 	}
 

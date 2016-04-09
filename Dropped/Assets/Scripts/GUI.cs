@@ -6,6 +6,7 @@ public class GUI : MonoBehaviour
 {
 	Player player;
 
+	public Text pistolAmmoText;
 	public Text shotGunAmmoText;
 	public Text machineGunAmmoText;
 
@@ -33,7 +34,10 @@ public class GUI : MonoBehaviour
 
 	void Update()
 	{
+
+		pistolAmmoText.text = "Pistol Ammo: " + player.playerAmmo.pistolAmmo.currentAmmo + " / " + player.playerAmmo.pistolAmmo.maxAmmo;
 		shotGunAmmoText.text = "Shotgun Ammo: " + player.playerAmmo.shotgunAmmo.currentAmmo + " / " + player.playerAmmo.shotgunAmmo.maxAmmo;
 		machineGunAmmoText.text = "MachineGun Ammo: " + player.playerAmmo.machineGunAmmo.currentAmmo + " / " + player.playerAmmo.machineGunAmmo.maxAmmo;
+
 	}
 }

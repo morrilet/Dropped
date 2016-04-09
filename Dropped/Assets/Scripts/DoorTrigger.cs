@@ -28,6 +28,10 @@ public class DoorTrigger : MonoBehaviour
 						door.CloseDoor ();
 				}
 			}
+			else
+			{
+				GUI.Instance.openDoorText.enabled = false;
+			}
 		}
 	}
 
@@ -35,16 +39,18 @@ public class DoorTrigger : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player") 
 		{
-			if (door.GetPlayerFacingDoor ())
-			{
+			if (door.GetPlayerFacingDoor ()) {
 				GUI.Instance.openDoorText.enabled = true;
-				if (Input.GetKeyDown (KeyCode.E) && !door.GetPlayerInsideDoor ()) 
-				{
+				if (Input.GetKeyDown (KeyCode.E) && !door.GetPlayerInsideDoor ()) {
 					if (!door.isOpen)
 						door.OpenDoor ();
 					else if (door.isOpen)
 						door.CloseDoor ();
 				}
+			}
+			else
+			{
+				GUI.Instance.openDoorText.enabled = false;
 			}
 		}
 	}

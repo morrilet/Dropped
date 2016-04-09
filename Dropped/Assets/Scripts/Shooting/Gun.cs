@@ -16,6 +16,7 @@ public class Gun : MonoBehaviour
 	public GameObject muzzleFlashPrefab;//Insert your preffered muzzle flash here
 	public float fireRate; //Fire rate of this gun (lower = faster!)
 	public float playerKnockBack; //Pushback on player when fired
+	public float corpseKnockBack; //Amount corpse go flying on enemy death
 
 	public Vector2 bulletOffset;//Controls origin point of bullet
 
@@ -89,6 +90,7 @@ public class Gun : MonoBehaviour
 			bullet.GetComponent<Bullet> ().maxRange = maxRange;
 			bullet.GetComponent<Bullet> ().maxDamage = maxDamage;
 			bullet.GetComponent<Bullet> ().damageFalloff = damageFalloff;
+			bullet.GetComponent<Bullet> ().corpseKnockback = corpseKnockBack;
 
 			if (isFlamethrower)
 				bullet.transform.SetParent (this.transform);
