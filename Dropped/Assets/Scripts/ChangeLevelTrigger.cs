@@ -10,7 +10,7 @@ public class ChangeLevelTrigger : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player") 
 		{
-			SceneManager.LoadScene (levelToChangeTo, LoadSceneMode.Single);
+			GameManager.Instance.ChangeLevel (levelToChangeTo);
 		}
 	}
 }
