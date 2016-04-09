@@ -21,6 +21,8 @@ public class CameraFollowTrap : MonoBehaviour
 	public CameraLockMode cameraLockMode; //Cameras various locking modes.
 	public CameraFollowMode cameraFollowMode; //How the camera follows the trap.
 
+	public bool movementOverridden;
+
 	void Start()
 	{
 		trap = this.GetComponent<CameraTrap> ();
@@ -28,6 +30,8 @@ public class CameraFollowTrap : MonoBehaviour
 
 		cameraExtents.y = this.GetComponent<Camera> ().orthographicSize;
 		cameraExtents.x = (cameraExtents.y * Screen.width) / Screen.height;
+
+		movementOverridden = false;
 	}
 
 	void Update()
@@ -43,7 +47,8 @@ public class CameraFollowTrap : MonoBehaviour
 		}
 
 		CalculateExtendedTrapBounds ();
-		FollowTrap ();
+		if(!movementOverridden)
+			FollowTrap ();
 		CalculateCameraSides ();
 		BindCameraToLevel ();
 	}
@@ -51,11 +56,6 @@ public class CameraFollowTrap : MonoBehaviour
 	#region CameraFollowing
 	private Vector3 FollowTrap()
 	{
-		Vector3 newPos = transform.position; //The new position of the camera after this frame.
-		Vector2 velocity = Vector2.zero; //Here for use in smooth damp.
-
-		//Used Vector2 for these because I didn't want this affecting the cameras z position.
-		Vector2 cameraPositionXY = new Vector2 (transform.position.x, transform.position.y);
 		Vector2 targetPositionXY = Vector2.zero;
 
 		switch(cameraFollowMode)
@@ -88,6 +88,18 @@ public class CameraFollowTrap : MonoBehaviour
 			targetPositionXY = new Vector2 (extendedTrap.Right, trap.Trap.Center.y);
 			break;
 		}
+
+		return Move((Vector3)targetPositionXY);
+	}
+
+	public Vector3 Move(Vector3 targetPos)
+	{
+		Vector3 newPos = transform.position; //The new position of the camera after this frame.
+		Vector2 velocity = Vector2.zero; //Here for use in smooth damp.
+
+		//Used Vector2 for these because I didn't want this affecting the cameras z position.
+		Vector2 cameraPositionXY = new Vector2 (transform.position.x, transform.position.y);
+		Vector2 targetPositionXY = (Vector2)targetPos;
 
 		Vector2 newPosXY = Vector2.SmoothDamp (cameraPositionXY, targetPositionXY, ref velocity, dampTime);
 
@@ -141,7 +153,7 @@ public class CameraFollowTrap : MonoBehaviour
 		Vector3 startPos = transform.position;
 		for (float t = 0; t < duration; t += Time.deltaTime) 
 		{
-			if (t % .05 <= .15f)
+			if (t % .05 <= .15f && !movementOverridden)
 				transform.position = FollowTrap ();
 			else
 				transform.position = startPos;
