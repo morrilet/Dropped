@@ -468,7 +468,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -457241561
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8b04b12a98a2da147aba0c52f6c6d6a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c01c4ed3acfcb744a86a4cc95b3ca6b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -498,7 +498,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -457241561
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8b04b12a98a2da147aba0c52f6c6d6a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 460832af12c873c42880dc2f4510cb1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -533,6 +533,11 @@ Prefab:
       propertyPath: corpseKnockBack
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c01c4ed3acfcb744a86a4cc95b3ca6b1,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 164396}
