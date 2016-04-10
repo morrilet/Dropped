@@ -17,6 +17,8 @@ public class Bullet : MonoBehaviour {
 	public float damageFalloff;
 	[HideInInspector]
 	public float corpseKnockback;
+	[HideInInspector]
+	public float sleepFramesOnHit;
 
 	public Vector3 startPos;
 

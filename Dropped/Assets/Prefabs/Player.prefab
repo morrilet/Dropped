@@ -205,6 +205,7 @@ MonoBehaviour:
   fireRate: 0.22
   playerKnockBack: 8
   corpseKnockBack: 12
+  sleepFramesOnHit: 2
   bulletOffset: {x: 0.28, y: 0.055}
   muzzleFlashOffset: {x: 0.28, y: 0.055}
   bulletSpeed: 18
@@ -239,6 +240,7 @@ MonoBehaviour:
   corpseThrowForce: 0
   direction: 0
   currentGun: 0
+  isGrappled: 0
 --- !u!114 &11450682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,6 +277,7 @@ MonoBehaviour:
   fireRate: 0.5
   playerKnockBack: 10
   corpseKnockBack: 8
+  sleepFramesOnHit: 4
   bulletOffset: {x: 0.28, y: 0.055}
   muzzleFlashOffset: {x: 0.28, y: 0.055}
   bulletSpeed: 22
@@ -336,6 +339,7 @@ MonoBehaviour:
   fireRate: 0.8
   playerKnockBack: 14
   corpseKnockBack: 16
+  sleepFramesOnHit: 4
   bulletOffset: {x: 0.28, y: 0.055}
   muzzleFlashOffset: {x: 0.28, y: 0.055}
   bulletSpeed: 14

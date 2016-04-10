@@ -140,7 +140,7 @@ public class Enemy : Entity
 		{
 			health -= other.gameObject.GetComponent<Bullet> ().damage;
 			other.gameObject.GetComponent<Bullet>().ReduceDamage ();
-			GameManager.instance.Sleep (4);
+			GameManager.instance.Sleep (other.gameObject.GetComponent<Bullet>().sleepFramesOnHit);
 			if (health <= 0)
 				Die (other.gameObject.GetComponent<Bullet> ());
 		}
