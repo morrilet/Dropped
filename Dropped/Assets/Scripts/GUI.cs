@@ -6,12 +6,16 @@ public class GUI : MonoBehaviour
 {
 	Player player;
 
+	[HideInInspector]
+	public string weaponPickupYield;
+
 	public Text pistolAmmoText;
 	public Text shotGunAmmoText;
 	public Text machineGunAmmoText;
 
 	public Text openDoorText;
 	public Text grabAmmoText;
+	public Text grabGunText;
 
 	public static GUI Instance { get; private set; }
 
@@ -30,6 +34,9 @@ public class GUI : MonoBehaviour
 
 		openDoorText.enabled = false;
 		grabAmmoText.enabled = false;
+		grabGunText.enabled = false;
+
+		weaponPickupYield = "null";
 	}
 
 	void Update()
@@ -38,6 +45,8 @@ public class GUI : MonoBehaviour
 		pistolAmmoText.text = "Pistol Ammo: " + player.playerAmmo.pistolAmmo.currentAmmo + " / " + player.playerAmmo.pistolAmmo.maxAmmo;
 		shotGunAmmoText.text = "Shotgun Ammo: " + player.playerAmmo.shotgunAmmo.currentAmmo + " / " + player.playerAmmo.shotgunAmmo.maxAmmo;
 		machineGunAmmoText.text = "MachineGun Ammo: " + player.playerAmmo.machineGunAmmo.currentAmmo + " / " + player.playerAmmo.machineGunAmmo.maxAmmo;
+		grabGunText.text = "Press E to pick up " + weaponPickupYield + ".";
 
 	}
+		
 }
