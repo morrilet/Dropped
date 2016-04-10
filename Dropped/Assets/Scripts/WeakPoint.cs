@@ -31,12 +31,14 @@ public class WeakPoint : Entity
 		{
 			health -= other.gameObject.GetComponent<Bullet> ().damage / 2f;
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.075f, .025f);
+			GameManager.instance.Sleep (2);
 		}
 
 		if (other.gameObject.tag == "Corpse") 
 		{
 			health -= Mathf.Abs (other.gameObject.GetComponent<Rigidbody2D> ().velocity.magnitude);
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
+			GameManager.instance.Sleep (3);
 		}
 	}
 }

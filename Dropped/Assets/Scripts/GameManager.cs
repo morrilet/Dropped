@@ -39,7 +39,6 @@ public class GameManager : Singleton<GameManager>
 		{
 			RestartLevel ();
 		}
-			
 	}
 
 	public void ChangeLevel(string levelToChangeTo)
@@ -53,5 +52,23 @@ public class GameManager : Singleton<GameManager>
 	public void RestartLevel()
 	{
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex, LoadSceneMode.Single);
+	}
+
+	public void Sleep(float framesOfSleep)
+	{
+		StartCoroutine (ApplySleep (framesOfSleep));
+	}
+
+	public IEnumerator ApplySleep (float framesOfSleep) //For small pauses to help the game feel better
+	{
+		for (int i = 0; i < framesOfSleep; i++)
+		{
+			if (i < framesOfSleep - 1)
+				Time.timeScale = 0f;
+			else
+				Time.timeScale = 1f;
+
+			yield return null;
+		}
 	}
 }
