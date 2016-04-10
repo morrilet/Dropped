@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent (typeof (Controller2D))]
 [RequireComponent (typeof (JumpAbility))] //The player will always have the ability to jump.
@@ -70,7 +71,11 @@ public class Player : Entity
 	GameObject pistol;
 
 	[HideInInspector]
-	public bool isGrappled; //Whether or not we're grabbed by the enemy.
+	public float grappleEscapeAttempt; //How much the player has slammed the button.
+	[HideInInspector]
+	public List<Enemy> grapplingEnemies;
+	[HideInInspector]
+	public float grappleStrength; //How much the player has to slam the button to escape the grapple.
 
 	void Start()
 	{
@@ -97,6 +102,8 @@ public class Player : Entity
 
 		ladderExitTime = .25f;
 		ladderExitTimer = 0;
+
+		grapplingEnemies = new List<Enemy> ();
 
 		canMove = true;
 	}
@@ -242,6 +249,12 @@ public class Player : Entity
 			ladderExitTimer = 0f;
 		}
 
+		if (grapplingEnemies.Count > 0) 
+		{
+			EscapeGrapple ();
+			Debug.Log (grappleEscapeAttempt + ", " + grappleStrength);
+		}
+
 		controller.Move (velocity * Time.deltaTime);
 
 		if (playerInfo.JustJumped)
@@ -329,6 +342,38 @@ public class Player : Entity
 					ShootGun ();
 			}
 		}
+	}
+
+	void EscapeGrapple()
+	{
+		if (Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.D)) 
+		{
+			grappleEscapeAttempt += 1f;
+		}
+
+		if (grappleEscapeAttempt >= grappleStrength) 
+		{
+			canMove = true;
+
+			foreach (Enemy enemy in grapplingEnemies) 
+			{
+				enemy.isGrapplingPlayer = false;
+
+				Vector3 knockBackVelocity = new Vector3 (1f, 0f, 0f);
+				knockBackVelocity.x *= (enemy.transform.position.x - transform.position.x) / Mathf.Abs (enemy.transform.position.x - transform.position.x) * 10f;
+				enemy.KnockBack (velocity, .15f);
+
+				Debug.Log ("KBVel: " + knockBackVelocity);
+			}
+			grapplingEnemies.Clear ();
+
+			grappleStrength = 0;
+			grappleEscapeAttempt = 0;
+		}
+
+		if (grappleEscapeAttempt <= 0f)
+			grappleEscapeAttempt = 0f;
+		grappleEscapeAttempt -= Time.deltaTime;
 	}
 
 	void ShootGun()

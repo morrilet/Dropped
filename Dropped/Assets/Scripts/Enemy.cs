@@ -21,11 +21,14 @@ public class Enemy : Entity
 	float attackTimer;
 	float attackDamage;
 
-	bool isGrapplingPlayer; //Whether or not this enemy is grappling the player.
-	float grappleStrength; //How much the player has to slam the button to escape the grapple.
-	float grappleEscapeAttempt; //How much the player has slammed the button.
+	[HideInInspector]
+	public bool isGrapplingPlayer; //Whether or not this enemy is grappling the player.
 
-	bool canMove;
+	float grappleStrength; //Strength of the grab every time the enemy grabs.
+	float grappleModifier; //Modifies the grapple strength based on how many times we've attacked during one grapple.
+
+	[HideInInspector]
+	public bool canMove;
 
 	public enum EnemyAIMode
 	{
@@ -48,7 +51,7 @@ public class Enemy : Entity
 		attackDamage = 15f;
 
 		grappleStrength = 5f;
-		grappleEscapeAttempt = 0;
+		grappleModifier = 1f;
 		isGrapplingPlayer = false;
 
 		canMove = true;
@@ -86,38 +89,19 @@ public class Enemy : Entity
 		{
 			canMove = false; //Don't move any more.
 			player.direction = Mathf.Sign(transform.position.x - player.transform.position.x); //Make the player face the right way.
-			player.isGrappled = true;
 			player.canMove = false; //The player can't move either.
-
-			if(grappleEscapeAttempt >= grappleStrength) //Player escaped the grapple!
-			{
-				isGrapplingPlayer = false;
-				player.isGrappled = false;
-				player.canMove = true;
-
-				Vector3 knockBackVelocity = new Vector3(1f, 0f, 0f);
-				knockBackVelocity.x *= (transform.position.x - player.transform.position.x) / Mathf.Abs(player.transform.position.x - transform.position.x);
-				StartCoroutine(knockBack(knockBackVelocity, .15f));
-			}
 		}
-			
-		if(!isGrapplingPlayer || grappleEscapeAttempt < 0)
-			grappleEscapeAttempt = 0;
-
-		if(player.isGrappled)
-		{
-			if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
-			grappleEscapeAttempt++;
-		}
+		else
+			grappleModifier = 1;
 
 		if (controller.coll.IsTouching (player.controller.coll) || isGrapplingPlayer) 
 		{
 			if (attackTimer >= attackRate) 
 			{
-				if (!player.isGrappled) 
-				{
-					isGrapplingPlayer = true;
-				}
+				isGrapplingPlayer = true;
+				player.grapplingEnemies.Add(this);
+				player.grappleStrength += grappleStrength * grappleModifier;
+				grappleModifier  *= .75f;
 
 				attackTimer = 0;
 				player.health -= attackDamage;
@@ -125,7 +109,6 @@ public class Enemy : Entity
 			}
 		}
 		attackTimer += Time.deltaTime;
-		grappleEscapeAttempt -= Time.deltaTime;
 		#endregion
 
 		if (canMove)
@@ -146,13 +129,18 @@ public class Enemy : Entity
 		}
 	}
 
-	IEnumerator knockBack(Vector3 vel, float duration)
+	public void KnockBack(Vector3 vel, float duration)
+	{
+		StartCoroutine (knockBack (vel, duration));
+	}
+
+	public IEnumerator knockBack(Vector3 vel, float duration)
 	{
 		Vector3 startPos = transform.position;
 		canMove = false;
 		for (float t = 0; t < duration; t += Time.deltaTime) 
 		{
-			transform.position = (Vector3.Lerp(startPos, startPos + vel, t / duration));
+			transform.position = new Vector3((Mathf.Lerp(startPos.x, startPos.x + vel.x, t / duration)), startPos.y, startPos.z);
 			yield return null;
 		}
 		canMove = true;
