@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Jeremy Scene.unity
+=======
+- path: Assets/Scenes/Level1.3.unity
+>>>>>>> origin/master
   isLoaded: 1
   isActive: 1
