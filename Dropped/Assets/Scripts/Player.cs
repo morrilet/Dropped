@@ -69,6 +69,9 @@ public class Player : Entity
 	GameObject shotGun;
 	GameObject pistol;
 
+	[HideInInspector]
+	public bool isGrappled; //Whether or not we're grabbed by the enemy.
+
 	void Start()
 	{
 		machineGun = transform.FindChild ("Gun_Machinegun").gameObject;
@@ -120,7 +123,7 @@ public class Player : Entity
 			jumpAbility.ResetLeniency ();
 		}
 
-		if (GetComponent<Player> ().velocity.x != 0)
+		if (GetComponent<Player> ().velocity.x != 0 && canMove)
 			direction = Mathf.Sign (velocity.x);
 
 		if (Input.GetKey (KeyCode.Comma))
@@ -165,7 +168,7 @@ public class Player : Entity
 
 		if (velocity.x != 0)
 		{
-			transform.localScale = new Vector3 (baseScaleX * Mathf.Sign (velocity.x), transform.localScale.y, transform.localScale.z);
+			transform.localScale = new Vector3 (baseScaleX * direction, transform.localScale.y, transform.localScale.z);
 		}
 
 		if (ladder != null) 

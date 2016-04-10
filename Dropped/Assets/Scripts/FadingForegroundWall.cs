@@ -29,6 +29,14 @@ public class FadingForegroundWall : MonoBehaviour
 			baseColor.a = Mathf.Lerp (startingAlpha, fadeToValue, durationPercentage);
 			GetComponent<SpriteRenderer> ().color = baseColor;
 
+			if (transform.childCount > 0) 
+			{
+				for (int j = 0; j < transform.childCount; j++) 
+				{
+					transform.GetChild (j).GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+				}
+			}
+
 			yield return null;
 		}
 	}
