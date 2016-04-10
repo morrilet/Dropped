@@ -76,6 +76,10 @@ public class Player : Entity
 	public List<Enemy> grapplingEnemies;
 	[HideInInspector]
 	public float grappleStrength; //How much the player has to slam the button to escape the grapple.
+	[HideInInspector]
+	public bool canBeGrabbed; //Whether or not the player can be grabbed.
+	private float grabSafeTime; //How long is the player safe from grabs after escaping a grab?
+	private float grabSafeTimer; //Timer for grabSafeTime.
 
 	void Start()
 	{
@@ -104,6 +108,9 @@ public class Player : Entity
 		ladderExitTimer = 0;
 
 		grapplingEnemies = new List<Enemy> ();
+		canBeGrabbed = true;
+		grabSafeTime = 1f;
+		grabSafeTimer = 0f;
 
 		canMove = true;
 	}
@@ -254,6 +261,15 @@ public class Player : Entity
 			EscapeGrapple ();
 			Debug.Log (grappleEscapeAttempt + ", " + grappleStrength);
 		}
+		if (!canBeGrabbed) 
+		{
+			grabSafeTimer += Time.deltaTime;
+		}
+		if (grabSafeTimer >= grabSafeTime) 
+		{
+			canBeGrabbed = true;
+			grabSafeTimer = 0f;
+		}
 
 		controller.Move (velocity * Time.deltaTime);
 
@@ -346,13 +362,18 @@ public class Player : Entity
 
 	void EscapeGrapple()
 	{
+		GUI.Instance.escapeGrabText.enabled = true;
+
 		if (Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.D)) 
 		{
 			grappleEscapeAttempt += 1f;
+			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .05f);
 		}
 
 		if (grappleEscapeAttempt >= grappleStrength) 
 		{
+			GUI.Instance.escapeGrabText.enabled = false;
+
 			canMove = true;
 
 			foreach (Enemy enemy in grapplingEnemies) 
@@ -360,15 +381,16 @@ public class Player : Entity
 				enemy.isGrapplingPlayer = false;
 
 				Vector3 knockBackVelocity = new Vector3 (1f, 0f, 0f);
-				knockBackVelocity.x *= (enemy.transform.position.x - transform.position.x) / Mathf.Abs (enemy.transform.position.x - transform.position.x) * 10f;
-				enemy.KnockBack (velocity, .15f);
-
-				Debug.Log ("KBVel: " + knockBackVelocity);
+				knockBackVelocity.x *= (enemy.transform.position.x - transform.position.x) / Mathf.Abs (enemy.transform.position.x - transform.position.x);
+				enemy.KnockBack (knockBackVelocity, .15f);
 			}
 			grapplingEnemies.Clear ();
 
 			grappleStrength = 0;
 			grappleEscapeAttempt = 0;
+
+			canBeGrabbed = false;
+			grabSafeTimer = 0f;
 		}
 
 		if (grappleEscapeAttempt <= 0f)

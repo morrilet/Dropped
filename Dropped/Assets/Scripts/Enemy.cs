@@ -98,14 +98,17 @@ public class Enemy : Entity
 		{
 			if (attackTimer >= attackRate) 
 			{
-				isGrapplingPlayer = true;
-				player.grapplingEnemies.Add(this);
-				player.grappleStrength += grappleStrength * grappleModifier;
-				grappleModifier  *= .75f;
+				if(player.canBeGrabbed)
+				{
+					isGrapplingPlayer = true;
+					player.grapplingEnemies.Add(this);
+					player.grappleStrength += grappleStrength * grappleModifier;
+					grappleModifier  *= .75f;
+				}
 
 				attackTimer = 0;
 				player.health -= attackDamage;
-				Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.075f, .075f);
+				Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
 			}
 		}
 		attackTimer += Time.deltaTime;
@@ -165,7 +168,7 @@ public class Enemy : Entity
 	{
 		GameObject corpse = Instantiate (corpsePrefab, transform.position, Quaternion.Euler (new Vector3 (0, 0, 90))) as GameObject;
 
-		Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
+		Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .08f);
 
 		corpse.gameObject.GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2(bullet.corpseKnockback, 0f) 
 			* GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);

@@ -16,6 +16,7 @@ public class GUI : MonoBehaviour
 	public Text openDoorText;
 	public Text grabAmmoText;
 	public Text grabGunText;
+	public Text escapeGrabText;
 
 	public static GUI Instance { get; private set; }
 
@@ -35,12 +36,20 @@ public class GUI : MonoBehaviour
 		openDoorText.enabled = false;
 		grabAmmoText.enabled = false;
 		grabGunText.enabled = false;
+		escapeGrabText.enabled = false;
 
 		weaponPickupYield = "null";
 	}
 
 	void Update()
 	{
+
+		if (escapeGrabText.enabled == true) 
+		{
+			openDoorText.enabled = false;
+			grabAmmoText.enabled = false;
+			grabGunText.enabled = false;
+		}
 
 		pistolAmmoText.text = "Pistol Ammo: " + player.playerAmmo.pistolAmmo.currentAmmo + " / " + player.playerAmmo.pistolAmmo.maxAmmo;
 		shotGunAmmoText.text = "Shotgun Ammo: " + player.playerAmmo.shotgunAmmo.currentAmmo + " / " + player.playerAmmo.shotgunAmmo.maxAmmo;
