@@ -45,7 +45,7 @@ public class FadingForegroundWall : MonoBehaviour
 	{
 		if (coll.transform.tag == "Player") {
 			Debug.Log ("Called coroutine");
-			StartCoroutine (Fade (.08f));
+			StartCoroutine (Fade (0f));
 		}
 	}
 
