@@ -75,6 +75,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoType: 0
   ammoAmount: 15
+  machineGunAmmo: {fileID: 21300000, guid: 1f436c0eb7f764245901fad472c402d5, type: 3}
+  shotGunAmmo: {fileID: 21300000, guid: 8a3a6c90881bfa7418940cbe9a6bf47f, type: 3}
+  pistolAmmo: {fileID: 21300000, guid: eab6ddcd5674f8747b08eef1a9546b8a, type: 3}
 --- !u!212 &21298158
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -111,7 +114,22 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: machineGunAmmo
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f436c0eb7f764245901fad472c402d5,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: pistolAmmo
+      value: 
+      objectReference: {fileID: 21300000, guid: eab6ddcd5674f8747b08eef1a9546b8a,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: shotGunAmmo
+      value: 
+      objectReference: {fileID: 21300000, guid: 8a3a6c90881bfa7418940cbe9a6bf47f,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 183636}

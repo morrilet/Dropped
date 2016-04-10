@@ -8,10 +8,15 @@ public class AmmoPickup : MonoBehaviour
 	public enum AmmoTypes
 	{
 		MachineGun,
-		ShotGun
+		ShotGun,
+		Pistol
 	}
 	public AmmoTypes ammoType; //The type of ammo to give to the player.
 	public int ammoAmount; //The amount of ammo to give to the player.
+
+	public Sprite machineGunAmmo;
+	public Sprite shotGunAmmo;
+	public Sprite pistolAmmo;
 
 	Vector3 topPos;
 	Vector3 bottomPos;
@@ -24,6 +29,8 @@ public class AmmoPickup : MonoBehaviour
 		topPos = transform.position + new Vector3 (0, 0.15f);
 		bottomPos = transform.position + new Vector3 (0, -.15f);
 		duration = 2.5f;
+
+		SetImage ();
 	}
 
 	void OnTriggerEnter2D(Collider2D coll)
@@ -38,6 +45,9 @@ public class AmmoPickup : MonoBehaviour
 			case AmmoTypes.ShotGun:
 				player.playerAmmo.shotgunAmmo.ModifyAmmo (ammoAmount);
 				break;
+			case AmmoTypes.Pistol:
+				player.playerAmmo.pistolAmmo.ModifyAmmo (ammoAmount);
+				break;
 			}
 			Destroy(gameObject);
 		}
@@ -46,5 +56,21 @@ public class AmmoPickup : MonoBehaviour
 	{
 		float lerpValue = Mathf.PingPong (Time.time, duration) / duration;
 		transform.position = Vector3.Lerp (topPos, bottomPos, lerpValue);
+	}
+
+	void SetImage()
+	{
+		switch (ammoType) 
+		{
+		case AmmoTypes.MachineGun:
+			GetComponent<SpriteRenderer> ().sprite = machineGunAmmo;
+			break;
+		case AmmoTypes.ShotGun:
+			GetComponent<SpriteRenderer> ().sprite = shotGunAmmo;
+			break;
+		case AmmoTypes.Pistol:
+			GetComponent<SpriteRenderer> ().sprite = pistolAmmo;
+			break;
+		}
 	}
 }
