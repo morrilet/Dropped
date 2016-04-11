@@ -19,6 +19,8 @@ public class Bullet : MonoBehaviour {
 	public float corpseKnockback;
 	[HideInInspector]
 	public float sleepFramesOnHit;
+	[HideInInspector]
+	public float rangeDamageFallOff;
 
 	public Vector3 startPos;
 
@@ -37,6 +39,8 @@ public class Bullet : MonoBehaviour {
 		{
 			Destroy (gameObject);
 		}
+		ReduceDamageWithRange ();
+		Debug.Log ("Bullet damage = " + damage);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)
@@ -69,6 +73,14 @@ public class Bullet : MonoBehaviour {
 	public void ReduceDamage()
 	{
 		damage -= damageFalloff * maxDamage; //-15%
+		if (damage <= 0)
+			Destroy (gameObject);
+	}
+
+	//Reduces damage using a value multiplied by delta time.
+	public void ReduceDamageWithRange()
+	{
+		damage -= rangeDamageFallOff * maxDamage * Time.deltaTime;
 		if (damage <= 0)
 			Destroy (gameObject);
 	}

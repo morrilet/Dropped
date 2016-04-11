@@ -18,6 +18,10 @@ public class Gun : MonoBehaviour
 	public float playerKnockBack; //Pushback on player when fired
 	public float corpseKnockBack; //Amount corpse go flying on enemy death
 	public float sleepFramesOnHit; //Amount of sleep frames when the bullet hits an enemy
+	public float rangeDamageFallOff; //Ratio of damage lost as bullet travels
+//	public float clipSize; //Shots per clip
+//	float ammoInClip;
+//	public float reloadTime; //Time it takes to reload
 
 	public Vector2 bulletOffset;//Controls origin point of bullet
 
@@ -97,6 +101,7 @@ public class Gun : MonoBehaviour
 			bullet.GetComponent<Bullet> ().damageFalloff = damageFalloff;
 			bullet.GetComponent<Bullet> ().corpseKnockback = corpseKnockBack;
 			bullet.GetComponent<Bullet> ().sleepFramesOnHit = sleepFramesOnHit;
+			bullet.GetComponent<Bullet> ().rangeDamageFallOff = rangeDamageFallOff;
 
 			if (isFlamethrower)
 				bullet.transform.SetParent (this.transform);
