@@ -25,8 +25,10 @@ public class GunPickup : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D coll)
 	{
-		SetGuiText (coll);
-		GUI.Instance.grabGunText.enabled = true;
+		if (coll.gameObject.tag == "Player") {
+			SetGuiText (coll);
+			GUI.Instance.grabGunText.enabled = true;
+		}
 	}
 
 	void OnTriggerStay2D(Collider2D coll)
@@ -58,7 +60,8 @@ public class GunPickup : MonoBehaviour
 
 	void OnTriggerExit2D(Collider2D coll)
 	{
-		GUI.Instance.grabGunText.enabled = false;
+		if(coll.gameObject.tag == "Player")
+			GUI.Instance.grabGunText.enabled = false;
 	}
 
 	void Update()
