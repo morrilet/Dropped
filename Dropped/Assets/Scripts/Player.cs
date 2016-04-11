@@ -56,6 +56,8 @@ public class Player : Entity
 	[HideInInspector]
 	public float direction;//Direction player is facing
 
+	float horizontalAxisPrev;
+
 	public enum CurrentGun
 	{
 		None,
@@ -139,11 +141,6 @@ public class Player : Entity
 
 		if (GetComponent<Player> ().velocity.x != 0 && canMove)
 			direction = Mathf.Sign (velocity.x);
-
-		if (Input.GetKey (KeyCode.Comma))
-			health--;
-		if (Input.GetKey (KeyCode.Period))
-			health++;
 
 		//Just for now, so that at least SOMETHING happens.
 		//In the future make a die method.
@@ -273,6 +270,8 @@ public class Player : Entity
 
 		controller.Move (velocity * Time.deltaTime);
 
+		horizontalAxisPrev = Input.GetAxis ("Horizontal");
+
 		if (playerInfo.JustJumped)
 			Debug.Log ("JustJumped");
 		if (playerInfo.JustLanded)
@@ -280,6 +279,7 @@ public class Player : Entity
 		if (playerInfo.JustFell)
 			Debug.Log ("JustFell");
 		playerInfo.Reset ();
+
 	}
 
 	//This handles all of the players input, separated from the update method for easy
@@ -290,7 +290,7 @@ public class Player : Entity
 		input = new Vector2 (Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
 		//Jumping.
-		if(Input.GetKeyDown(KeyCode.Space))
+		if(Input.GetButtonDown("Jump"))
 		{
 			if(jumpAbility != null && jumpAbility.canJump)
 			{
@@ -302,7 +302,7 @@ public class Player : Entity
 				ladder = null;
 		}
 
-		if (Input.GetKeyDown (KeyCode.C)) 
+		if (Input.GetButtonDown("Action")) 
 		{
 			if (corpseCarried == null)
 			{
@@ -322,7 +322,7 @@ public class Player : Entity
 			}
 		}
 
-		if (Input.GetKeyUp (KeyCode.C) && throwingCorpse) 
+		if (Input.GetButtonUp ("Action") && throwingCorpse) 
 		{
 			DropCorpse (corpseThrowForce);
 			throwingCorpse = false;
@@ -350,12 +350,12 @@ public class Player : Entity
 		{
 			if (activeGun.isAuto) 
 			{
-				if (Input.GetKey (KeyCode.X))
+				if (Input.GetButton("Fire1"))
 					ShootGun ();
 			} 
 			else if(!activeGun.isAuto)
 			{
-				if (Input.GetKeyDown (KeyCode.X))
+				if (Input.GeButtonDown ("Fire1"))
 					ShootGun ();
 			}
 		}
@@ -365,7 +365,7 @@ public class Player : Entity
 	{
 		GUI.Instance.escapeGrabText.enabled = true;
 
-		if (Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.D)) 
+		if (Input.GetAxis("Horizontal") != 0 && horizontalAxisPrev == 0) 
 		{
 			grappleEscapeAttempt += 1f;
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .05f);
