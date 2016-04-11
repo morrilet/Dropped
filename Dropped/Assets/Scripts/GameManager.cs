@@ -40,7 +40,7 @@ public class GameManager : Singleton<GameManager>
 
 	void HandleInput()
 	{
-		if (Input.GetKeyDown (KeyCode.R))
+		if (Input.GetKeyDown (KeyCode.Return))
 		{
 			RestartLevel ();
 		}

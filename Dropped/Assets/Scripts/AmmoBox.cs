@@ -14,10 +14,10 @@ public class AmmoBox : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Player") 
+		if (other.gameObject.tag == "Player" && player.corpseCarried == null) 
 		{
 			GUI.Instance.grabAmmoText.enabled = true;
-			if (Input.GetKeyDown (KeyCode.E)) 
+			if (Input.GetButtonDown("Action")) 
 			{
 				player.playerAmmo.RefillAll ();
 				AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
@@ -27,10 +27,10 @@ public class AmmoBox : MonoBehaviour
 
 	void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Player") 
+		if (other.gameObject.tag == "Player" && player.corpseCarried == null) 
 		{
 			GUI.Instance.grabAmmoText.enabled = true;
-			if (Input.GetKeyDown (KeyCode.E)) 
+			if (Input.GetButtonDown("Action")) 
 			{
 				player.playerAmmo.RefillAll ();
 				AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
