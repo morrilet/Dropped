@@ -294,6 +294,7 @@ public class Player : Entity
 		{
 			if(jumpAbility != null && jumpAbility.canJump)
 			{
+				AudioManager.instance.PlaySoundEffectVariation ("JumpSound", .85f, 1.15f);
 				jumpAbility.Jump(ref velocity);
 			}
 

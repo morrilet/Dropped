@@ -34,8 +34,11 @@ public class GunPickup : MonoBehaviour
 	void OnTriggerStay2D(Collider2D coll)
 	{
 
-		if (coll.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.E)) {
-			switch (pickUpGun) {
+		if (coll.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.E)) 
+		{
+			AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
+			switch (pickUpGun) 
+			{
 			case Player.CurrentGun.MachineGun:
 				pickUpGun = coll.gameObject.GetComponent<Player> ().currentGun;
 				coll.gameObject.GetComponent<Player> ().currentGun = Player.CurrentGun.MachineGun;

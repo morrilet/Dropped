@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &136684
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,7 +33,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &139116
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,7 +67,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &164396
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,7 +81,7 @@ GameObject:
   - 114: {fileID: 11468344}
   - 114: {fileID: 11450682}
   - 114: {fileID: 11448838}
-  - 50: {fileID: 5020732}
+  - 50: {fileID: 5099112}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -124,8 +124,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0259, y: 0.0187, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.0425, y: 0.0118, z: 0}
+  m_LocalScale: {x: 1.3053216, y: 1.3053216, z: 1.3053216}
   m_Children: []
   m_Father: {fileID: 425148}
   m_RootOrder: 0
@@ -136,8 +136,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0285, y: 0.0187, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalPosition: {x: -0.0013, y: 0.008, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 425148}
   m_RootOrder: 1
@@ -148,12 +148,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0277, y: 0.0208, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.0482, y: 0.0182, z: 0}
+  m_LocalScale: {x: 1.8316228, y: 1.8316228, z: 1.8316228}
   m_Children: []
   m_Father: {fileID: 425148}
   m_RootOrder: 2
---- !u!50 &5020732
+--- !u!50 &5099112
 Rigidbody2D:
   serializedVersion: 2
   m_ObjectHideFlags: 1
@@ -202,12 +202,12 @@ MonoBehaviour:
   rotationDeviation: 5.5
   bulletPrefab: {fileID: 118666, guid: 2473cc459ee1f9d4abfc1120d139ef03, type: 2}
   muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
-  fireRate: 0.22
+  fireRate: 0.15
   playerKnockBack: 8
   corpseKnockBack: 12
-  sleepFramesOnHit: 2
-  bulletOffset: {x: 0.28, y: 0.055}
-  muzzleFlashOffset: {x: 0.28, y: 0.055}
+  sleepFramesOnHit: 3
+  bulletOffset: {x: 0.37, y: 0.06}
+  muzzleFlashOffset: {x: 0.44, y: 0.06}
   bulletSpeed: 18
   bulletSpeedDeviation: 0.3
   maxRange: 15
@@ -240,7 +240,10 @@ MonoBehaviour:
   corpseThrowForce: 0
   direction: 0
   currentGun: 0
-  isGrappled: 0
+  grappleEscapeAttempt: 0
+  grapplingEnemies: []
+  grappleStrength: 0
+  canBeGrabbed: 0
 --- !u!114 &11450682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -278,8 +281,8 @@ MonoBehaviour:
   playerKnockBack: 10
   corpseKnockBack: 8
   sleepFramesOnHit: 4
-  bulletOffset: {x: 0.28, y: 0.055}
-  muzzleFlashOffset: {x: 0.28, y: 0.055}
+  bulletOffset: {x: 0.11, y: 0.045}
+  muzzleFlashOffset: {x: 0.22, y: 0.045}
   bulletSpeed: 22
   bulletSpeedDeviation: 0.3
   maxRange: 10
@@ -338,14 +341,14 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
   fireRate: 0.8
   playerKnockBack: 14
-  corpseKnockBack: 16
-  sleepFramesOnHit: 4
-  bulletOffset: {x: 0.28, y: 0.055}
-  muzzleFlashOffset: {x: 0.28, y: 0.055}
+  corpseKnockBack: 12
+  sleepFramesOnHit: 1
+  bulletOffset: {x: 0.355, y: 0.025}
+  muzzleFlashOffset: {x: 0.47, y: 0.025}
   bulletSpeed: 14
   bulletSpeedDeviation: 4
   maxRange: 8
-  maxDamage: 1.2
+  maxDamage: 2
   damageFalloff: 0.8
 --- !u!120 &12008872
 LineRenderer:

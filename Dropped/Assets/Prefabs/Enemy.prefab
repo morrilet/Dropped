@@ -62,6 +62,8 @@ MonoBehaviour:
   speed: -1
   gravity: -9.81
   corpsePrefab: {fileID: 126114, guid: 42fad35178f5b0f4691eeac6438cefbe, type: 2}
+  isGrapplingPlayer: 0
+  canMove: 0
 --- !u!114 &11468714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 16640
   horizontalRayCount: 8
   verticalRayCount: 4
   horizontalRaySpacing: 0
@@ -145,6 +147,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Constraints
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: collisionMask.m_Bits
+      value: 16640
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

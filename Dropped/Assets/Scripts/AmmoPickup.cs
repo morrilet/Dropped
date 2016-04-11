@@ -37,6 +37,8 @@ public class AmmoPickup : MonoBehaviour
 	{
 		if (coll.gameObject.tag == "Player")
 		{
+			AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
+			
 			switch (ammoType) 
 			{
 			case AmmoTypes.MachineGun:

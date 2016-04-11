@@ -17,9 +17,10 @@ public class AmmoBox : MonoBehaviour
 		if (other.gameObject.tag == "Player") 
 		{
 			GUI.Instance.grabAmmoText.enabled = true;
-			if (Input.GetKey (KeyCode.E)) 
+			if (Input.GetKeyDown (KeyCode.E)) 
 			{
 				player.playerAmmo.RefillAll ();
+				AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
 			}
 		}
 	}
@@ -29,9 +30,10 @@ public class AmmoBox : MonoBehaviour
 		if (other.gameObject.tag == "Player") 
 		{
 			GUI.Instance.grabAmmoText.enabled = true;
-			if (Input.GetKey (KeyCode.E)) 
+			if (Input.GetKeyDown (KeyCode.E)) 
 			{
 				player.playerAmmo.RefillAll ();
+				AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
 			}
 		}
 	}

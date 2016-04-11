@@ -18,6 +18,9 @@ public class GameManager : Singleton<GameManager>
 
 	public void Start()
 	{
+		if (player == null)
+			player = GameObject.FindGameObjectWithTag ("Player");
+
 		playerStoredAmmo.machineGunAmmo.maxAmmo = 50;
 		playerStoredAmmo.machineGunAmmo.Refill ();
 		playerStoredAmmo.shotgunAmmo.maxAmmo = 25;
@@ -26,6 +29,8 @@ public class GameManager : Singleton<GameManager>
 		playerStoredAmmo.pistolAmmo.Refill ();
 		playerStoredHealth = player.GetComponent<Player> ().maxHealth;
 		playerStoredGun = Player.CurrentGun.None;
+
+		AudioManager.instance.PlayMusic ("Ethan Game");
 	}
 
 	void Update ()
