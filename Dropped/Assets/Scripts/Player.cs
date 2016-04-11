@@ -270,7 +270,7 @@ public class Player : Entity
 
 		controller.Move (velocity * Time.deltaTime);
 
-		horizontalAxisPrev = Input.GetAxis ("Horizontal");
+		horizontalAxisPrev = Input.GetAxisRaw ("Horizontal");
 
 		if (playerInfo.JustJumped)
 			Debug.Log ("JustJumped");
@@ -355,7 +355,7 @@ public class Player : Entity
 			} 
 			else if(!activeGun.isAuto)
 			{
-				if (Input.GeButtonDown ("Fire1"))
+				if (Input.GetButtonDown ("Fire1"))
 					ShootGun ();
 			}
 		}
@@ -365,7 +365,7 @@ public class Player : Entity
 	{
 		GUI.Instance.escapeGrabText.enabled = true;
 
-		if (Input.GetAxis("Horizontal") != 0 && horizontalAxisPrev == 0) 
+		if (Input.GetAxisRaw("Horizontal") != 0 && horizontalAxisPrev == 0) 
 		{
 			grappleEscapeAttempt += 1f;
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .05f);
