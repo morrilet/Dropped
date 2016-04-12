@@ -12,7 +12,6 @@ public class ScrollingBackground : MonoBehaviour
 
 	Vector3 left, right, center; //Left and right positions to scroll between, plus center to start at.
 
-	GameObject player; //The player to track.
 	Vector3 cameraPosition;
 	Vector3 cameraPositionPrev;
 
@@ -24,7 +23,6 @@ public class ScrollingBackground : MonoBehaviour
 
 	void Start()
 	{
-		player = GameObject.FindGameObjectWithTag ("Player");
 		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
 
 		//Get camera extents.

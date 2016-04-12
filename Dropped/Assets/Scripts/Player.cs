@@ -255,6 +255,8 @@ public class Player : Entity
 
 		if (grapplingEnemies.Count > 0) 
 		{
+			if (corpseCarried != null)
+				DropCorpse ();
 			EscapeGrapple ();
 			Debug.Log (grappleEscapeAttempt + ", " + grappleStrength);
 		}
@@ -324,7 +326,7 @@ public class Player : Entity
 
 		if (Input.GetButtonUp ("Action") && throwingCorpse) 
 		{
-			DropCorpse (corpseThrowForce);
+			ThrowCorpse (corpseThrowForce);
 			throwingCorpse = false;
 			corpseThrowCount = 0;
 		}
@@ -363,7 +365,7 @@ public class Player : Entity
 
 	void EscapeGrapple()
 	{
-		GUI.Instance.escapeGrabText.enabled = true;
+		GUI.instance.escapeGrabText.enabled = true;
 
 		if (Input.GetAxisRaw("Horizontal") != 0 && horizontalAxisPrev == 0) 
 		{
@@ -373,7 +375,7 @@ public class Player : Entity
 
 		if (grappleEscapeAttempt >= grappleStrength) 
 		{
-			GUI.Instance.escapeGrabText.enabled = false;
+			GUI.instance.escapeGrabText.enabled = false;
 
 			canMove = true;
 
@@ -454,7 +456,13 @@ public class Player : Entity
 		//corpseCarried.layer = LayerMask.NameToLayer("Default");
 	}
 
-	void DropCorpse(float forceModifier)
+	void DropCorpse()
+	{
+		corpseCarried.GetComponent<Corpse> ().isCarried = false;
+		corpseCarried = null;
+	}
+
+	void ThrowCorpse(float forceModifier)
 	{
 		//corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = false;
 

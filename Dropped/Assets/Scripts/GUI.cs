@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class GUI : MonoBehaviour 
+public class GUI : Singleton<GUI>
 {
 	Player player;
 
@@ -18,15 +18,11 @@ public class GUI : MonoBehaviour
 	public Text grabGunText;
 	public Text escapeGrabText;
 
-	public static GUI Instance { get; private set; }
-
 	void Awake()
 	{
-		if (Instance != null && Instance != this) 
-		{
-			Destroy (gameObject);
-		}
-		Instance = this.GetComponent<GUI> ();
+		isPersistant = true;
+
+		base.Awake ();
 	}
 
 	void Start()
