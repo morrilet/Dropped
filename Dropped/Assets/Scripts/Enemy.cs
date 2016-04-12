@@ -170,8 +170,13 @@ public class Enemy : Entity
 
 		Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .08f);
 
-		corpse.gameObject.GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2(bullet.corpseKnockback, 0f) 
-			* GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+		for (int i = 0; i < corpse.transform.childCount; i++) 
+		{
+			corpse.transform.GetChild (i).GetComponent<Rigidbody2D> ().isKinematic = false;
+			corpse.transform.GetChild(i).GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2 (bullet.corpseKnockback, 0f)
+			* GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+		}
+
 		Physics2D.IgnoreCollision (controller.coll, bullet.GetComponent<Collider2D> ());
 		Destroy (gameObject);
 	}

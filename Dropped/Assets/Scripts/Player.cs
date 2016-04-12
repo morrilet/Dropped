@@ -182,7 +182,7 @@ public class Player : Entity
 			transform.localScale = new Vector3 (baseScaleX * direction, transform.localScale.y, transform.localScale.z);
 		}
 
-		if (ladder != null) 
+		if (ladder != null)
 		{
 			velocity.y = input.y * moveSpeed / 2f;
 			velocity.x = 0;
@@ -430,21 +430,31 @@ public class Player : Entity
 
 	void PickupCorpse(GameObject corpse)
 	{
-		corpseCarried = corpse;
-		corpseCarried.transform.position = transform.position + new Vector3(0, 1, 0);
-		corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = true;
-		corpseCarried.transform.rotation = Quaternion.identity;
-		corpseCarried.layer = LayerMask.NameToLayer("Default");
+		corpseCarried = corpse.transform.parent.gameObject;
+		corpseCarried.GetComponent<Corpse> ().isCarried = true;
+		//corpseCarried.transform.position = transform.position + new Vector3(0, 1, 0);
+		//corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = true;
+		//corpseCarried.transform.rotation = Quaternion.identity;
+		//corpseCarried.layer = LayerMask.NameToLayer("Default");
 	}
 
 	void DropCorpse(float forceModifier)
 	{
-		corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = false;
+		//corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = false;
+
+		//Vector2 force = corpseThrowDirection * forceModifier;
+		//corpseCarried.GetComponent<Rigidbody2D> ().AddForce (force, ForceMode2D.Impulse);
+
+		//corpseCarried.layer = LayerMask.NameToLayer("Obstacle");
+		corpseCarried.GetComponent<Corpse>().isCarried = false;
 
 		Vector2 force = corpseThrowDirection * forceModifier;
-		corpseCarried.GetComponent<Rigidbody2D> ().AddForce (force, ForceMode2D.Impulse);
+		for (int i = 0; i < corpseCarried.transform.childCount; i++) 
+		{
+			corpseCarried.transform.GetChild (i).GetComponent<Rigidbody2D> ().isKinematic = false;
+			corpseCarried.transform.GetChild (i).GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+		}
 
-		corpseCarried.layer = LayerMask.NameToLayer("Obstacle");
 		corpseCarried = null;
 	}
 
