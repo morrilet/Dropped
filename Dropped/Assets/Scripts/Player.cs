@@ -361,6 +361,28 @@ public class Player : Entity
 					ShootGun ();
 			}
 		}
+
+		if (activeGun != null)
+		{
+			if(Input.GetButtonDown("Reload"))
+			{
+				switch (currentGun)
+				{
+				case CurrentGun.MachineGun:
+					if (playerAmmo.machineGunAmmo.currentAmmo >= activeGun.bulletsSpentFromCurrentClip)
+						ReloadActiveGun ();
+					break;
+				case CurrentGun.Shotgun:
+					if (playerAmmo.shotgunAmmo.currentAmmo >= activeGun.bulletsSpentFromCurrentClip)
+						ReloadActiveGun ();
+					break;
+				case CurrentGun.Pistol:
+					if (playerAmmo.pistolAmmo.currentAmmo >= activeGun.bulletsSpentFromCurrentClip)
+						ReloadActiveGun ();
+					break;
+				}
+			}
+		}
 	}
 
 	void EscapeGrapple()
@@ -410,8 +432,7 @@ public class Player : Entity
 		case CurrentGun.MachineGun:
 			if (playerAmmo.machineGunAmmo.currentAmmo > 0) 
 			{
-				if (activeGun.Shoot ())
-					playerAmmo.machineGunAmmo.ModifyAmmo (-1);
+				activeGun.Shoot ();
 			} 
 			else if(activeGun.fireRateCount >= activeGun.fireRate)
 			{
@@ -422,8 +443,7 @@ public class Player : Entity
 		case CurrentGun.Shotgun:
 			if (playerAmmo.shotgunAmmo.currentAmmo > 0) 
 			{
-				if(activeGun.Shoot ())
-					playerAmmo.shotgunAmmo.ModifyAmmo (-1);
+				activeGun.Shoot ();
 			}
 			else if(activeGun.fireRateCount >= activeGun.fireRate)
 			{
@@ -434,14 +454,30 @@ public class Player : Entity
 		case CurrentGun.Pistol:
 			if (playerAmmo.pistolAmmo.currentAmmo > 0) 
 			{
-				if (activeGun.Shoot ())
-					playerAmmo.pistolAmmo.ModifyAmmo (-1);
+				activeGun.Shoot ();
 			}
 			else if(activeGun.fireRateCount >= activeGun.fireRate)
 			{
 				AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
 				activeGun.fireRateCount = 0;
 			}
+			break;
+		}
+	}
+
+	void ReloadActiveGun()
+	{
+		activeGun.Reload ();
+		switch (currentGun)
+		{
+		case CurrentGun.MachineGun:
+			playerAmmo.machineGunAmmo.ModifyAmmo (-activeGun.bulletsSpentFromCurrentClip);
+			break;
+		case CurrentGun.Shotgun:
+			playerAmmo.shotgunAmmo.ModifyAmmo (-activeGun.bulletsSpentFromCurrentClip);
+			break;
+		case CurrentGun.Pistol:
+			playerAmmo.pistolAmmo.ModifyAmmo (-activeGun.bulletsSpentFromCurrentClip);
 			break;
 		}
 	}
