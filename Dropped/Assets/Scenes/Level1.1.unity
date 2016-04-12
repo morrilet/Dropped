@@ -1177,7 +1177,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 118646, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11450846, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: maxRange
@@ -1198,6 +1198,10 @@ Prefab:
     - target: {fileID: 11488066, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: rangeDamageFallOff
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 142986, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c441d4929eab7534385eb7a353f07dab, type: 2}

@@ -577,7 +577,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.063
+      value: -1.051
       objectReference: {fileID: 0}
     - target: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -609,7 +609,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
       propertyPath: m_LocalScale.x
-      value: 15
+      value: 15.148716
       objectReference: {fileID: 0}
     - target: {fileID: 121942, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
       propertyPath: m_Name
@@ -5906,7 +5906,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.712
+      value: 0.713
       objectReference: {fileID: 0}
     - target: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -5938,7 +5938,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
       propertyPath: m_LocalScale.x
-      value: 7.1041102
+      value: 7.291104
       objectReference: {fileID: 0}
     - target: {fileID: 121942, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
       propertyPath: m_Name
@@ -6459,7 +6459,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.45
+      value: -3.41
       objectReference: {fileID: 0}
     - target: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -6499,7 +6499,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
       propertyPath: m_LocalScale.x
-      value: 69.13138
+      value: 69.689
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5087950, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
