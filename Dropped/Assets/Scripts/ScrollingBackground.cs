@@ -18,6 +18,8 @@ public class ScrollingBackground : MonoBehaviour
 
 	Camera mainCamera;
 
+	public bool scrollOnAwake;
+
 	bool tilesInStartingPlaces;
 	float tilesInStartingPlacesTime;
 	float tilesInStartingPlacesCount;
@@ -101,7 +103,10 @@ public class ScrollingBackground : MonoBehaviour
 		}
 
 		Vector3 position = bg.transform.position;
-		position.x -= (cameraPosition.x - cameraPositionPrev.x) * scrollSpeed;
+		if (!scrollOnAwake)
+			position.x -= (cameraPosition.x - cameraPositionPrev.x) * scrollSpeed;
+		else
+			position.x -= Time.deltaTime * scrollSpeed;
 		position.z = transform.position.z;
 		bg.transform.position = position;
 	}
