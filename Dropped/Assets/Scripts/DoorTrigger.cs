@@ -19,7 +19,7 @@ public class DoorTrigger : MonoBehaviour
 		{
 			if (door.GetPlayerFacingDoor () && GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().corpseCarried == null)
 			{
-				GUI.Instance.openDoorText.enabled = true;
+				GUI.instance.openDoorText.enabled = true;
 				if (Input.GetButtonDown("Action") && !door.GetPlayerInsideDoor ()) 
 				{
 					if (!door.isOpen)
@@ -30,7 +30,7 @@ public class DoorTrigger : MonoBehaviour
 			}
 			else
 			{
-				GUI.Instance.openDoorText.enabled = false;
+				GUI.instance.openDoorText.enabled = false;
 			}
 		}
 	}
@@ -41,7 +41,7 @@ public class DoorTrigger : MonoBehaviour
 		{
 			if (door.GetPlayerFacingDoor () && GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().corpseCarried == null) 
 			{
-				GUI.Instance.openDoorText.enabled = true;
+				GUI.instance.openDoorText.enabled = true;
 				if (Input.GetButtonDown("Action") && !door.GetPlayerInsideDoor ()) 
 				{
 					if (!door.isOpen)
@@ -52,7 +52,7 @@ public class DoorTrigger : MonoBehaviour
 			}
 			else
 			{
-				GUI.Instance.openDoorText.enabled = false;
+				GUI.instance.openDoorText.enabled = false;
 			}
 		}
 	}
@@ -60,6 +60,6 @@ public class DoorTrigger : MonoBehaviour
 	void OnCollisionExit2D(Collision2D other)
 	{
 		if(other.gameObject.tag == "Player")
-			GUI.Instance.openDoorText.enabled = false;
+			GUI.instance.openDoorText.enabled = false;
 	}
 }
