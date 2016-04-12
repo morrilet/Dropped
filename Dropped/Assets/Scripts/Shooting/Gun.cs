@@ -10,8 +10,8 @@ public class Gun : MonoBehaviour
 	[Range(1, int.MaxValue)]
 	public int bulletsPerShot;//Amount of bullets in a shot (for shotguns mostly)
 	[Range(1, int.MaxValue)]
-	public int shotsPerBurst; //Amount of times Shoot() is called per input (overrriden if isAuto = true)
-	public float rotationDeviation;//Innacuracy of gun 
+	public int shotsPerBurst; //Amount of times Shoot() is called per input (overrriden if isAuto == true)
+	public float rotationDeviation;//Innacuracy of gun
 	public GameObject bulletPrefab; //Insert different bullet prefabs here for different guns
 	public GameObject muzzleFlashPrefab;//Insert your preffered muzzle flash here
 	public float fireRate; //Fire rate of this gun (lower = faster!)
