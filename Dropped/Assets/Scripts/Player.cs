@@ -408,8 +408,13 @@ public class Player : Entity
 		case CurrentGun.MachineGun:
 			if (playerAmmo.machineGunAmmo.currentAmmo > 0) 
 			{
-				if(activeGun.Shoot ())
+				if (activeGun.Shoot ())
 					playerAmmo.machineGunAmmo.ModifyAmmo (-1);
+			} 
+			else if(activeGun.fireRateCount >= activeGun.fireRate)
+			{
+				AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
+				activeGun.fireRateCount = 0;
 			}
 			break;
 		case CurrentGun.Shotgun:
@@ -418,11 +423,22 @@ public class Player : Entity
 				if(activeGun.Shoot ())
 					playerAmmo.shotgunAmmo.ModifyAmmo (-1);
 			}
+			else if(activeGun.fireRateCount >= activeGun.fireRate)
+			{
+				AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
+				activeGun.fireRateCount = 0;
+			}
 			break;
 		case CurrentGun.Pistol:
-			if (playerAmmo.pistolAmmo.currentAmmo > 0) {
+			if (playerAmmo.pistolAmmo.currentAmmo > 0) 
+			{
 				if (activeGun.Shoot ())
 					playerAmmo.pistolAmmo.ModifyAmmo (-1);
+			}
+			else if(activeGun.fireRateCount >= activeGun.fireRate)
+			{
+				AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
+				activeGun.fireRateCount = 0;
 			}
 			break;
 		}

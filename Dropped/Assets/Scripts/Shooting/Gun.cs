@@ -34,7 +34,8 @@ public class Gun : MonoBehaviour
 	public float maxDamage; //damage of bullet
 	public float damageFalloff; //Damage reduction after passing through a corpse.
 
-	float fireRateCount;
+	[HideInInspector]
+	public float fireRateCount;
 
 	Vector3 knockBackVelocity; //Velocity to use for knockback.
 	float velocityXSmoothing; //Smoothing to apply to knockback movement. 0.
