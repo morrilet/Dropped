@@ -19,6 +19,10 @@ public class Bullet : MonoBehaviour {
 	public float corpseKnockback;
 	[HideInInspector]
 	public float sleepFramesOnHit;
+	[HideInInspector]
+	public float rangeDamageFallOff;
+
+	public GameObject impactEffect;
 
 	public Vector3 startPos;
 
@@ -37,17 +41,21 @@ public class Bullet : MonoBehaviour {
 		{
 			Destroy (gameObject);
 		}
+		ReduceDamageWithRange ();
+		Debug.Log ("Bullet damage = " + damage);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{
 		if (coll.gameObject.tag == "Platforms")
 		{
+			Instantiate (impactEffect, transform.position, transform.rotation);
 			Destroy (gameObject);
 		}
 
 		if (coll.gameObject.tag == "Door" && !coll.gameObject.GetComponent<Door> ().isOpen) 
 		{
+			Instantiate (impactEffect, transform.position, transform.rotation);
 			Destroy (gameObject);
 		}
 
@@ -61,6 +69,8 @@ public class Bullet : MonoBehaviour {
 
 		if (coll.gameObject.tag == "Enemy")
 		{
+//			GameObject impact = Instantiate (impactEffect, transform.position, transform.rotation) as GameObject;
+//			impact.transform.SetParent (coll.transform);
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
 		}
 	}
@@ -69,6 +79,14 @@ public class Bullet : MonoBehaviour {
 	public void ReduceDamage()
 	{
 		damage -= damageFalloff * maxDamage; //-15%
+		if (damage <= 0)
+			Destroy (gameObject);
+	}
+
+	//Reduces damage using a value multiplied by delta time.
+	public void ReduceDamageWithRange()
+	{
+		damage -= rangeDamageFallOff * maxDamage * Time.deltaTime;
 		if (damage <= 0)
 			Destroy (gameObject);
 	}

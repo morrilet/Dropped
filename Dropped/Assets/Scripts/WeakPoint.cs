@@ -31,7 +31,7 @@ public class WeakPoint : Entity
 		{
 			health -= other.gameObject.GetComponent<Bullet> ().damage / 2f;
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.075f, .025f);
-			GameManager.instance.Sleep (2);
+			GameManager.instance.Sleep (other.gameObject.GetComponent<Bullet>().sleepFramesOnHit);
 		}
 
 		if (other.gameObject.tag == "Corpse") 

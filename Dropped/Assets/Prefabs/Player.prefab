@@ -206,12 +206,13 @@ MonoBehaviour:
   playerKnockBack: 8
   corpseKnockBack: 12
   sleepFramesOnHit: 3
+  rangeDamageFallOff: 0.6
   bulletOffset: {x: 0.37, y: 0.06}
   muzzleFlashOffset: {x: 0.44, y: 0.06}
   bulletSpeed: 18
   bulletSpeedDeviation: 0.3
   maxRange: 15
-  maxDamage: 5
+  maxDamage: 6.5
   damageFalloff: 0.5
 --- !u!114 &11448838
 MonoBehaviour:
@@ -277,16 +278,17 @@ MonoBehaviour:
   rotationDeviation: 2
   bulletPrefab: {fileID: 118666, guid: 2473cc459ee1f9d4abfc1120d139ef03, type: 2}
   muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
-  fireRate: 0.5
+  fireRate: 0.3
   playerKnockBack: 10
   corpseKnockBack: 8
   sleepFramesOnHit: 4
+  rangeDamageFallOff: 0.7
   bulletOffset: {x: 0.11, y: 0.045}
   muzzleFlashOffset: {x: 0.22, y: 0.045}
   bulletSpeed: 22
   bulletSpeedDeviation: 0.3
   maxRange: 10
-  maxDamage: 10
+  maxDamage: 11
   damageFalloff: 1
 --- !u!114 &11468344
 MonoBehaviour:
@@ -343,12 +345,13 @@ MonoBehaviour:
   playerKnockBack: 14
   corpseKnockBack: 12
   sleepFramesOnHit: 1
+  rangeDamageFallOff: 1.4
   bulletOffset: {x: 0.355, y: 0.025}
   muzzleFlashOffset: {x: 0.47, y: 0.025}
   bulletSpeed: 14
   bulletSpeedDeviation: 4
   maxRange: 8
-  maxDamage: 2
+  maxDamage: 3.2
   damageFalloff: 0.8
 --- !u!120 &12008872
 LineRenderer:

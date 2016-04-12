@@ -10,14 +10,18 @@ public class Gun : MonoBehaviour
 	[Range(1, int.MaxValue)]
 	public int bulletsPerShot;//Amount of bullets in a shot (for shotguns mostly)
 	[Range(1, int.MaxValue)]
-	public int shotsPerBurst; //Amount of times Shoot() is called per input (overrriden if isAuto = true)
-	public float rotationDeviation;//Innacuracy of gun 
+	public int shotsPerBurst; //Amount of times Shoot() is called per input (overrriden if isAuto == true)
+	public float rotationDeviation;//Innacuracy of gun
 	public GameObject bulletPrefab; //Insert different bullet prefabs here for different guns
 	public GameObject muzzleFlashPrefab;//Insert your preffered muzzle flash here
 	public float fireRate; //Fire rate of this gun (lower = faster!)
 	public float playerKnockBack; //Pushback on player when fired
 	public float corpseKnockBack; //Amount corpse go flying on enemy death
 	public float sleepFramesOnHit; //Amount of sleep frames when the bullet hits an enemy
+	public float rangeDamageFallOff; //Ratio of damage lost as bullet travels
+//	public float clipSize; //Shots per clip
+//	float ammoInClip;
+//	public float reloadTime; //Time it takes to reload
 
 	public Vector2 bulletOffset;//Controls origin point of bullet
 
@@ -97,6 +101,7 @@ public class Gun : MonoBehaviour
 			bullet.GetComponent<Bullet> ().damageFalloff = damageFalloff;
 			bullet.GetComponent<Bullet> ().corpseKnockback = corpseKnockBack;
 			bullet.GetComponent<Bullet> ().sleepFramesOnHit = sleepFramesOnHit;
+			bullet.GetComponent<Bullet> ().rangeDamageFallOff = rangeDamageFallOff;
 
 			if (isFlamethrower)
 				bullet.transform.SetParent (this.transform);
