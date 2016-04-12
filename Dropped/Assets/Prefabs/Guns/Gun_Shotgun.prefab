@@ -45,10 +45,13 @@ MonoBehaviour:
   bulletsPerShot: 8
   shotsPerBurst: 0
   rotationDeviation: 16
-  bulletPrefab: {fileID: 104414, guid: ff0a033fb330ab14fad0810cdd515215, type: 2}
+  bulletPrefab: {fileID: 118666, guid: 2473cc459ee1f9d4abfc1120d139ef03, type: 2}
   muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
   fireRate: 0.8
   playerKnockBack: 0.15
+  corpseKnockBack: 0
+  sleepFramesOnHit: 0
+  rangeDamageFallOff: 0
   bulletOffset: {x: 0.28, y: 0.055}
   muzzleFlashOffset: {x: 0.28, y: 0.055}
   bulletSpeed: 14
@@ -117,6 +120,10 @@ Prefab:
       propertyPath: m_SortingLayerID
       value: -457241561
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 118666, guid: 2473cc459ee1f9d4abfc1120d139ef03, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124950}
