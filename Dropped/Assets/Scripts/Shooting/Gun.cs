@@ -17,13 +17,15 @@ public class Gun : MonoBehaviour
 	public float sleepFramesOnHit; //Amount of sleep frames when the bullet hits an enemy
 
 	public int clipSize; //Shots per clip
-	int ammoInClip;
+	[HideInInspector]
+	public int ammoInClip;
 	[HideInInspector]
 	public int bulletsSpentFromCurrentClip;
 	public float reloadTime; //Time it takes to reload
 	float reloadCount;
 	[HideInInspector]
 	public bool isReloading;
+	int bulletsToLoad;
 
 	//Offsets
 	public Vector2 bulletOffset;//Controls origin point of bullet
@@ -69,7 +71,7 @@ public class Gun : MonoBehaviour
 		if (isReloading && reloadCount >= reloadTime)
 		{
 			isReloading = false;
-			ammoInClip = clipSize;
+			ammoInClip += bulletsToLoad;
 		}
 
 		bulletsSpentFromCurrentClip = clipSize - ammoInClip;
@@ -134,8 +136,9 @@ public class Gun : MonoBehaviour
 		}
 	}
 
-	public void Reload()
+	public void Reload(int bulletsAvailableToLoad)
 	{
+		bulletsToLoad = bulletsAvailableToLoad;
 		isReloading = true;
 		AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
 		reloadCount = 0;

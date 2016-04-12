@@ -212,19 +212,22 @@ public class Player : Entity
 			machineGun.SetActive (true);
 			shotGun.SetActive (false);
 			pistol.SetActive (false);
-			activeGun = machineGun.GetComponent<Gun>();
+			activeGun = machineGun.GetComponent<Gun> ();
+			playerAmmo.machineGunAmmo.ammountInClip = activeGun.ammoInClip;
 			break;
 		case CurrentGun.Shotgun:
 			machineGun.SetActive (false);
 			shotGun.SetActive (true);
 			pistol.SetActive (false);
-			activeGun = shotGun.GetComponent<Gun>();
+			activeGun = shotGun.GetComponent<Gun> ();
+			playerAmmo.shotgunAmmo.ammountInClip = activeGun.ammoInClip;
 			break;
 		case CurrentGun.Pistol:
 			machineGun.SetActive (false);
 			shotGun.SetActive (false);
 			pistol.SetActive (true);
-			activeGun = pistol.GetComponent<Gun>();
+			activeGun = pistol.GetComponent<Gun> ();
+			playerAmmo.pistolAmmo.ammountInClip = activeGun.ammoInClip;
 			break;
 		}
 
@@ -370,15 +373,21 @@ public class Player : Entity
 				{
 				case CurrentGun.MachineGun:
 					if (playerAmmo.machineGunAmmo.currentAmmo >= activeGun.bulletsSpentFromCurrentClip)
-						ReloadActiveGun ();
+						ReloadActiveGun (-activeGun.bulletsSpentFromCurrentClip);
+					else if (playerAmmo.machineGunAmmo.currentAmmo > 0)
+						ReloadActiveGun (-playerAmmo.machineGunAmmo.currentAmmo);
 					break;
 				case CurrentGun.Shotgun:
 					if (playerAmmo.shotgunAmmo.currentAmmo >= activeGun.bulletsSpentFromCurrentClip)
-						ReloadActiveGun ();
+						ReloadActiveGun (-activeGun.bulletsSpentFromCurrentClip);
+					else if (playerAmmo.shotgunAmmo.currentAmmo > 0)
+						ReloadActiveGun (-playerAmmo.shotgunAmmo.currentAmmo);
 					break;
 				case CurrentGun.Pistol:
 					if (playerAmmo.pistolAmmo.currentAmmo >= activeGun.bulletsSpentFromCurrentClip)
-						ReloadActiveGun ();
+						ReloadActiveGun (-activeGun.bulletsSpentFromCurrentClip);
+					else if (playerAmmo.pistolAmmo.currentAmmo > 0)
+						ReloadActiveGun (-playerAmmo.pistolAmmo.currentAmmo);
 					break;
 				}
 			}
@@ -430,7 +439,7 @@ public class Player : Entity
 		case CurrentGun.None:
 			break;
 		case CurrentGun.MachineGun:
-			if (playerAmmo.machineGunAmmo.currentAmmo > 0) 
+			if (activeGun.ammoInClip > 0) 
 			{
 				activeGun.Shoot ();
 			} 
@@ -441,7 +450,7 @@ public class Player : Entity
 			}
 			break;
 		case CurrentGun.Shotgun:
-			if (playerAmmo.shotgunAmmo.currentAmmo > 0) 
+			if (activeGun.ammoInClip > 0) 
 			{
 				activeGun.Shoot ();
 			}
@@ -452,7 +461,7 @@ public class Player : Entity
 			}
 			break;
 		case CurrentGun.Pistol:
-			if (playerAmmo.pistolAmmo.currentAmmo > 0) 
+			if (activeGun.ammoInClip > 0) 
 			{
 				activeGun.Shoot ();
 			}
@@ -465,19 +474,19 @@ public class Player : Entity
 		}
 	}
 
-	void ReloadActiveGun()
+	void ReloadActiveGun(int ammoModifier)
 	{
-		activeGun.Reload ();
+		activeGun.Reload (-ammoModifier);
 		switch (currentGun)
 		{
 		case CurrentGun.MachineGun:
-			playerAmmo.machineGunAmmo.ModifyAmmo (-activeGun.bulletsSpentFromCurrentClip);
+			playerAmmo.machineGunAmmo.ModifyAmmo (ammoModifier);
 			break;
 		case CurrentGun.Shotgun:
-			playerAmmo.shotgunAmmo.ModifyAmmo (-activeGun.bulletsSpentFromCurrentClip);
+			playerAmmo.shotgunAmmo.ModifyAmmo (ammoModifier);
 			break;
 		case CurrentGun.Pistol:
-			playerAmmo.pistolAmmo.ModifyAmmo (-activeGun.bulletsSpentFromCurrentClip);
+			playerAmmo.pistolAmmo.ModifyAmmo (ammoModifier);
 			break;
 		}
 	}
@@ -535,6 +544,7 @@ public class Player : Entity
 
 	public struct AmmoType
 	{
+		public int ammountInClip;
 		public int maxAmmo;
 		public int currentAmmo;
 

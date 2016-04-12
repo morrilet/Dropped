@@ -47,9 +47,9 @@ public class GUI : Singleton<GUI>
 			grabGunText.enabled = false;
 		}
 
-		pistolAmmoText.text = "Pistol Ammo: " + player.playerAmmo.pistolAmmo.currentAmmo + " / " + player.playerAmmo.pistolAmmo.maxAmmo;
-		shotGunAmmoText.text = "Shotgun Ammo: " + player.playerAmmo.shotgunAmmo.currentAmmo + " / " + player.playerAmmo.shotgunAmmo.maxAmmo;
-		machineGunAmmoText.text = "MachineGun Ammo: " + player.playerAmmo.machineGunAmmo.currentAmmo + " / " + player.playerAmmo.machineGunAmmo.maxAmmo;
+		pistolAmmoText.text = "Pistol Ammo: " + player.playerAmmo.pistolAmmo.ammountInClip + " / " + player.playerAmmo.pistolAmmo.currentAmmo;
+		shotGunAmmoText.text = "Shotgun Ammo: " + player.playerAmmo.shotgunAmmo.ammountInClip + " / " + player.playerAmmo.shotgunAmmo.currentAmmo;
+		machineGunAmmoText.text = "MachineGun Ammo: " + player.playerAmmo.machineGunAmmo.ammountInClip+ " / " + player.playerAmmo.machineGunAmmo.currentAmmo;
 		grabGunText.text = "Press E to pick up " + weaponPickupYield + ".";
 
 	}

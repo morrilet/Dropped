@@ -240,8 +240,8 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11450846, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
-      propertyPath: clipSize
-      value: 6
+      propertyPath: reloadTime
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
