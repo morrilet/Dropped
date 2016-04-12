@@ -97,6 +97,10 @@ MonoBehaviour:
   damage: 5
   maxDamage: 0
   damageFalloff: 0
+  corpseKnockback: 0
+  sleepFramesOnHit: 0
+  rangeDamageFallOff: 0
+  impactEffect: {fileID: 114012, guid: 518d9df5d6001ae498917e79f2bea35f, type: 2}
   startPos: {x: 0, y: 0, z: 0}
 --- !u!212 &21289302
 SpriteRenderer:
@@ -147,6 +151,10 @@ Prefab:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: impactEffect
+      value: 
+      objectReference: {fileID: 114012, guid: 518d9df5d6001ae498917e79f2bea35f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 118666}

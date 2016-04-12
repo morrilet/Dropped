@@ -22,6 +22,8 @@ public class Bullet : MonoBehaviour {
 	[HideInInspector]
 	public float rangeDamageFallOff;
 
+	public GameObject impactEffect;
+
 	public Vector3 startPos;
 
 	void Start()
@@ -47,11 +49,13 @@ public class Bullet : MonoBehaviour {
 	{
 		if (coll.gameObject.tag == "Platforms")
 		{
+			Instantiate (impactEffect, transform.position, transform.rotation);
 			Destroy (gameObject);
 		}
 
 		if (coll.gameObject.tag == "Door" && !coll.gameObject.GetComponent<Door> ().isOpen) 
 		{
+			Instantiate (impactEffect, transform.position, transform.rotation);
 			Destroy (gameObject);
 		}
 
@@ -65,6 +69,8 @@ public class Bullet : MonoBehaviour {
 
 		if (coll.gameObject.tag == "Enemy")
 		{
+//			GameObject impact = Instantiate (impactEffect, transform.position, transform.rotation) as GameObject;
+//			impact.transform.SetParent (coll.transform);
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
 		}
 	}
