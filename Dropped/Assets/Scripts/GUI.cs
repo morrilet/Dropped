@@ -20,7 +20,7 @@ public class GUI : Singleton<GUI>
 
 	void Awake()
 	{
-		isPersistant = true;
+		isPersistant = false;
 
 		base.Awake ();
 	}
