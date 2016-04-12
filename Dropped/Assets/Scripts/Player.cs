@@ -367,7 +367,7 @@ public class Player : Entity
 
 		if (activeGun != null)
 		{
-			if(Input.GetButtonDown("Reload"))
+			if(Input.GetButtonDown("Reload") && !activeGun.isReloading && activeGun.ammoInClip != activeGun.clipSize)
 			{
 				switch (currentGun)
 				{
