@@ -55,6 +55,7 @@ public class Gun : MonoBehaviour
 		fireRateCount = fireRate;
 		defaultKickBackOffset = new Vector3 (-.10f, 0, 0);
 		defaultPositionOffset = (transform.position - transform.parent.position);
+		defaultPositionOffset.x *= transform.parent.GetComponent<Player> ().direction;
 		reloadCount = reloadTime;
 		ammoInClip = clipSize;
 		isReloading = false;
