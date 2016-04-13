@@ -42,7 +42,7 @@ public class Bullet : MonoBehaviour {
 			Destroy (gameObject);
 		}
 		ReduceDamageWithRange ();
-		Debug.Log ("Bullet damage = " + damage);
+//		Debug.Log ("Bullet damage = " + damage);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)

@@ -21,7 +21,6 @@ public class FadingForegroundWall : MonoBehaviour
 	{
 		float startingAlpha = GetComponent<SpriteRenderer> ().color.a;
 
-		Debug.Log ("Coroutine successfully called");
 		for (float i = 0; i < duration; i += Time.deltaTime)
 		{
 			float durationPercentage = i / duration;

@@ -8,6 +8,9 @@ public class GameManager : Singleton<GameManager>
 	public Player.CurrentGun playerStoredGun;
 	public float playerStoredHealth;
 	public GameObject player;
+	public GameObject level;
+	bool timeSlowed;
+	float timeSlowedCounter;
 
 	public override void Awake()
 	{
@@ -20,6 +23,8 @@ public class GameManager : Singleton<GameManager>
 	{
 		if (player == null)
 			player = GameObject.FindGameObjectWithTag ("Player");
+		if (level == null)
+			level = GameObject.FindGameObjectWithTag ("Level");
 
 		playerStoredAmmo.machineGunAmmo.maxAmmo = 50;
 		playerStoredAmmo.machineGunAmmo.Refill ();
@@ -30,12 +35,30 @@ public class GameManager : Singleton<GameManager>
 		playerStoredHealth = player.GetComponent<Player> ().maxHealth;
 		playerStoredGun = Player.CurrentGun.None;
 
+		timeSlowed = false;
+		timeSlowedCounter = 0;
+
 		AudioManager.instance.PlayMusic ("Ethan Game");
 	}
 
 	void Update ()
 	{
 		HandleInput ();
+		if (level.GetComponent<Level> ().enemies.Count == 0 && level.GetComponent<Level> ().preEnemies.Count != 0)
+		{
+			Debug.Log ("That's all folks.");
+			StopCoroutine ("ApplySleep");
+			Time.timeScale = 1;
+			timeSlowed = true;
+			timeSlowedCounter = 0;
+			StartCoroutine (LerpTimeScale (.2f, .05f));
+		}
+
+		if (timeSlowedCounter >= 2 && timeSlowed)
+			StartCoroutine (LerpTimeScale (1f, .4f));
+
+
+		timeSlowedCounter += Time.deltaTime / Time.timeScale;
 	}
 
 	void HandleInput()
@@ -43,6 +66,10 @@ public class GameManager : Singleton<GameManager>
 		if (Input.GetKeyDown (KeyCode.Return))
 		{
 			RestartLevel ();
+		}
+		if (Input.GetKeyDown (KeyCode.Home))
+		{
+			StartCoroutine (LerpTimeScale (.2f, 2f));
 		}
 	}
 
@@ -61,18 +88,30 @@ public class GameManager : Singleton<GameManager>
 
 	public void Sleep(float framesOfSleep)
 	{
-		StartCoroutine (ApplySleep (framesOfSleep));
+		StartCoroutine ("ApplySleep", framesOfSleep);
 	}
 
 	public IEnumerator ApplySleep (float framesOfSleep) //For small pauses to help the game feel better
 	{
+		float storedTimeScale = Time.timeScale;
+
 		for (int i = 0; i < framesOfSleep; i++)
 		{
 			if (i < framesOfSleep - 1)
 				Time.timeScale = 0f;
 			else
-				Time.timeScale = 1f;
+				Time.timeScale = storedTimeScale;
+			yield return null;
+		}
+	}
 
+	public IEnumerator LerpTimeScale(float value, float duration)
+	{
+		float startingTimeScale = Time.timeScale;
+
+		for (float i = 0; i < duration; i += Time.deltaTime / Time.timeScale)
+		{
+			Time.timeScale = Mathf.Lerp (startingTimeScale, value, i / duration);
 			yield return null;
 		}
 	}

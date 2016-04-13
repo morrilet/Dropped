@@ -309,7 +309,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 804848572}
     m_Modifications:
     - target: {fileID: 462196, guid: 725c4e16549c6104b8b5a5b49378354a, type: 2}
       propertyPath: m_LocalPosition.x

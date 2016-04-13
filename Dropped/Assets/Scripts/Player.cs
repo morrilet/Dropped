@@ -277,12 +277,12 @@ public class Player : Entity
 
 		horizontalAxisPrev = Input.GetAxisRaw ("Horizontal");
 
-		if (playerInfo.JustJumped)
-			Debug.Log ("JustJumped");
-		if (playerInfo.JustLanded)
-			Debug.Log ("JustLanded");
-		if (playerInfo.JustFell)
-			Debug.Log ("JustFell");
+//		if (playerInfo.JustJumped)
+//			Debug.Log ("JustJumped");
+//		if (playerInfo.JustLanded)
+//			Debug.Log ("JustLanded");
+//		if (playerInfo.JustFell)
+//			Debug.Log ("JustFell");
 		playerInfo.Reset ();
 
 	}

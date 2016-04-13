@@ -133,7 +133,7 @@ public class Gun : MonoBehaviour
 				(transform.parent.GetComponent<Player>().controller.collisions.below)?transform.GetComponentInParent<Player>().accelerationTimeGrounded:transform.GetComponentInParent<Player>().accelerationTimeAirborne * 2f);
 
 			transform.parent.GetComponent<Player>().controller.Move(knockBackVelocity * Time.deltaTime);
-			Debug.Log (knockBackVelocity.x);
+//			Debug.Log (knockBackVelocity.x);
 		}
 	}
 
