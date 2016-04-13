@@ -66,8 +66,8 @@ public class GameManager : Singleton<GameManager>
 		if (timeSlowedCounter >= 2 && timeSlowed)
 			StartCoroutine (LerpTimeScale (1f, .4f));
 
-
-		timeSlowedCounter += Time.deltaTime / Time.timeScale;
+		if(!isPaused)
+			timeSlowedCounter += Time.deltaTime / Time.timeScale;
 	}
 
 	void HandleInput()
