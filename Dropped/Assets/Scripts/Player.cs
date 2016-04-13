@@ -149,8 +149,8 @@ public class Player : Entity
 			Application.LoadLevel(Application.loadedLevel);
 		}
 
-		//Don't apply gravity if we're on the ground or on a ladder.
-		if(controller.collisions.above || controller.collisions.below || ladder != null)
+		//Don't apply gravity if we're on the ground or on a ladder or the game is paused.
+		if(controller.collisions.above || controller.collisions.below || ladder != null || GameManager.instance.isPaused)
 		{
 			velocity.y = 0;
 		}
@@ -256,7 +256,7 @@ public class Player : Entity
 			ladderExitTimer = 0f;
 		}
 
-		if (grapplingEnemies.Count > 0) 
+		if (grapplingEnemies.Count > 0 && !GameManager.instance.isPaused) 
 		{
 			if (corpseCarried != null)
 				DropCorpse ();

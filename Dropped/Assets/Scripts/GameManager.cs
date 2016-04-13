@@ -10,7 +10,10 @@ public class GameManager : Singleton<GameManager>
 	public GameObject player;
 	public GameObject level;
 	bool timeSlowed;
+	
 	float timeSlowedCounter;
+	public bool isPaused;
+	public bool isPausedPrev;
 
 	public override void Awake()
 	{
@@ -37,6 +40,8 @@ public class GameManager : Singleton<GameManager>
 
 		timeSlowed = false;
 		timeSlowedCounter = 0;
+
+		isPaused = false;
 
 		AudioManager.instance.PlayMusic ("Ethan Game");
 	}
@@ -70,6 +75,20 @@ public class GameManager : Singleton<GameManager>
 		if (Input.GetKeyDown (KeyCode.Home))
 		{
 			StartCoroutine (LerpTimeScale (.2f, 2f));
+		}
+
+		if (Input.GetKeyDown (KeyCode.Escape)) 
+		{
+			if (!isPaused) 
+			{
+				PauseMenu.instance.PauseGame ();
+				isPaused = true;
+			} 
+			else 
+			{
+				PauseMenu.instance.UnpauseGame ();
+				isPaused = false;
+			}
 		}
 	}
 

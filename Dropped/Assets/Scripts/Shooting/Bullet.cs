@@ -35,7 +35,8 @@ public class Bullet : MonoBehaviour {
 
 	void Update () 
 	{
-		transform.position += bulletSpeed * transform.right * Time.deltaTime;
+		if(!GameManager.instance.isPaused)
+			transform.position += bulletSpeed * transform.right * Time.deltaTime;
 
 		if (maxRange <= Mathf.Abs(startPos.x - transform.position.x))
 		{

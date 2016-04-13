@@ -12,6 +12,7 @@ TagManager:
   - Gun
   - Enemy
   - Door
+  - Ragdoll
   layers:
   - Default
   - TransparentFX
