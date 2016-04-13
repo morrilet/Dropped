@@ -55,7 +55,6 @@ public class GameManager : Singleton<GameManager>
 		if(level != null)
 			if (level.GetComponent<Level> ().enemies.Count == 0 && level.GetComponent<Level> ().preEnemies.Count != 0)
 			{
-				Debug.Log ("That's all folks.");
 				StopCoroutine ("ApplySleep");
 				Time.timeScale = 1;
 				timeSlowed = true;
@@ -64,7 +63,10 @@ public class GameManager : Singleton<GameManager>
 			}
 
 		if (timeSlowedCounter >= 2 && timeSlowed)
+		{
+			timeSlowed = false;
 			StartCoroutine (LerpTimeScale (1f, .4f));
+		}
 
 		if(!isPaused)
 			timeSlowedCounter += Time.deltaTime / Time.timeScale;
@@ -78,7 +80,9 @@ public class GameManager : Singleton<GameManager>
 		}
 		if (Input.GetKeyDown (KeyCode.Home))
 		{
-			StartCoroutine (LerpTimeScale (.2f, 2f));
+			StartCoroutine (LerpTimeScale (.2f, .05f));
+			timeSlowed = true;
+			timeSlowedCounter = 0;
 		}
 
 		if (Input.GetKeyDown (KeyCode.Escape)) 
