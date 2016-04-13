@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 [RequireComponent (typeof (Controller2D))]
 [RequireComponent (typeof (JumpAbility))] //The player will always have the ability to jump.
@@ -272,6 +273,7 @@ public class Player : Entity
 			canBeGrabbed = true;
 			grabSafeTimer = 0f;
 		}
+		grapplingEnemies = grapplingEnemies.Where (Enemy => Enemy != null).ToList (); //Remove null elements from the list.
 
 		controller.Move (velocity * Time.deltaTime);
 

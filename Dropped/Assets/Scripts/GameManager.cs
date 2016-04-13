@@ -48,16 +48,20 @@ public class GameManager : Singleton<GameManager>
 
 	void Update ()
 	{
+		if (SceneManager.GetActiveScene().name == "MainMenu")
+			Destroy (instance.gameObject);
+
 		HandleInput ();
-		if (level.GetComponent<Level> ().enemies.Count == 0 && level.GetComponent<Level> ().preEnemies.Count != 0)
-		{
-			Debug.Log ("That's all folks.");
-			StopCoroutine ("ApplySleep");
-			Time.timeScale = 1;
-			timeSlowed = true;
-			timeSlowedCounter = 0;
-			StartCoroutine (LerpTimeScale (.2f, .05f));
-		}
+		if(level != null)
+			if (level.GetComponent<Level> ().enemies.Count == 0 && level.GetComponent<Level> ().preEnemies.Count != 0)
+			{
+				Debug.Log ("That's all folks.");
+				StopCoroutine ("ApplySleep");
+				Time.timeScale = 1;
+				timeSlowed = true;
+				timeSlowedCounter = 0;
+				StartCoroutine (LerpTimeScale (.2f, .05f));
+			}
 
 		if (timeSlowedCounter >= 2 && timeSlowed)
 			StartCoroutine (LerpTimeScale (1f, .4f));
@@ -112,7 +116,9 @@ public class GameManager : Singleton<GameManager>
 
 	public IEnumerator ApplySleep (float framesOfSleep) //For small pauses to help the game feel better
 	{
-		float storedTimeScale = Time.timeScale;
+		float storedTimeScale = 1f;
+		if(timeSlowed)
+			storedTimeScale = Time.timeScale;
 
 		for (int i = 0; i < framesOfSleep; i++)
 		{
