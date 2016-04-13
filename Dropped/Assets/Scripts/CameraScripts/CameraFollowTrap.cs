@@ -47,7 +47,7 @@ public class CameraFollowTrap : MonoBehaviour
 		}
 
 		CalculateExtendedTrapBounds ();
-		if(!movementOverridden)
+		if(!movementOverridden && !GameManager.instance.isPaused)
 			FollowTrap ();
 		CalculateCameraSides ();
 		BindCameraToLevel ();

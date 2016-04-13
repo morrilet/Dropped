@@ -8,6 +8,8 @@ public class GameManager : Singleton<GameManager>
 	public Player.CurrentGun playerStoredGun;
 	public float playerStoredHealth;
 	public GameObject player;
+	public bool isPaused;
+	public bool isPausedPrev;
 
 	public override void Awake()
 	{
@@ -30,6 +32,8 @@ public class GameManager : Singleton<GameManager>
 		playerStoredHealth = player.GetComponent<Player> ().maxHealth;
 		playerStoredGun = Player.CurrentGun.None;
 
+		isPaused = false;
+
 		AudioManager.instance.PlayMusic ("Ethan Game");
 	}
 
@@ -43,6 +47,20 @@ public class GameManager : Singleton<GameManager>
 		if (Input.GetKeyDown (KeyCode.Return))
 		{
 			RestartLevel ();
+		}
+
+		if (Input.GetKeyDown (KeyCode.Escape)) 
+		{
+			if (!isPaused) 
+			{
+				PauseMenu.instance.PauseGame ();
+				isPaused = true;
+			} 
+			else 
+			{
+				PauseMenu.instance.UnpauseGame ();
+				isPaused = false;
+			}
 		}
 	}
 

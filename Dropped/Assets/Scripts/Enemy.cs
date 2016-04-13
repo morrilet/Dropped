@@ -96,7 +96,7 @@ public class Enemy : Entity
 
 		if (controller.coll.IsTouching (player.controller.coll) || isGrapplingPlayer) 
 		{
-			if (attackTimer >= attackRate) 
+			if (attackTimer >= attackRate && !GameManager.instance.isPaused) 
 			{
 				if(player.canBeGrabbed)
 				{
