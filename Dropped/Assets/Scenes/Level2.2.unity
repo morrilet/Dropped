@@ -2880,7 +2880,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 142986, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11411980, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: muzzleFlashOffset.x
@@ -2888,7 +2888,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 136684, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 476634, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2913,6 +2913,10 @@ Prefab:
     - target: {fileID: 11450846, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
       propertyPath: bulletOffset.y
       value: 0.045
+      objectReference: {fileID: 0}
+    - target: {fileID: 118646, guid: c441d4929eab7534385eb7a353f07dab, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c441d4929eab7534385eb7a353f07dab, type: 2}

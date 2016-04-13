@@ -16,9 +16,14 @@ public class Gun : MonoBehaviour
 	public float corpseKnockBack; //Amount corpse go flying on enemy death
 	public float sleepFramesOnHit; //Amount of sleep frames when the bullet hits an enemy
 
-//	public float clipSize; //Shots per clip
-//	float ammoInClip;
-//	public float reloadTime; //Time it takes to reload
+	public int clipSize; //Shots per clip
+	int ammoInClip;
+	[HideInInspector]
+	public int bulletsSpentFromCurrentClip;
+	public float reloadTime; //Time it takes to reload
+	float reloadCount;
+	[HideInInspector]
+	public bool isReloading;
 
 	//Offsets
 	public Vector2 bulletOffset;//Controls origin point of bullet
@@ -48,14 +53,26 @@ public class Gun : MonoBehaviour
 		fireRateCount = fireRate;
 		defaultKickBackOffset = new Vector3 (-.10f, 0, 0);
 		defaultPositionOffset = (transform.position - transform.parent.position);
+		reloadCount = reloadTime;
+		ammoInClip = clipSize;
+		isReloading = false;
 	}
 
 	void Update()
 	{
 		fireRateCount += Time.deltaTime;
+		if (isReloading)
+			reloadCount += Time.deltaTime;
 		defaultPos = transform.parent.position + new Vector3(defaultPositionOffset.x * transform.parent.GetComponent<Player>().direction, defaultPositionOffset.y, defaultPositionOffset.z);
 		if (!isKnockingBack)
 			transform.position = defaultPos;
+		if (isReloading && reloadCount >= reloadTime)
+		{
+			isReloading = false;
+			ammoInClip = clipSize;
+		}
+
+		bulletsSpentFromCurrentClip = clipSize - ammoInClip;
 
 		kickBackOffset = defaultKickBackOffset * transform.parent.GetComponent<Player> ().direction;
 	}
@@ -63,7 +80,7 @@ public class Gun : MonoBehaviour
 	//Shoots the gun. Returns true if a shot was fired.
 	public bool Shoot()
 	{
-		if (fireRateCount >= fireRate) 
+		if (fireRateCount >= fireRate && ammoInClip > 0 && !isReloading) 
 		{
 			AudioManager.instance.PlaySoundEffectVariation ("Ethan_Gunshot", .9f, 1.1f);
 
@@ -72,6 +89,7 @@ public class Gun : MonoBehaviour
 			StartCoroutine (KickBack ());
 			InstantiateShot (bulletsPerShot);
 			fireRateCount = 0;
+			ammoInClip -= 1;
 			return true;
 		}
 		return false;
@@ -116,6 +134,13 @@ public class Gun : MonoBehaviour
 		}
 	}
 
+	public void Reload()
+	{
+		isReloading = true;
+		AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
+		reloadCount = 0;
+	}
+
 	IEnumerator KickBack()
 	{
 		float duration = 0;
@@ -137,6 +162,8 @@ public class Gun : MonoBehaviour
 		}
 		isKnockingBack = false;
 	}
+
+
 
 	void OnDrawGizmos()
 	{
