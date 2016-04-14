@@ -1,17 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class Corpse : MonoBehaviour 
 {
 	Player player;
 
-	GameObject upperTorso;
-	GameObject lowerTorso;
+	[HideInInspector]
+	public GameObject upperTorso;
+	[HideInInspector]
+	public GameObject lowerTorso;
 	HingeJoint2D hingeJoint;
 	Vector2 initialAngleLimits;
 
 	[HideInInspector]
 	public bool isCarried;
+
+	public List<Corpse> touchingCorpses; //A list of corpses that this corpse is currently touching.
 
 	//Stored physics values for the upper torso to be used during pausing.
 	Vector2 upperTorsoStoredVelocity;
@@ -33,6 +39,8 @@ public class Corpse : MonoBehaviour
 		lowerTorso = transform.FindChild ("LowerTorso").gameObject;
 		hingeJoint = lowerTorso.GetComponent<HingeJoint2D> ();
 		initialAngleLimits = new Vector2 (hingeJoint.limits.min, hingeJoint.limits.max);
+
+		touchingCorpses = new List<Corpse> ();
 	}
 
 	void Update()
@@ -66,6 +74,35 @@ public class Corpse : MonoBehaviour
 			lowerTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
 			lowerTorso.layer = LayerMask.NameToLayer ("Obstacle");
 		}
+	}
+
+	public List<Corpse> GetTouchingCorpses()
+	{
+		List<Corpse> tempCorpsesTouching = new List<Corpse> ();
+		List<Corpse> corpsesInScene = new List<Corpse> ();
+
+		GameObject[] tempCorpseObjectsInScene = GameObject.FindGameObjectsWithTag ("Ragdoll");
+		for (int i = 0; i < tempCorpseObjectsInScene.Length; i++) 
+		{
+			corpsesInScene.Add (tempCorpseObjectsInScene [i].GetComponent<Corpse> ());
+		}
+
+		for(int i = 0; i < corpsesInScene.Count; i++)
+		{
+			if (!corpsesInScene [i].Equals (this.GetComponent<Corpse> ())) 
+			{
+				if (upperTorso.GetComponent<Collider2D> ().IsTouching (corpsesInScene [i].upperTorso.GetComponent<Collider2D> ())
+				   || upperTorso.GetComponent<Collider2D> ().IsTouching (corpsesInScene [i].lowerTorso.GetComponent<Collider2D> ()))
+					tempCorpsesTouching.Add (corpsesInScene [i]);
+				
+				if (lowerTorso.GetComponent<Collider2D> ().IsTouching (corpsesInScene [i].upperTorso.GetComponent<Collider2D> ())
+				   || lowerTorso.GetComponent<Collider2D> ().IsTouching (corpsesInScene [i].lowerTorso.GetComponent<Collider2D> ()))
+					tempCorpsesTouching.Add (corpsesInScene [i]);
+			}
+		}
+
+		tempCorpsesTouching.Add (this.GetComponent<Corpse> ());
+		return tempCorpsesTouching.Distinct().ToList();
 	}
 
 	public void PauseCorpsePhysics()

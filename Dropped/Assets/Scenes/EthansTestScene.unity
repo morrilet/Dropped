@@ -936,7 +936,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 159858, guid: 1b58d1b3e70f184449ab1f130c8367d0, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b58d1b3e70f184449ab1f130c8367d0, type: 2}
@@ -1271,6 +1271,46 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b58d1b3e70f184449ab1f130c8367d0, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1431208913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1431208915}
+  - 114: {fileID: 1431208914}
+  m_Layer: 0
+  m_Name: CorpsePiler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1431208914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1431208913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29c880e1a6d95247bb45dd750910c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pilesInScene: []
+--- !u!4 &1431208915
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1431208913}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.41071162, y: 2.8989964, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1001 &1509246035
 Prefab:
   m_ObjectHideFlags: 0
@@ -1563,6 +1603,10 @@ Prefab:
     - target: {fileID: 159858, guid: 1b58d1b3e70f184449ab1f130c8367d0, type: 2}
       propertyPath: m_Name
       value: Enemy (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 159858, guid: 1b58d1b3e70f184449ab1f130c8367d0, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b58d1b3e70f184449ab1f130c8367d0, type: 2}
