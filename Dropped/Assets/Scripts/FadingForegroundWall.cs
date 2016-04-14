@@ -4,11 +4,15 @@ using System.Collections;
 public class FadingForegroundWall : MonoBehaviour
 {
 	float duration;
+	bool isFaded;
+	bool isFading;
 
 	// Use this for initialization
 	void Start ()
 	{
 		duration = .5f;
+		isFaded = false;
+		isFading = true;
 	}
 	
 	// Update is called once per frame
@@ -20,6 +24,7 @@ public class FadingForegroundWall : MonoBehaviour
 	IEnumerator Fade (float fadeToValue)
 	{
 		float startingAlpha = GetComponent<SpriteRenderer> ().color.a;
+		isFading = true;
 
 		for (float i = 0; i < duration; i += Time.deltaTime)
 		{
@@ -44,6 +49,7 @@ public class FadingForegroundWall : MonoBehaviour
 	{
 		if (coll.transform.tag == "Player") {
 			Debug.Log ("Called coroutine");
+			isFaded = true;
 			StartCoroutine (Fade (0f));
 		}
 	}

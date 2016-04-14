@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/EthansTestScene.unity
+=======
+- path: Assets/Scenes/Level1.1.unity
+>>>>>>> refs/remotes/origin/master
   isLoaded: 1
   isActive: 1

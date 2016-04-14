@@ -141,8 +141,10 @@ public class Player : Entity
 		}
 
 		if (GetComponent<Player> ().velocity.x != 0 && canMove)
-			direction = Mathf.Sign (velocity.x);
-
+		{
+			if(activeGun == null || !activeGun.isStrafing)
+				direction = Mathf.Sign (velocity.x);
+		}
 		//Just for now, so that at least SOMETHING happens.
 		//In the future make a die method.
 		if(!isAlive)
