@@ -12,7 +12,7 @@ public class FadingForegroundWall : MonoBehaviour
 	{
 		duration = .5f;
 		isFaded = false;
-		isFading = true;
+		isFading = false;
 	}
 	
 	// Update is called once per frame
@@ -49,7 +49,7 @@ public class FadingForegroundWall : MonoBehaviour
 	{
 		if (coll.transform.tag == "Player") {
 			Debug.Log ("Called coroutine");
-			isFaded = true;
+			isFading = true;
 			StartCoroutine (Fade (0f));
 		}
 	}

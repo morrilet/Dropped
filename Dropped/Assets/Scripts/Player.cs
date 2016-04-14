@@ -59,6 +59,8 @@ public class Player : Entity
 
 	float horizontalAxisPrev;
 
+	bool isStrafing;
+
 	public enum CurrentGun
 	{
 		None,
@@ -142,7 +144,7 @@ public class Player : Entity
 
 		if (GetComponent<Player> ().velocity.x != 0 && canMove)
 		{
-			if(activeGun == null || !activeGun.isStrafing)
+			if(!isStrafing)
 				direction = Mathf.Sign (velocity.x);
 		}
 		//Just for now, so that at least SOMETHING happens.
@@ -396,6 +398,11 @@ public class Player : Entity
 				}
 			}
 		}
+
+		if (Input.GetButton ("Strafe"))
+			isStrafing = true;
+		else
+			isStrafing = false;
 	}
 
 	void EscapeGrapple()

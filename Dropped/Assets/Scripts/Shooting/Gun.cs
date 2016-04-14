@@ -3,12 +3,6 @@ using System.Collections;
 
 public class Gun : MonoBehaviour
 {
-	//Player data
-	[HideInInspector]
-	public bool isStrafing;
-	public float strafeTime;
-	float strafeCounter;
-
 	//Gun data
 	public bool isAuto; //True for full auto, false for semi auto or burst.
 	[Range(1, int.MaxValue)]
@@ -64,13 +58,11 @@ public class Gun : MonoBehaviour
 		reloadCount = reloadTime;
 		ammoInClip = clipSize;
 		isReloading = false;
-		isStrafing = false;
 	}
 
 	void Update()
 	{
 		fireRateCount += Time.deltaTime;
-		strafeCounter += Time.deltaTime;
 		if (isReloading)
 			reloadCount += Time.deltaTime;
 		defaultPos = transform.parent.position + new Vector3(defaultPositionOffset.x * transform.parent.GetComponent<Player>().direction, defaultPositionOffset.y, defaultPositionOffset.z);
@@ -81,8 +73,6 @@ public class Gun : MonoBehaviour
 			isReloading = false;
 			ammoInClip += bulletsToLoad;
 		}
-		if (isStrafing && strafeCounter > strafeTime)
-			isStrafing = false;
 
 		bulletsSpentFromCurrentClip = clipSize - ammoInClip;
 
@@ -100,8 +90,6 @@ public class Gun : MonoBehaviour
 				StopCoroutine (KickBack());
 			StartCoroutine (KickBack ());
 			InstantiateShot (bulletsPerShot);
-			isStrafing = true;
-			strafeCounter = 0;
 			fireRateCount = 0;
 			ammoInClip -= 1;
 			return true;
