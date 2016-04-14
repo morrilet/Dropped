@@ -125,7 +125,7 @@ public class Enemy : Entity
 		if (canMove)
 			controller.Move (velocity * Time.deltaTime);
 
-		if (isFlashingWhite && colorCounter > .1f)
+		if (isFlashingWhite && colorCounter > .018f)
 		{
 			isFlashingWhite = false;
 			GetComponent<SpriteRenderer> ().color = baseColor;
@@ -143,7 +143,7 @@ public class Enemy : Entity
 			health -= other.gameObject.GetComponent<Bullet> ().damage;
 			other.gameObject.GetComponent<Bullet>().ReduceDamage ();
 			GameManager.instance.Sleep (other.gameObject.GetComponent<Bullet>().sleepFramesOnHit);
-			FlashWhite ();
+			HitFlash ();
 			if (health <= 0)
 				Die (other.gameObject.GetComponent<Bullet> ());
 		}
@@ -166,10 +166,11 @@ public class Enemy : Entity
 		canMove = true;
 	}
 
-	void FlashWhite()
+	void HitFlash()
 	{
-		GetComponent<SpriteRenderer> ().color = Color.white;
+		GetComponent<SpriteRenderer> ().color = new Color (25, 25, 25);
 		isFlashingWhite = true;
+		colorCounter = 0;
 	}
 
 	#region AIModes
