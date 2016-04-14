@@ -45,6 +45,9 @@ public class Corpse : MonoBehaviour
 
 	void Update()
 	{
+		touchingCorpses = new List<Corpse> ();
+		touchingCorpses = GetTouchingCorpses ();
+
 		JointAngleLimits2D limits = new JointAngleLimits2D();
 		if (isCarried) //Behaviour for if the corpse is carried or not.
 		{
@@ -78,6 +81,7 @@ public class Corpse : MonoBehaviour
 
 	public List<Corpse> GetTouchingCorpses()
 	{
+		//touchingCorpses = new List<Corpse> ();
 		List<Corpse> tempCorpsesTouching = new List<Corpse> ();
 		List<Corpse> corpsesInScene = new List<Corpse> ();
 
@@ -92,12 +96,34 @@ public class Corpse : MonoBehaviour
 			if (!corpsesInScene [i].Equals (this.GetComponent<Corpse> ())) 
 			{
 				if (upperTorso.GetComponent<Collider2D> ().IsTouching (corpsesInScene [i].upperTorso.GetComponent<Collider2D> ())
-				   || upperTorso.GetComponent<Collider2D> ().IsTouching (corpsesInScene [i].lowerTorso.GetComponent<Collider2D> ()))
-					tempCorpsesTouching.Add (corpsesInScene [i]);
+				    || upperTorso.GetComponent<Collider2D> ().IsTouching (corpsesInScene [i].lowerTorso.GetComponent<Collider2D> ())) 
+				{
+					//tempCorpsesTouching.Add (corpsesInScene [i]);
+					tempCorpsesTouching.AddRange (corpsesInScene [i].touchingCorpses);
+					tempCorpsesTouching = tempCorpsesTouching.Distinct ().ToList ();
+				} 
+				else 
+				{
+					for (int j = 0; j < corpsesInScene [i].touchingCorpses.Count; j++) 
+					{
+						tempCorpsesTouching.Remove (corpsesInScene [i]);
+					}
+				}
 				
 				if (lowerTorso.GetComponent<Collider2D> ().IsTouching (corpsesInScene [i].upperTorso.GetComponent<Collider2D> ())
 				   || lowerTorso.GetComponent<Collider2D> ().IsTouching (corpsesInScene [i].lowerTorso.GetComponent<Collider2D> ()))
-					tempCorpsesTouching.Add (corpsesInScene [i]);
+				{
+						//tempCorpsesTouching.Add (corpsesInScene [i]);
+						tempCorpsesTouching.AddRange(corpsesInScene[i].touchingCorpses);
+						tempCorpsesTouching = tempCorpsesTouching.Distinct ().ToList ();
+				}
+				else 
+				{
+					for (int j = 0; j < corpsesInScene [i].touchingCorpses.Count; j++) 
+					{
+						tempCorpsesTouching.Remove (corpsesInScene [i]);
+					}
+				}
 			}
 		}
 

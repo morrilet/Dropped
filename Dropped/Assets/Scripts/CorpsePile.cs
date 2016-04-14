@@ -8,7 +8,7 @@ public class CorpsePile : MonoBehaviour
 	List<Corpse> corpsesInScene;
 	public List<Pile> pilesInScene;
 
-	void Update()
+	void FixedUpdate()
 	{
 		GameObject[] tempCorpseObjectsInScene = GameObject.FindGameObjectsWithTag ("Ragdoll");
 		corpsesInScene = new List<Corpse> ();
@@ -16,8 +16,9 @@ public class CorpsePile : MonoBehaviour
 		{
 			corpsesInScene.Add (tempCorpseObjectsInScene[i].GetComponent<Corpse>());
 		}
+
 		pilesInScene = GetPiles ();
-		pilesInScene = RefinePiles (pilesInScene, 0);
+		//pilesInScene = RefinePiles (pilesInScene, 0);
 
 		Debug.Log (pilesInScene.Count);
 	}
@@ -25,7 +26,6 @@ public class CorpsePile : MonoBehaviour
 	List<Pile> GetPiles()
 	{
 		List<Pile> tempPiles = new List<Pile> ();
-		List<Corpse> tempCorpses = new List<Corpse>();
 
 		for (int i = 0; i < corpsesInScene.Count; i++) 
 		{
@@ -36,6 +36,7 @@ public class CorpsePile : MonoBehaviour
 			tempPiles.Add (pile);
 		}
 
+		tempPiles = RefinePiles (tempPiles, 0);
 		return tempPiles;
 		//return RefinePiles (tempPiles, 0);
 	}
@@ -44,66 +45,39 @@ public class CorpsePile : MonoBehaviour
 	{
 		bool pilesRefined = true;
 		iterationCount += 1;
-
-		/*
-		if(pilesToRefine.Count != 0)
-		for (int i = pilesToRefine.Count - 1; i > 0; i--) 
+			
+		if (pilesToRefine.Count != 0)
 		{
-			for (int j = pilesToRefine.Count - 1; j > 0; j--) 
+			Pile[] tempPiles = pilesToRefine.ToArray ();
+			
+			for (int pile1 = 0; pile1 < tempPiles.Length; pile1++) 
 			{
-				if (!pilesToRefine [i].Equals (pilesToRefine [j])) 
+				for (int pile2 = 0; pile2 < tempPiles.Length; pile2++) 
 				{
-					for (int x = pilesToRefine[i].corpsesInPile.Count - 1; x > 0; x--) 
+					if (!tempPiles[pile1].Equals (tempPiles[pile2])) 
 					{
-						for (int y = pilesToRefine[j].corpsesInPile.Count - 1; y > 0; y--) 
+						if (ComparePiles (tempPiles[pile1], tempPiles[pile2])) 
 						{
-							if (pilesToRefine [i].corpsesInPile [x].Equals (pilesToRefine [j].corpsesInPile [y])) 
-							{
-								pilesToRefine [i].corpsesInPile.AddRange (pilesToRefine [j].corpsesInPile);
-								pilesToRefine.Remove (pilesToRefine [j]);
-							} 
-							else 
-							{
-								pilesRefined = false;
-							}
-						}
-					}
-				}
-			}
-		}
-		*/
+							List<Corpse> newPile1Corpses = new List<Corpse> ();
+							newPile1Corpses.AddRange (tempPiles[pile1].GetCorpsesInPile());
+							newPile1Corpses = newPile1Corpses.Where (Corpse => Corpse != null).ToList ();
+							newPile1Corpses = newPile1Corpses.Distinct ().ToList ();
 
-		foreach(Pile pile in pilesToRefine.ToArray()) 
-		{
-			if (pile.GetCorpsesInPile().Count < 2)
-			{
-				//Debug.Log (pile.corpsesInPile.Count);
-				//pilesToRefine.Remove (pile);
-			}
-		}
+							List<Corpse> newPile2Corpses = new List<Corpse> ();
+							newPile2Corpses.AddRange (tempPiles[pile2].GetCorpsesInPile ());
+							newPile2Corpses = newPile2Corpses.Where (Corpse => Corpse != null).ToList ();
+							newPile2Corpses = newPile2Corpses.Distinct ().ToList ();
 
-		if (pilesToRefine.Count != 0) 
-		{
-			foreach (Pile pile1 in pilesToRefine.ToArray()) 
-			{
-				foreach (Pile pile2 in pilesToRefine.ToArray()) 
-				{
-					if (!pile1.Equals (pile2)) 
-					{
-						if (ComparePiles (pile1, pile2)) 
-						{
-							List<Corpse> newPileCorpses = new List<Corpse> ();
-							newPileCorpses.AddRange (pile1.GetCorpsesInPile());
-							newPileCorpses.AddRange (pile2.GetCorpsesInPile());
-							newPileCorpses = newPileCorpses.Where (Corpse => Corpse != null).ToList ();
-							newPileCorpses = newPileCorpses.Distinct ().ToList ();
+							newPile1Corpses.AddRange (tempPiles[pile2].GetCorpsesInPile());
+							//newPile1Corpses = newPile1Corpses.Where (Corpse => Corpse != null).ToList ();
+							newPile1Corpses = newPile1Corpses.Distinct ().ToList ();
 
-							pile1.SetCorpsesInPile (newPileCorpses);
+							tempPiles[pile1].SetCorpsesInPile (newPile1Corpses);
 
-							//Debug.Log (pile1.GetCorpsesInPile().Count);
-							//Debug.Log (pile2.corpsesInPile.Count);
+							//Debug.Log (tempPiles[pile1].GetCorpsesInPile().Count + " in pile " + tempPiles[pile1].ToString());
+							//Debug.Log (pile2.GetCorpsesInPile().Count);
 
-							pilesToRefine.Remove (pile2);
+							pilesToRefine.Remove(tempPiles[pile2]); //remove pile2
 							pilesRefined = false;
 						}
 					}
@@ -111,19 +85,21 @@ public class CorpsePile : MonoBehaviour
 			}
 		}
 
-		//if (!pilesRefined && iterationCount > 100)
-			//return RefinePiles (pilesToRefine, iterationCount);
-		//else
+		if (!pilesRefined)// && iterationCount > 100)
+			return RefinePiles (pilesToRefine, iterationCount);
+		else
 			return pilesToRefine;
 	}
 
 	bool ComparePiles(Pile pile1, Pile pile2) //Returns true if there are overlapping corpse elements in the piles.
 	{
 		bool pilesHaveSameCorpse = false;
-		foreach (Corpse pile1Ragdoll in pile1.GetCorpsesInPile().ToArray()) 
+		foreach (Corpse pile1Ragdoll in pile1.GetCorpsesInPile()) 
 		{
-			foreach (Corpse pile2Ragdoll in pile2.GetCorpsesInPile().ToArray()) 
+			//pile1Ragdoll.touchingCorpses = pile1Ragdoll.GetTouchingCorpses ();
+			foreach (Corpse pile2Ragdoll in pile2.GetCorpsesInPile()) 
 			{
+				//pile2Ragdoll.touchingCorpses = pile2Ragdoll.GetTouchingCorpses ();
 				if (pile1Ragdoll.Equals (pile2Ragdoll))
 					pilesHaveSameCorpse = true;
 			}
@@ -139,7 +115,7 @@ public class CorpsePile : MonoBehaviour
 	[System.Serializable]
 	public struct Pile
 	{
-		List<Corpse> corpsesInPile;
+		public List<Corpse> corpsesInPile;
 		PolygonCollider2D collider;
 
 		public List<Corpse> GetCorpsesInPile()
