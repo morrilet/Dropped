@@ -538,6 +538,19 @@ public class Player : Entity
 		corpseCarried = null;
 	}
 
+	public bool IsTouchingCorpse()
+	{
+		GameObject[] corpses = GameObject.FindGameObjectsWithTag ("Corpse");
+		for (int i = 0; i < corpses.Length; i++) 
+		{
+			if (controller.coll.IsTouching (corpses [i].GetComponent<Collider2D> ())) 
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
 	#region Custom Data
 	public struct PlayerAmmo
 	{
