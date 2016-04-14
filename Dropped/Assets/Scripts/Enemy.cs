@@ -17,6 +17,10 @@ public class Enemy : Entity
 
 	public GameObject corpsePrefab;
 
+	Color baseColor;
+	float colorCounter;
+	bool isFlashingWhite;
+
 	float attackRate;
 	float attackTimer;
 	float attackDamage;
@@ -45,6 +49,10 @@ public class Enemy : Entity
 		enemyAIMode = EnemyAIMode.walkLeftRightOnPlatform;
 		velocity = Vector3.zero;
 		velocity.x = speed;
+
+		baseColor = GetComponent<SpriteRenderer> ().color;
+		colorCounter = 0;
+		isFlashingWhite = false;
 
 		attackRate = 1.5f;
 		attackTimer = attackRate;
@@ -117,6 +125,14 @@ public class Enemy : Entity
 		if (canMove)
 			controller.Move (velocity * Time.deltaTime);
 
+		if (isFlashingWhite && colorCounter > .1f)
+		{
+			isFlashingWhite = false;
+			GetComponent<SpriteRenderer> ().color = baseColor;
+		}
+
+		colorCounter += Time.deltaTime;
+		
 		enemyInfo.Reset ();
 	}
 
@@ -127,6 +143,7 @@ public class Enemy : Entity
 			health -= other.gameObject.GetComponent<Bullet> ().damage;
 			other.gameObject.GetComponent<Bullet>().ReduceDamage ();
 			GameManager.instance.Sleep (other.gameObject.GetComponent<Bullet>().sleepFramesOnHit);
+			FlashWhite ();
 			if (health <= 0)
 				Die (other.gameObject.GetComponent<Bullet> ());
 		}
@@ -147,6 +164,12 @@ public class Enemy : Entity
 			yield return null;
 		}
 		canMove = true;
+	}
+
+	void FlashWhite()
+	{
+		GetComponent<SpriteRenderer> ().color = Color.white;
+		isFlashingWhite = true;
 	}
 
 	#region AIModes
