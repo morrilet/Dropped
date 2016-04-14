@@ -29,11 +29,11 @@ public class GameManager : Singleton<GameManager>
 		if (level == null)
 			level = GameObject.FindGameObjectWithTag ("Level");
 
-		playerStoredAmmo.machineGunAmmo.maxAmmo = 50;
+		playerStoredAmmo.machineGunAmmo.maxAmmo = 60;
 		playerStoredAmmo.machineGunAmmo.Refill ();
-		playerStoredAmmo.shotgunAmmo.maxAmmo = 25;
+		playerStoredAmmo.shotgunAmmo.maxAmmo = 16;
 		playerStoredAmmo.shotgunAmmo.Refill ();
-		playerStoredAmmo.pistolAmmo.maxAmmo = 30;
+		playerStoredAmmo.pistolAmmo.maxAmmo = 20;
 		playerStoredAmmo.pistolAmmo.Refill ();
 		playerStoredHealth = player.GetComponent<Player> ().maxHealth;
 		playerStoredGun = Player.CurrentGun.None;
