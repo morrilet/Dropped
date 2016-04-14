@@ -13,6 +13,8 @@ public class Corpse : MonoBehaviour
 	[HideInInspector]
 	public bool isCarried;
 
+	GameObject[] outlines;
+
 	//Stored physics values for the upper torso to be used during pausing.
 	Vector2 upperTorsoStoredVelocity;
 	float upperTorsoStroredAngularVelocity;
@@ -33,6 +35,11 @@ public class Corpse : MonoBehaviour
 		lowerTorso = transform.FindChild ("LowerTorso").gameObject;
 		hingeJoint = lowerTorso.GetComponent<HingeJoint2D> ();
 		initialAngleLimits = new Vector2 (hingeJoint.limits.min, hingeJoint.limits.max);
+
+		outlines = new GameObject[2];
+		outlines [0] = upperTorso.transform.FindChild ("Outline").gameObject;
+		outlines [1] = lowerTorso.transform.FindChild ("Outline").gameObject;
+		SetOutline (false);
 	}
 
 	void Update()
@@ -65,6 +72,14 @@ public class Corpse : MonoBehaviour
 
 			lowerTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
 			lowerTorso.layer = LayerMask.NameToLayer ("Obstacle");
+		}
+	}
+
+	public void SetOutline(bool outlineEnabled) //true if outline on, false if outline off.
+	{
+		for (int i = 0; i < outlines.Length; i++) 
+		{
+			outlines [i].SetActive (outlineEnabled);
 		}
 	}
 
