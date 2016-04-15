@@ -29,7 +29,7 @@ TagManager:
   - Player
   - Foreground
   - Semi_Obstacle
-  - 
+  - Ragdoll
   - 
   - 
   - 
@@ -47,11 +47,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Background
     uniqueID: 430318895
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Ladder
     uniqueID: 460011057
@@ -67,4 +67,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1424110809
+    locked: 0
+  - name: New Layer
+    uniqueID: 3875817229
     locked: 0

@@ -9,7 +9,7 @@ public class Level : MonoBehaviour
 	public float yMin, yMax;
 
 	public List<GameObject> enemies;
-	public List<GameObject> preEnemies;
+	public List<GameObject> enemiesPrev;
 
 	void Start()
 	{
@@ -20,7 +20,7 @@ public class Level : MonoBehaviour
 
 	void Update()
 	{
-		preEnemies = enemies;
+		enemiesPrev = enemies;
 		enemies = enemies.Where (gameObject => gameObject != null).ToList();	
 	}
 

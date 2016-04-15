@@ -172,8 +172,8 @@ public class Enemy : Entity
 
 		for (int i = 0; i < corpse.transform.childCount; i++) 
 		{
-			Debug.Log ("Enemies left = " + GameManager.instance.level.GetComponent<Level> ().enemies.Count);
-			Debug.Log ("Previous enemies left = " + GameManager.instance.level.GetComponent<Level> ().preEnemies.Count);
+			//Debug.Log ("Enemies left = " + GameManager.instance.level.GetComponent<Level> ().enemies.Count);
+			//Debug.Log ("Previous enemies left = " + GameManager.instance.level.GetComponent<Level> ().enemiesPrev.Count);
 			corpse.transform.GetChild (i).GetComponent<Rigidbody2D> ().isKinematic = false;
 			if (GameManager.instance.level.GetComponent<Level> ().enemies.Count > 1) {
 				corpse.transform.GetChild (i).GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2 (bullet.corpseKnockback, 0f)

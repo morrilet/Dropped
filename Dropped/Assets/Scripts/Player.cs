@@ -317,21 +317,26 @@ public class Player : Entity
 		{
 			if (corpseCarried == null)
 			{
-				GameObject[] corpses = GameObject.FindGameObjectsWithTag ("Corpse");
-				for (int i = 0; i < corpses.Length; i++) 
-				{
-					if (controller.coll.IsTouching (corpses [i].GetComponent<Collider2D> ())) 
-					{
-						PickupCorpse (corpses [i]);
-						break;
-					}
-				}
+				if(GetTouchingCorpse() != null)
+				PickupCorpse (GetTouchingCorpse ());
+				//GameObject[] corpses = GameObject.FindGameObjectsWithTag ("Corpse");
+				//for (int i = 0; i < corpses.Length; i++) 
+				//{
+					//if (controller.coll.IsTouching (corpses [i].GetComponent<Collider2D> ())) 
+					//{
+						//PickupCorpse (corpses [i]);
+						//break;
+					//}
+				//}
 			} 
 			else 
 			{
 				throwingCorpse = true;
 			}
 		}
+
+		if (GetTouchingCorpse() != null && corpseCarried == null)
+			GetTouchingCorpse ().transform.parent.GetComponent<Corpse> ().SetOutline (true);
 
 		if (Input.GetButtonUp ("Action") && throwingCorpse) 
 		{
@@ -505,6 +510,7 @@ public class Player : Entity
 	void PickupCorpse(GameObject corpse)
 	{
 		corpseCarried = corpse.transform.parent.gameObject;
+		corpseCarried.GetComponent<Corpse> ().SetOutline (false);
 		corpseCarried.GetComponent<Corpse> ().isCarried = true;
 		//corpseCarried.transform.position = transform.position + new Vector3(0, 1, 0);
 		//corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = true;
@@ -538,17 +544,23 @@ public class Player : Entity
 		corpseCarried = null;
 	}
 
-	public bool IsTouchingCorpse()
+	public GameObject GetTouchingCorpse() //Returns the corpse segment we're touching.
 	{
+		GameObject FirstCorpseTouching = null;
 		GameObject[] corpses = GameObject.FindGameObjectsWithTag ("Corpse");
-		for (int i = 0; i < corpses.Length; i++) 
+		for (int i = 0; i < corpses.Length; i++)
 		{
-			if (controller.coll.IsTouching (corpses [i].GetComponent<Collider2D> ())) 
+			if (controller.coll.IsTouching (corpses [i].GetComponent<Collider2D> ()))
 			{
-				return true;
+				if (FirstCorpseTouching == null)
+					FirstCorpseTouching = corpses [i].gameObject;
+			} 
+			else 
+			{
+				corpses [i].transform.parent.GetComponent<Corpse> ().SetOutline (false);
 			}
 		}
-		return false;
+		return FirstCorpseTouching;
 	}
 
 	#region Custom Data

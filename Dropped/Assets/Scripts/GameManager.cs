@@ -53,7 +53,7 @@ public class GameManager : Singleton<GameManager>
 
 		HandleInput ();
 		if(level != null)
-			if (level.GetComponent<Level> ().enemies.Count == 0 && level.GetComponent<Level> ().preEnemies.Count != 0)
+			if (level.GetComponent<Level> ().enemies.Count == 0 && level.GetComponent<Level> ().enemiesPrev.Count != 0)
 			{
 				StopCoroutine ("ApplySleep");
 				Time.timeScale = 1;

@@ -34,7 +34,7 @@ public class GunPickup : MonoBehaviour
 	void OnTriggerStay2D(Collider2D coll)
 	{
 		if (coll.gameObject.tag == "Player" && Input.GetButtonDown("Action") && GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().corpseCarried == null &&
-			!GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().IsTouchingCorpse() && GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().corpseCarried == null) 
+			!GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().GetTouchingCorpse() && GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().corpseCarried == null) 
 		{
 			AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
 			switch (pickUpGun) 
@@ -59,13 +59,13 @@ public class GunPickup : MonoBehaviour
 				break;
 			}
 		}
-		if (coll.gameObject.tag == "Player" && !coll.GetComponent<Player> ().IsTouchingCorpse ())
+		if (coll.gameObject.tag == "Player" && coll.GetComponent<Player> ().GetTouchingCorpse () == null)
 			GUI.instance.grabGunText.enabled = true;
 
 		if (coll.gameObject.tag == "Player" && coll.GetComponent<Player> ().corpseCarried == null)
 			GUI.instance.grabGunText.enabled = true;
 
-		if (coll.gameObject.tag == "Player" && coll.GetComponent<Player> ().IsTouchingCorpse ())
+		if (coll.gameObject.tag == "Player" && coll.GetComponent<Player> ().GetTouchingCorpse ())
 			GUI.instance.grabGunText.enabled = false;
 		
 		if (coll.gameObject.tag == "Player" && coll.GetComponent<Player> ().corpseCarried != null)
