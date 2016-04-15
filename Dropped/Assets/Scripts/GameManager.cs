@@ -145,15 +145,13 @@ public class GameManager : Singleton<GameManager>
 		}
 	}
 
-	public void FlashWhite(SpriteRenderer sprite, float duration)
+	public void FlashWhite(SpriteRenderer sprite, float duration, Color baseColor)
 	{
-		StartCoroutine(ApplyFlashWhite(sprite, duration));
+		StartCoroutine(ApplyFlashWhite(sprite, duration, baseColor));
 	}
 
-	IEnumerator ApplyFlashWhite(SpriteRenderer sprite, float duration)
+	IEnumerator ApplyFlashWhite(SpriteRenderer sprite, float duration, Color baseColor)
 	{
-		Color baseColor = sprite.color;
-
 			for (float i = 0; i < duration; i += Time.deltaTime) 
 			{	
 				if(sprite != null)

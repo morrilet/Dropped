@@ -15,6 +15,8 @@ public class Enemy : Entity
 	[HideInInspector]
 	public EnemyInfo enemyInfo;
 
+	Color baseColor;
+
 	public GameObject corpsePrefab;
 
 	float attackRate;
@@ -45,6 +47,8 @@ public class Enemy : Entity
 		enemyAIMode = EnemyAIMode.walkLeftRightOnPlatform;
 		velocity = Vector3.zero;
 		velocity.x = speed;
+
+		baseColor = GetComponent<SpriteRenderer> ().color;
 
 		attackRate = 1.5f;
 		attackTimer = attackRate;
@@ -130,7 +134,7 @@ public class Enemy : Entity
 			if (health <= 0)
 				Die (other.gameObject.GetComponent<Bullet> ());
 
-			GameManager.instance.FlashWhite (this.GetComponent<SpriteRenderer>(), 0.018f);
+			GameManager.instance.FlashWhite (this.GetComponent<SpriteRenderer>(), 0.018f, baseColor);
 		}
 	}
 
@@ -187,7 +191,7 @@ public class Enemy : Entity
 					* GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
 			}
 
-			GameManager.instance.FlashWhite (corpse.transform.GetChild (i).GetComponent<SpriteRenderer> (), 0.018f);
+			GameManager.instance.FlashWhite (corpse.transform.GetChild (i).GetComponent<SpriteRenderer> (), 0.018f, baseColor);
 		}
 
 		Physics2D.IgnoreCollision (controller.coll, bullet.GetComponent<Collider2D> ());
