@@ -43,12 +43,14 @@ public class FadingForegroundWall : MonoBehaviour
 
 			yield return null;
 		}
+
+		isFading = false;
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{
-		if (coll.transform.tag == "Player") {
-			Debug.Log ("Called coroutine");
+		if (coll.transform.tag == "Player")
+		{
 			isFading = true;
 			StartCoroutine (Fade (0f));
 		}

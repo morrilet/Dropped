@@ -144,7 +144,7 @@ public class Player : Entity
 
 		if (GetComponent<Player> ().velocity.x != 0 && canMove)
 		{
-			if(!isStrafing)
+			if(!isStrafing && (int)velocity.x != 0)
 				direction = Mathf.Sign (velocity.x);
 		}
 		//Just for now, so that at least SOMETHING happens.
