@@ -521,6 +521,7 @@ public class Player : Entity
 	void DropCorpse()
 	{
 		corpseCarried.GetComponent<Corpse> ().isCarried = false;
+		throwingCorpse = false;
 		corpseCarried = null;
 	}
 
