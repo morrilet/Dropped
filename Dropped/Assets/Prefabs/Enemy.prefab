@@ -12,6 +12,8 @@ GameObject:
   - 61: {fileID: 6184050}
   - 114: {fileID: 11468714}
   - 114: {fileID: 11454678}
+  - 114: {fileID: 11411382}
+  - 114: {fileID: 11405084}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -45,6 +47,52 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
+--- !u!114 &11405084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba653ed92c0800a4cbae90ca7d445b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpHeight: 2
+  timeToJumpApex: 0.2
+  canJump: 0
+  countdownLeniency: 0
+--- !u!114 &11411382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23b67dd722a758140ad70f7c4e5a0233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 0
+  isAlive: 0
+  accelerationTimeAirborne: 0.2
+  accelerationTimeGrounded: 0.1
+  canMove: 0
+  gravity: 0
+  velocity: {x: 0, y: 0, z: 0}
+  controller: {fileID: 0}
+  jumpAbility: {fileID: 0}
+  corpseCarried: {fileID: 0}
+  throwingCorpse: 0
+  corpseThrowDirection: {x: 0, y: 0, z: 0}
+  corpseThrowForce: 0
+  direction: 0
+  currentGun: 0
+  grappleEscapeAttempt: 0
+  grapplingEnemies: []
+  grappleStrength: 0
+  canBeGrabbed: 0
 --- !u!114 &11454678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -163,6 +211,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Color.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: jumpHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timeToJumpApex
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

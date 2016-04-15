@@ -168,6 +168,10 @@ public class Enemy : Entity
 		if (enemyInfo.IsOnEdgeOfPlatform || enemyInfo.JustHitWall)
 			velocity.x *= -1f;
 	}
+
+	void JumpOverCorpse()
+	{
+	}
 	#endregion
 
 	void Die(Bullet bullet) //The bullet that killed us! DAMN YOU, BULLET!
