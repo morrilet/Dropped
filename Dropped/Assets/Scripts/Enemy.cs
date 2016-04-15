@@ -17,10 +17,6 @@ public class Enemy : Entity
 
 	public GameObject corpsePrefab;
 
-	Color baseColor;
-	float colorCounter;
-	bool isFlashingWhite;
-
 	float attackRate;
 	float attackTimer;
 	float attackDamage;
@@ -49,10 +45,6 @@ public class Enemy : Entity
 		enemyAIMode = EnemyAIMode.walkLeftRightOnPlatform;
 		velocity = Vector3.zero;
 		velocity.x = speed;
-
-		baseColor = GetComponent<SpriteRenderer> ().color;
-		colorCounter = 0;
-		isFlashingWhite = false;
 
 		attackRate = 1.5f;
 		attackTimer = attackRate;
@@ -124,14 +116,6 @@ public class Enemy : Entity
 
 		if (canMove)
 			controller.Move (velocity * Time.deltaTime);
-
-		if (isFlashingWhite && colorCounter > .018f)
-		{
-			isFlashingWhite = false;
-			GetComponent<SpriteRenderer> ().color = baseColor;
-		}
-
-		colorCounter += Time.deltaTime;
 		
 		enemyInfo.Reset ();
 	}
@@ -143,9 +127,10 @@ public class Enemy : Entity
 			health -= other.gameObject.GetComponent<Bullet> ().damage;
 			other.gameObject.GetComponent<Bullet>().ReduceDamage ();
 			GameManager.instance.Sleep (other.gameObject.GetComponent<Bullet>().sleepFramesOnHit);
-			HitFlash ();
 			if (health <= 0)
 				Die (other.gameObject.GetComponent<Bullet> ());
+
+			GameManager.instance.FlashWhite (this.GetComponent<SpriteRenderer>(), 0.018f);
 		}
 	}
 
@@ -164,13 +149,6 @@ public class Enemy : Entity
 			yield return null;
 		}
 		canMove = true;
-	}
-
-	void HitFlash()
-	{
-		GetComponent<SpriteRenderer> ().color = new Color (25, 25, 25);
-		isFlashingWhite = true;
-		colorCounter = 0;
 	}
 
 	#region AIModes
@@ -208,6 +186,8 @@ public class Enemy : Entity
 				corpse.transform.GetChild (i).GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2 (bullet.corpseKnockback * 2, 0f)
 					* GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
 			}
+
+			GameManager.instance.FlashWhite (corpse.transform.GetChild (i).GetComponent<SpriteRenderer> (), 0.018f);
 		}
 
 		Physics2D.IgnoreCollision (controller.coll, bullet.GetComponent<Collider2D> ());
