@@ -50,7 +50,10 @@ public class Bullet : MonoBehaviour {
 	{
 		if (coll.gameObject.tag == "Platforms")
 		{
-			Instantiate (impactEffect, transform.position, transform.rotation);
+//			Vector3 impactCollisionNormal = coll.contacts [0].normal;
+			GameObject impact = Instantiate (impactEffect, transform.position, transform.rotation) as GameObject;
+//			Vector3 impactCollisionNormalNormalized = impactCollisionNormal.normalized;
+//			impact.transform.rotation.eulerAngles = impactCollisionNormalNormalized;
 			Destroy (gameObject);
 		}
 
