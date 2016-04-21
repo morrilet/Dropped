@@ -23,6 +23,8 @@ public class ScrollingBackground : MonoBehaviour
 	float tilesInStartingPlacesTime;
 	float tilesInStartingPlacesCount;
 
+	float targetPositionX;
+
 	void Start()
 	{
 		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
@@ -60,6 +62,8 @@ public class ScrollingBackground : MonoBehaviour
 	void Update()
 	{
 		cameraPosition = mainCamera.transform.position;
+
+		targetPositionX = cameraPosition.x - cameraPositionPrev.x;
 
 		//Update the left and right positions as the camera changes position.
 		left = new Vector3 (mainCamera.transform.position.x - backgroundSize.x * 1.5f + .125f, transform.position.y, transform.position.z);
@@ -101,10 +105,14 @@ public class ScrollingBackground : MonoBehaviour
 		}
 
 		Vector3 position = bg.transform.position;
-		if (!scrollOnAwake)
-			position.x -= (cameraPosition.x - cameraPositionPrev.x) * scrollSpeed;
+		if (!scrollOnAwake) 
+		{
+			position.x -= targetPositionX * scrollSpeed;
+		}
 		else
+		{
 			position.x -= Time.deltaTime * scrollSpeed;
+		}
 		position.z = transform.position.z;
 		bg.transform.position = position;
 	}
