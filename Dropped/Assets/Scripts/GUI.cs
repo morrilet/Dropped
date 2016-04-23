@@ -18,7 +18,7 @@ public class GUI : Singleton<GUI>
 	public Text grabGunText;
 	public Text escapeGrabText;
 
-	void Awake()
+	public override void Awake()
 	{
 		isPersistant = false;
 
@@ -27,7 +27,7 @@ public class GUI : Singleton<GUI>
 
 	void Start()
 	{
-		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+		player = GameObject.Find ("Player").GetComponent<Player> ();
 
 		openDoorText.enabled = false;
 		grabAmmoText.enabled = false;

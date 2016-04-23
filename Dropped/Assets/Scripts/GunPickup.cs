@@ -33,8 +33,8 @@ public class GunPickup : MonoBehaviour
 
 	void OnTriggerStay2D(Collider2D coll)
 	{
-		if (coll.gameObject.tag == "Player" && Input.GetButtonDown("Action") && GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().corpseCarried == null &&
-			!GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().GetTouchingCorpse() && GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().corpseCarried == null) 
+		if (coll.gameObject.tag == "Player" && Input.GetButtonDown("Action") && GameObject.Find ("Player").GetComponent<Player>().corpseCarried == null &&
+			!GameObject.Find ("Player").GetComponent<Player>().GetTouchingCorpse() && GameObject.Find ("Player").GetComponent<Player>().corpseCarried == null) 
 		{
 			AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
 			switch (pickUpGun) 

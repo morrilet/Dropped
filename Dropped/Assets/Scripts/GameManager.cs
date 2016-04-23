@@ -25,7 +25,7 @@ public class GameManager : Singleton<GameManager>
 	public void Start()
 	{
 		if (player == null)
-			player = GameObject.FindGameObjectWithTag ("Player");
+			player = GameObject.Find ("Player");
 		if (level == null)
 			level = GameObject.FindGameObjectWithTag ("Level");
 

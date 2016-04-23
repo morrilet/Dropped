@@ -20,7 +20,7 @@ public class Door : MonoBehaviour
 	{
 		isOpen = false;
 
-		player = GameObject.FindGameObjectWithTag ("Player");
+		player = GameObject.Find ("Player").gameObject;
 
 		coll = GetComponent<Collider2D> ();
 

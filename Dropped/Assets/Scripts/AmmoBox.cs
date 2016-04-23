@@ -8,7 +8,7 @@ public class AmmoBox : MonoBehaviour
 
 	void Start()
 	{
-		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+		player = GameObject.Find ("Player").GetComponent<Player> ();
 		coll = GetComponent<Collider2D> ();
 	}
 

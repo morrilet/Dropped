@@ -17,7 +17,7 @@ public class DoorTrigger : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player") 
 		{
-			if (door.GetPlayerFacingDoor () && GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().corpseCarried == null)
+			if (door.GetPlayerFacingDoor () && GameObject.Find ("Player").GetComponent<Player>().corpseCarried == null)
 			{
 				GUI.instance.openDoorText.enabled = true;
 				if (Input.GetButtonDown("Action") && !door.GetPlayerInsideDoor ()) 
@@ -39,8 +39,8 @@ public class DoorTrigger : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player") 
 		{
-			if (door.GetPlayerFacingDoor () && GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().corpseCarried == null 
-				&& GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().GetTouchingCorpse() == null) 
+			if (door.GetPlayerFacingDoor () && GameObject.Find ("Player").GetComponent<Player>().corpseCarried == null 
+				&& GameObject.Find ("Player").GetComponent<Player>().GetTouchingCorpse() == null) 
 			{
 				GUI.instance.openDoorText.enabled = true;
 				if (Input.GetButtonDown("Action") && !door.GetPlayerInsideDoor ()) 

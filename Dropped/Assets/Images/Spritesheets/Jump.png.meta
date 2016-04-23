@@ -1,0 +1,449 @@
+fileFormatVersion: 2
+guid: 5d95f3f606f01624db4146c1887319dd
+timeCreated: 1461384872
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Jump_0
+    21300002: Jump_1
+    21300004: Jump_2
+    21300006: Jump_3
+    21300008: Jump_4
+    21300010: Jump_5
+    21300012: Jump_6
+    21300014: Jump_7
+    21300016: Jump_8
+    21300018: Jump_9
+    21300020: Jump_10
+    21300022: Jump_11
+    21300024: Jump_12
+    21300026: Jump_13
+    21300028: Jump_14
+    21300030: Jump_15
+    21300032: Jump_16
+    21300034: Jump_17
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 2
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Jump_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7548
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17, y: 43.309082}
+        - {x: 10, y: 46.309082}
+        - {x: -3, y: 46.309082}
+        - {x: -21, y: 24.309082}
+        - {x: -21, y: -16.690918}
+        - {x: -15, y: -41.690918}
+        - {x: -11, y: -42.690918}
+        - {x: 6, y: -42.690918}
+        - {x: 12, y: -31.690918}
+        - {x: 17, y: 3.309082}
+    - name: Jump_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7104
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: -20.709106}
+        - {x: -15, y: -44.709106}
+        - {x: 14, y: -44.709106}
+        - {x: 17, y: -40.709106}
+        - {x: 17, y: 44.290894}
+        - {x: 0, y: 44.290894}
+        - {x: -21, y: 24.290894}
+    - name: Jump_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6660
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16, y: 41.272705}
+        - {x: -7, y: 41.272705}
+        - {x: -21, y: 22.272705}
+        - {x: -21, y: -13.727295}
+        - {x: -16, y: -42.727295}
+        - {x: -13, y: -45.727295}
+        - {x: 9, y: -45.727295}
+        - {x: 12, y: -36.727295}
+        - {x: 18, y: -13.727295}
+        - {x: 18, y: 40.272705}
+    - name: Jump_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6216
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18, y: 38.254517}
+        - {x: 16, y: 39.254517}
+        - {x: -2, y: 39.254517}
+        - {x: -21, y: 10.254517}
+        - {x: -21, y: -40.745483}
+        - {x: -20, y: -44.745483}
+        - {x: -14, y: -46.745483}
+        - {x: 7, y: -46.745483}
+        - {x: 14, y: -42.745483}
+        - {x: 11, y: -22.745483}
+        - {x: 18, y: -14.745483}
+    - name: Jump_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5772
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2, y: 36.23633}
+        - {x: -21, y: 19.236328}
+        - {x: -21, y: -46.76367}
+        - {x: -18, y: -47.76367}
+        - {x: 19, y: -47.76367}
+        - {x: 19, y: 36.23633}
+    - name: Jump_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5328
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3, y: 34.21814}
+        - {x: -21, y: 14.21814}
+        - {x: -21, y: -45.78186}
+        - {x: -12, y: -48.78186}
+        - {x: 12, y: -48.78186}
+        - {x: 18, y: -47.78186}
+        - {x: 19, y: -43.78186}
+        - {x: 19, y: 34.21814}
+    - name: Jump_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4884
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 32.19995}
+        - {x: -2, y: 27.199951}
+        - {x: -21, y: 5.199951}
+        - {x: -21, y: -45.80005}
+        - {x: -16, y: -49.80005}
+        - {x: 8, y: -49.80005}
+        - {x: 20, y: -43.80005}
+        - {x: 20, y: 26.199951}
+        - {x: 15, y: 32.19995}
+    - name: Jump_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4440
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1, y: 35.181763}
+        - {x: -21, y: 17.181763}
+        - {x: -21, y: -43.818237}
+        - {x: -13, y: -47.818237}
+        - {x: 19, y: -47.818237}
+        - {x: 19, y: 35.181763}
+    - name: Jump_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3996
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3, y: 40.163635}
+        - {x: -21, y: 25.163635}
+        - {x: -21, y: -40.836365}
+        - {x: -19, y: -44.836365}
+        - {x: 18, y: -44.836365}
+        - {x: 19, y: -43.836365}
+        - {x: 19, y: 40.163635}
+    - name: Jump_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3552
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 45.145447}
+        - {x: -2, y: 45.145447}
+        - {x: -21, y: 22.145447}
+        - {x: -21, y: -24.854553}
+        - {x: -20, y: -35.854553}
+        - {x: -15, y: -41.854553}
+        - {x: 12, y: -41.854553}
+        - {x: 16, y: -37.854553}
+        - {x: 18, y: -13.854553}
+        - {x: 18, y: 43.145447}
+    - name: Jump_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3108
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: 50.12726}
+        - {x: -21, y: 30.127258}
+        - {x: -21, y: -25.872742}
+        - {x: -19, y: -37.87274}
+        - {x: 12, y: -37.87274}
+        - {x: 17, y: -20.872742}
+        - {x: 17, y: 50.12726}
+    - name: Jump_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2664
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3, y: -55.89093}
+        - {x: -3, y: -56.89093}
+        - {x: 11, y: -56.89093}
+        - {x: 11, y: -55.89093}
+        - {x: 8, y: -52.89093}
+        - {x: -2, y: -52.89093}
+      - - {x: 11, y: 55.10907}
+        - {x: -8, y: 55.10907}
+        - {x: -21, y: 36.10907}
+        - {x: -21, y: -28.89093}
+        - {x: -12, y: -34.89093}
+        - {x: 5, y: -34.89093}
+        - {x: 9, y: -30.89093}
+        - {x: 17, y: -3.8909302}
+        - {x: 17, y: 52.10907}
+    - name: Jump_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2220
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: -54.90912}
+        - {x: -4, y: -56.90912}
+        - {x: 14, y: -56.90912}
+        - {x: 13, y: -53.90912}
+        - {x: 7, y: -50.90912}
+        - {x: -2, y: -50.90912}
+      - - {x: -5, y: 57.09088}
+        - {x: -21, y: 34.09088}
+        - {x: -21, y: -29.909119}
+        - {x: -18, y: -30.909119}
+        - {x: 12, y: -30.909119}
+        - {x: 15, y: -28.909119}
+        - {x: 17, y: -13.909119}
+        - {x: 17, y: 57.09088}
+    - name: Jump_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1776
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2, y: -56.927277}
+        - {x: 13, y: -56.927277}
+        - {x: 13, y: -55.927277}
+        - {x: 12, y: -52.927277}
+        - {x: 1, y: -52.927277}
+        - {x: -2, y: -53.927277}
+      - - {x: -7, y: 57.072723}
+        - {x: -21, y: 41.072723}
+        - {x: -21, y: -25.927277}
+        - {x: -19, y: -29.927277}
+        - {x: 9, y: -29.927277}
+        - {x: 17, y: -18.927277}
+        - {x: 17, y: 54.072723}
+        - {x: 15, y: 57.072723}
+    - name: Jump_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1332
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6, y: 57.054535}
+        - {x: -21, y: 37.054535}
+        - {x: -21, y: -0.9454651}
+        - {x: -19, y: -22.945465}
+        - {x: -12, y: -30.945465}
+        - {x: 8, y: -30.945465}
+        - {x: 9, y: -22.945465}
+        - {x: 17, y: -1.9454651}
+        - {x: 17, y: 57.054535}
+    - name: Jump_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 888
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -1, y: 57.03636}
+        - {x: -2, y: 56.03636}
+        - {x: -20, y: 34.03636}
+        - {x: -20, y: -7.9636383}
+        - {x: -19, y: -23.963638}
+        - {x: -9, y: -31.963638}
+        - {x: 18, y: -31.963638}
+        - {x: 18, y: 57.03636}
+    - name: Jump_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 444
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2, y: 57.01818}
+        - {x: -20, y: 36.01818}
+        - {x: -20, y: -7.981819}
+        - {x: -18, y: -23.98182}
+        - {x: -8, y: -32.98182}
+        - {x: 11, y: -32.98182}
+        - {x: 20, y: -25.98182}
+        - {x: 20, y: 57.01818}
+    - name: Jump_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 165
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -1, y: -22}
+        - {x: -1, y: -26}
+        - {x: 5, y: -31}
+        - {x: 13, y: -33}
+        - {x: 15, y: -30}
+        - {x: 21, y: -7}
+        - {x: 21, y: 55}
+        - {x: 1, y: 55}
+        - {x: -20, y: 33}
+        - {x: -20, y: -3}
+        - {x: -17, y: -24}
+        - {x: -8, y: -34}
+        - {x: -4, y: -34}
+        - {x: 2, y: -31}
+        - {x: 0, y: -28}
+        - {x: -3, y: -24}
+        - {x: 0, y: -19}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
