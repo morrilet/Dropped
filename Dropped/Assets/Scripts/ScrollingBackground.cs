@@ -56,7 +56,7 @@ public class ScrollingBackground : MonoBehaviour
 		backgroundTile2.transform.localScale = newLocalScale;
 
 		tilesInStartingPlaces = false;
-		tilesInStartingPlacesTime = .5f;
+		tilesInStartingPlacesTime = 0f; //Was .5f, changed to incorporate alignment.
 	}
 
 	void Update()
@@ -74,6 +74,9 @@ public class ScrollingBackground : MonoBehaviour
 		ScrollBackground (backgroundTile1);
 		ScrollBackground (backgroundTile2);
 
+		//Now obsolete, we only really need the lines where we set background tile positions as alignment code
+		//does better job of removing seams than starting position timer. I'll remove this code when I'm sure alignment
+		//is working perfectly.
 		if (!tilesInStartingPlaces) 
 		{
 			if(tilesInStartingPlacesCount >= tilesInStartingPlacesTime)
@@ -83,6 +86,8 @@ public class ScrollingBackground : MonoBehaviour
 			backgroundTile2.transform.position = center;
 			tilesInStartingPlacesCount += Time.deltaTime;
 		}
+
+		AlignBackgroundTiles ();
 
 		cameraPositionPrev = cameraPosition;
 	}
@@ -115,6 +120,54 @@ public class ScrollingBackground : MonoBehaviour
 		}
 		position.z = transform.position.z;
 		bg.transform.position = position;
+	}
+
+
+	//Here we'll set the left tiles right side to match the right tiles left side so that there are never any gaps.
+	void AlignBackgroundTiles()
+	{
+		//First get the tiles on left and right
+		GameObject rightTile;
+		GameObject leftTile;
+
+		if (transform.TransformPoint(backgroundTile1.transform.position).x > transform.TransformPoint(backgroundTile2.transform.position).x)
+		{
+			rightTile = backgroundTile1;
+			leftTile = backgroundTile2;
+		}
+		else 
+		{
+			rightTile = backgroundTile2;
+			leftTile = backgroundTile1;
+		}
+
+		//Set positions to world space...
+		Vector3 rightTilePos = transform.TransformPoint (rightTile.transform.position);
+		Vector3 leftTilePos = transform.TransformPoint (leftTile.transform.position);
+
+		//Now we get right tiles left side.
+		float rightTileLeftSideX = rightTilePos.x - rightTile.GetComponent<SpriteRenderer>().bounds.extents.x;
+
+		//Now we get right side of left tile.
+		float leftTileRightSideX = leftTilePos.x + leftTile.GetComponent<SpriteRenderer>().bounds.extents.x;
+
+		Debug.Log ("leftTileName = " + leftTile.transform.name);
+		Debug.Log ("leftTilePos = " + leftTilePos.x);
+		Debug.Log ("leftTileSidePos = " + leftTileRightSideX);
+
+		//Get the difference between the sides.
+		float sideDiff = rightTileLeftSideX - leftTileRightSideX;
+
+		Debug.Log ("sideDiff = " + sideDiff);
+
+
+		//Add difference to left tile position if there is any gap. Use -0.1 because 0 leaves tiny seam.
+		if (sideDiff >= -.01f) 
+		{
+			Vector3 newPos = leftTile.transform.position;
+			newPos.x = newPos.x + sideDiff;
+			leftTile.transform.position = newPos;
+		}
 	}
 
 	void OnDrawGizmos()
