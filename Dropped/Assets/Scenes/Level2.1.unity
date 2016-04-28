@@ -4692,6 +4692,10 @@ Prefab:
       propertyPath: m_Name
       value: CellarDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 484332, guid: ffa97eebe3c178f49b8a8307e91f704f, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.7426441
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ffa97eebe3c178f49b8a8307e91f704f, type: 2}
   m_IsPrefabParent: 0
