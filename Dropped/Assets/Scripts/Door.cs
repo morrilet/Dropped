@@ -134,7 +134,7 @@ public class Door : MonoBehaviour
 	public void OpenDoor()
 	{
 		this.gameObject.layer = LayerMask.NameToLayer ("Default_Hotspot");
-		GetComponent<SpriteRenderer> ().color = new Color (255, 255, 255, .75f);
+		GetComponent<SpriteRenderer> ().color = new Color (125f/255f, 125f/255f, 125f/255f, 1);
 		GetComponent<SpriteRenderer> ().sprite = openDoorSprite;
 		transform.localScale = new Vector3 (startingScale.x * Mathf.Sign (player.GetComponent<Player> ().direction), startingScale.y, startingScale.z);
 		isOpen = true;
@@ -143,7 +143,7 @@ public class Door : MonoBehaviour
 	public void CloseDoor()
 	{
 		this.gameObject.layer = LayerMask.NameToLayer ("Obstacle");
-		GetComponent<SpriteRenderer> ().color = new Color (150, 150, 150, 1);
+		GetComponent<SpriteRenderer> ().color = new Color (1, 1, 1, 1);
 		GetComponent<SpriteRenderer> ().sprite = closedDoorSprite;
 		transform.localScale = new Vector3 (startingScale.x * Mathf.Sign (player.GetComponent<Player> ().direction), startingScale.y, startingScale.z);
 		isOpen = false;
