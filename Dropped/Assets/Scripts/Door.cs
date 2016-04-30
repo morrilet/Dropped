@@ -20,6 +20,14 @@ public class Door : MonoBehaviour
 
 	public LayerMask mask;
 
+	public enum OpenDirection
+	{
+		Both,
+		Right,
+		Left
+	}		
+	public OpenDirection openDirection;
+
 	void Start()
 	{
 		isOpen = false;
@@ -136,7 +144,12 @@ public class Door : MonoBehaviour
 		this.gameObject.layer = LayerMask.NameToLayer ("Default_Hotspot");
 		GetComponent<SpriteRenderer> ().color = new Color (125f/255f, 125f/255f, 125f/255f, 1);
 		GetComponent<SpriteRenderer> ().sprite = openDoorSprite;
-		transform.localScale = new Vector3 (startingScale.x * Mathf.Sign (player.GetComponent<Player> ().direction), startingScale.y, startingScale.z);
+		if(openDirection == OpenDirection.Both)
+			transform.localScale = new Vector3 (startingScale.x * Mathf.Sign (player.GetComponent<Player> ().direction), startingScale.y, startingScale.z);
+		else if(openDirection == OpenDirection.Right)
+			transform.localScale = new Vector3 (startingScale.x, startingScale.y, startingScale.z);
+		else if(openDirection == OpenDirection.Left)
+			transform.localScale = new Vector3 (-startingScale.x, startingScale.y, startingScale.z);
 		isOpen = true;
 	}
 

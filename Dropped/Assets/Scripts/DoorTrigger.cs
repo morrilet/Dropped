@@ -6,11 +6,41 @@ public class DoorTrigger : MonoBehaviour
 	Door door;
 
 	bool playerIntersectsDoor;
+	BoxCollider2D triggerCollider;
+
+	Vector2 triggerStartScale;
+	Vector2 triggerStartOffset;
 
 	void Start()
 	{
 		door = transform.parent.GetComponent<Door>();
 		playerIntersectsDoor = false;
+		triggerCollider = GetComponent<BoxCollider2D> ();
+
+		triggerStartScale = triggerCollider.size;
+		triggerStartOffset = triggerCollider.offset;
+	}
+
+	void Update()
+	{
+		if (door.isOpen) 
+		{
+			if (door.transform.localScale.x < 0) 
+			{
+				triggerCollider.size = new Vector2 (1.5f, 3f);
+				triggerCollider.offset = new Vector2 (.25f, 0f);
+			}
+			if (door.transform.localScale.x > 0) 
+			{
+				triggerCollider.size = new Vector2 (1.5f, 3f);
+				triggerCollider.offset = new Vector2 (.25f, 0f);
+			}
+		} 
+		else
+		{
+			triggerCollider.size = triggerStartScale;
+			triggerCollider.offset = triggerStartOffset;
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D other)

@@ -56,6 +56,9 @@ TagManager:
   - name: Ladder
     uniqueID: 460011057
     locked: 0
+  - name: Door
+    uniqueID: 3875817229
+    locked: 0
   - name: Player
     uniqueID: 3694127023
     locked: 0
@@ -67,7 +70,4 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1424110809
-    locked: 0
-  - name: New Layer
-    uniqueID: 3875817229
     locked: 0
