@@ -42,7 +42,7 @@ public class ScrollingBackground : MonoBehaviour
 		right = new Vector3 (mainCamera.transform.position.x + backgroundSize.x * 1.5f - .125f, transform.position.y, transform.position.z);
 		center = new Vector3 (mainCamera.transform.position.x, transform.position.y, transform.position.z);
 
-		Debug.Log (left + ", " + right);
+		//Debug.Log (left + ", " + right);
 
 		//Set the initial positions of the background tiles.
 		backgroundTile1.transform.position = right;
@@ -151,14 +151,14 @@ public class ScrollingBackground : MonoBehaviour
 		//Now we get right side of left tile.
 		float leftTileRightSideX = leftTilePos.x + leftTile.GetComponent<SpriteRenderer>().bounds.extents.x;
 
-		Debug.Log ("leftTileName = " + leftTile.transform.name);
-		Debug.Log ("leftTilePos = " + leftTilePos.x);
-		Debug.Log ("leftTileSidePos = " + leftTileRightSideX);
+		//Debug.Log ("leftTileName = " + leftTile.transform.name);
+		//Debug.Log ("leftTilePos = " + leftTilePos.x);
+		//Debug.Log ("leftTileSidePos = " + leftTileRightSideX);
 
 		//Get the difference between the sides.
 		float sideDiff = rightTileLeftSideX - leftTileRightSideX;
 
-		Debug.Log ("sideDiff = " + sideDiff);
+		//Debug.Log ("sideDiff = " + sideDiff);
 
 
 		//Add difference to left tile position if there is any gap. Use -0.1 because 0 leaves tiny seam.

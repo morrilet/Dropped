@@ -160,6 +160,9 @@ MonoBehaviour:
   rangeDamageFallOff: 0
   impactEffect: {fileID: 114012, guid: 518d9df5d6001ae498917e79f2bea35f, type: 2}
   startPos: {x: 0, y: 0, z: 0}
+  raycastLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!212 &21289302
 SpriteRenderer:
   m_ObjectHideFlags: 1
