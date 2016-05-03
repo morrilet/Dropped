@@ -86,6 +86,8 @@ public class Player : Entity
 	private float grabSafeTime; //How long is the player safe from grabs after escaping a grab?
 	private float grabSafeTimer; //Timer for grabSafeTime.
 
+	Animator animator;
+
 	void Start()
 	{
 		machineGun = transform.FindChild ("Gun_Machinegun").gameObject;
@@ -117,6 +119,8 @@ public class Player : Entity
 		grabSafeTime = 1f;
 		grabSafeTimer = 0f;
 
+		animator = GetComponent<Animator> ();
+
 		canMove = true;
 	}
 
@@ -131,6 +135,11 @@ public class Player : Entity
 			playerInfo.JustLanded = true;
 		if (!controller.collisions.below && controller.collisions.belowPrev && !playerInfo.JustJumped)
 			playerInfo.JustFell = true;
+
+		if (velocity.y < 0 && !controller.collisions.below)
+			playerInfo.IsFalling = true;
+		else
+			playerInfo.IsFalling = false;
 
 		//Start counting down on jumpLeniency if we just fell.
 		if (playerInfo.JustFell)
@@ -283,14 +292,27 @@ public class Player : Entity
 
 		horizontalAxisPrev = Input.GetAxisRaw ("Horizontal");
 
-		/*
-		if (playerInfo.JustJumped)
+		if (playerInfo.JustJumped) 
+		{
 			Debug.Log ("JustJumped");
-		if (playerInfo.JustLanded)
+			animator.SetTrigger ("JustJumped");
+		}
+		if (playerInfo.JustLanded) 
+		{
 			Debug.Log ("JustLanded");
-		if (playerInfo.JustFell)
+			animator.SetTrigger ("JustLanded");
+		}
+		if (playerInfo.JustFell) 
+		{
 			Debug.Log ("JustFell");
-		*/
+		}
+		if (playerInfo.IsFalling && !playerInfo.IsFallingPrev)
+		{
+			animator.SetTrigger ("Falling");
+			Debug.Log ("Falling");
+		}
+		animator.SetFloat ("PlayerSpeed", Mathf.Abs (velocity.x));
+		//Time.timeScale = .1f;
 		playerInfo.Reset ();
 	}
 
@@ -606,6 +628,8 @@ public class Player : Entity
 	{
 		public bool JustJumped;
 		public bool JustFell;
+		public bool IsFalling;
+		public bool IsFallingPrev;
 		public bool JustLanded; //Landing from a jump OR a fall.
 
 		//Resets info.
@@ -613,6 +637,8 @@ public class Player : Entity
 		{
 			JustJumped = false;
 			JustFell = false;
+			IsFallingPrev = IsFalling;
+			IsFalling = false;
 			JustLanded = false;
 		}
 	}

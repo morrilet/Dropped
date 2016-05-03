@@ -6,6 +6,10 @@ public class Door : MonoBehaviour
 	[HideInInspector]
 	public bool isOpen;
 
+	public Sprite closedDoorSprite;
+	public Sprite openDoorSprite;
+	Vector3 startingScale;
+
 	GameObject player; //The player gameObject.
 	Collider2D coll; //The door collider.
 
@@ -16,15 +20,25 @@ public class Door : MonoBehaviour
 
 	public LayerMask mask;
 
+	public enum OpenDirection
+	{
+		Both,
+		Right,
+		Left
+	}		
+	public OpenDirection openDirection;
+
 	void Start()
 	{
 		isOpen = false;
 
-		player = GameObject.FindGameObjectWithTag ("Player");
+		player = GameObject.Find ("Player").gameObject;
 
 		coll = GetComponent<Collider2D> ();
 
 		verts = GetVertexPositions ();
+
+		startingScale = transform.localScale;
 	}
 
 	//Returns whether the player is within the bounds of the door or not.
@@ -113,9 +127,13 @@ public class Door : MonoBehaviour
 	{
 		//Get the players position in our transform space.
 		Vector3 relativePoint = transform.InverseTransformPoint (player.transform.position);
-		if (relativePoint.x < 0f && player.GetComponent<Player> ().direction == 1) //Player is on left facing right.
+		if (relativePoint.x < 0f && player.GetComponent<Player> ().direction == 1 && transform.localScale.x > 0) //Player is on left facing right.
 			return true;
-		else if (relativePoint.x > 0 && player.GetComponent<Player> ().direction == -1) //Player is on right facing left.
+		else if (relativePoint.x > 0f && player.GetComponent<Player> ().direction == -1 && transform.localScale.x > 0) //Player is on right facing left.
+			return true;
+		else if (relativePoint.x > 0f && player.GetComponent<Player> ().direction == 1 && transform.localScale.x < 0)
+			return true;
+		else if (relativePoint.x < 0f && player.GetComponent<Player> ().direction == -1 && transform.localScale.x < 0)
 			return true;
 		else
 			return false;
@@ -124,14 +142,23 @@ public class Door : MonoBehaviour
 	public void OpenDoor()
 	{
 		this.gameObject.layer = LayerMask.NameToLayer ("Default_Hotspot");
-		GetComponent<SpriteRenderer> ().color = new Color (255, 255, 255, .25f);
+		GetComponent<SpriteRenderer> ().color = new Color (125f/255f, 125f/255f, 125f/255f, 1);
+		GetComponent<SpriteRenderer> ().sprite = openDoorSprite;
+		if(openDirection == OpenDirection.Both)
+			transform.localScale = new Vector3 (startingScale.x * Mathf.Sign (player.GetComponent<Player> ().direction), startingScale.y, startingScale.z);
+		else if(openDirection == OpenDirection.Right)
+			transform.localScale = new Vector3 (startingScale.x, startingScale.y, startingScale.z);
+		else if(openDirection == OpenDirection.Left)
+			transform.localScale = new Vector3 (-startingScale.x, startingScale.y, startingScale.z);
 		isOpen = true;
 	}
 
 	public void CloseDoor()
 	{
 		this.gameObject.layer = LayerMask.NameToLayer ("Obstacle");
-		GetComponent<SpriteRenderer> ().color = new Color (150, 150, 150, 1);
+		GetComponent<SpriteRenderer> ().color = new Color (1, 1, 1, 1);
+		GetComponent<SpriteRenderer> ().sprite = closedDoorSprite;
+		transform.localScale = new Vector3 (startingScale.x * Mathf.Sign (player.GetComponent<Player> ().direction), startingScale.y, startingScale.z);
 		isOpen = false;
 	}
 

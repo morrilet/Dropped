@@ -12,6 +12,7 @@ public class Corpse : MonoBehaviour
 
 	[HideInInspector]
 	public bool isCarried;
+	public bool isCarriedPrev;
 
 	GameObject[] outlines;
 
@@ -45,6 +46,7 @@ public class Corpse : MonoBehaviour
 	void Update()
 	{
 		JointAngleLimits2D limits = new JointAngleLimits2D();
+
 		if (isCarried) //Behaviour for if the corpse is carried or not.
 		{
 			limits.max = 0;
@@ -59,10 +61,12 @@ public class Corpse : MonoBehaviour
 			lowerTorso.transform.position = transform.position + new Vector3(-.25f, 0, 0);
 			lowerTorso.GetComponent<Rigidbody2D> ().isKinematic = true;
 			lowerTorso.transform.rotation = Quaternion.identity;
+			lowerTorso.transform.rotation = Quaternion.Euler(lowerTorso.transform.rotation.eulerAngles.x, lowerTorso.transform.rotation.eulerAngles.y, lowerTorso.transform.rotation.eulerAngles.z - 180);
 			lowerTorso.layer = LayerMask.NameToLayer("Default");
 		}
-		else 
+		else if(!isCarried && isCarriedPrev)
 		{
+			/*
 			limits.min = initialAngleLimits.x;
 			limits.max = initialAngleLimits.y;
 			hingeJoint.limits = limits;
@@ -72,7 +76,23 @@ public class Corpse : MonoBehaviour
 
 			lowerTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
 			lowerTorso.layer = LayerMask.NameToLayer ("Obstacle");
+			*/
+
+			lowerTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
+			//lowerTorso.transform.rotation = Quaternion.Euler(0f, 0f, upperTorso.transform.rotation.eulerAngles.z -);
+			lowerTorso.layer = LayerMask.NameToLayer ("Obstacle");
+
+			upperTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
+			//upperTorso.transform.rotation = Quaternion.identity;
+			upperTorso.layer = LayerMask.NameToLayer ("Obstacle");
+
+			//Change the angle limits to the other side because we flipped lowerTorso.
+			limits.min = initialAngleLimits.x - 180;
+			limits.max = initialAngleLimits.y - 180;
+			hingeJoint.limits = limits;
 		}
+
+		isCarriedPrev = isCarried;
 	}
 
 	public void SetOutline(bool outlineEnabled) //true if outline on, false if outline off.

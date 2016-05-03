@@ -41,7 +41,7 @@ public class Enemy : Entity
 
 	void Start()
 	{
-		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+		player = GameObject.Find ("Player").GetComponent<Player> ();
 
 		controller = GetComponent<Controller2D> ();
 		enemyAIMode = EnemyAIMode.walkLeftRightOnPlatform;
@@ -187,12 +187,12 @@ public class Enemy : Entity
 			corpse.transform.GetChild (i).GetComponent<Rigidbody2D> ().isKinematic = false;
 			if (GameManager.instance.level.GetComponent<Level> ().enemies.Count > 1) {
 				corpse.transform.GetChild (i).GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2 (bullet.corpseKnockback, 0f)
-				* GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+					* GameObject.Find ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
 			}
 			else
 			{
 				corpse.transform.GetChild (i).GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2 (bullet.corpseKnockback * 2, 0f)
-					* GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+					* GameObject.Find ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
 			}
 
 			GameManager.instance.FlashWhite (corpse.transform.GetChild (i).GetComponent<SpriteRenderer> (), 0.018f, baseColor);

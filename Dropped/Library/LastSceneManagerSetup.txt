@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/NewAITestScene.unity
+=======
+- path: Assets/Scenes/Level2.2.unity
+>>>>>>> refs/remotes/origin/master
   isLoaded: 1
   isActive: 1

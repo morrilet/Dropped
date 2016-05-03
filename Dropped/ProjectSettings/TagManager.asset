@@ -56,18 +56,21 @@ TagManager:
   - name: Ladder
     uniqueID: 460011057
     locked: 0
+  - name: Door
+    uniqueID: 3875817229
+    locked: 0
   - name: Player
     uniqueID: 3694127023
-    locked: 0
-  - name: Gun
-    uniqueID: 3837725735
     locked: 0
   - name: Enemies
     uniqueID: 621622263
     locked: 0
+  - name: Bullet
+    uniqueID: 3023910823
+    locked: 0
+  - name: Gun
+    uniqueID: 3837725735
+    locked: 0
   - name: Foreground
     uniqueID: 1424110809
-    locked: 0
-  - name: New Layer
-    uniqueID: 3875817229
     locked: 0
