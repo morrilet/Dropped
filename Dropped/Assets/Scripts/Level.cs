@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,38 +8,27 @@ public class Level : MonoBehaviour
 	public float xMin, xMax;
 	public float yMin, yMax;
 
-	List<GameObject> grounds;
-	List<GameObject> hotspots;
-	List<GameObject> movingPlatforms;
-	List<GameObject> obstacles;
+	public List<GameObject> enemies;
+	public List<GameObject> enemiesPrev;
 
 	void Start()
 	{
 		InitializeLists ();
+		Debug.Log (enemies.Count);
+		GameManager.instance.level = this.gameObject;
+	}
+
+	void Update()
+	{
+		enemiesPrev = enemies;
+		enemies = enemies.Where (gameObject => gameObject != null).ToList();	
 	}
 
 	private void InitializeLists()
 	{
-		grounds = new List<GameObject> ();
-		hotspots = new List<GameObject> ();
-		movingPlatforms = new List<GameObject> ();
-		obstacles = new List<GameObject> ();
-
-		foreach(Transform child in GameObject.Find("Grounds").transform)
+		for (int i = 0; i < transform.FindChild("Enemies").transform.childCount; i++)
 		{
-			grounds.Add(child.gameObject);
-		}
-		foreach(Transform child in GameObject.Find("Hotspots").transform)
-		{
-			hotspots.Add(child.gameObject);
-		}
-		foreach(Transform child in GameObject.Find("Moving Platforms").transform)
-		{
-			movingPlatforms.Add(child.gameObject);
-		}
-		foreach(Transform child in GameObject.Find("Obstacles").transform)
-		{
-			obstacles.Add(child.gameObject);
+			enemies.Add (transform.FindChild ("Enemies").GetChild (i).gameObject);
 		}
 	}
 

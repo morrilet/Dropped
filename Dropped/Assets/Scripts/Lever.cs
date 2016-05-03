@@ -24,7 +24,7 @@ public class Lever : MonoBehaviour
 
 	public void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.E))
+		if(Input.GetButtonDown("Action"))
 		{
 			if(coll.IsTouchingLayers(userLayer))
 			{
