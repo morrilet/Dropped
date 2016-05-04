@@ -12,7 +12,8 @@ GameObject:
   - 61: {fileID: 6184050}
   - 95: {fileID: 9513100}
   - 114: {fileID: 11468714}
-  - 114: {fileID: 11409676}
+  - 114: {fileID: 11411382}
+  - 114: {fileID: 11462262}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -53,22 +54,23 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159858}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba653ed92c0800a4cbae90ca7d445b69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpHeight: 2
-  timeToJumpApex: 0.2
-  canJump: 0
-  countdownLeniency: 0
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d08218051d9063346b946319e32905f3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11411382
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159858}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af699d0be555fed4e90cf3e78f688f0d, type: 3}
   m_Name: 
@@ -76,11 +78,34 @@ MonoBehaviour:
   health: 0
   maxHealth: 10
   isAlive: 0
+  corpsePrefab: {fileID: 189158, guid: 01e8b231b991cd74d8fc9a41097f9f6b, type: 2}
   stateMachine: {fileID: 0}
   controller: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   gravity: -9.81
   speed: -1
+  jumpHeight: 2
+  timeToJumpApex: 0.2
+  canJump: 0
+--- !u!114 &11462262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159858}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2096663f0ac73204f8b2c777b2e1ee7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
+  isAlive: 0
+  speed: -1
+  gravity: -9.81
+  corpsePrefab: {fileID: 189158, guid: 01e8b231b991cd74d8fc9a41097f9f6b, type: 2}
+  isGrapplingPlayer: 0
+  canMove: 0
 --- !u!114 &11468714
 MonoBehaviour:
   m_ObjectHideFlags: 1

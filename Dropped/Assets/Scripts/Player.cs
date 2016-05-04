@@ -292,6 +292,7 @@ public class Player : Entity
 
 		horizontalAxisPrev = Input.GetAxisRaw ("Horizontal");
 
+		/*
 		if (playerInfo.JustJumped) 
 		{
 			Debug.Log ("JustJumped");
@@ -311,6 +312,7 @@ public class Player : Entity
 			animator.SetTrigger ("Falling");
 			Debug.Log ("Falling");
 		}
+		*/
 		animator.SetFloat ("PlayerSpeed", Mathf.Abs (velocity.x));
 		//Time.timeScale = .1f;
 		playerInfo.Reset ();
