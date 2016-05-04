@@ -6,8 +6,8 @@ public class EnemyAI : Entity
 	public GameObject corpsePrefab;
 	Color baseColor;
 
-	[HideInInspector]
-	public Animator stateMachine;
+	//[HideInInspector]
+	//public Animator stateMachine;
 	[HideInInspector]
 	public EnemyInfo enemyInfo;
 
@@ -29,16 +29,26 @@ public class EnemyAI : Entity
 	bool jumpingPrevious;
 	float jumpVelocity;
 
+	public enum States
+	{
+		Patrol
+	}
+	public States currentState;
+
 	void Start()
 	{
-		stateMachine = GetComponent<Animator> ();
+		//stateMachine = GetComponent<Animator> ();
 		controller = GetComponent<Controller2D> ();
 
 		baseColor = GetComponent<SpriteRenderer> ().color;
 
+		currentState = States.Patrol;
+
 		jumpingCurrent = false;
 		jumpingPrevious = false;
 		CalculateJumpPhysics ();
+
+		velocity.x = speed;
 	}
 
 	void Update()
@@ -63,16 +73,31 @@ public class EnemyAI : Entity
 			jumpingCurrent = false;
 		}
 
-		Debug.Log ("Wall: " + enemyInfo.JustHitWall);
-		//Debug.Log ("Platform: " + enemyInfo.IsOnEdgeOfPlatform);
+		//Debug.Log ("Wall: " + enemyInfo.JustHitWall);
+		Debug.Log ("Platform: " + enemyInfo.IsOnEdgeOfPlatform);
 
 		if (Input.GetKeyDown (KeyCode.L) && !jumpingCurrent)
 			Jump (ref velocity);
 
-		controller.Move (velocity * Time.deltaTime);
+		switch (currentState) 
+		{
+		case States.Patrol:
+			Patrol ();
+			break;
+		}
 
 		jumpingPrevious = jumpingCurrent;
 		enemyInfo.Reset (); //Temporarily removed so that patrol state would work... This won't work as a permanent solution.
+	}
+
+	void Patrol()
+	{
+		if (enemyInfo.IsOnEdgeOfPlatform || enemyInfo.JustHitWall) 
+		{
+			velocity.x *= -1f;
+		}
+
+		controller.Move (velocity * Time.deltaTime);
 	}
 
 	void OnCollisionEnter2D(Collision2D other)
