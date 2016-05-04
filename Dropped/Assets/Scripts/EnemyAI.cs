@@ -69,7 +69,8 @@ public class EnemyAI : Entity
 			velocity.y += gravity * Time.deltaTime;
 		else if (controller.collisions.below) 
 		{
-			velocity.y = 0;
+			if(velocity.y < 0)
+				velocity.y = -.001f;
 			jumpingCurrent = false;
 		}
 
@@ -94,7 +95,7 @@ public class EnemyAI : Entity
 	{
 		if (enemyInfo.IsOnEdgeOfPlatform || enemyInfo.JustHitWall) 
 		{
-			velocity.x *= -1f;
+			//velocity.x *= -1f;
 		}
 
 		controller.Move (velocity * Time.deltaTime);
