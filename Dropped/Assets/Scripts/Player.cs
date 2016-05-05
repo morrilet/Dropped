@@ -292,6 +292,7 @@ public class Player : Entity
 
 		horizontalAxisPrev = Input.GetAxisRaw ("Horizontal");
 
+		/*
 		if (playerInfo.JustJumped) 
 		{
 			Debug.Log ("JustJumped");
@@ -311,6 +312,7 @@ public class Player : Entity
 			animator.SetTrigger ("Falling");
 			Debug.Log ("Falling");
 		}
+		*/
 		animator.SetFloat ("PlayerSpeed", Mathf.Abs (velocity.x));
 		//Time.timeScale = .1f;
 		playerInfo.Reset ();
@@ -435,7 +437,7 @@ public class Player : Entity
 
 	void EscapeGrapple()
 	{
-		GUI.instance.escapeGrabText.enabled = true;
+		GUI.instance.escapeObjectsEnabled = true;
 
 		if (Input.GetAxisRaw("Horizontal") != 0 && horizontalAxisPrev == 0) 
 		{
@@ -445,7 +447,7 @@ public class Player : Entity
 
 		if (grappleEscapeAttempt >= grappleStrength) 
 		{
-			GUI.instance.escapeGrabText.enabled = false;
+			GUI.instance.escapeObjectsEnabled = false;
 
 			canMove = true;
 

@@ -124,6 +124,7 @@ public class Enemy : Entity
 		enemyInfo.Reset ();
 	}
 
+	/*
 	void OnCollisionEnter2D(Collision2D other)
 	{
 		if (other.gameObject.tag == "Bullet") 
@@ -136,6 +137,20 @@ public class Enemy : Entity
 
 			GameManager.instance.FlashWhite (this.GetComponent<SpriteRenderer>(), 0.018f, baseColor);
 		}
+	}
+	*/
+
+	//Getting hit by a bullet.
+	public void GetHit(Bullet bullet)
+	{
+		health -= bullet.damage;
+		bullet.ReduceDamage ();
+		GameManager.instance.Sleep (bullet.sleepFramesOnHit);
+		if (health <= 0)
+			Die (bullet);
+
+		Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
+		GameManager.instance.FlashWhite (this.GetComponent<SpriteRenderer>(), 0.018f, baseColor);
 	}
 
 	public void KnockBack(Vector3 vel, float duration)

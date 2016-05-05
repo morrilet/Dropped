@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Bullet : MonoBehaviour {
 
@@ -28,11 +29,14 @@ public class Bullet : MonoBehaviour {
 
 	public LayerMask raycastLayerMask; //The mask to use for raycasting.
 
+	List<Enemy> enemiesHit; //This is used so that we don't hit the same enemy twice with the same bullet.
+
 	void Start()
 	{
 		startPos = transform.position;
 		bulletSpeed += Random.Range (-1 * bulletSpeedDeviation, bulletSpeedDeviation);
 		damage = maxDamage;
+		enemiesHit = new List<Enemy> ();
 		//Time.timeScale = .1f;
 	}
 
@@ -59,14 +63,21 @@ public class Bullet : MonoBehaviour {
 
 		RaycastHit2D hit = Physics2D.Raycast(startPos, (endPos - startPos).normalized, velocity.magnitude, raycastLayerMask);
 		Debug.DrawLine (startPos, endPos, Color.red);
-		if (hit && hit.transform.tag != "Corpse") 
+		if (hit && hit.transform.tag != "Corpse" && hit.transform.tag != "Enemy") 
 		{
 			velocity = hit.point - startPos;
 			Debug.DrawLine (startPos, startPos + (Vector2)velocity, Color.blue);
-			GameObject impact = Instantiate (impactEffect, hit.point, Quaternion.FromToRotation((velocity.x > 0)?-transform.right:transform.right, hit.normal)) as GameObject;
+			GameObject impact = Instantiate (impactEffect, hit.point, Quaternion.FromToRotation ((velocity.x > 0) ? -transform.right : transform.right, hit.normal)) as GameObject;
 			Vector3 rot = new Vector3 (0f, 0f, impact.transform.rotation.eulerAngles.z);
 			//impact.transform.rotation = Quaternion.Euler(rot);
 			Debug.Log (hit.normal);
+		}
+		else if (hit && hit.transform.tag == "Enemy" && !enemiesHit.Contains(hit.transform.GetComponent<Enemy>())) 
+		{
+			Debug.DrawLine (startPos, startPos + (Vector2)velocity, Color.blue);
+			hit.transform.GetComponent<Enemy> ().GetHit (this);
+			enemiesHit.Add (hit.transform.GetComponent<Enemy> ());
+			//Physics2D.IgnoreCollision (hit.transform.GetComponent<Collider2D> (), GetComponent<Collider2D> ());
 		}
 			
 		transform.position += velocity;
@@ -101,7 +112,6 @@ public class Bullet : MonoBehaviour {
 		{
 //			GameObject impact = Instantiate (impactEffect, transform.position, transform.rotation) as GameObject;
 //			impact.transform.SetParent (coll.transform);
-			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
 		}
 	}
 

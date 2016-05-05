@@ -13,6 +13,7 @@ public class TrajectoryLine : MonoBehaviour
 	{
 		player = GameObject.Find ("Player").GetComponent<Player> ();
 		lineRenderer = GetComponent<LineRenderer> ();
+		lineRenderer.sortingLayerName = "Player";
 	}
 
 	void FixedUpdate()
