@@ -70,10 +70,14 @@ public class Player : Entity
 	}
 	public CurrentGun currentGun;
 
-	Gun activeGun; //The gun object currently in use.
-	GameObject machineGun;
-	GameObject shotGun;
-	GameObject pistol;
+	[HideInInspector]
+	public Gun activeGun; //The gun object currently in use.
+	[HideInInspector]
+	public GameObject machineGun;
+	[HideInInspector]
+	public GameObject shotGun;
+	[HideInInspector]
+	public GameObject pistol;
 
 	[HideInInspector]
 	public float grappleEscapeAttempt; //How much the player has slammed the button.
@@ -88,7 +92,7 @@ public class Player : Entity
 
 	Animator animator;
 
-	void Start()
+	public void Start()
 	{
 		machineGun = transform.FindChild ("Gun_Machinegun").gameObject;
 		shotGun = transform.FindChild ("Gun_Shotgun").gameObject;
@@ -96,6 +100,10 @@ public class Player : Entity
 
 		currentGun = GameManager.instance.playerStoredGun;
 		activeGun = null;
+
+		machineGun.GetComponent<Gun> ().ammoInClip = GameManager.instance.playerStoredAmmo.machineGunAmmo.ammountInClip;
+		shotGun.GetComponent<Gun> ().ammoInClip = GameManager.instance.playerStoredAmmo.shotgunAmmo.ammountInClip;
+		pistol.GetComponent<Gun> ().ammoInClip = GameManager.instance.playerStoredAmmo.pistolAmmo.ammountInClip;
 
 		GameManager.instance.player = transform.gameObject; //On level load, this will allow the gamemanger to track the new player game object
 
@@ -214,6 +222,7 @@ public class Player : Entity
 			}
 		}
 
+		GameManager.instance.playerStoredAmmo = playerAmmo;
 		switch (currentGun)
 		{
 		case CurrentGun.None:
@@ -227,21 +236,24 @@ public class Player : Entity
 			shotGun.SetActive (false);
 			pistol.SetActive (false);
 			activeGun = machineGun.GetComponent<Gun> ();
-			playerAmmo.machineGunAmmo.ammountInClip = activeGun.ammoInClip;
+			//activeGun.ammoInClip = GameManager.instance.playerStoredAmmo.machineGunAmmo.ammountInClip;
+			playerAmmo.machineGunAmmo.ammountInClip = activeGun.ammoInClip; //GameManager.instance.playerStoredAmmo.machineGunAmmo.ammountInClip;
 			break;
 		case CurrentGun.Shotgun:
 			machineGun.SetActive (false);
 			shotGun.SetActive (true);
 			pistol.SetActive (false);
 			activeGun = shotGun.GetComponent<Gun> ();
-			playerAmmo.shotgunAmmo.ammountInClip = activeGun.ammoInClip;
+			//activeGun.ammoInClip = GameManager.instance.playerStoredAmmo.shotgunAmmo.ammountInClip;
+			playerAmmo.shotgunAmmo.ammountInClip = activeGun.ammoInClip; //GameManager.instance.playerStoredAmmo.shotgunAmmo.ammountInClip;
 			break;
 		case CurrentGun.Pistol:
 			machineGun.SetActive (false);
 			shotGun.SetActive (false);
 			pistol.SetActive (true);
 			activeGun = pistol.GetComponent<Gun> ();
-			playerAmmo.pistolAmmo.ammountInClip = activeGun.ammoInClip;
+			//activeGun.ammoInClip = GameManager.instance.playerStoredAmmo.pistolAmmo.ammountInClip;
+			playerAmmo.pistolAmmo.ammountInClip = activeGun.ammoInClip; //GameManager.instance.playerStoredAmmo.pistolAmmo.ammountInClip;
 			break;
 		}
 

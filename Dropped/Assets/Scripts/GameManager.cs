@@ -29,6 +29,7 @@ public class GameManager : Singleton<GameManager>
 		if (level == null)
 			level = GameObject.FindGameObjectWithTag ("Level");
 
+		/*
 		playerStoredAmmo.machineGunAmmo.maxAmmo = 60;
 		playerStoredAmmo.machineGunAmmo.Refill ();
 		playerStoredAmmo.shotgunAmmo.maxAmmo = 16;
@@ -37,6 +38,8 @@ public class GameManager : Singleton<GameManager>
 		playerStoredAmmo.pistolAmmo.Refill ();
 		playerStoredHealth = player.GetComponent<Player> ().maxHealth;
 		playerStoredGun = Player.CurrentGun.None;
+		*/
+		SetUpPlayer ();
 
 		timeSlowed = false;
 		timeSlowedCounter = 0;
@@ -48,6 +51,8 @@ public class GameManager : Singleton<GameManager>
 
 	void Update ()
 	{
+		Debug.Log ("GM: " + playerStoredAmmo.pistolAmmo.ammountInClip);
+
 		if (SceneManager.GetActiveScene().name == "MainMenu")
 			Destroy (instance.gameObject);
 
@@ -100,12 +105,42 @@ public class GameManager : Singleton<GameManager>
 		}
 	}
 
+	public void SetUpPlayer ()
+	{
+		playerStoredAmmo.machineGunAmmo.maxAmmo = 60;
+		playerStoredAmmo.machineGunAmmo.Refill ();
+		playerStoredAmmo.shotgunAmmo.maxAmmo = 16;
+		playerStoredAmmo.shotgunAmmo.Refill ();
+		playerStoredAmmo.pistolAmmo.maxAmmo = 20;
+		playerStoredAmmo.pistolAmmo.Refill ();
+
+		player.GetComponent<Player> ().Start ();
+
+		playerStoredAmmo.machineGunAmmo.ammountInClip = player.GetComponent<Player> ().machineGun.GetComponent<Gun> ().clipSize;
+		playerStoredAmmo.shotgunAmmo.ammountInClip = player.GetComponent<Player> ().shotGun.GetComponent<Gun> ().clipSize;
+		playerStoredAmmo.pistolAmmo.ammountInClip = player.GetComponent<Player> ().pistol.GetComponent<Gun> ().clipSize;
+		Debug.Log (player.GetComponent<Player> ().pistol.GetComponent<Gun> ().clipSize);
+
+		playerStoredHealth = player.GetComponent<Player> ().maxHealth;
+		playerStoredGun = Player.CurrentGun.None;
+	}
+
 	public void ChangeLevel(string levelToChangeTo)
 	{
 		playerStoredAmmo = player.GetComponent<Player> ().playerAmmo;
+		Debug.Log (playerStoredAmmo.pistolAmmo.ammountInClip);
+		//playerStoredAmmo.machineGunAmmo.ammountInClip = player.GetComponent<Player> ().playerAmmo.machineGunAmmo.ammountInClip;
+		//playerStoredAmmo.shotgunAmmo.ammountInClip = player.GetComponent<Player> ().playerAmmo.shotgunAmmo.ammountInClip;
+		//playerStoredAmmo.pistolAmmo.ammountInClip = player.GetComponent<Player> ().playerAmmo.pistolAmmo.ammountInClip;
+
 		playerStoredGun = player.GetComponent<Player> ().currentGun;
 		playerStoredHealth = player.GetComponent<Player> ().health;
+
 		SceneManager.LoadScene (levelToChangeTo, LoadSceneMode.Single);
+
+		//player.GetComponent<Player> ().playerAmmo.machineGunAmmo.ammountInClip = playerStoredAmmo.machineGunAmmo.ammountInClip;
+		//player.GetComponent<Player> ().playerAmmo.shotgunAmmo.ammountInClip = playerStoredAmmo.shotgunAmmo.ammountInClip;
+		//player.GetComponent<Player> ().playerAmmo.pistolAmmo.ammountInClip = playerStoredAmmo.pistolAmmo.ammountInClip;
 	}
 
 	public void RestartLevel()
