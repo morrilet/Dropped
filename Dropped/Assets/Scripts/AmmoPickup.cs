@@ -24,7 +24,7 @@ public class AmmoPickup : MonoBehaviour
 
 	void Start()
 	{
-		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+		player = GameObject.Find ("Player").GetComponent<Player> ();
 
 		topPos = transform.position + new Vector3 (0, 0.15f);
 		bottomPos = transform.position + new Vector3 (0, -.15f);

@@ -16,23 +16,26 @@ public class Controller2D : RaycastController
 
 	public void Move(Vector3 velocity, bool standingOnPlatform = false)
 	{
-		UpdateRaycastOrigins ();
-		collisions.Reset (standingOnPlatform);
-		collisions.velocityOld = velocity;
+		if (!GameManager.instance.isPaused)
+		{
+			UpdateRaycastOrigins ();
+			collisions.Reset (standingOnPlatform);
+			collisions.velocityOld = velocity;
 
-		if (velocity.y < 0)
-			DescendSlope (ref velocity);
+			if (velocity.y < 0)
+				DescendSlope (ref velocity);
 
-		//Before we translate, we will check for collisions.
-		if(velocity.x != 0)
-			HorizontalCollisions (ref velocity); //If horizColl doesn't happen before vertColl, the char will climb the side of a wall it's pushing on... For SOME reason...
-		if(velocity.y != 0)
-			VerticalCollisions   (ref velocity); //ref passes a reference to an existing variable, instead of creating a copy of an existing variable.
+			//Before we translate, we will check for collisions.
+			if (velocity.x != 0)
+				HorizontalCollisions (ref velocity); //If horizColl doesn't happen before vertColl, the char will climb the side of a wall it's pushing on... For SOME reason...
+			if (velocity.y != 0)
+				VerticalCollisions (ref velocity); //ref passes a reference to an existing variable, instead of creating a copy of an existing variable.
 
-		transform.Translate (velocity);
+			transform.Translate (velocity);
 
-		if (standingOnPlatform)
-			collisions.below = true;
+			if (standingOnPlatform)
+				collisions.below = true;
+		}
 	}
 
 	//This will check for (and handle) any vertical collisions.

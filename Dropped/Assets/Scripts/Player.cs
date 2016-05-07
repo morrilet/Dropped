@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 [RequireComponent (typeof (Controller2D))]
 [RequireComponent (typeof (JumpAbility))] //The player will always have the ability to jump.
@@ -58,6 +59,8 @@ public class Player : Entity
 
 	float horizontalAxisPrev;
 
+	bool isStrafing;
+
 	public enum CurrentGun
 	{
 		None,
@@ -67,10 +70,14 @@ public class Player : Entity
 	}
 	public CurrentGun currentGun;
 
-	Gun activeGun; //The gun object currently in use.
-	GameObject machineGun;
-	GameObject shotGun;
-	GameObject pistol;
+	[HideInInspector]
+	public Gun activeGun; //The gun object currently in use.
+	[HideInInspector]
+	public GameObject machineGun;
+	[HideInInspector]
+	public GameObject shotGun;
+	[HideInInspector]
+	public GameObject pistol;
 
 	[HideInInspector]
 	public float grappleEscapeAttempt; //How much the player has slammed the button.
@@ -83,7 +90,9 @@ public class Player : Entity
 	private float grabSafeTime; //How long is the player safe from grabs after escaping a grab?
 	private float grabSafeTimer; //Timer for grabSafeTime.
 
-	void Start()
+	Animator animator;
+
+	public void Start()
 	{
 		machineGun = transform.FindChild ("Gun_Machinegun").gameObject;
 		shotGun = transform.FindChild ("Gun_Shotgun").gameObject;
@@ -91,6 +100,10 @@ public class Player : Entity
 
 		currentGun = GameManager.instance.playerStoredGun;
 		activeGun = null;
+
+		machineGun.GetComponent<Gun> ().ammoInClip = GameManager.instance.playerStoredAmmo.machineGunAmmo.ammountInClip;
+		shotGun.GetComponent<Gun> ().ammoInClip = GameManager.instance.playerStoredAmmo.shotgunAmmo.ammountInClip;
+		pistol.GetComponent<Gun> ().ammoInClip = GameManager.instance.playerStoredAmmo.pistolAmmo.ammountInClip;
 
 		GameManager.instance.player = transform.gameObject; //On level load, this will allow the gamemanger to track the new player game object
 
@@ -114,6 +127,8 @@ public class Player : Entity
 		grabSafeTime = 1f;
 		grabSafeTimer = 0f;
 
+		animator = GetComponent<Animator> ();
+
 		canMove = true;
 	}
 
@@ -129,6 +144,11 @@ public class Player : Entity
 		if (!controller.collisions.below && controller.collisions.belowPrev && !playerInfo.JustJumped)
 			playerInfo.JustFell = true;
 
+		if (velocity.y < 0 && !controller.collisions.below)
+			playerInfo.IsFalling = true;
+		else
+			playerInfo.IsFalling = false;
+
 		//Start counting down on jumpLeniency if we just fell.
 		if (playerInfo.JustFell)
 			jumpAbility.countdownLeniency = true;
@@ -140,8 +160,10 @@ public class Player : Entity
 		}
 
 		if (GetComponent<Player> ().velocity.x != 0 && canMove)
-			direction = Mathf.Sign (velocity.x);
-
+		{
+			if(!isStrafing && (int)velocity.x != 0)
+				direction = Mathf.Sign (velocity.x);
+		}
 		//Just for now, so that at least SOMETHING happens.
 		//In the future make a die method.
 		if(!isAlive)
@@ -149,8 +171,8 @@ public class Player : Entity
 			Application.LoadLevel(Application.loadedLevel);
 		}
 
-		//Don't apply gravity if we're on the ground or on a ladder.
-		if(controller.collisions.above || controller.collisions.below || ladder != null)
+		//Don't apply gravity if we're on the ground or on a ladder or the game is paused.
+		if(controller.collisions.above || controller.collisions.below || ladder != null || GameManager.instance.isPaused)
 		{
 			velocity.y = 0;
 		}
@@ -200,6 +222,7 @@ public class Player : Entity
 			}
 		}
 
+		GameManager.instance.playerStoredAmmo = playerAmmo;
 		switch (currentGun)
 		{
 		case CurrentGun.None:
@@ -212,19 +235,25 @@ public class Player : Entity
 			machineGun.SetActive (true);
 			shotGun.SetActive (false);
 			pistol.SetActive (false);
-			activeGun = machineGun.GetComponent<Gun>();
+			activeGun = machineGun.GetComponent<Gun> ();
+			//activeGun.ammoInClip = GameManager.instance.playerStoredAmmo.machineGunAmmo.ammountInClip;
+			playerAmmo.machineGunAmmo.ammountInClip = activeGun.ammoInClip; //GameManager.instance.playerStoredAmmo.machineGunAmmo.ammountInClip;
 			break;
 		case CurrentGun.Shotgun:
 			machineGun.SetActive (false);
 			shotGun.SetActive (true);
 			pistol.SetActive (false);
-			activeGun = shotGun.GetComponent<Gun>();
+			activeGun = shotGun.GetComponent<Gun> ();
+			//activeGun.ammoInClip = GameManager.instance.playerStoredAmmo.shotgunAmmo.ammountInClip;
+			playerAmmo.shotgunAmmo.ammountInClip = activeGun.ammoInClip; //GameManager.instance.playerStoredAmmo.shotgunAmmo.ammountInClip;
 			break;
 		case CurrentGun.Pistol:
 			machineGun.SetActive (false);
 			shotGun.SetActive (false);
 			pistol.SetActive (true);
-			activeGun = pistol.GetComponent<Gun>();
+			activeGun = pistol.GetComponent<Gun> ();
+			//activeGun.ammoInClip = GameManager.instance.playerStoredAmmo.pistolAmmo.ammountInClip;
+			playerAmmo.pistolAmmo.ammountInClip = activeGun.ammoInClip; //GameManager.instance.playerStoredAmmo.pistolAmmo.ammountInClip;
 			break;
 		}
 
@@ -253,10 +282,12 @@ public class Player : Entity
 			ladderExitTimer = 0f;
 		}
 
-		if (grapplingEnemies.Count > 0) 
+		if (grapplingEnemies.Count > 0 && !GameManager.instance.isPaused) 
 		{
+			if (corpseCarried != null)
+				DropCorpse ();
 			EscapeGrapple ();
-			Debug.Log (grappleEscapeAttempt + ", " + grappleStrength);
+			//Debug.Log (grappleEscapeAttempt + ", " + grappleStrength);
 		}
 		if (!canBeGrabbed) 
 		{
@@ -267,19 +298,36 @@ public class Player : Entity
 			canBeGrabbed = true;
 			grabSafeTimer = 0f;
 		}
+		grapplingEnemies = grapplingEnemies.Where (Enemy => Enemy != null).ToList (); //Remove null elements from the list.
 
 		controller.Move (velocity * Time.deltaTime);
 
 		horizontalAxisPrev = Input.GetAxisRaw ("Horizontal");
 
-		if (playerInfo.JustJumped)
+		/*
+		if (playerInfo.JustJumped) 
+		{
 			Debug.Log ("JustJumped");
-		if (playerInfo.JustLanded)
+			animator.SetTrigger ("JustJumped");
+		}
+		if (playerInfo.JustLanded) 
+		{
 			Debug.Log ("JustLanded");
-		if (playerInfo.JustFell)
+			animator.SetTrigger ("JustLanded");
+		}
+		if (playerInfo.JustFell) 
+		{
 			Debug.Log ("JustFell");
+		}
+		if (playerInfo.IsFalling && !playerInfo.IsFallingPrev)
+		{
+			animator.SetTrigger ("Falling");
+			Debug.Log ("Falling");
+		}
+		*/
+		animator.SetFloat ("PlayerSpeed", Mathf.Abs (velocity.x));
+		//Time.timeScale = .1f;
 		playerInfo.Reset ();
-
 	}
 
 	//This handles all of the players input, separated from the update method for easy
@@ -306,15 +354,17 @@ public class Player : Entity
 		{
 			if (corpseCarried == null)
 			{
-				GameObject[] corpses = GameObject.FindGameObjectsWithTag ("Corpse");
-				for (int i = 0; i < corpses.Length; i++) 
-				{
-					if (controller.coll.IsTouching (corpses [i].GetComponent<Collider2D> ())) 
-					{
-						PickupCorpse (corpses [i]);
-						break;
-					}
-				}
+				if(GetTouchingCorpse() != null)
+				PickupCorpse (GetTouchingCorpse ());
+				//GameObject[] corpses = GameObject.FindGameObjectsWithTag ("Corpse");
+				//for (int i = 0; i < corpses.Length; i++) 
+				//{
+					//if (controller.coll.IsTouching (corpses [i].GetComponent<Collider2D> ())) 
+					//{
+						//PickupCorpse (corpses [i]);
+						//break;
+					//}
+				//}
 			} 
 			else 
 			{
@@ -322,9 +372,12 @@ public class Player : Entity
 			}
 		}
 
+		if (GetTouchingCorpse() != null && corpseCarried == null)
+			GetTouchingCorpse ().transform.parent.GetComponent<Corpse> ().SetOutline (true);
+
 		if (Input.GetButtonUp ("Action") && throwingCorpse) 
 		{
-			DropCorpse (corpseThrowForce);
+			ThrowCorpse (corpseThrowForce);
 			throwingCorpse = false;
 			corpseThrowCount = 0;
 		}
@@ -359,11 +412,44 @@ public class Player : Entity
 					ShootGun ();
 			}
 		}
+
+		if (activeGun != null)
+		{
+			if(Input.GetButtonDown("Reload") && !activeGun.isReloading && activeGun.ammoInClip != activeGun.clipSize)
+			{
+				switch (currentGun)
+				{
+				case CurrentGun.MachineGun:
+					if (playerAmmo.machineGunAmmo.currentAmmo >= activeGun.bulletsSpentFromCurrentClip)
+						ReloadActiveGun (-activeGun.bulletsSpentFromCurrentClip);
+					else if (playerAmmo.machineGunAmmo.currentAmmo > 0)
+						ReloadActiveGun (-playerAmmo.machineGunAmmo.currentAmmo);
+					break;
+				case CurrentGun.Shotgun:
+					if (playerAmmo.shotgunAmmo.currentAmmo >= activeGun.bulletsSpentFromCurrentClip)
+						ReloadActiveGun (-activeGun.bulletsSpentFromCurrentClip);
+					else if (playerAmmo.shotgunAmmo.currentAmmo > 0)
+						ReloadActiveGun (-playerAmmo.shotgunAmmo.currentAmmo);
+					break;
+				case CurrentGun.Pistol:
+					if (playerAmmo.pistolAmmo.currentAmmo >= activeGun.bulletsSpentFromCurrentClip)
+						ReloadActiveGun (-activeGun.bulletsSpentFromCurrentClip);
+					else if (playerAmmo.pistolAmmo.currentAmmo > 0)
+						ReloadActiveGun (-playerAmmo.pistolAmmo.currentAmmo);
+					break;
+				}
+			}
+		}
+
+		if (Input.GetButton ("Strafe"))
+			isStrafing = true;
+		else
+			isStrafing = false;
 	}
 
 	void EscapeGrapple()
 	{
-		GUI.Instance.escapeGrabText.enabled = true;
+		GUI.instance.escapeObjectsEnabled = true;
 
 		if (Input.GetAxisRaw("Horizontal") != 0 && horizontalAxisPrev == 0) 
 		{
@@ -373,7 +459,7 @@ public class Player : Entity
 
 		if (grappleEscapeAttempt >= grappleStrength) 
 		{
-			GUI.Instance.escapeGrabText.enabled = false;
+			GUI.instance.escapeObjectsEnabled = false;
 
 			canMove = true;
 
@@ -406,24 +492,54 @@ public class Player : Entity
 		case CurrentGun.None:
 			break;
 		case CurrentGun.MachineGun:
-			if (playerAmmo.machineGunAmmo.currentAmmo > 0) 
+			if (activeGun.ammoInClip > 0) 
 			{
-				if(activeGun.Shoot ())
-					playerAmmo.machineGunAmmo.ModifyAmmo (-1);
+				activeGun.Shoot ();
+			} 
+			else if(activeGun.fireRateCount >= activeGun.fireRate)
+			{
+				AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
+				activeGun.fireRateCount = 0;
 			}
 			break;
 		case CurrentGun.Shotgun:
-			if (playerAmmo.shotgunAmmo.currentAmmo > 0) 
+			if (activeGun.ammoInClip > 0) 
 			{
-				if(activeGun.Shoot ())
-					playerAmmo.shotgunAmmo.ModifyAmmo (-1);
+				activeGun.Shoot ();
+			}
+			else if(activeGun.fireRateCount >= activeGun.fireRate)
+			{
+				AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
+				activeGun.fireRateCount = 0;
 			}
 			break;
 		case CurrentGun.Pistol:
-			if (playerAmmo.pistolAmmo.currentAmmo > 0) {
-				if (activeGun.Shoot ())
-					playerAmmo.pistolAmmo.ModifyAmmo (-1);
+			if (activeGun.ammoInClip > 0) 
+			{
+				activeGun.Shoot ();
 			}
+			else if(activeGun.fireRateCount >= activeGun.fireRate)
+			{
+				AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
+				activeGun.fireRateCount = 0;
+			}
+			break;
+		}
+	}
+
+	void ReloadActiveGun(int ammoModifier)
+	{
+		activeGun.Reload (-ammoModifier);
+		switch (currentGun)
+		{
+		case CurrentGun.MachineGun:
+			playerAmmo.machineGunAmmo.ModifyAmmo (ammoModifier);
+			break;
+		case CurrentGun.Shotgun:
+			playerAmmo.shotgunAmmo.ModifyAmmo (ammoModifier);
+			break;
+		case CurrentGun.Pistol:
+			playerAmmo.pistolAmmo.ModifyAmmo (ammoModifier);
 			break;
 		}
 	}
@@ -431,6 +547,7 @@ public class Player : Entity
 	void PickupCorpse(GameObject corpse)
 	{
 		corpseCarried = corpse.transform.parent.gameObject;
+		corpseCarried.GetComponent<Corpse> ().SetOutline (false);
 		corpseCarried.GetComponent<Corpse> ().isCarried = true;
 		//corpseCarried.transform.position = transform.position + new Vector3(0, 1, 0);
 		//corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = true;
@@ -438,7 +555,14 @@ public class Player : Entity
 		//corpseCarried.layer = LayerMask.NameToLayer("Default");
 	}
 
-	void DropCorpse(float forceModifier)
+	void DropCorpse()
+	{
+		corpseCarried.GetComponent<Corpse> ().isCarried = false;
+		throwingCorpse = false;
+		corpseCarried = null;
+	}
+
+	void ThrowCorpse(float forceModifier)
 	{
 		//corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = false;
 
@@ -458,6 +582,25 @@ public class Player : Entity
 		corpseCarried = null;
 	}
 
+	public GameObject GetTouchingCorpse() //Returns the corpse segment we're touching.
+	{
+		GameObject FirstCorpseTouching = null;
+		GameObject[] corpses = GameObject.FindGameObjectsWithTag ("Corpse");
+		for (int i = 0; i < corpses.Length; i++)
+		{
+			if (controller.coll.IsTouching (corpses [i].GetComponent<Collider2D> ()))
+			{
+				if (FirstCorpseTouching == null)
+					FirstCorpseTouching = corpses [i].gameObject;
+			} 
+			else 
+			{
+				corpses [i].transform.parent.GetComponent<Corpse> ().SetOutline (false);
+			}
+		}
+		return FirstCorpseTouching;
+	}
+
 	#region Custom Data
 	public struct PlayerAmmo
 	{
@@ -475,6 +618,7 @@ public class Player : Entity
 
 	public struct AmmoType
 	{
+		public int ammountInClip;
 		public int maxAmmo;
 		public int currentAmmo;
 
@@ -498,6 +642,8 @@ public class Player : Entity
 	{
 		public bool JustJumped;
 		public bool JustFell;
+		public bool IsFalling;
+		public bool IsFallingPrev;
 		public bool JustLanded; //Landing from a jump OR a fall.
 
 		//Resets info.
@@ -505,6 +651,8 @@ public class Player : Entity
 		{
 			JustJumped = false;
 			JustFell = false;
+			IsFallingPrev = IsFalling;
+			IsFalling = false;
 			JustLanded = false;
 		}
 	}

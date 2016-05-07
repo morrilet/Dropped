@@ -12,6 +12,7 @@ TagManager:
   - Gun
   - Enemy
   - Door
+  - Ragdoll
   layers:
   - Default
   - TransparentFX
@@ -28,8 +29,8 @@ TagManager:
   - Player
   - Foreground
   - Semi_Obstacle
-  - 
-  - 
+  - Ragdoll
+  - Enemy
   - 
   - 
   - 
@@ -46,23 +47,29 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Background
     uniqueID: 430318895
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Ladder
     uniqueID: 460011057
     locked: 0
+  - name: Door
+    uniqueID: 3875817229
+    locked: 0
   - name: Player
     uniqueID: 3694127023
     locked: 0
-  - name: Gun
-    uniqueID: 3837725735
-    locked: 0
   - name: Enemies
     uniqueID: 621622263
+    locked: 0
+  - name: Bullet
+    uniqueID: 3023910823
+    locked: 0
+  - name: Gun
+    uniqueID: 3837725735
     locked: 0
   - name: Foreground
     uniqueID: 1424110809

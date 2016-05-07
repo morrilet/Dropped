@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class GUI : MonoBehaviour 
+public class GUI : Singleton<GUI>
 {
 	Player player;
 
@@ -16,44 +16,52 @@ public class GUI : MonoBehaviour
 	public Text openDoorText;
 	public Text grabAmmoText;
 	public Text grabGunText;
+
 	public Text escapeGrabText;
+	public GameObject escapeBar;
+	public bool escapeObjectsEnabled;
 
-	public static GUI Instance { get; private set; }
-
-	void Awake()
+	public override void Awake()
 	{
-		if (Instance != null && Instance != this) 
-		{
-			Destroy (gameObject);
-		}
-		Instance = this.GetComponent<GUI> ();
+		isPersistant = false;
+
+		base.Awake ();
 	}
 
 	void Start()
 	{
-		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+		player = GameObject.Find ("Player").GetComponent<Player> ();
 
 		openDoorText.enabled = false;
 		grabAmmoText.enabled = false;
 		grabGunText.enabled = false;
 		escapeGrabText.enabled = false;
 
+		escapeObjectsEnabled = false;
+
 		weaponPickupYield = "null";
 	}
 
 	void Update()
 	{
-
-		if (escapeGrabText.enabled == true) 
+		if (escapeObjectsEnabled == true) 
 		{
+			escapeGrabText.enabled = true;
+			escapeBar.GetComponent<EscapeBar>().SetBarActive(true);
+
 			openDoorText.enabled = false;
 			grabAmmoText.enabled = false;
 			grabGunText.enabled = false;
+		} 
+		else 
+		{
+			escapeGrabText.enabled = false;
+			escapeBar.GetComponent<EscapeBar>().SetBarActive(false);
 		}
 
-		pistolAmmoText.text = "Pistol Ammo: " + player.playerAmmo.pistolAmmo.currentAmmo + " / " + player.playerAmmo.pistolAmmo.maxAmmo;
-		shotGunAmmoText.text = "Shotgun Ammo: " + player.playerAmmo.shotgunAmmo.currentAmmo + " / " + player.playerAmmo.shotgunAmmo.maxAmmo;
-		machineGunAmmoText.text = "MachineGun Ammo: " + player.playerAmmo.machineGunAmmo.currentAmmo + " / " + player.playerAmmo.machineGunAmmo.maxAmmo;
+		pistolAmmoText.text = "Pistol Ammo: " + player.playerAmmo.pistolAmmo.ammountInClip + " / " + player.playerAmmo.pistolAmmo.currentAmmo;
+		shotGunAmmoText.text = "Shotgun Ammo: " + player.playerAmmo.shotgunAmmo.ammountInClip + " / " + player.playerAmmo.shotgunAmmo.currentAmmo;
+		machineGunAmmoText.text = "MachineGun Ammo: " + player.playerAmmo.machineGunAmmo.ammountInClip+ " / " + player.playerAmmo.machineGunAmmo.currentAmmo;
 		grabGunText.text = "Press E to pick up " + weaponPickupYield + ".";
 
 	}

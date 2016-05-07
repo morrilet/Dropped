@@ -11,8 +11,9 @@ public class TrajectoryLine : MonoBehaviour
 
 	void Start()
 	{
-		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+		player = GameObject.Find ("Player").GetComponent<Player> ();
 		lineRenderer = GetComponent<LineRenderer> ();
+		lineRenderer.sortingLayerName = "Player";
 	}
 
 	void FixedUpdate()

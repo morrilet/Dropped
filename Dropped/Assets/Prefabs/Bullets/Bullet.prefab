@@ -12,7 +12,6 @@ GameObject:
   - 114: {fileID: 11489470}
   - 61: {fileID: 6154408}
   - 50: {fileID: 5066378}
-  - 95: {fileID: 9574448}
   m_Layer: 9
   m_Name: Bullet
   m_TagString: Bullet
@@ -20,6 +19,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &177178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 495816}
+  - 96: {fileID: 9686970}
+  m_Layer: 9
+  m_Name: Line
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &495816
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177178}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 497868}
+  m_RootOrder: 0
 --- !u!4 &497868
 Transform:
   m_ObjectHideFlags: 1
@@ -27,9 +54,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.060274884, y: 0.6228361, z: 0}
+  m_LocalPosition: {x: 2.7038815, y: -0.42690727, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 495816}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5066378
@@ -45,9 +73,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &6154408
 BoxCollider2D:
@@ -62,24 +90,54 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.12, y: 0.09}
---- !u!95 &9574448
-Animator:
-  serializedVersion: 3
+  m_Size: {x: 0.07, y: 0.035}
+--- !u!96 &9686970
+TrailRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118666}
+  m_GameObject: {fileID: 177178}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b87403da945103d4ead72b57da61e5ce, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Time: 0.15
+  m_StartWidth: 0.3
+  m_EndWidth: 0
+  m_Colors:
+    m_Color[0]:
+      serializedVersion: 2
+      rgba: 4278242505
+    m_Color[1]:
+      serializedVersion: 2
+      rgba: 4278242505
+    m_Color[2]:
+      serializedVersion: 2
+      rgba: 4278242505
+    m_Color[3]:
+      serializedVersion: 2
+      rgba: 4278242505
+    m_Color[4]:
+      serializedVersion: 2
+      rgba: 52425
+  m_MinVertexDistance: 0.1
+  m_Autodestruct: 0
 --- !u!114 &11489470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,6 +160,9 @@ MonoBehaviour:
   rangeDamageFallOff: 0
   impactEffect: {fileID: 114012, guid: 518d9df5d6001ae498917e79f2bea35f, type: 2}
   startPos: {x: 0, y: 0, z: 0}
+  raycastLayerMask:
+    serializedVersion: 2
+    m_Bits: 65792
 --- !u!212 &21289302
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -126,9 +187,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1271056473
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c85fcce9fec33f74db66954cb6bf8f1b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d16394713f82cb24b880f6d83697e6b3, type: 3}
   m_Color: {r: 0.9862069, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
