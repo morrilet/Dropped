@@ -287,7 +287,7 @@ public class Player : Entity
 			if (corpseCarried != null)
 				DropCorpse ();
 			EscapeGrapple ();
-			Debug.Log (grappleEscapeAttempt + ", " + grappleStrength);
+			//Debug.Log (grappleEscapeAttempt + ", " + grappleStrength);
 		}
 		if (!canBeGrabbed) 
 		{

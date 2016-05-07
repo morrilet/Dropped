@@ -80,7 +80,7 @@ public class Gun : MonoBehaviour
 
 		bulletsSpentFromCurrentClip = clipSize - ammoInClip;
 
-		Debug.Log (ammoInClip);
+		//Debug.Log (ammoInClip);
 
 		kickBackOffset = defaultKickBackOffset * transform.parent.GetComponent<Player> ().direction;
 	}

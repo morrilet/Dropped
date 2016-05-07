@@ -47,7 +47,7 @@ public class GUI : Singleton<GUI>
 		if (escapeObjectsEnabled == true) 
 		{
 			escapeGrabText.enabled = true;
-			escapeBar.SetActive (true);
+			escapeBar.GetComponent<EscapeBar>().SetBarActive(true);
 
 			openDoorText.enabled = false;
 			grabAmmoText.enabled = false;
@@ -56,7 +56,7 @@ public class GUI : Singleton<GUI>
 		else 
 		{
 			escapeGrabText.enabled = false;
-			escapeBar.SetActive (false);
+			escapeBar.GetComponent<EscapeBar>().SetBarActive(false);
 		}
 
 		pistolAmmoText.text = "Pistol Ammo: " + player.playerAmmo.pistolAmmo.ammountInClip + " / " + player.playerAmmo.pistolAmmo.currentAmmo;

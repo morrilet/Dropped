@@ -51,7 +51,7 @@ public class GameManager : Singleton<GameManager>
 
 	void Update ()
 	{
-		Debug.Log ("GM: " + playerStoredAmmo.pistolAmmo.ammountInClip);
+		//Debug.Log ("GM: " + playerStoredAmmo.pistolAmmo.ammountInClip);
 
 		if (SceneManager.GetActiveScene().name == "MainMenu")
 			Destroy (instance.gameObject);
