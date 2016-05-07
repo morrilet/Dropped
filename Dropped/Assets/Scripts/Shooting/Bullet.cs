@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Bullet : MonoBehaviour {
 
@@ -26,17 +27,23 @@ public class Bullet : MonoBehaviour {
 
 	public Vector3 startPos;
 
+	public LayerMask raycastLayerMask; //The mask to use for raycasting.
+
+	List<Enemy> enemiesHit; //This is used so that we don't hit the same enemy twice with the same bullet.
+
 	void Start()
 	{
 		startPos = transform.position;
 		bulletSpeed += Random.Range (-1 * bulletSpeedDeviation, bulletSpeedDeviation);
 		damage = maxDamage;
+		enemiesHit = new List<Enemy> ();
+		//Time.timeScale = .1f;
 	}
 
 	void Update () 
 	{
-		if(!GameManager.instance.isPaused)
-			transform.position += bulletSpeed * transform.right * Time.deltaTime;
+		if (!GameManager.instance.isPaused)
+			MoveBullet ();
 
 		if (maxRange <= Mathf.Abs(startPos.x - transform.position.x))
 		{
@@ -46,12 +53,42 @@ public class Bullet : MonoBehaviour {
 //		Debug.Log ("Bullet damage = " + damage);
 	}
 
+	//This method move the bullet while checking along the bullets path for obstacles to ensure that it doesn't pass them.
+	void MoveBullet()
+	{
+		Vector3 velocity = bulletSpeed * transform.right * Time.deltaTime;
+
+		Vector2 startPos = (Vector2)transform.position + (Vector2)(transform.right * GetComponent<Collider2D>().bounds.extents.x);
+		Vector2 endPos = (Vector2)(startPos) + (Vector2)(velocity);
+
+		RaycastHit2D hit = Physics2D.Raycast(startPos, (endPos - startPos).normalized, velocity.magnitude, raycastLayerMask);
+		Debug.DrawLine (startPos, endPos, Color.red);
+		if (hit && hit.transform.tag != "Corpse" && hit.transform.tag != "Enemy") 
+		{
+			velocity = hit.point - startPos;
+			Debug.DrawLine (startPos, startPos + (Vector2)velocity, Color.blue);
+			GameObject impact = Instantiate (impactEffect, hit.point, Quaternion.FromToRotation ((velocity.x > 0) ? -transform.right : transform.right, hit.normal)) as GameObject;
+			Vector3 rot = new Vector3 (0f, 0f, impact.transform.rotation.eulerAngles.z);
+			//impact.transform.rotation = Quaternion.Euler(rot);
+			Debug.Log (hit.normal);
+		}
+		else if (hit && hit.transform.tag == "Enemy" && !enemiesHit.Contains(hit.transform.GetComponent<Enemy>())) 
+		{
+			Debug.DrawLine (startPos, startPos + (Vector2)velocity, Color.blue);
+			hit.transform.GetComponent<Enemy> ().GetHit (this);
+			enemiesHit.Add (hit.transform.GetComponent<Enemy> ());
+			//Physics2D.IgnoreCollision (hit.transform.GetComponent<Collider2D> (), GetComponent<Collider2D> ());
+		}
+			
+		transform.position += velocity;
+	}
+
 	void OnCollisionEnter2D(Collision2D coll)
 	{
 		if (coll.gameObject.tag == "Platforms")
 		{
 //			Vector3 impactCollisionNormal = coll.contacts [0].normal;
-			GameObject impact = Instantiate (impactEffect, transform.position, transform.rotation) as GameObject;
+			//GameObject impact = Instantiate (impactEffect, transform.position, transform.rotation) as GameObject;
 //			Vector3 impactCollisionNormalNormalized = impactCollisionNormal.normalized;
 //			impact.transform.rotation.eulerAngles = impactCollisionNormalNormalized;
 			Destroy (gameObject);
@@ -75,7 +112,6 @@ public class Bullet : MonoBehaviour {
 		{
 //			GameObject impact = Instantiate (impactEffect, transform.position, transform.rotation) as GameObject;
 //			impact.transform.SetParent (coll.transform);
-			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
 		}
 	}
 

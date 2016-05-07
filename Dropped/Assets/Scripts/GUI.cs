@@ -16,7 +16,10 @@ public class GUI : Singleton<GUI>
 	public Text openDoorText;
 	public Text grabAmmoText;
 	public Text grabGunText;
+
 	public Text escapeGrabText;
+	public GameObject escapeBar;
+	public bool escapeObjectsEnabled;
 
 	public override void Awake()
 	{
@@ -34,17 +37,26 @@ public class GUI : Singleton<GUI>
 		grabGunText.enabled = false;
 		escapeGrabText.enabled = false;
 
+		escapeObjectsEnabled = false;
+
 		weaponPickupYield = "null";
 	}
 
 	void Update()
 	{
-
-		if (escapeGrabText.enabled == true) 
+		if (escapeObjectsEnabled == true) 
 		{
+			escapeGrabText.enabled = true;
+			escapeBar.GetComponent<EscapeBar>().SetBarActive(true);
+
 			openDoorText.enabled = false;
 			grabAmmoText.enabled = false;
 			grabGunText.enabled = false;
+		} 
+		else 
+		{
+			escapeGrabText.enabled = false;
+			escapeBar.GetComponent<EscapeBar>().SetBarActive(false);
 		}
 
 		pistolAmmoText.text = "Pistol Ammo: " + player.playerAmmo.pistolAmmo.ammountInClip + " / " + player.playerAmmo.pistolAmmo.currentAmmo;
