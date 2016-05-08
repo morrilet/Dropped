@@ -14,6 +14,11 @@ public class Corpse : MonoBehaviour
 	public bool isCarried;
 	public bool isCarriedPrev;
 
+	//Maybe put this in a struct in the future.
+	public GameObject[] limbs;
+	Vector2[] limbAnchors;
+	Vector2[] limbConnectedAnchors;
+
 	GameObject[] outlines;
 
 	//Stored physics values for the upper torso to be used during pausing.
@@ -41,6 +46,24 @@ public class Corpse : MonoBehaviour
 		outlines [0] = upperTorso.transform.FindChild ("Outline").gameObject;
 		outlines [1] = lowerTorso.transform.FindChild ("Outline").gameObject;
 		SetOutline (false);
+
+		//limbAnchors = new Vector2[limbs.Length];
+		//limbConnectedAnchors = new Vector2[limbs.Length];
+		for (int i = 0; i < limbs.Length; i++) 
+		{
+			Physics2D.IgnoreCollision (upperTorso.GetComponent<Collider2D> (), limbs [i].GetComponent<Collider2D> ());
+			Physics2D.IgnoreCollision (lowerTorso.GetComponent<Collider2D> (), limbs [i].GetComponent<Collider2D> ());
+			for(int j = 0; j < limbs.Length; j++)
+			{
+				Physics2D.IgnoreCollision (limbs [i].GetComponent<Collider2D> (), limbs [j].GetComponent<Collider2D> ());
+			}
+
+			//limbAnchors [i] = limbs [i].GetComponent<HingeJoint2D> ().anchor;
+			//limbConnectedAnchors [i] = limbs [i].GetComponent<HingeJoint2D> ().connectedAnchor;
+
+			//limbs [i].GetComponent<HingeJoint2D> ().anchor *= -1f;
+			//limbs [i].GetComponent<HingeJoint2D> ().connectedAnchor *= -1f;
+		}
 	}
 
 	void Update()
@@ -63,6 +86,12 @@ public class Corpse : MonoBehaviour
 			lowerTorso.transform.rotation = Quaternion.identity;
 			lowerTorso.transform.rotation = Quaternion.Euler(lowerTorso.transform.rotation.eulerAngles.x, lowerTorso.transform.rotation.eulerAngles.y, lowerTorso.transform.rotation.eulerAngles.z - 180);
 			lowerTorso.layer = LayerMask.NameToLayer("Default");
+
+			for (int i = 0; i < limbs.Length; i++) 
+			{
+				//limbs [i].GetComponent<HingeJoint2D> ().anchor = limbAnchors [i];
+				//limbs [i].GetComponent<HingeJoint2D> ().connectedAnchor = limbConnectedAnchors [i];
+			}
 		}
 		else if(!isCarried && isCarriedPrev)
 		{

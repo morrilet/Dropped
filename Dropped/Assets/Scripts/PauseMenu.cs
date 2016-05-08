@@ -34,7 +34,7 @@ public class PauseMenu : Singleton<PauseMenu>
 		GameObject[] ragdolls = GameObject.FindGameObjectsWithTag ("Ragdoll");
 		for (int i = 0; i < ragdolls.Length; i++) 
 		{
-			ragdolls [i].GetComponent<Corpse> ().PauseCorpsePhysics ();
+			ragdolls [i].GetComponent<CorpseRagdoll> ().PauseCorpsePhysics ();
 		}
 
 		for (int i = 0; i < menuObjects.Length; i++) 
@@ -52,7 +52,7 @@ public class PauseMenu : Singleton<PauseMenu>
 		GameObject[] ragdolls = GameObject.FindGameObjectsWithTag ("Ragdoll");
 		for (int i = 0; i < ragdolls.Length; i++) 
 		{
-			ragdolls [i].GetComponent<Corpse> ().ResumeCorpsePhysics ();
+			ragdolls [i].GetComponent<CorpseRagdoll> ().ResumeCorpsePhysics ();
 		}
 
 		for (int i = 0; i < menuObjects.Length; i++) 
