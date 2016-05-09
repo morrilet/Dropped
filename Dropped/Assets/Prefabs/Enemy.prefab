@@ -89,6 +89,10 @@ MonoBehaviour:
   corpseThrowForce: 0
   direction: 0
   currentGun: 0
+  activeGun: {fileID: 0}
+  machineGun: {fileID: 0}
+  shotGun: {fileID: 0}
+  pistol: {fileID: 0}
   grappleEscapeAttempt: 0
   grapplingEnemies: []
   grappleStrength: 0
@@ -109,7 +113,7 @@ MonoBehaviour:
   isAlive: 0
   speed: -1
   gravity: -9.81
-  corpsePrefab: {fileID: 189158, guid: 01e8b231b991cd74d8fc9a41097f9f6b, type: 2}
+  corpsePrefab: {fileID: 186262, guid: 02234e6e4c54bed4a9f275bfccc4508e, type: 2}
   isGrapplingPlayer: 0
   canMove: 0
 --- !u!114 &11468714

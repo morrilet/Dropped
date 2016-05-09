@@ -22,6 +22,47 @@ public class CorpseRagdoll : MonoBehaviour
 
 	float ignorePlayerTime; //Time to ignore collision with the player right after the corpse has been thrown.
 
+	void Awake()
+	{
+		player = GameObject.FindWithTag ("Player").GetComponent<Player> ();
+
+		isCarried = false;
+
+		upperTorso = transform.FindChild ("UpperTorso").gameObject;
+		lowerTorso = upperTorso.transform.FindChild ("LowerTorso").gameObject;
+		Physics2D.IgnoreCollision (upperTorso.GetComponent<Collider2D> (), lowerTorso.GetComponent<Collider2D> ());
+
+		limbs = new List<GameObject> ();
+		for (int i = 0; i < upperTorso.GetComponentsInChildren<HingeJoint2D> ().Length; i++) 
+		{
+			if (upperTorso.GetComponentsInChildren<HingeJoint2D> () [i] != lowerTorso)
+				limbs.Add (upperTorso.GetComponentsInChildren<HingeJoint2D> () [i].gameObject);
+			//if (limbs.Contains (lowerTorso))
+			//limbs.Remove (lowerTorso);
+		}
+
+		limbPositions = new Vector3[limbs.Count];
+		for (int i = 0; i < limbPositions.Length; i++) 
+		{
+			limbPositions [i] = limbs [i].transform.localPosition;
+		}
+
+		lowerTorsoStartingLimits = lowerTorso.GetComponent<HingeJoint2D> ().limits;
+
+		childColliders = transform.GetComponentsInChildren<Collider2D> ();
+		//Debug.Log (childColliders.Length);
+		for (int i = 0; i < childColliders.Length; i++) 
+		{
+			for (int j = 0; j < childColliders.Length; j++) 
+			{
+				if(i != j)
+					Physics2D.IgnoreCollision (childColliders[i], childColliders[j]);
+			}
+		}
+
+		ignorePlayerTime = .1f;
+	}
+
 	void Start () 
 	{
 		player = GameObject.FindWithTag ("Player").GetComponent<Player> ();
@@ -50,7 +91,7 @@ public class CorpseRagdoll : MonoBehaviour
 		lowerTorsoStartingLimits = lowerTorso.GetComponent<HingeJoint2D> ().limits;
 
 		childColliders = transform.GetComponentsInChildren<Collider2D> ();
-		Debug.Log (childColliders.Length);
+		//Debug.Log (childColliders.Length);
 		for (int i = 0; i < childColliders.Length; i++) 
 		{
 			for (int j = 0; j < childColliders.Length; j++) 
@@ -74,7 +115,7 @@ public class CorpseRagdoll : MonoBehaviour
 		JointAngleLimits2D lowerTorsoLimits = new JointAngleLimits2D ();
 		if (isCarried && !isCarriedPrev) 
 		{
-			for (int i = 0; i < limbs.Count; i++) 
+			for (int i = 0; i < limbs.Count; i++)
 			{
 				limbs [i].GetComponent<Rigidbody2D> ().isKinematic = true;
 			}
@@ -86,7 +127,7 @@ public class CorpseRagdoll : MonoBehaviour
 			lowerTorso.GetComponent<HingeJoint2D> ().limits = lowerTorsoLimits;
 
 			//upperTorso.transform.position = transform.position + new Vector3(-.25f, .1f, 0);
-			upperTorso.GetComponent<Rigidbody2D>().MovePosition(new Vector2(-.25f, .1f));
+			upperTorso.GetComponent<Rigidbody2D> ().MovePosition((Vector2)player.transform.position + new Vector2(.25f * player.direction, 1f));
 			upperTorso.GetComponent<Rigidbody2D> ().isKinematic = true;
 			upperTorso.GetComponent<Rigidbody2D> ().MoveRotation (180f);
 			upperTorso.layer = LayerMask.NameToLayer("Default");
@@ -118,7 +159,7 @@ public class CorpseRagdoll : MonoBehaviour
 			for (int i = 0; i < limbs.Count; i++) 
 			{
 				limbs [i].GetComponent<Collider2D> ().enabled = true;
-				//limbs [i].GetComponent<Rigidbody2D> ().isKinematic = false;
+				limbs [i].GetComponent<Rigidbody2D> ().isKinematic = false;
 				//limbs [i].layer = LayerMask.NameToLayer ("Ragdoll_Limb");
 			}
 		}
@@ -136,15 +177,17 @@ public class CorpseRagdoll : MonoBehaviour
 		}
 		upperTorso.layer = LayerMask.NameToLayer ("Default");
 		lowerTorso.layer = LayerMask.NameToLayer ("Default");
+
 		yield return new WaitForSeconds (ignorePlayerTime);
-		upperTorso.layer = LayerMask.NameToLayer ("Obstacle");
-		lowerTorso.layer = LayerMask.NameToLayer ("Obstacle");
+
 		Physics2D.IgnoreCollision (upperTorso.GetComponent<Collider2D> (), player.GetComponent<Collider2D> (), false);
 		Physics2D.IgnoreCollision (lowerTorso.GetComponent<Collider2D> (), player.GetComponent<Collider2D> (), false);
 		for (int i = 0; i < limbs.Count; i++) 
 		{
 			Physics2D.IgnoreCollision (limbs [i].GetComponent<Collider2D> (), player.GetComponent<Collider2D> (), false);
 		}
+		upperTorso.layer = LayerMask.NameToLayer ("Obstacle");
+		lowerTorso.layer = LayerMask.NameToLayer ("Obstacle");
 	}
 
 	public void SetOutline(bool outlineEnabled)
@@ -161,10 +204,29 @@ public class CorpseRagdoll : MonoBehaviour
 
 	public void AddForce(Vector3 force, ForceMode2D forceMode)
 	{
+		//Time.timeScale = .25f;
+		Debug.Log (force);
+
 		upperTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
 		upperTorso.GetComponent<Rigidbody2D> ().AddForce (force / 1.5f, forceMode);
 
+		for (int i = 0; i < limbs.Count; i++) 
+		{
+			limbs [i].GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+		}
+
 		lowerTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
 		lowerTorso.GetComponent<Rigidbody2D> ().AddForce (force / 1.5f, forceMode);
+		
+		Debug.Log (upperTorso.GetComponent<Rigidbody2D> ().velocity);
+	}
+
+	public void AddForceAtPosition(Vector2 force, Vector2 position, ForceMode2D forceMode)
+	{
+		upperTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
+		upperTorso.GetComponent<Rigidbody2D> ().AddForceAtPosition (force / 1.5f, position, forceMode);
+
+		lowerTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
+		lowerTorso.GetComponent<Rigidbody2D> ().AddForceAtPosition (force / 1.5f, position, forceMode);
 	}
 }

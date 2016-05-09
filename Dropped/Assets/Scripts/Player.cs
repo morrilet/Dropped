@@ -186,9 +186,9 @@ public class Player : Entity
 		if (corpseThrowCount >= corpseThrowTime)
 			corpseThrowCount = corpseThrowTime;
 
-		if (corpseCarried)
+		//if (corpseCarried)
 			//corpseCarried.GetComponent<Rigidbody2D> ().MovePosition ((Vector2)transform.position + new Vector2 (0f, .9f));
-			corpseCarried.GetComponent<CorpseRagdoll>().upperTorso.GetComponent<Rigidbody2D>().MovePosition(transform.position + new Vector3 (0, .9f, 0));
+			//corpseCarried.GetComponent<CorpseRagdoll>().upperTorso.GetComponent<Rigidbody2D>().MovePosition(transform.position + new Vector3 (0, .9f, 0));
 
 		if (canMove)
 			HandleInput ();
