@@ -15,6 +15,8 @@ public class CorpseRagdoll : MonoBehaviour
 
 	JointAngleLimits2D lowerTorsoStartingLimits;
 
+	List<GameObject> outlines;
+
 	[HideInInspector]
 	public bool isCarried;
 	[HideInInspector]
@@ -26,17 +28,26 @@ public class CorpseRagdoll : MonoBehaviour
 	{
 		player = GameObject.FindWithTag ("Player").GetComponent<Player> ();
 
+		SpriteRenderer[] sprites = transform.GetComponentsInChildren<SpriteRenderer> ();
+		outlines = new List<GameObject> ();
+		for (int i = 0; i < sprites.Length; i++) 
+		{
+			if (sprites [i].gameObject.name == "Outline")
+				outlines.Add (sprites [i].gameObject);
+		}
+		//SetOutline (false);
+
 		isCarried = false;
 
 		upperTorso = transform.FindChild ("UpperTorso").gameObject;
-		lowerTorso = upperTorso.transform.FindChild ("LowerTorso").gameObject;
+		lowerTorso = transform.FindChild ("LowerTorso").gameObject;
 		Physics2D.IgnoreCollision (upperTorso.GetComponent<Collider2D> (), lowerTorso.GetComponent<Collider2D> ());
 
 		limbs = new List<GameObject> ();
-		for (int i = 0; i < upperTorso.GetComponentsInChildren<HingeJoint2D> ().Length; i++) 
+		for (int i = 0; i < transform.GetComponentsInChildren<HingeJoint2D> ().Length; i++) 
 		{
-			if (upperTorso.GetComponentsInChildren<HingeJoint2D> () [i] != lowerTorso)
-				limbs.Add (upperTorso.GetComponentsInChildren<HingeJoint2D> () [i].gameObject);
+			if (transform.GetComponentsInChildren<HingeJoint2D> () [i] != lowerTorso)
+				limbs.Add (transform.GetComponentsInChildren<HingeJoint2D> () [i].gameObject);
 			//if (limbs.Contains (lowerTorso))
 			//limbs.Remove (lowerTorso);
 		}
@@ -67,17 +78,26 @@ public class CorpseRagdoll : MonoBehaviour
 	{
 		player = GameObject.FindWithTag ("Player").GetComponent<Player> ();
 
+		SpriteRenderer[] sprites = transform.GetComponentsInChildren<SpriteRenderer> ();
+		outlines = new List<GameObject> ();
+		for (int i = 0; i < sprites.Length; i++) 
+		{
+			if (sprites [i].gameObject.name == "Outline")
+				outlines.Add (sprites [i].gameObject);
+		}
+		//SetOutline (false);
+
 		isCarried = false;
 
 		upperTorso = transform.FindChild ("UpperTorso").gameObject;
-		lowerTorso = upperTorso.transform.FindChild ("LowerTorso").gameObject;
+		lowerTorso = transform.FindChild ("LowerTorso").gameObject;
 		Physics2D.IgnoreCollision (upperTorso.GetComponent<Collider2D> (), lowerTorso.GetComponent<Collider2D> ());
 
 		limbs = new List<GameObject> ();
-		for (int i = 0; i < upperTorso.GetComponentsInChildren<HingeJoint2D> ().Length; i++) 
+		for (int i = 0; i < transform.GetComponentsInChildren<HingeJoint2D> ().Length; i++) 
 		{
-			if (upperTorso.GetComponentsInChildren<HingeJoint2D> () [i] != lowerTorso)
-				limbs.Add (upperTorso.GetComponentsInChildren<HingeJoint2D> () [i].gameObject);
+			if (transform.GetComponentsInChildren<HingeJoint2D> () [i] != lowerTorso)
+				limbs.Add (transform.GetComponentsInChildren<HingeJoint2D> () [i].gameObject);
 			//if (limbs.Contains (lowerTorso))
 			//limbs.Remove (lowerTorso);
 		}
@@ -140,7 +160,7 @@ public class CorpseRagdoll : MonoBehaviour
 
 			for (int i = 0; i < limbs.Count; i++) 
 			{
-				limbs [i].GetComponent<Collider2D> ().enabled = false;
+				//limbs [i].GetComponent<Collider2D> ().enabled = false;
 				limbs [i].GetComponent<Rigidbody2D> ().isKinematic = false;
 				//limbs [i].layer = LayerMask.NameToLayer ("Default");
 			}
@@ -158,7 +178,7 @@ public class CorpseRagdoll : MonoBehaviour
 
 			for (int i = 0; i < limbs.Count; i++) 
 			{
-				limbs [i].GetComponent<Collider2D> ().enabled = true;
+				//limbs [i].GetComponent<Collider2D> ().enabled = true;
 				limbs [i].GetComponent<Rigidbody2D> ().isKinematic = false;
 				//limbs [i].layer = LayerMask.NameToLayer ("Ragdoll_Limb");
 			}
@@ -192,6 +212,10 @@ public class CorpseRagdoll : MonoBehaviour
 
 	public void SetOutline(bool outlineEnabled)
 	{
+		for (int i = 0; i < outlines.Count; i++)
+		{
+			outlines [i].SetActive (outlineEnabled);
+		}
 	}
 
 	public void PauseCorpsePhysics()
@@ -205,20 +229,23 @@ public class CorpseRagdoll : MonoBehaviour
 	public void AddForce(Vector3 force, ForceMode2D forceMode)
 	{
 		//Time.timeScale = .25f;
-		Debug.Log (force);
+		//Debug.Log (force);
+
+		//Don't know why these two chunks work, but they do. It's not so bad I guess, aside from the wild spinning.
+		lowerTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
+		lowerTorso.GetComponent<Rigidbody2D> ().AddForce (force * .75f, forceMode);
 
 		upperTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
-		upperTorso.GetComponent<Rigidbody2D> ().AddForce (force / 1.5f, forceMode);
+		upperTorso.GetComponent<Rigidbody2D> ().AddForce (force * .75f, forceMode);
+		upperTorso.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
 
-		for (int i = 0; i < limbs.Count; i++) 
-		{
-			limbs [i].GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
-		}
-
-		lowerTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
-		lowerTorso.GetComponent<Rigidbody2D> ().AddForce (force / 1.5f, forceMode);
+		//for (int i = 0; i < limbs.Count; i++) 
+		//{
+			//limbs [i].GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+		//}
 		
-		Debug.Log (upperTorso.GetComponent<Rigidbody2D> ().velocity);
+		Debug.Log ("UT-V: " + upperTorso.GetComponent<Rigidbody2D> ().velocity);
+		Debug.Log ("LT-V: " + lowerTorso.GetComponent<Rigidbody2D> ().velocity);
 	}
 
 	public void AddForceAtPosition(Vector2 force, Vector2 position, ForceMode2D forceMode)

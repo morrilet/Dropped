@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.91, y: -3.69, z: 0}
+  m_LocalPosition: {x: 2.32, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   isAlive: 0
   speed: -1
   gravity: -9.81
-  corpsePrefab: {fileID: 186262, guid: 02234e6e4c54bed4a9f275bfccc4508e, type: 2}
+  corpsePrefab: {fileID: 160092, guid: c5a9fcd9f96867346932aa371b52434b, type: 2}
   isGrapplingPlayer: 0
   canMove: 0
 --- !u!114 &11468714
