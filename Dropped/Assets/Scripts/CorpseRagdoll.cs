@@ -23,6 +23,7 @@ public class CorpseRagdoll : MonoBehaviour
 	public bool isCarriedPrev;
 
 	float ignorePlayerTime; //Time to ignore collision with the player right after the corpse has been thrown.
+	float ignoreCorpseTime; //Time to ignore collision with other corpses right after the corpse has been picked up.
 
 	void Awake()
 	{
@@ -72,6 +73,7 @@ public class CorpseRagdoll : MonoBehaviour
 		}
 
 		ignorePlayerTime = .1f;
+		ignoreCorpseTime = .1f;
 	}
 
 	void Start () 
@@ -122,6 +124,7 @@ public class CorpseRagdoll : MonoBehaviour
 		}
 
 		ignorePlayerTime = .1f;
+		ignoreCorpseTime = .1f;
 	}
 
 	void Update()
@@ -139,6 +142,7 @@ public class CorpseRagdoll : MonoBehaviour
 			{
 				limbs [i].GetComponent<Rigidbody2D> ().isKinematic = true;
 			}
+			StartCoroutine ("IgnoreCorpseCollision");
 		}
 		else if (isCarried) 
 		{
@@ -208,6 +212,41 @@ public class CorpseRagdoll : MonoBehaviour
 		}
 		upperTorso.layer = LayerMask.NameToLayer ("Obstacle");
 		lowerTorso.layer = LayerMask.NameToLayer ("Obstacle");
+	}
+
+	IEnumerator IgnoreCorpseCollision()
+	{
+		for (int i = 0; i < limbs.Count; i++) 
+		{
+			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Corpse")) 
+			{
+				Physics2D.IgnoreCollision (limbs [i].GetComponent<Collider2D> (), obj.GetComponent<Collider2D> ());
+			}
+		}
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Corpse")) 
+		{
+			Physics2D.IgnoreCollision (upperTorso.GetComponent<Collider2D> (), obj.GetComponent<Collider2D> ());
+			Physics2D.IgnoreCollision (lowerTorso.GetComponent<Collider2D> (), obj.GetComponent<Collider2D> ());
+		}
+
+		yield return new WaitForSeconds (ignoreCorpseTime);
+
+		for (int i = 0; i < limbs.Count; i++) 
+		{
+			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Corpse")) 
+			{
+				if(!limbs.Contains(obj))
+					Physics2D.IgnoreCollision (limbs [i].GetComponent<Collider2D> (), obj.GetComponent<Collider2D> (), false);
+			}
+		}
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Corpse")) 
+		{
+			if (obj != upperTorso && obj != lowerTorso) 
+			{
+				Physics2D.IgnoreCollision (upperTorso.GetComponent<Collider2D> (), obj.GetComponent<Collider2D> (), false);
+				Physics2D.IgnoreCollision (lowerTorso.GetComponent<Collider2D> (), obj.GetComponent<Collider2D> (), false);
+			}
+		}
 	}
 
 	public void SetOutline(bool outlineEnabled)
