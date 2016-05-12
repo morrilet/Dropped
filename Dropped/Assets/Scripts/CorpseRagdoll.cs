@@ -25,6 +25,8 @@ public class CorpseRagdoll : MonoBehaviour
 	float ignorePlayerTime; //Time to ignore collision with the player right after the corpse has been thrown.
 	float ignoreCorpseTime; //Time to ignore collision with other corpses right after the corpse has been picked up.
 
+	public int direction;
+
 	void Awake()
 	{
 		player = GameObject.FindWithTag ("Player").GetComponent<Player> ();
@@ -71,6 +73,8 @@ public class CorpseRagdoll : MonoBehaviour
 					Physics2D.IgnoreCollision (childColliders[i], childColliders[j]);
 			}
 		}
+
+		Flip (direction);
 
 		ignorePlayerTime = .1f;
 		ignoreCorpseTime = .1f;
@@ -122,6 +126,8 @@ public class CorpseRagdoll : MonoBehaviour
 					Physics2D.IgnoreCollision (childColliders[i], childColliders[j]);
 			}
 		}
+
+		//Flip (direction);
 
 		ignorePlayerTime = .1f;
 		ignoreCorpseTime = .1f;
@@ -189,6 +195,32 @@ public class CorpseRagdoll : MonoBehaviour
 		}
 
 		isCarriedPrev = isCarried;
+	}
+
+	//Flips the ragdoll to the right (1) or left (-1)
+	public void Flip(int direction)
+	{
+		for (int i = 0; i < limbs.Count; i++) 
+		{
+			Vector3 newScale = limbs [i].transform.localScale;
+			newScale.y *= direction;
+			limbs [i].transform.localScale = newScale;
+
+			JointAngleLimits2D newLimbLimits = limbs[i].GetComponent<HingeJoint2D>().limits;
+			newLimbLimits.max *= direction;
+			newLimbLimits.min *= direction;
+			if (newLimbLimits.max < newLimbLimits.min) 
+			{
+				float tempMax = newLimbLimits.max;
+				newLimbLimits.max = newLimbLimits.min;
+				newLimbLimits.min = tempMax;
+			}
+			limbs [i].GetComponent<HingeJoint2D> ().limits = newLimbLimits;
+
+			JointAngleLimits2D newLowerTorsoLimits = lowerTorsoStartingLimits;
+			newLowerTorsoLimits.max *= direction;
+			newLowerTorsoLimits.min *= direction;
+		}
 	}
 
 	IEnumerator IgnorePlayerCollision()
@@ -294,5 +326,12 @@ public class CorpseRagdoll : MonoBehaviour
 
 		lowerTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
 		lowerTorso.GetComponent<Rigidbody2D> ().AddForceAtPosition (force / 1.5f, position, forceMode);
+	}
+
+	void OnDrawGizmos()
+	{
+		Gizmos.color = Color.green;
+		if(upperTorso != null)
+			Gizmos.DrawWireSphere (upperTorso.transform.position + (upperTorso.transform.up), .15f);
 	}
 }
