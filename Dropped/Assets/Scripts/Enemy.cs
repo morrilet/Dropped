@@ -192,7 +192,7 @@ public class Enemy : Entity
 	void Die(Bullet bullet) //The bullet that killed us! DAMN YOU, BULLET!
 	{
 		GameObject corpse = Instantiate (corpsePrefab, transform.position + new Vector3(0f, .6f, 0f), Quaternion.Euler (new Vector3 (0, 0, -90))) as GameObject;
-		corpse.GetComponent<CorpseRagdoll> ().Flip ((int)Mathf.Sign (velocity.x));
+		//corpse.GetComponent<CorpseRagdoll> ().Flip ((int)Mathf.Sign (velocity.x));
 		Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .08f);
 
 		Rigidbody2D[] corpseRigidbodies = corpse.GetComponentsInChildren<Rigidbody2D> ();

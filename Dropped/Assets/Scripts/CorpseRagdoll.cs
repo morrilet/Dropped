@@ -74,7 +74,7 @@ public class CorpseRagdoll : MonoBehaviour
 			}
 		}
 
-		Flip (direction);
+		//Flip (direction);
 
 		ignorePlayerTime = .1f;
 		ignoreCorpseTime = .1f;
@@ -159,7 +159,7 @@ public class CorpseRagdoll : MonoBehaviour
 			//upperTorso.transform.position = transform.position + new Vector3(-.25f, .1f, 0);
 			upperTorso.GetComponent<Rigidbody2D> ().MovePosition((Vector2)player.transform.position + new Vector2(.25f * player.direction, 1f));
 			upperTorso.GetComponent<Rigidbody2D> ().isKinematic = true;
-			upperTorso.GetComponent<Rigidbody2D> ().MoveRotation (180f);
+			upperTorso.GetComponent<Rigidbody2D> ().MoveRotation (180f);// * direction);
 			upperTorso.layer = LayerMask.NameToLayer("Default");
 
 			//lowerTorso.transform.position = transform.position + new Vector3(-.25f, 0, 0);
@@ -202,11 +202,14 @@ public class CorpseRagdoll : MonoBehaviour
 	{
 		for (int i = 0; i < limbs.Count; i++) 
 		{
+			HingeJoint2D limbJoint = limbs [i].GetComponent<HingeJoint2D> ();
+			limbJoint.enabled = false;
+
 			Vector3 newScale = limbs [i].transform.localScale;
 			newScale.y *= direction;
 			limbs [i].transform.localScale = newScale;
 
-			JointAngleLimits2D newLimbLimits = limbs[i].GetComponent<HingeJoint2D>().limits;
+			JointAngleLimits2D newLimbLimits = limbJoint.limits;
 			newLimbLimits.max *= direction;
 			newLimbLimits.min *= direction;
 			if (newLimbLimits.max < newLimbLimits.min) 
@@ -215,7 +218,9 @@ public class CorpseRagdoll : MonoBehaviour
 				newLimbLimits.max = newLimbLimits.min;
 				newLimbLimits.min = tempMax;
 			}
-			limbs [i].GetComponent<HingeJoint2D> ().limits = newLimbLimits;
+			limbJoint.limits = newLimbLimits;
+
+			limbJoint.enabled = true;
 
 			JointAngleLimits2D newLowerTorsoLimits = lowerTorsoStartingLimits;
 			newLowerTorsoLimits.max *= direction;
@@ -267,7 +272,7 @@ public class CorpseRagdoll : MonoBehaviour
 		{
 			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Corpse")) 
 			{
-				if(!limbs.Contains(obj))
+				if(!limbs.Contains(obj) && obj != upperTorso && obj != lowerTorso)
 					Physics2D.IgnoreCollision (limbs [i].GetComponent<Collider2D> (), obj.GetComponent<Collider2D> (), false);
 			}
 		}
