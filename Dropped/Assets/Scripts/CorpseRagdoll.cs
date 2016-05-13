@@ -127,7 +127,7 @@ public class CorpseRagdoll : MonoBehaviour
 			}
 		}
 
-		//Flip (direction);
+		Flip (direction);
 
 		ignorePlayerTime = .1f;
 		ignoreCorpseTime = .1f;
@@ -170,7 +170,7 @@ public class CorpseRagdoll : MonoBehaviour
 
 			for (int i = 0; i < limbs.Count; i++) 
 			{
-				//limbs [i].GetComponent<Collider2D> ().enabled = false;
+				limbs [i].GetComponent<Collider2D> ().enabled = false;
 				limbs [i].GetComponent<Rigidbody2D> ().isKinematic = false;
 				//limbs [i].layer = LayerMask.NameToLayer ("Default");
 			}
@@ -188,7 +188,7 @@ public class CorpseRagdoll : MonoBehaviour
 
 			for (int i = 0; i < limbs.Count; i++) 
 			{
-				//limbs [i].GetComponent<Collider2D> ().enabled = true;
+				limbs [i].GetComponent<Collider2D> ().enabled = true;
 				limbs [i].GetComponent<Rigidbody2D> ().isKinematic = false;
 				//limbs [i].layer = LayerMask.NameToLayer ("Ragdoll_Limb");
 			}
