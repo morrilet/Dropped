@@ -102,7 +102,9 @@ public class Bullet : MonoBehaviour {
 
 		if (coll.gameObject.tag == "Corpse") 
 		{
-			coll.gameObject.GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2(bulletSpeed / 5f, 0f)
+			//coll.transform.parent.GetComponent<CorpseRagdoll> ().AddForceAtPosition (new Vector2(bulletSpeed / 5f, 0f)
+				//* GameObject.Find ("Player").GetComponent<Player>().direction, transform.position, ForceMode2D.Impulse);
+			coll.transform.parent.GetComponent<CorpseRagdoll> ().AddForceAtPosition (new Vector2(corpseKnockback / 1.5f, 0f)
 				* GameObject.Find ("Player").GetComponent<Player>().direction, transform.position, ForceMode2D.Impulse);
 			Physics2D.IgnoreCollision (GetComponent<Collider2D> (), coll.gameObject.GetComponent<Collider2D>());
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.075f, .025f);
