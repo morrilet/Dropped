@@ -11,12 +11,13 @@ public class EnemyPatrolState : StateMachineBehaviour
 	{
 		enemyAI = animator.gameObject.GetComponent<EnemyAI> ();
 
-		enemyAI.velocity.x = enemyAI.speed;
+		//enemyAI.velocity.x = enemyAI.speed;
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) 
 	{
+		/*
 		if (enemyAI.controller.collisions.left && !enemyAI.controller.collisions.leftPrev)
 			patrolInfo.JustHitWall = true;
 		if (enemyAI.controller.collisions.right && !enemyAI.controller.collisions.rightPrev)
@@ -41,6 +42,7 @@ public class EnemyPatrolState : StateMachineBehaviour
 		//enemyAI.controller.Move (enemyAI.velocity * Time.deltaTime);
 
 		patrolInfo.Reset ();
+		*/
 	}
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
