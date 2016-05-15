@@ -70,10 +70,14 @@ public class Player : Entity
 	}
 	public CurrentGun currentGun;
 
-	Gun activeGun; //The gun object currently in use.
-	GameObject machineGun;
-	GameObject shotGun;
-	GameObject pistol;
+	[HideInInspector]
+	public Gun activeGun; //The gun object currently in use.
+	[HideInInspector]
+	public GameObject machineGun;
+	[HideInInspector]
+	public GameObject shotGun;
+	[HideInInspector]
+	public GameObject pistol;
 
 	[HideInInspector]
 	public float grappleEscapeAttempt; //How much the player has slammed the button.
@@ -88,7 +92,7 @@ public class Player : Entity
 
 	Animator animator;
 
-	void Start()
+	public void Start()
 	{
 		machineGun = transform.FindChild ("Gun_Machinegun").gameObject;
 		shotGun = transform.FindChild ("Gun_Shotgun").gameObject;
@@ -96,6 +100,10 @@ public class Player : Entity
 
 		currentGun = GameManager.instance.playerStoredGun;
 		activeGun = null;
+
+		machineGun.GetComponent<Gun> ().ammoInClip = GameManager.instance.playerStoredAmmo.machineGunAmmo.ammountInClip;
+		shotGun.GetComponent<Gun> ().ammoInClip = GameManager.instance.playerStoredAmmo.shotgunAmmo.ammountInClip;
+		pistol.GetComponent<Gun> ().ammoInClip = GameManager.instance.playerStoredAmmo.pistolAmmo.ammountInClip;
 
 		GameManager.instance.player = transform.gameObject; //On level load, this will allow the gamemanger to track the new player game object
 
@@ -178,8 +186,9 @@ public class Player : Entity
 		if (corpseThrowCount >= corpseThrowTime)
 			corpseThrowCount = corpseThrowTime;
 
-		if (corpseCarried)
-			corpseCarried.transform.position = transform.position + new Vector3 (0, .9f, 0);
+		//if (corpseCarried)
+			//corpseCarried.GetComponent<Rigidbody2D> ().MovePosition ((Vector2)transform.position + new Vector2 (0f, .9f));
+			//corpseCarried.GetComponent<CorpseRagdoll>().upperTorso.GetComponent<Rigidbody2D>().MovePosition(transform.position + new Vector3 (0, .9f, 0));
 
 		if (canMove)
 			HandleInput ();
@@ -214,6 +223,7 @@ public class Player : Entity
 			}
 		}
 
+		GameManager.instance.playerStoredAmmo = playerAmmo;
 		switch (currentGun)
 		{
 		case CurrentGun.None:
@@ -227,21 +237,24 @@ public class Player : Entity
 			shotGun.SetActive (false);
 			pistol.SetActive (false);
 			activeGun = machineGun.GetComponent<Gun> ();
-			playerAmmo.machineGunAmmo.ammountInClip = activeGun.ammoInClip;
+			//activeGun.ammoInClip = GameManager.instance.playerStoredAmmo.machineGunAmmo.ammountInClip;
+			playerAmmo.machineGunAmmo.ammountInClip = activeGun.ammoInClip; //GameManager.instance.playerStoredAmmo.machineGunAmmo.ammountInClip;
 			break;
 		case CurrentGun.Shotgun:
 			machineGun.SetActive (false);
 			shotGun.SetActive (true);
 			pistol.SetActive (false);
 			activeGun = shotGun.GetComponent<Gun> ();
-			playerAmmo.shotgunAmmo.ammountInClip = activeGun.ammoInClip;
+			//activeGun.ammoInClip = GameManager.instance.playerStoredAmmo.shotgunAmmo.ammountInClip;
+			playerAmmo.shotgunAmmo.ammountInClip = activeGun.ammoInClip; //GameManager.instance.playerStoredAmmo.shotgunAmmo.ammountInClip;
 			break;
 		case CurrentGun.Pistol:
 			machineGun.SetActive (false);
 			shotGun.SetActive (false);
 			pistol.SetActive (true);
 			activeGun = pistol.GetComponent<Gun> ();
-			playerAmmo.pistolAmmo.ammountInClip = activeGun.ammoInClip;
+			//activeGun.ammoInClip = GameManager.instance.playerStoredAmmo.pistolAmmo.ammountInClip;
+			playerAmmo.pistolAmmo.ammountInClip = activeGun.ammoInClip; //GameManager.instance.playerStoredAmmo.pistolAmmo.ammountInClip;
 			break;
 		}
 
@@ -275,7 +288,7 @@ public class Player : Entity
 			if (corpseCarried != null)
 				DropCorpse ();
 			EscapeGrapple ();
-			Debug.Log (grappleEscapeAttempt + ", " + grappleStrength);
+			//Debug.Log (grappleEscapeAttempt + ", " + grappleStrength);
 		}
 		if (!canBeGrabbed) 
 		{
@@ -361,7 +374,7 @@ public class Player : Entity
 		}
 
 		if (GetTouchingCorpse() != null && corpseCarried == null)
-			GetTouchingCorpse ().transform.parent.GetComponent<Corpse> ().SetOutline (true);
+			GetTouchingCorpse ().transform.GetComponentInParent<CorpseRagdoll> ().SetOutline (true);
 
 		if (Input.GetButtonUp ("Action") && throwingCorpse) 
 		{
@@ -437,7 +450,7 @@ public class Player : Entity
 
 	void EscapeGrapple()
 	{
-		GUI.instance.escapeGrabText.enabled = true;
+		GUI.instance.escapeObjectsEnabled = true;
 
 		if (Input.GetAxisRaw("Horizontal") != 0 && horizontalAxisPrev == 0) 
 		{
@@ -447,7 +460,7 @@ public class Player : Entity
 
 		if (grappleEscapeAttempt >= grappleStrength) 
 		{
-			GUI.instance.escapeGrabText.enabled = false;
+			GUI.instance.escapeObjectsEnabled = false;
 
 			canMove = true;
 
@@ -534,9 +547,9 @@ public class Player : Entity
 
 	void PickupCorpse(GameObject corpse)
 	{
-		corpseCarried = corpse.transform.parent.gameObject;
-		corpseCarried.GetComponent<Corpse> ().SetOutline (false);
-		corpseCarried.GetComponent<Corpse> ().isCarried = true;
+		corpseCarried = corpse.transform.GetComponentInParent<CorpseRagdoll> ().gameObject;
+		corpseCarried.GetComponentInParent<CorpseRagdoll> ().SetOutline (false);
+		corpseCarried.GetComponentInParent<CorpseRagdoll> ().isCarried = true;
 		//corpseCarried.transform.position = transform.position + new Vector3(0, 1, 0);
 		//corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = true;
 		//corpseCarried.transform.rotation = Quaternion.identity;
@@ -545,7 +558,7 @@ public class Player : Entity
 
 	void DropCorpse()
 	{
-		corpseCarried.GetComponent<Corpse> ().isCarried = false;
+		corpseCarried.GetComponent<CorpseRagdoll> ().isCarried = false;
 		throwingCorpse = false;
 		corpseCarried = null;
 	}
@@ -558,14 +571,15 @@ public class Player : Entity
 		//corpseCarried.GetComponent<Rigidbody2D> ().AddForce (force, ForceMode2D.Impulse);
 
 		//corpseCarried.layer = LayerMask.NameToLayer("Obstacle");
-		corpseCarried.GetComponent<Corpse>().isCarried = false;
+		corpseCarried.GetComponent<CorpseRagdoll>().isCarried = false;
 
 		Vector2 force = corpseThrowDirection * forceModifier;
-		for (int i = 0; i < corpseCarried.transform.childCount; i++) 
-		{
-			corpseCarried.transform.GetChild (i).GetComponent<Rigidbody2D> ().isKinematic = false;
-			corpseCarried.transform.GetChild (i).GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
-		}
+		corpseCarried.GetComponent<CorpseRagdoll> ().AddForce (force, ForceMode2D.Impulse);
+		//for (int i = 0; i < corpseCarried.transform.childCount; i++) 
+		//{
+			//corpseCarried.transform.GetChild (i).GetComponent<Rigidbody2D> ().isKinematic = false;
+			//corpseCarried.GetComponent<CorpseRagdoll>().AddForce(force, ForceMode2D.Impulse);
+		//}
 
 		corpseCarried = null;
 	}
@@ -583,7 +597,7 @@ public class Player : Entity
 			} 
 			else 
 			{
-				corpses [i].transform.parent.GetComponent<Corpse> ().SetOutline (false);
+				corpses [i].transform.GetComponentInParent<CorpseRagdoll> ().SetOutline (false);
 			}
 		}
 		return FirstCorpseTouching;

@@ -30,8 +30,8 @@ TagManager:
   - Foreground
   - Semi_Obstacle
   - Ragdoll
-  - 
-  - 
+  - Enemy
+  - Ragdoll_Limb
   - 
   - 
   - 

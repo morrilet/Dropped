@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Gun : MonoBehaviour
 {
+	Player player;
+
 	//Gun data
 	public bool isAuto; //True for full auto, false for semi auto or burst.
 	[Range(1, int.MaxValue)]
@@ -51,12 +53,14 @@ public class Gun : MonoBehaviour
 
 	void Start()
 	{
+		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+
 		fireRateCount = fireRate;
 		defaultKickBackOffset = new Vector3 (-.10f, 0, 0);
 		defaultPositionOffset = (transform.position - transform.parent.position);
 		defaultPositionOffset.x *= transform.parent.GetComponent<Player> ().direction;
 		reloadCount = reloadTime;
-		ammoInClip = clipSize;
+		//ammoInClip = clipSize;
 		isReloading = false;
 	}
 
@@ -75,6 +79,8 @@ public class Gun : MonoBehaviour
 		}
 
 		bulletsSpentFromCurrentClip = clipSize - ammoInClip;
+
+		//Debug.Log (ammoInClip);
 
 		kickBackOffset = defaultKickBackOffset * transform.parent.GetComponent<Player> ().direction;
 	}

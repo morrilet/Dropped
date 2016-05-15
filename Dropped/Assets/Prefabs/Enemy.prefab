@@ -110,7 +110,7 @@ MonoBehaviour:
   isAlive: 0
   speed: -1
   gravity: -9.81
-  corpsePrefab: {fileID: 189158, guid: 01e8b231b991cd74d8fc9a41097f9f6b, type: 2}
+  corpsePrefab: {fileID: 160092, guid: c5a9fcd9f96867346932aa371b52434b, type: 2}
   isGrapplingPlayer: 0
   canMove: 0
 --- !u!114 &11468714

@@ -124,6 +124,7 @@ public class Enemy : Entity
 		enemyInfo.Reset ();
 	}
 
+	/*
 	void OnCollisionEnter2D(Collision2D other)
 	{
 		if (other.gameObject.tag == "Bullet") 
@@ -136,6 +137,20 @@ public class Enemy : Entity
 
 			GameManager.instance.FlashWhite (this.GetComponent<SpriteRenderer>(), 0.018f, baseColor);
 		}
+	}
+	*/
+
+	//Getting hit by a bullet.
+	public void GetHit(Bullet bullet)
+	{
+		health -= bullet.damage;
+		bullet.ReduceDamage ();
+		GameManager.instance.Sleep (bullet.sleepFramesOnHit);
+		if (health <= 0)
+			Die (bullet);
+
+		Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
+		GameManager.instance.FlashWhite (this.GetComponent<SpriteRenderer>(), 0.018f, baseColor);
 	}
 
 	public void KnockBack(Vector3 vel, float duration)
@@ -176,27 +191,31 @@ public class Enemy : Entity
 
 	void Die(Bullet bullet) //The bullet that killed us! DAMN YOU, BULLET!
 	{
-		GameObject corpse = Instantiate (corpsePrefab, transform.position, Quaternion.Euler (new Vector3 (0, 0, 90))) as GameObject;
-
+		GameObject corpse = Instantiate (corpsePrefab, transform.position + new Vector3(0f, .6f, 0f), Quaternion.Euler (new Vector3 (0, 0, -90))) as GameObject;
+		corpse.GetComponent<CorpseRagdoll> ().direction = (int)Mathf.Sign (velocity.x);
+		//corpse.GetComponent<CorpseRagdoll> ().Flip ((int)Mathf.Sign (velocity.x));
 		Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .08f);
 
-		for (int i = 0; i < corpse.transform.childCount; i++) 
-		{
+		Rigidbody2D[] corpseRigidbodies = corpse.GetComponentsInChildren<Rigidbody2D> ();
+		//for (int i = 0; i < corpseRigidbodies.Length; i++) 
+		//{
 			//Debug.Log ("Enemies left = " + GameManager.instance.level.GetComponent<Level> ().enemies.Count);
 			//Debug.Log ("Previous enemies left = " + GameManager.instance.level.GetComponent<Level> ().enemiesPrev.Count);
-			corpse.transform.GetChild (i).GetComponent<Rigidbody2D> ().isKinematic = false;
+			//corpseRigidbodies[i].isKinematic = false;
 			if (GameManager.instance.level.GetComponent<Level> ().enemies.Count > 1) {
-				corpse.transform.GetChild (i).GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2 (bullet.corpseKnockback, 0f)
-					* GameObject.Find ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+				//corpseRigidbodies[i].AddForceAtPosition (new Vector2 (bullet.corpseKnockback, 0f)
+					//* GameObject.Find ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+				corpse.GetComponent<CorpseRagdoll>().AddForceAtPosition(new Vector2 (bullet.corpseKnockback, 0f) * player.direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
 			}
 			else
 			{
-				corpse.transform.GetChild (i).GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2 (bullet.corpseKnockback * 2, 0f)
-					* GameObject.Find ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+				//corpseRigidbodies[i].AddForceAtPosition (new Vector2 (bullet.corpseKnockback * 2, 0f)
+					//* GameObject.Find ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+				corpse.GetComponent<CorpseRagdoll>().AddForceAtPosition(new Vector2 (bullet.corpseKnockback * 1.5f, 0f) * player.direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
 			}
 
-			GameManager.instance.FlashWhite (corpse.transform.GetChild (i).GetComponent<SpriteRenderer> (), 0.018f, baseColor);
-		}
+			//GameManager.instance.FlashWhite (corpseRigidbodies[i].GetComponent<SpriteRenderer> (), 0.018f, baseColor);
+		//}
 
 		Physics2D.IgnoreCollision (controller.coll, bullet.GetComponent<Collider2D> ());
 		Destroy (gameObject);

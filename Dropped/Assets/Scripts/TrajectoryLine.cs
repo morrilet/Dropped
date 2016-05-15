@@ -13,12 +13,13 @@ public class TrajectoryLine : MonoBehaviour
 	{
 		player = GameObject.Find ("Player").GetComponent<Player> ();
 		lineRenderer = GetComponent<LineRenderer> ();
+		lineRenderer.sortingLayerName = "Player";
 	}
 
 	void FixedUpdate()
 	{
 		if (player.throwingCorpse)
-			UpdateTrajectory (player.corpseCarried.transform.position, player.corpseThrowDirection * player.corpseThrowForce, Physics2D.gravity);
+			UpdateTrajectory (player.corpseCarried.GetComponent<CorpseRagdoll>().upperTorso.transform.position, player.corpseThrowDirection * player.corpseThrowForce, Physics2D.gravity);
 		else
 			lineRenderer.SetVertexCount(0);
 	}

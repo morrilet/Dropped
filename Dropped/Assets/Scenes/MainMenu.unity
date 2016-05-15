@@ -1058,6 +1058,18 @@ Prefab:
       propertyPath: scrollOnAwake
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 406180, guid: b148119fa8329004b8a3201142032bcd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 470916, guid: b148119fa8329004b8a3201142032bcd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 459174, guid: b148119fa8329004b8a3201142032bcd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.06
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b148119fa8329004b8a3201142032bcd, type: 2}
   m_IsPrefabParent: 0
@@ -2000,6 +2012,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -2517,6 +2530,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
