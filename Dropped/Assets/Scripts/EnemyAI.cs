@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyAI : Entity 
 {
@@ -39,6 +40,18 @@ public class EnemyAI : Entity
 	float chaseTimer; //Counts up to chaseTime.
 	bool playerDetected; //Whether or not we can see/hear the player.
 
+	public int direction;
+	int storedDirection; //This is the value used to return the enemy to its previous direction when it stops chasing. -1 = left, 1 = right.
+
+	[HideInInspector]
+	public bool isGrapplingPlayer; //Whether or not this enemy is grappling the player.
+	float grappleStrength; //Strength of the grab every time the enemy grabs.
+	float grappleModifier; //Modifies the grapple strength based on how many times we've attacked during one grapple.
+
+	float attackRate;
+	float attackTimer;
+	float attackDamage;
+
 	public enum States
 	{
 		Patrol,
@@ -47,6 +60,7 @@ public class EnemyAI : Entity
 		JumpOverCorpse
 	}
 	public States currentState;
+	States previousState;
 
 	void Start()
 	{
@@ -65,6 +79,16 @@ public class EnemyAI : Entity
 
 		chaseTime = 3f;
 		playerDetected = false;
+
+		attackRate = 1.5f;
+		attackTimer = attackRate;
+		attackDamage = 15f;
+
+		grappleStrength = 5f;
+		grappleModifier = 1f;
+
+		velocity.x = patrolSpeed;
+		storedDirection = (int)Mathf.Sign(velocity.x);
 	}
 
 	void Update()
@@ -104,6 +128,9 @@ public class EnemyAI : Entity
 		case States.ChasePlayer:
 			ChasePlayer ();
 			break;
+		case States.GrabPlayer:
+			GrabPlayer ();
+			break;
 		}
 		ChooseState ();
 
@@ -115,36 +142,50 @@ public class EnemyAI : Entity
 		{
 			playerDetected = false;
 		}
-			
+
+		if ((int)Mathf.Sign (velocity.x) != direction)
+			velocity.x *= -1f;
+
+		Debug.Log (currentState + ", " + isGrapplingPlayer);
+
+		if (currentState != States.GrabPlayer && previousState == States.GrabPlayer)
+			isGrapplingPlayer = false;
+
+		if(attackTimer <= attackRate)
+			attackTimer += Time.deltaTime;
+
 		jumpingPrevious = jumpingCurrent;
-		enemyInfo.Reset (); //Temporarily removed so that patrol state would work... This won't work as a permanent solution.
+		enemyInfo.Reset ();
+		previousState = currentState;
 	}
 
+	#region Flocking
 	//This method pushes us away from other enemies so that we don't overlap with them.
 	void KeepDistanceFromEnemies()
 	{
-		GameObject[] enemies = GameManager.instance.level.GetComponent<Level> ().enemies.ToArray ();
+		GameObject[] enemies = GetIsTouchingEnemies ();
 		for (int i = 0; i < enemies.Length; i++) 
 		{
 			if (enemies [i] != null) 
 			{
 				if (this != enemies [i]) 
 				{
-					if (controller.coll.IsTouching (enemies [i].GetComponent<EnemyAI> ().controller.coll))
+					if (direction == enemies [i].GetComponent<EnemyAI> ().direction)
 					{
-						if (transform.position.x <= enemies [i].transform.position.x) 
+						if (Mathf.Abs(transform.position.x - enemies [i].transform.position.x) >= 0.01f)
+							velocity.x += .1f * Mathf.Sign (transform.position.x - enemies [i].transform.position.x);
+						else 
 						{
-							velocity.x -= .1f;
+							//Debug.Log ("Here");
+							velocity.x += .1f * Random.Range (-1f, 1f);
 						}
-						else if (transform.position.x > enemies [i].transform.position.x) 
-						{
-							velocity.x += .1f;
-						}
+						//Debug.Log (Mathf.Sign(transform.position.x - enemies [i].transform.position.x));
 					}
 				}
 			}
 		}
 	}
+	#endregion
 
 	#region Sensing
 	//Gets the vision of the enemy, ie: does the enemy see the player?
@@ -164,7 +205,7 @@ public class EnemyAI : Entity
 			//Angle to use for this cast.
 			float angle = castAngle - (i * angleStepAmount);
 			//The end point of the cast, used for finding the direction.
-			Vector3 endPoint = new Vector3 (Mathf.Cos (angle * Mathf.Deg2Rad) * Mathf.Sign(velocity.x), Mathf.Sin (angle * Mathf.Deg2Rad), 0f) * raycastDistance + transform.position;
+			Vector3 endPoint = new Vector3 (Mathf.Cos (angle * Mathf.Deg2Rad) * direction, Mathf.Sin (angle * Mathf.Deg2Rad), 0f) * raycastDistance + transform.position;
 
 			raycastHits [i] = Physics2D.Raycast ((Vector2)transform.position, (Vector2)(endPoint - transform.position), raycastDistance, sightLayerMask);
 
@@ -226,17 +267,59 @@ public class EnemyAI : Entity
 
 		return canHearPlayer;
 	}
+
+	GameObject[] GetIsTouchingEnemies()
+	{
+		List<GameObject> touchingEnemies = new List<GameObject> ();
+
+		GameObject[] enemies = GameManager.instance.level.GetComponent<Level> ().enemies.ToArray ();
+		for (int i = 0; i < enemies.Length; i++) 
+		{
+			float colliderWidth = GetComponent<Collider2D> ().bounds.extents.x * 2;
+			float colliderHeight = GetComponent<Collider2D> ().bounds.extents.y * 2;
+			if (enemies [i] != null && enemies[i] != this.gameObject) 
+			{
+				if (this != enemies [i]) 
+				{
+					if (Mathf.Abs (transform.position.x - enemies [i].transform.position.x) < colliderWidth
+						&& Mathf.Abs (transform.position.y - enemies [i].transform.position.y) < colliderHeight) 
+					{
+						//Debug.Log("TOUCHING");
+						touchingEnemies.Add (enemies [i]);
+					}
+				}
+			}
+		}
+
+		return touchingEnemies.ToArray ();
+	}
+
+	bool GetIsTouchingPlayer()
+	{
+		bool isTouchingPlayer = false;
+
+		float minDistanceX = GetComponent<Collider2D> ().bounds.extents.x + player.GetComponent<Collider2D> ().bounds.extents.x;
+		float minDistanceY = GetComponent<Collider2D> ().bounds.extents.y + player.GetComponent<Collider2D> ().bounds.extents.y;
+		if (Mathf.Abs (transform.position.x - player.transform.position.x) < minDistanceX
+		   && Mathf.Abs (transform.position.y - player.transform.position.y) < minDistanceY) 
+		{
+			isTouchingPlayer = true;
+		}
+
+		return isTouchingPlayer;
+	}
 	#endregion
 
+	#region States
 	//This method picks a state to use, contextually.
 	void ChooseState()
 	{
-		if (playerDetected) 
+		if (playerDetected && !isGrapplingPlayer) 
 		{
 			chaseTimer = 0f;
 			currentState = States.ChasePlayer;
 		} 
-		else if(chaseTimer >= chaseTime)
+		else if(chaseTimer >= chaseTime && !isGrapplingPlayer)
 		{
 			currentState = States.Patrol;
 		}
@@ -246,43 +329,91 @@ public class EnemyAI : Entity
 		{
 			chaseTimer += Time.deltaTime;
 		}
+
+		if (GetIsTouchingPlayer () && player.canBeGrabbed) 
+		{
+			currentState = States.GrabPlayer;
+		}
 	}
 
-	#region States
 	void Patrol()
 	{
-		velocity.x = patrolSpeed;
-		KeepDistanceFromEnemies ();
+		//If we just switched to patrol reset direction to stored direction.
+		if (previousState != States.Patrol) 
+		{
+			if (direction != storedDirection)
+				direction *= -1;
+		} 
+		else if (controller.collisions.left) //If we just switched to patrol and are touching an obstacle, turn around.
+		{
+			if (direction == -1)
+				direction = 1;
+		}
+		else if (controller.collisions.right) //If we just switched to patrol and are touching an obstacle, turn around.
+		{
+			if (direction == 1)
+				direction = -1;
+		}
+
+		if (Mathf.Abs (velocity.x) != patrolSpeed)
+			velocity.x = patrolSpeed;
 
 		if (enemyInfo.IsOnEdgeOfPlatform || enemyInfo.JustHitWall) 
 		{
-			velocity.x *= -1f;
+			direction *= -1;
 		}
 
+		KeepDistanceFromEnemies ();
+		//velocity.x *= direction;
 		controller.Move (velocity * Time.deltaTime);
 	}
 
 	void ChasePlayer()
 	{
-		velocity.x = chaseSpeed;
-		KeepDistanceFromEnemies ();
+		storedDirection = direction;
 
+		if (Mathf.Abs (velocity.x) != chaseSpeed)
+			velocity.x = chaseSpeed * direction;
+
+		direction = (int)Mathf.Sign (player.transform.position.x - transform.position.x);
+
+		/*
 		if (player.transform.position.x > transform.position.x) 
 		{
-			if (Mathf.Sign (velocity.x) == -1)
-				velocity.x *= -1;
+			direction = 1;
 		} 
 		else if (player.transform.position.x < transform.position.x) 
 		{
-			if (Mathf.Sign (velocity.x) == 1)
-				velocity.x *= -1;
+			direction = -1;
 		}
+		*/
 
+		KeepDistanceFromEnemies ();
+		//velocity.x *= direction;
 		controller.Move (velocity * Time.deltaTime);
 	}
 
 	void GrabPlayer()
 	{
+		if (attackTimer >= attackRate && !GameManager.instance.isPaused) 
+		{
+			player.direction = Mathf.Sign (transform.position.x - player.transform.position.x); //Make the player face us.
+			player.canMove = false; //Stop the player from moving.
+
+			isGrapplingPlayer = true;
+			player.grapplingEnemies.Add (this);
+
+			if (previousState != States.GrabPlayer) 
+			{
+				grappleModifier = 1f;
+			}
+			player.grappleStrength += grappleStrength * grappleModifier;
+			grappleModifier *= .75f; //Here is where we decide how strong the next successful attack will be.
+
+			attackTimer = 0;
+			player.health -= attackDamage;
+			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
+		}
 	}
 
 	void JumpOverCorpse()
@@ -304,42 +435,14 @@ public class EnemyAI : Entity
 		}
 	}
 
+	#region AdvancedMovement
 	public void Jump(ref Vector3 velocity)
 	{
 		jumpingCurrent = true;
 
 		velocity.y += jumpVelocity;
 	}
-
-	void Die(Bullet bullet) //The bullet that killed us! DAMN YOU, BULLET!
-	{
-		GameObject corpse = Instantiate (corpsePrefab, transform.position, Quaternion.Euler (new Vector3 (0, 0, 90))) as GameObject;
-
-		Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .08f);
-
-		for (int i = 0; i < corpse.transform.childCount; i++) 
-		{
-			//Debug.Log ("Enemies left = " + GameManager.instance.level.GetComponent<Level> ().enemies.Count);
-			//Debug.Log ("Previous enemies left = " + GameManager.instance.level.GetComponent<Level> ().enemiesPrev.Count);
-			corpse.transform.GetChild (i).GetComponent<Rigidbody2D> ().isKinematic = false;
-			if (GameManager.instance.level.GetComponent<Level> ().enemies.Count > 1) 
-			{
-				corpse.transform.GetChild (i).GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2 (bullet.corpseKnockback, 0f)
-					* GameObject.Find ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
-			}
-			else
-			{
-				corpse.transform.GetChild (i).GetComponent<Rigidbody2D> ().AddForceAtPosition (new Vector2 (bullet.corpseKnockback * 2, 0f)
-					* GameObject.Find ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
-			}
-
-			GameManager.instance.FlashWhite (corpse.transform.GetChild (i).GetComponent<SpriteRenderer> (), 0.018f, baseColor);
-		}
-
-		Physics2D.IgnoreCollision (controller.coll, bullet.GetComponent<Collider2D> ());
-		Destroy (gameObject);
-	}
-
+		
 	//Calculates gravity and jump velocity for a desired jumpHeight and timeToJumpApex.
 	public void CalculateJumpPhysics()
 	{
@@ -348,6 +451,57 @@ public class EnemyAI : Entity
 		jumpVelocity = Mathf.Abs (gravity) * timeToJumpApex;
 
 		//print ("Gravity: " + gravity + " Jump Velocity: " + jumpVelocity);
+	}
+
+	public void KnockBack(Vector3 vel, float duration)
+	{
+		StartCoroutine (knockBack (vel, duration));
+	}
+
+	public IEnumerator knockBack(Vector3 vel, float duration)
+	{
+		Vector3 startPos = transform.position;
+		//canMove = false;
+		for (float t = 0; t < duration; t += Time.deltaTime) 
+		{
+			transform.position = new Vector3((Mathf.Lerp(startPos.x, startPos.x + vel.x, t / duration)), startPos.y, startPos.z);
+			yield return null;
+		}
+		//canMove = true;
+	}
+	#endregion
+
+	void Die(Bullet bullet) //The bullet that killed us! DAMN YOU, BULLET!
+	{
+		GameObject corpse = Instantiate (corpsePrefab, transform.position + new Vector3(0f, .6f, 0f), Quaternion.Euler (new Vector3 (0, 0, -90))) as GameObject;
+		corpse.GetComponent<CorpseRagdoll> ().direction = direction;
+		//corpse.GetComponent<CorpseRagdoll> ().Flip ((int)Mathf.Sign (velocity.x));
+		Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .08f);
+
+		Rigidbody2D[] corpseRigidbodies = corpse.GetComponentsInChildren<Rigidbody2D> ();
+		//for (int i = 0; i < corpseRigidbodies.Length; i++) 
+		//{
+		//Debug.Log ("Enemies left = " + GameManager.instance.level.GetComponent<Level> ().enemies.Count);
+		//Debug.Log ("Previous enemies left = " + GameManager.instance.level.GetComponent<Level> ().enemiesPrev.Count);
+		//corpseRigidbodies[i].isKinematic = false;
+		if (GameManager.instance.level.GetComponent<Level> ().enemies.Count > 1) 
+		{
+			//corpseRigidbodies[i].AddForceAtPosition (new Vector2 (bullet.corpseKnockback, 0f)
+			//* GameObject.Find ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+			corpse.GetComponent<CorpseRagdoll>().AddForceAtPosition(new Vector2 (bullet.corpseKnockback, 0f) * player.direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+		}
+		else
+		{
+			//corpseRigidbodies[i].AddForceAtPosition (new Vector2 (bullet.corpseKnockback * 2, 0f)
+			//* GameObject.Find ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+			corpse.GetComponent<CorpseRagdoll>().AddForceAtPosition(new Vector2 (bullet.corpseKnockback * 1.5f, 0f) * player.direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+		}
+
+		//GameManager.instance.FlashWhite (corpseRigidbodies[i].GetComponent<SpriteRenderer> (), 0.018f, baseColor);
+		//}
+
+		Physics2D.IgnoreCollision (controller.coll, bullet.GetComponent<Collider2D> ());
+		Destroy (gameObject);
 	}
 
 	public struct EnemyInfo

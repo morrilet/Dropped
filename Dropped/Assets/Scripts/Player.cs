@@ -82,7 +82,7 @@ public class Player : Entity
 	[HideInInspector]
 	public float grappleEscapeAttempt; //How much the player has slammed the button.
 	[HideInInspector]
-	public List<Enemy> grapplingEnemies;
+	public List<EnemyAI> grapplingEnemies;
 	[HideInInspector]
 	public float grappleStrength; //How much the player has to slam the button to escape the grapple.
 	[HideInInspector]
@@ -122,7 +122,7 @@ public class Player : Entity
 		ladderExitTime = .25f;
 		ladderExitTimer = 0;
 
-		grapplingEnemies = new List<Enemy> ();
+		grapplingEnemies = new List<EnemyAI> ();
 		canBeGrabbed = true;
 		grabSafeTime = 1f;
 		grabSafeTimer = 0f;
@@ -464,9 +464,10 @@ public class Player : Entity
 
 			canMove = true;
 
-			foreach (Enemy enemy in grapplingEnemies) 
+			foreach (EnemyAI enemy in grapplingEnemies) 
 			{
 				enemy.isGrapplingPlayer = false;
+				enemy.currentState = EnemyAI.States.ChasePlayer;
 
 				Vector3 knockBackVelocity = new Vector3 (1f, 0f, 0f);
 				knockBackVelocity.x *= (enemy.transform.position.x - transform.position.x) / Mathf.Abs (enemy.transform.position.x - transform.position.x);
