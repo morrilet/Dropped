@@ -131,6 +131,9 @@ public class EnemyAI : Entity
 		case States.GrabPlayer:
 			GrabPlayer ();
 			break;
+		case States.JumpOverCorpse:
+			JumpOverCorpse ();
+			break;
 		}
 		ChooseState ();
 
@@ -146,7 +149,7 @@ public class EnemyAI : Entity
 		if ((int)Mathf.Sign (velocity.x) != direction)
 			velocity.x *= -1f;
 
-		Debug.Log (currentState + ", " + isGrapplingPlayer);
+		//Debug.Log (currentState + ", " + isGrapplingPlayer);
 
 		if (currentState != States.GrabPlayer && previousState == States.GrabPlayer)
 			isGrapplingPlayer = false;
@@ -214,11 +217,11 @@ public class EnemyAI : Entity
 				if (raycastHits [i].transform.tag == "Player") 
 				{
 					canSeePlayer = true;
-					Debug.DrawLine (transform.position, endPoint, Color.blue);
+					Debug.DrawLine (transform.position, raycastHits[i].point, Color.blue);
 				}
 				else 
 				{
-					Debug.DrawLine (transform.position, endPoint, Color.grey);
+					Debug.DrawLine (transform.position, raycastHits[i].point, Color.grey);
 				}
 			} 
 			else
@@ -308,6 +311,57 @@ public class EnemyAI : Entity
 
 		return isTouchingPlayer;
 	}
+
+	bool GetIsTouchingCorpse()
+	{
+		bool isTouchingCorpse = false;
+
+		GameObject[] ragdolls = GameObject.FindGameObjectsWithTag ("Ragdoll");
+		if (ragdolls.Length > 0) 
+		{
+			for (int i = 0; i < ragdolls.Length; i++) 
+			{
+				GameObject upperTorso = ragdolls [i].GetComponent<CorpseRagdoll> ().upperTorso;
+				GameObject lowerTorso = ragdolls [i].GetComponent<CorpseRagdoll> ().lowerTorso;
+				GameObject[] limbs = ragdolls [i].GetComponent<CorpseRagdoll> ().limbs.ToArray ();
+
+				//This distance check is for optimization.
+				if (Vector3.Distance (upperTorso.transform.position, transform.position) < 2f) 
+				{
+					//Because these can rotate, this all won't be SUPER accurate. Hopefully that won't be too bad.
+
+					float upperTorsoMinDistanceX = GetComponent<Collider2D> ().bounds.extents.x + upperTorso.GetComponent<Collider2D> ().bounds.extents.x;
+					float upperTorsoMinDistanceY = GetComponent<Collider2D> ().bounds.extents.y + upperTorso.GetComponent<Collider2D> ().bounds.extents.y;
+					if (Mathf.Abs (transform.position.x - upperTorso.transform.position.x) < upperTorsoMinDistanceX
+						&& Mathf.Abs (transform.position.y - upperTorso.transform.position.y) < upperTorsoMinDistanceY) 
+					{
+						isTouchingCorpse = true;
+					}
+
+					float lowerTorsoMinDistanceX = GetComponent<Collider2D> ().bounds.extents.x + lowerTorso.GetComponent<Collider2D> ().bounds.extents.x;
+					float lowerTorsoMinDistanceY = GetComponent<Collider2D> ().bounds.extents.y + lowerTorso.GetComponent<Collider2D> ().bounds.extents.y;
+					if (Mathf.Abs (transform.position.x - lowerTorso.transform.position.x) < lowerTorsoMinDistanceX
+						&& Mathf.Abs (transform.position.y - lowerTorso.transform.position.y) < lowerTorsoMinDistanceY) 
+					{
+						isTouchingCorpse = true;
+					}
+						
+					for (int j = 0; j < limbs.Length; j++) 
+					{
+						float minDistanceX = GetComponent<Collider2D> ().bounds.extents.x + limbs [j].GetComponent<Collider2D> ().bounds.extents.x;
+						float minDistanceY = GetComponent<Collider2D> ().bounds.extents.y + limbs [j].GetComponent<Collider2D> ().bounds.extents.y;
+						if (Mathf.Abs (transform.position.x - limbs [i].transform.position.x) < minDistanceX
+						   && Mathf.Abs (transform.position.y - limbs [i].transform.position.y) < minDistanceY) 
+						{
+							isTouchingCorpse = true;
+						}
+					}
+				}
+			}
+		}
+
+		return isTouchingCorpse;
+	}
 	#endregion
 
 	#region States
@@ -333,6 +387,14 @@ public class EnemyAI : Entity
 		if (GetIsTouchingPlayer () && player.canBeGrabbed) 
 		{
 			currentState = States.GrabPlayer;
+		}
+
+		if (GetIsTouchingCorpse ()) 
+		{
+			Debug.Log ("Here");
+			if(!jumpingCurrent)
+				Jump (ref velocity);
+			//currentState = States.JumpOverCorpse;
 		}
 	}
 
@@ -360,7 +422,8 @@ public class EnemyAI : Entity
 
 		if (enemyInfo.IsOnEdgeOfPlatform || enemyInfo.JustHitWall) 
 		{
-			direction *= -1;
+			if(!jumpingCurrent)
+				direction *= -1;
 		}
 
 		KeepDistanceFromEnemies ();
@@ -408,7 +471,7 @@ public class EnemyAI : Entity
 				grappleModifier = 1f;
 			}
 			player.grappleStrength += grappleStrength * grappleModifier;
-			grappleModifier *= .75f; //Here is where we decide how strong the next successful attack will be.
+			grappleModifier *= .65f; //Here is where we decide how strong the next successful attack will be.
 
 			attackTimer = 0;
 			player.health -= attackDamage;
@@ -418,6 +481,18 @@ public class EnemyAI : Entity
 
 	void JumpOverCorpse()
 	{
+		//Get what state we were in last time.
+		//States storedState = previousState;
+
+		//Try to jump.
+		if(!jumpingCurrent)
+			Jump (ref velocity);
+
+		//Set state to storedState.
+		//if (storedState != States.JumpOverCorpse)
+			//currentState = storedState;
+		//else
+			//currentState = States.Patrol;
 	}
 	#endregion
 
@@ -440,7 +515,7 @@ public class EnemyAI : Entity
 	{
 		jumpingCurrent = true;
 
-		velocity.y += jumpVelocity;
+		velocity.y = jumpVelocity;
 	}
 		
 	//Calculates gravity and jump velocity for a desired jumpHeight and timeToJumpApex.
