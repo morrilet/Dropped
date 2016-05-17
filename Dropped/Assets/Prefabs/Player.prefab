@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.374, y: 4.659, z: 0}
+  m_LocalPosition: {x: -10.84, y: -0.12, z: 0}
   m_LocalScale: {x: 0.45, y: 0.45, z: 1}
   m_Children:
   - {fileID: 465316}
@@ -371,7 +371,7 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 129302, guid: 69b9a9466c1673840bbf68e0a6787d49, type: 2}
   fireRate: 0.8
   playerKnockBack: 14
-  corpseKnockBack: 1.35
+  corpseKnockBack: 1.15
   sleepFramesOnHit: 2
   clipSize: 2
   ammoInClip: 0
@@ -415,7 +415,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: -1}
   m_Parameters:
     startWidth: 0.15
     endWidth: 0.15

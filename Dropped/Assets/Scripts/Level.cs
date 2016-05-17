@@ -22,6 +22,7 @@ public class Level : MonoBehaviour
 	{
 		enemiesPrev = enemies;
 		enemies = enemies.Where (gameObject => gameObject != null).ToList();	
+		enemies = enemies.Where (gameObject => gameObject.activeSelf == true).ToList ();
 	}
 
 	private void InitializeLists()

@@ -9,8 +9,10 @@ public class CorpseRagdoll : MonoBehaviour
 	Collider2D[] childColliders;
 	[HideInInspector]
 	public GameObject upperTorso;
-	GameObject lowerTorso;
-	List<GameObject> limbs;
+	[HideInInspector]
+	public GameObject lowerTorso;
+	[HideInInspector]
+	public List<GameObject> limbs;
 	Vector3[] limbPositions;
 
 	JointAngleLimits2D lowerTorsoStartingLimits;

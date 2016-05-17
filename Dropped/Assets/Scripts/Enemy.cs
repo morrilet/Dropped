@@ -105,7 +105,7 @@ public class Enemy : Entity
 				if(player.canBeGrabbed)
 				{
 					isGrapplingPlayer = true;
-					player.grapplingEnemies.Add(this);
+					//player.grapplingEnemies.Add(this); Grappling enemies now takes enemyAI, not enemy.
 					player.grappleStrength += grappleStrength * grappleModifier;
 					grappleModifier  *= .75f;
 				}
