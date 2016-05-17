@@ -27,8 +27,6 @@ public class EnemyAI : Entity
 	//Jumping stuff
 	public float jumpHeight;
 	public float timeToJumpApex;
-	[HideInInspector]
-	public bool canJump;
 	bool jumpingCurrent;
 	bool jumpingPrevious;
 	float jumpVelocity;
@@ -51,6 +49,10 @@ public class EnemyAI : Entity
 	float attackRate;
 	float attackTimer;
 	float attackDamage;
+
+	Vector2 jumpTimeRange; //Range of values for jumpTime. x,y -- min,max;
+	float jumpTime; //How long to wait after jumping before jumping again. Stops enemies from constantly bouncing on corpses.
+	float jumpTimer;
 
 	public enum States
 	{
@@ -86,6 +88,10 @@ public class EnemyAI : Entity
 
 		grappleStrength = 5f;
 		grappleModifier = 1f;
+
+		jumpTimeRange = new Vector2 (.5f, 2f);
+		jumpTime = Random.Range (jumpTimeRange.x, jumpTimeRange.y);
+		jumpTimer = jumpTime;
 
 		velocity.x = patrolSpeed;
 		storedDirection = (int)Mathf.Sign(velocity.x);
@@ -156,6 +162,9 @@ public class EnemyAI : Entity
 
 		if(attackTimer <= attackRate)
 			attackTimer += Time.deltaTime;
+
+		if (jumpTimer <= jumpTime)
+			jumpTimer += Time.deltaTime;
 
 		jumpingPrevious = jumpingCurrent;
 		enemyInfo.Reset ();
@@ -392,8 +401,12 @@ public class EnemyAI : Entity
 		if (GetIsTouchingCorpse ()) 
 		{
 			Debug.Log ("Here");
-			if(!jumpingCurrent)
+			if (!jumpingCurrent && jumpTimer > jumpTime) 
+			{
+				jumpTime = Random.Range (jumpTimeRange.x, jumpTimeRange.y);
+				jumpTimer = 0f;
 				Jump (ref velocity);
+			}
 			//currentState = States.JumpOverCorpse;
 		}
 	}
@@ -477,6 +490,10 @@ public class EnemyAI : Entity
 			player.health -= attackDamage;
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
 		}
+			
+		//Move, but only with the force of gravity.
+		velocity.y += gravity * Time.deltaTime;
+		controller.Move (new Vector3 (0f, velocity.y, 0f) * Time.deltaTime);
 	}
 
 	void JumpOverCorpse()
