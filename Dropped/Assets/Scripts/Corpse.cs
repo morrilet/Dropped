@@ -156,7 +156,6 @@ public class Corpse : MonoBehaviour
 		lowerTorsoStoredGravityScale = lowerTorsoRB.gravityScale;
 		lowerTorsoStoredInertia = lowerTorsoRB.inertia;
 
-
 		//freeze lowerTorso;
 		lowerTorsoRB.velocity = Vector2.zero;
 		lowerTorsoRB.angularVelocity = 0f;

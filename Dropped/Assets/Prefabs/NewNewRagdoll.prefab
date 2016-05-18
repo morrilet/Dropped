@@ -155,6 +155,7 @@ GameObject:
   - 60: {fileID: 6046416}
   - 50: {fileID: 5068606}
   - 233: {fileID: 23341278}
+  - 114: {fileID: 11405400}
   m_Layer: 17
   m_Name: LowerArm_1
   m_TagString: Corpse
@@ -188,6 +189,7 @@ GameObject:
   - 4: {fileID: 495324}
   - 60: {fileID: 6050542}
   - 50: {fileID: 5047106}
+  - 114: {fileID: 11484000}
   m_Layer: 8
   m_Name: UpperTorso
   m_TagString: Corpse
@@ -222,6 +224,7 @@ GameObject:
   - 60: {fileID: 6094810}
   - 50: {fileID: 5014242}
   - 233: {fileID: 23381960}
+  - 114: {fileID: 11411790}
   m_Layer: 17
   m_Name: LowerLeg_1
   m_TagString: Corpse
@@ -256,6 +259,7 @@ GameObject:
   - 50: {fileID: 5074262}
   - 233: {fileID: 23309078}
   - 60: {fileID: 6035414}
+  - 114: {fileID: 11492262}
   m_Layer: 17
   m_Name: LowerTorso
   m_TagString: Corpse
@@ -291,6 +295,7 @@ GameObject:
   - 50: {fileID: 5088258}
   - 233: {fileID: 23347546}
   - 232: {fileID: 23280422}
+  - 114: {fileID: 11459362}
   m_Layer: 17
   m_Name: UpperLeg_1
   m_TagString: Corpse
@@ -358,6 +363,7 @@ GameObject:
   - 50: {fileID: 5082274}
   - 233: {fileID: 23333674}
   - 232: {fileID: 23236436}
+  - 114: {fileID: 11457630}
   m_Layer: 17
   m_Name: UpperArm_2
   m_TagString: Corpse
@@ -376,6 +382,7 @@ GameObject:
   - 58: {fileID: 5894106}
   - 50: {fileID: 5078420}
   - 233: {fileID: 23369262}
+  - 114: {fileID: 11445634}
   m_Layer: 17
   m_Name: Head
   m_TagString: Corpse
@@ -427,6 +434,7 @@ GameObject:
   - 50: {fileID: 5037906}
   - 233: {fileID: 23349386}
   - 232: {fileID: 23240304}
+  - 114: {fileID: 11481148}
   m_Layer: 17
   m_Name: UpperLeg_2
   m_TagString: Corpse
@@ -445,6 +453,7 @@ GameObject:
   - 60: {fileID: 6044154}
   - 50: {fileID: 5036754}
   - 233: {fileID: 23381258}
+  - 114: {fileID: 11406022}
   m_Layer: 17
   m_Name: LowerLeg_2
   m_TagString: Corpse
@@ -527,6 +536,7 @@ GameObject:
   - 60: {fileID: 6050064}
   - 50: {fileID: 5047192}
   - 233: {fileID: 23397748}
+  - 114: {fileID: 11475250}
   m_Layer: 17
   m_Name: LowerArm_2
   m_TagString: Corpse
@@ -562,6 +572,7 @@ GameObject:
   - 50: {fileID: 5012008}
   - 233: {fileID: 23384738}
   - 232: {fileID: 23200472}
+  - 114: {fileID: 11498404}
   m_Layer: 17
   m_Name: UpperArm_1
   m_TagString: Corpse
@@ -625,8 +636,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160092}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: -2.64, y: 4.31, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.90630764, w: -0.42261854}
+  m_LocalPosition: {x: 5.355, y: -1.4333313, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 495324}
@@ -1410,6 +1421,72 @@ PolygonCollider2D:
       - {x: 0.23968133, y: 0.0038331803}
       - {x: -0.009111255, y: -0.08156952}
       - {x: -0.23909816, y: -0.0030827504}
+--- !u!114 &11405400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9896eb88a34a724498065621654ad9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11406022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9896eb88a34a724498065621654ad9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11411790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9896eb88a34a724498065621654ad9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11445634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9896eb88a34a724498065621654ad9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11457630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9896eb88a34a724498065621654ad9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11459362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9896eb88a34a724498065621654ad9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11465858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1422,9 +1499,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upperTorso: {fileID: 0}
+  lowerTorso: {fileID: 0}
+  limbs: []
   isCarried: 0
   isCarriedPrev: 0
-  direction: 1
+  direction: -1
+  limbsPhysicsData: []
+--- !u!114 &11475250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9896eb88a34a724498065621654ad9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11481148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9896eb88a34a724498065621654ad9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11484000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9896eb88a34a724498065621654ad9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11492262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9896eb88a34a724498065621654ad9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11498404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9896eb88a34a724498065621654ad9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21206368
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2171,7 +2306,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.17440891, y: 0.0020073652}
-  m_ConnectedAnchor: {x: 0.17259122, y: 0.0020075128}
+  m_ConnectedAnchor: {x: 0.17259128, y: 0.002007358}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2194,7 +2329,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.21105817, y: 0.0033119144}
-  m_ConnectedAnchor: {x: -0.14505817, y: 0.0033118492}
+  m_ConnectedAnchor: {x: -0.14505842, y: 0.0033121784}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2217,7 +2352,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.183747, y: -0.0016356728}
-  m_ConnectedAnchor: {x: 0.20825341, y: 0.0083644735}
+  m_ConnectedAnchor: {x: 0.20825338, y: 0.008364187}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2240,7 +2375,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.16006517, y: 0.0033118725}
-  m_ConnectedAnchor: {x: 0.06093455, y: 0.003311883}
+  m_ConnectedAnchor: {x: 0.060934354, y: 0.003312048}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2263,7 +2398,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.16006517, y: 0.0033118725}
-  m_ConnectedAnchor: {x: 0.060935028, y: 0.003311883}
+  m_ConnectedAnchor: {x: 0.06093493, y: 0.003311914}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2286,7 +2421,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.121423244, y: -0.003153801}
-  m_ConnectedAnchor: {x: -0.18457653, y: -0.0031538315}
+  m_ConnectedAnchor: {x: -0.18457678, y: -0.0031537716}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2309,7 +2444,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.183747, y: -0.0016356728}
-  m_ConnectedAnchor: {x: 0.17825295, y: 0.00836423}
+  m_ConnectedAnchor: {x: 0.17825295, y: 0.00836403}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2332,7 +2467,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.183747, y: -0.0016356728}
-  m_ConnectedAnchor: {x: 0.17825295, y: 0.00836423}
+  m_ConnectedAnchor: {x: 0.17825305, y: 0.008364112}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2355,7 +2490,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.21105817, y: 0.0033119144}
-  m_ConnectedAnchor: {x: -0.14505817, y: 0.0033118492}
+  m_ConnectedAnchor: {x: -0.14505842, y: 0.0033121784}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2378,7 +2513,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.183747, y: -0.0016356728}
-  m_ConnectedAnchor: {x: 0.20825294, y: 0.0083644735}
+  m_ConnectedAnchor: {x: 0.20825312, y: 0.008363956}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

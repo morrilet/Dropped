@@ -29,6 +29,8 @@ public class CorpseRagdoll : MonoBehaviour
 
 	public int direction;
 
+	public List<LimbPhysicsData> limbsPhysicsData;
+
 	void Awake()
 	{
 		player = GameObject.FindWithTag ("Player").GetComponent<Player> ();
@@ -77,6 +79,7 @@ public class CorpseRagdoll : MonoBehaviour
 		}
 
 		//Flip (direction);
+		//SetupLimbsPhysicsDataList();
 
 		ignorePlayerTime = .1f;
 		ignoreCorpseTime = .1f;
@@ -130,6 +133,7 @@ public class CorpseRagdoll : MonoBehaviour
 		}
 
 		Flip (direction);
+		//SetupLimbsPhysicsDataList ();
 
 		ignorePlayerTime = .1f;
 		ignoreCorpseTime = .1f;
@@ -298,10 +302,32 @@ public class CorpseRagdoll : MonoBehaviour
 
 	public void PauseCorpsePhysics()
 	{
+		upperTorso.GetComponent<LimbPhysicsData> ().StoreData ();
+		upperTorso.GetComponent<LimbPhysicsData> ().Freeze ();
+
+		lowerTorso.GetComponent<LimbPhysicsData> ().StoreData ();
+		lowerTorso.GetComponent<LimbPhysicsData> ().Freeze ();
+
+		for (int i = 0; i < limbs.Count; i++)
+		{
+			limbs [i].GetComponent<LimbPhysicsData> ().StoreData ();
+			limbs [i].GetComponent<LimbPhysicsData> ().Freeze ();
+		}
 	}
 
 	public void ResumeCorpsePhysics()
 	{
+		upperTorso.GetComponent<LimbPhysicsData> ().SetToStoredData ();
+		upperTorso.GetComponent<LimbPhysicsData> ().UnFreeze ();
+
+		lowerTorso.GetComponent<LimbPhysicsData> ().SetToStoredData ();
+		lowerTorso.GetComponent<LimbPhysicsData> ().UnFreeze ();
+
+		for (int i = 0; i < limbs.Count; i++)
+		{
+			limbs [i].GetComponent<LimbPhysicsData> ().SetToStoredData ();
+			limbs [i].GetComponent<LimbPhysicsData> ().UnFreeze ();
+		}
 	}
 
 	public void AddForce(Vector3 force, ForceMode2D forceMode)
@@ -334,6 +360,28 @@ public class CorpseRagdoll : MonoBehaviour
 		lowerTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
 		lowerTorso.GetComponent<Rigidbody2D> ().AddForceAtPosition (force / 1.5f, position, forceMode);
 	}
+
+	/*
+	//Creates a list of physics data for use in pausing and resuming corpse physics.
+	void SetupLimbsPhysicsDataList()
+	{
+		limbsPhysicsData = new List<LimbPhysicsData> ();
+		for (int i = 0; i < limbs.Count; i++) 
+		{
+			LimbPhysicsData limbData = ScriptableObject.CreateInstance<LimbPhysicsData> ();
+			//limbData.limb = limbs [i].gameObject;
+			limbsPhysicsData.Add (limbData);
+		}
+
+		LimbPhysicsData upperTorsoData = new LimbPhysicsData ();
+		//upperTorsoData.limb = upperTorso;
+		limbsPhysicsData.Add (upperTorsoData);
+
+		LimbPhysicsData lowerTorsoData = new LimbPhysicsData ();
+		//lowerTorsoData.limb = lowerTorso;
+		limbsPhysicsData.Add (lowerTorsoData);
+	}
+	*/
 
 	void OnDrawGizmos()
 	{
