@@ -87,7 +87,7 @@ public class Controller2D : RaycastController
 				//else
 					//collisions.belowLeft = false;
 				//If this is the rightmost raycastOrigin then our bottom right corner is in a collision.
-				if (i == verticalRayCount && directionY == -1)
+				if (i == verticalRayCount - 1 && directionY == -1)
 					collisions.belowRight = true;
 				//else
 					//collisions.belowRight = false;

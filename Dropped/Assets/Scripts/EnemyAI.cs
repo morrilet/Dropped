@@ -106,10 +106,12 @@ public class EnemyAI : Entity
 		if (controller.collisions.right && !controller.collisions.rightPrev)
 			enemyInfo.JustHitWall = true;
 
-		if (!controller.collisions.belowLeft && controller.collisions.belowLeftPrev)
+		if (!controller.collisions.belowLeft && controller.collisions.belowLeftPrev) {
 			enemyInfo.IsOnEdgeOfPlatform = true;
-		if (!controller.collisions.belowRight && controller.collisions.belowRightPrev)
+		}
+		if (!controller.collisions.belowRight && controller.collisions.belowRightPrev) {
 			enemyInfo.IsOnEdgeOfPlatform = true;
+		}
 
 		if (!controller.collisions.below)
 			velocity.y += gravity * Time.deltaTime;
@@ -493,7 +495,9 @@ public class EnemyAI : Entity
 			
 		//Move, but only with the force of gravity.
 		velocity.y += gravity * Time.deltaTime;
-		controller.Move (new Vector3 (0f, velocity.y, 0f) * Time.deltaTime);
+		velocity.x = 0f;
+		KeepDistanceFromEnemies ();
+		controller.Move (new Vector3 (velocity.x, velocity.y, 0f) * Time.deltaTime);
 	}
 
 	void JumpOverCorpse()
