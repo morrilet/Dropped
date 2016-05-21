@@ -171,7 +171,7 @@ public class GameManager : Singleton<GameManager>
 
 	public IEnumerator LerpTimeScale(float value, float duration)
 	{
-		float startingTimeScale = Time.timeScale;
+		float startingTimeScale = 1;
 
 		for (float i = 0; i < duration; i += Time.deltaTime / Time.timeScale)
 		{

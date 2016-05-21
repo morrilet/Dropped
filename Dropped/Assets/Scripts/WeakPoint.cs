@@ -21,7 +21,7 @@ public class WeakPoint : Entity
 		if (!isAlive) 
 		{
 			weakpointAnimator.SetTrigger (parameterName);
-			Destroy (GetComponent<WeakPoint>());
+			Destroy (GetComponent<WeakPoint> ());
 		}
 	}
 
@@ -39,6 +39,14 @@ public class WeakPoint : Entity
 			health -= Mathf.Abs (other.gameObject.GetComponent<Rigidbody2D> ().velocity.magnitude);
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
 			GameManager.instance.Sleep (3);
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.gameObject.tag == "Player") 
+		{
+			health = 0;
 		}
 	}
 }

@@ -528,6 +528,9 @@ public class EnemyAI : Entity
 				Die (other.gameObject.GetComponent<Bullet> ());
 
 			GameManager.instance.FlashWhite (this.GetComponent<SpriteRenderer>(), 0.018f, baseColor);
+
+			chaseTimer = 0f;
+			currentState = States.ChasePlayer;
 		}
 	}
 
