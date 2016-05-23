@@ -305,27 +305,26 @@ public class Player : Entity
 
 		horizontalAxisPrev = Input.GetAxisRaw ("Horizontal");
 
-		/*
 		if (playerInfo.JustJumped) 
 		{
-			Debug.Log ("JustJumped");
+			//Debug.Log ("JustJumped");
 			animator.SetTrigger ("JustJumped");
 		}
 		if (playerInfo.JustLanded) 
 		{
-			Debug.Log ("JustLanded");
+			//Debug.Log ("JustLanded");
 			animator.SetTrigger ("JustLanded");
 		}
 		if (playerInfo.JustFell) 
 		{
-			Debug.Log ("JustFell");
+			//Debug.Log ("JustFell");
 		}
 		if (playerInfo.IsFalling && !playerInfo.IsFallingPrev)
 		{
 			animator.SetTrigger ("Falling");
-			Debug.Log ("Falling");
+			//Debug.Log ("Falling");
 		}
-		*/
+		
 		animator.SetFloat ("PlayerSpeed", Mathf.Abs (velocity.x));
 		//Time.timeScale = .1f;
 		playerInfo.Reset ();

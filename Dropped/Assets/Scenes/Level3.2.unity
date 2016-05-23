@@ -10785,6 +10785,60 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1875163258}
   parameterName: Window3_Trigger
+--- !u!1001 &1197343153
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2052547345}
+    m_Modifications:
+    - target: {fileID: 456648, guid: 23f51cf8c7495224f9cf3be3a1ad7e00, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 40.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 456648, guid: 23f51cf8c7495224f9cf3be3a1ad7e00, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 9.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 456648, guid: 23f51cf8c7495224f9cf3be3a1ad7e00, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456648, guid: 23f51cf8c7495224f9cf3be3a1ad7e00, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456648, guid: 23f51cf8c7495224f9cf3be3a1ad7e00, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456648, guid: 23f51cf8c7495224f9cf3be3a1ad7e00, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456648, guid: 23f51cf8c7495224f9cf3be3a1ad7e00, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 456648, guid: 23f51cf8c7495224f9cf3be3a1ad7e00, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 456648, guid: 23f51cf8c7495224f9cf3be3a1ad7e00, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 456648, guid: 23f51cf8c7495224f9cf3be3a1ad7e00, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400478, guid: 23f51cf8c7495224f9cf3be3a1ad7e00, type: 2}
+      propertyPath: levelToChangeTo
+      value: Level3.3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 23f51cf8c7495224f9cf3be3a1ad7e00, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1199560391
 GameObject:
   m_ObjectHideFlags: 0
@@ -12131,7 +12185,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 151028, guid: d43855c4d283ad449af726ca74fb30eb, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d43855c4d283ad449af726ca74fb30eb, type: 2}
