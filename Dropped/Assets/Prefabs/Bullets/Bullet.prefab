@@ -162,7 +162,7 @@ MonoBehaviour:
   startPos: {x: 0, y: 0, z: 0}
   raycastLayerMask:
     serializedVersion: 2
-    m_Bits: 65792
+    m_Bits: 327936
 --- !u!212 &21289302
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -29,7 +29,10 @@ public class CorpseRagdoll : MonoBehaviour
 
 	public int direction;
 
-	public List<LimbPhysicsData> limbsPhysicsData;
+	List<LimbPhysicsData> limbsPhysicsData;
+
+	Rope attachedRope; //The rope this ragdoll is attached to.
+	public GameObject attachedRopeSegment; //The rope segment this ragdoll is attached to.
 
 	void Awake()
 	{
@@ -135,6 +138,8 @@ public class CorpseRagdoll : MonoBehaviour
 		Flip (direction);
 		//SetupLimbsPhysicsDataList ();
 
+		attachedRope = attachedRopeSegment.transform.parent.GetComponent<Rope> ();
+
 		ignorePlayerTime = .1f;
 		ignoreCorpseTime = .1f;
 	}
@@ -154,6 +159,10 @@ public class CorpseRagdoll : MonoBehaviour
 			{
 				limbs [i].GetComponent<Rigidbody2D> ().isKinematic = true;
 			}
+
+			if (attachedRopeSegment != null)
+				attachedRopeSegment = null;
+
 			StartCoroutine ("IgnoreCorpseCollision");
 		}
 		else if (isCarried) 
@@ -198,6 +207,36 @@ public class CorpseRagdoll : MonoBehaviour
 				limbs [i].GetComponent<Rigidbody2D> ().isKinematic = false;
 				//limbs [i].layer = LayerMask.NameToLayer ("Ragdoll_Limb");
 			}
+		}
+
+		if (attachedRopeSegment != null) 
+		{
+			for (int i = 0; i < attachedRope.ropeSegments.Count; i++) 
+			{
+				Physics2D.IgnoreCollision (upperTorso.GetComponent<Collider2D> (), attachedRope.ropeSegments [i].GetComponent<Collider2D> ());
+				Physics2D.IgnoreCollision (lowerTorso.GetComponent<Collider2D> (), attachedRope.ropeSegments [i].GetComponent<Collider2D> ());
+				for (int j = 0; j < limbs.Count; j++) 
+				{
+					Physics2D.IgnoreCollision (limbs [j].GetComponent<Collider2D> (), attachedRope.ropeSegments [i].GetComponent<Collider2D> ());
+				}
+			}
+
+			GameObject head = transform.FindChild ("Head").gameObject;
+			head.GetComponent<Rigidbody2D> ().MovePosition ((Vector2)attachedRopeSegment.transform.position 
+				+ new Vector2 ((head.GetComponent<Collider2D> ().bounds.extents.x / 3f) * direction, head.GetComponent<Collider2D> ().bounds.extents.y));
+		} 
+		else if (attachedRope != null)
+		{
+			for (int i = 0; i < attachedRope.ropeSegments.Count; i++) 
+			{
+				Physics2D.IgnoreCollision (upperTorso.GetComponent<Collider2D> (), attachedRope.ropeSegments [i].GetComponent<Collider2D> (), false);
+				Physics2D.IgnoreCollision (lowerTorso.GetComponent<Collider2D> (), attachedRope.ropeSegments [i].GetComponent<Collider2D> (), false);
+				for (int j = 0; j < limbs.Count; j++) 
+				{
+					Physics2D.IgnoreCollision (limbs [j].GetComponent<Collider2D> (), attachedRope.ropeSegments [i].GetComponent<Collider2D> (), false);
+				}
+			}
+			attachedRope = null;
 		}
 
 		isCarriedPrev = isCarried;
@@ -343,6 +382,11 @@ public class CorpseRagdoll : MonoBehaviour
 		upperTorso.GetComponent<Rigidbody2D> ().AddForce (force * .75f, forceMode);
 		upperTorso.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
 
+		if (attachedRopeSegment != null) 
+		{
+			attachedRopeSegment.GetComponent<Rigidbody2D> ().AddForce (force, forceMode);
+		}
+
 		//for (int i = 0; i < limbs.Count; i++) 
 		//{
 			//limbs [i].GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
@@ -354,11 +398,19 @@ public class CorpseRagdoll : MonoBehaviour
 
 	public void AddForceAtPosition(Vector2 force, Vector2 position, ForceMode2D forceMode)
 	{
-		upperTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
-		upperTorso.GetComponent<Rigidbody2D> ().AddForceAtPosition (force / 1.5f, position, forceMode);
+		if (attachedRopeSegment == null) 
+		{
+			upperTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
+			upperTorso.GetComponent<Rigidbody2D> ().AddForceAtPosition (force / 1.5f, position, forceMode);
 
-		lowerTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
-		lowerTorso.GetComponent<Rigidbody2D> ().AddForceAtPosition (force / 1.5f, position, forceMode);
+			lowerTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
+			lowerTorso.GetComponent<Rigidbody2D> ().AddForceAtPosition (force / 1.5f, position, forceMode);
+		}
+
+		if (attachedRopeSegment != null) 
+		{
+			attachedRopeSegment.GetComponent<Rigidbody2D> ().AddForce (force / 200f, forceMode);
+		}
 	}
 
 	/*

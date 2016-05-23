@@ -63,7 +63,7 @@ public class Bullet : MonoBehaviour {
 
 		RaycastHit2D hit = Physics2D.Raycast(startPos, (endPos - startPos).normalized, velocity.magnitude, raycastLayerMask);
 		Debug.DrawLine (startPos, endPos, Color.red);
-		if (hit && hit.transform.tag != "Corpse" && hit.transform.tag != "Enemy") 
+		if (hit && hit.transform.tag != "Corpse" && hit.transform.tag != "Enemy" && hit.transform.tag != "Rope") 
 		{
 			velocity = hit.point - startPos;
 			Debug.DrawLine (startPos, startPos + (Vector2)velocity, Color.blue);
@@ -78,6 +78,12 @@ public class Bullet : MonoBehaviour {
 			hit.transform.GetComponent<Enemy> ().GetHit (this);
 			enemiesHit.Add (hit.transform.GetComponent<Enemy> ());
 			//Physics2D.IgnoreCollision (hit.transform.GetComponent<Collider2D> (), GetComponent<Collider2D> ());
+		}
+
+		if (hit && hit.transform.tag == "Rope")
+		{
+			Debug.Log ("Here");
+			hit.transform.GetComponent<Rigidbody2D> ().AddForce (velocity);
 		}
 			
 		transform.position += velocity;
