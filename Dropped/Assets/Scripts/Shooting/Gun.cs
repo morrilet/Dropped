@@ -118,7 +118,20 @@ public class Gun : MonoBehaviour
 			else if(transform.parent.GetComponent<Player>().direction == -1)
 				rotationDeviationBuffer.eulerAngles = new Vector3 (0, 0, Random.Range (-rotationDeviation, rotationDeviation) + 180);
 
-			GameObject bullet = Instantiate (bulletPrefab, new Vector3(bulletOffset.x * transform.parent.GetComponent<Player>().direction, bulletOffset.y) + transform.position, transform.rotation * rotationDeviationBuffer) as GameObject;
+			//Check if there's something between the player and the bullets offset before firing.
+			LayerMask hitMask = new LayerMask();
+			hitMask = hitMask + (1 << LayerMask.NameToLayer ("Obstacle"));
+			hitMask = hitMask + (1 << LayerMask.NameToLayer ("Semi_Obstacle"));
+			RaycastHit2D hit = Physics2D.Raycast(new Vector2(player.transform.position.x, bulletOffset.y), bulletOffset, Mathf.Abs(player.transform.position.x - bulletOffset.x), hitMask);
+
+			GameObject bullet;
+			if(!hit)
+				bullet = Instantiate (bulletPrefab, new Vector3(bulletOffset.x * transform.parent.GetComponent<Player>().direction, bulletOffset.y) 
+					+ transform.position, transform.rotation * rotationDeviationBuffer) as GameObject;
+			else
+				bullet = Instantiate (bulletPrefab, new Vector3(0, bulletOffset.y) 
+					+ transform.position, transform.rotation * rotationDeviationBuffer) as GameObject;
+
 			//All needed bullet data is passed here
 			bullet.GetComponent<Bullet> ().bulletSpeed = bulletSpeed;
 			bullet.GetComponent<Bullet> ().bulletSpeedDeviation = bulletSpeedDeviation;

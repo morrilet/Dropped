@@ -97,7 +97,7 @@ public class EnemyAI : Entity
 		storedDirection = (int)Mathf.Sign(velocity.x);
 	}
 
-	void Update()
+	public override void Update()
 	{
 		base.Update (); //Update for entity.
 
@@ -113,9 +113,11 @@ public class EnemyAI : Entity
 			enemyInfo.IsOnEdgeOfPlatform = true;
 		}
 
-		if (!controller.collisions.below)
+		if (!controller.collisions.below) 
+		{
 			velocity.y += gravity * Time.deltaTime;
-		else if (controller.collisions.below) 
+		}
+		else
 		{
 			if(velocity.y < 0)
 				velocity.y = -.001f;

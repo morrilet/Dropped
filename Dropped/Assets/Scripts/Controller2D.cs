@@ -25,11 +25,23 @@ public class Controller2D : RaycastController
 			if (velocity.y < 0)
 				DescendSlope (ref velocity);
 
+			if (Mathf.Sign(velocity.y) == 1 || Input.GetAxis("Vertical") < 0) 
+			{
+				int semiObstacleLayer = LayerMask.NameToLayer ("Semi_Obstacle");
+				collisionMask = collisionMask & ~(1 << semiObstacleLayer);
+			}
+
 			//Before we translate, we will check for collisions.
 			if (velocity.x != 0)
 				HorizontalCollisions (ref velocity); //If horizColl doesn't happen before vertColl, the char will climb the side of a wall it's pushing on... For SOME reason...
 			if (velocity.y != 0)
 				VerticalCollisions (ref velocity); //ref passes a reference to an existing variable, instead of creating a copy of an existing variable.
+
+			if(Mathf.Sign(velocity.y) != 1 && Input.GetAxis("Vertical") >= 0)
+			{
+				int semiObstacleLayer = LayerMask.NameToLayer ("Semi_Obstacle");
+				collisionMask = collisionMask | (1 << semiObstacleLayer);
+			}
 
 			transform.Translate (velocity);
 
@@ -59,11 +71,11 @@ public class Controller2D : RaycastController
 			//If the ray hit something...
 			if(hit)
 			{
-				if (hit.collider.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle") && directionY == 1)
-					break;
-
-				if (hit.collider.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle") && Input.GetAxis ("Vertical") < 0)
-					break;
+				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle") && directionY == 1) 
+				{
+					int semiObstacleLayer = LayerMask.NameToLayer ("Semi_Obstacle");
+					collisionMask = collisionMask & ~(1 << semiObstacleLayer);
+				}
 
 				if(hit.transform.tag == "MovingPlatform")
 					collisions.movingPlatform = hit.transform.GetComponent<PlatformController>();

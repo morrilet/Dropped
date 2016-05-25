@@ -324,7 +324,11 @@ public class Player : Entity
 			animator.SetTrigger ("Falling");
 			//Debug.Log ("Falling");
 		}
-		
+
+
+
+		Debug.Log (velocity);
+
 		animator.SetFloat ("PlayerSpeed", Mathf.Abs (velocity.x));
 		//Time.timeScale = .1f;
 		playerInfo.Reset ();
@@ -336,6 +340,12 @@ public class Player : Entity
 	{
 		//Input vector. GetAxisRaw applies no smoothing, so keyboard input is either -1, 0, or 1. Always.
 		input = new Vector2 (Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+		//For debugging purposes!!!
+		if (Input.GetKeyDown (KeyCode.Equals)) 
+		{
+			playerAmmo.RefillAll ();
+		}
 
 		//Jumping.
 		if(Input.GetButtonDown("Jump"))
