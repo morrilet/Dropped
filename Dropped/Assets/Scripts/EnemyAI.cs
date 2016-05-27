@@ -45,6 +45,7 @@ public class EnemyAI : Entity
 	public bool isGrapplingPlayer; //Whether or not this enemy is grappling the player.
 	float grappleStrength; //Strength of the grab every time the enemy grabs.
 	float grappleModifier; //Modifies the grapple strength based on how many times we've attacked during one grapple.
+	float maxGrappleRange; //Lets the player go if they're farther away than this value.
 
 	float attackRate;
 	float attackTimer;
@@ -88,6 +89,7 @@ public class EnemyAI : Entity
 
 		grappleStrength = 5f;
 		grappleModifier = 1f;
+		maxGrappleRange = 1f;
 
 		jumpTimeRange = new Vector2 (.5f, 2f);
 		jumpTime = Random.Range (jumpTimeRange.x, jumpTimeRange.y);
@@ -263,9 +265,9 @@ public class EnemyAI : Entity
 
 			raycastHits [i] = Physics2D.Raycast ((Vector2)transform.position, (Vector2)(endPoint - transform.position), hearingRadius, hearingLayerMask);
 
-			if (raycastHits [i].transform != null) 
+			if (raycastHits [i].transform != null)
 			{
-				if (raycastHits [i].transform.tag == "Player") 
+				if (raycastHits [i].transform.tag == "Player")
 				{
 					canHearPlayer = true;
 					Debug.DrawLine (transform.position, endPoint, Color.blue);
@@ -397,9 +399,12 @@ public class EnemyAI : Entity
 			chaseTimer += Time.deltaTime;
 		}
 
-		if (GetIsTouchingPlayer () && player.canBeGrabbed) 
+		if (GetIsTouchingPlayer () && player.canBeGrabbed && Vector3.Distance(transform.position, player.transform.position) <= maxGrappleRange) 
 		{
 			currentState = States.GrabPlayer;
+
+			if (player.ladder)
+				player.ladder = null;
 		}
 
 		if (GetIsTouchingCorpse ()) 
