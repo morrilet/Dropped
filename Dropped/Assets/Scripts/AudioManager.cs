@@ -3,6 +3,10 @@ using System.Collections;
 
 public class AudioManager : Singleton<AudioManager> 
 {
+	public float globalVolumeModifier;
+	public float musicVolumeModifier;
+	public float effectsVolumeModifier;
+
 	public AudioClip[] effects;
 	public AudioClip[] music;
 
@@ -32,10 +36,10 @@ public class AudioManager : Singleton<AudioManager>
 			}
 		}
 	}
-
+		
 	public void PlaySoundEffect(string clipName)
 	{
-		for (int i = 0; i < effects.Length; i++) 
+		for (int i = 0; i < effects.Length; i++)
 		{
 			if (effects [i].name == clipName) 
 			{
@@ -56,5 +60,15 @@ public class AudioManager : Singleton<AudioManager>
 				effectSource.PlayOneShot (effects [i]);
 			}
 		}
+	}
+
+	public void SetEffectVolume()
+	{
+		effectSource.volume = Mathf.Clamp01 (1f * globalVolumeModifier * effectsVolumeModifier);
+	}
+
+	public void SetMusicVolume()
+	{
+		musicSource.volume = Mathf.Clamp01 (1f * globalVolumeModifier * musicVolumeModifier);
 	}
 }

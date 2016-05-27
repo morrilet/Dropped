@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -70,7 +69,6 @@ public class Bullet : MonoBehaviour {
 		{
 			Vector2 altStartPos = new Vector2 (GameObject.Find ("Player").transform.position.x, transform.position.y);
 			hit = Physics2D.Raycast (altStartPos, (endPos - startPos).normalized, velocity.magnitude, raycastLayerMask);
-			//EditorApplication.isPaused = true;
 
 			if (hit && hit.transform.tag != "Corpse" && hit.transform.tag != "Enemy" && hit.transform.tag != "Rope") 
 			{

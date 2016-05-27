@@ -138,7 +138,8 @@ public class CorpseRagdoll : MonoBehaviour
 		Flip (direction);
 		//SetupLimbsPhysicsDataList ();
 
-		attachedRope = attachedRopeSegment.transform.parent.GetComponent<Rope> ();
+		if(attachedRope != null)
+			attachedRope = attachedRopeSegment.transform.parent.GetComponent<Rope> ();
 
 		ignorePlayerTime = .1f;
 		ignoreCorpseTime = .1f;

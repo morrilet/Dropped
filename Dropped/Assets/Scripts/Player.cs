@@ -38,7 +38,8 @@ public class Player : Entity
 	[HideInInspector]
 	public JumpAbility jumpAbility;
 
-	GameObject ladder; //The ladder that the player is on. Null if not on a ladder.
+	[HideInInspector]
+	public GameObject ladder; //The ladder that the player is on. Null if not on a ladder.
 	float ladderExitTime;  //How long it takes to get off of the ladder via left and right input.
 	float ladderExitTimer; //Timer to count up to ladderExitTime.
 
