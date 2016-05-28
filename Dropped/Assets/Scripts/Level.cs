@@ -16,6 +16,7 @@ public class Level : MonoBehaviour
 		InitializeLists ();
 		Debug.Log (enemies.Count);
 		GameManager.instance.level = this.gameObject;
+		GameManager.instance.StorePlayerInfo ();
 	}
 
 	void Update()

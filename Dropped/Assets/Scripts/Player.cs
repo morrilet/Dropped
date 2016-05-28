@@ -169,7 +169,8 @@ public class Player : Entity
 		//In the future make a die method.
 		if(!isAlive)
 		{
-			Application.LoadLevel(Application.loadedLevel);
+			GameManager.instance.RestartLevel ();
+			//Application.LoadLevel(Application.loadedLevel);
 		}
 
 		//Don't apply gravity if we're on the ground or on a ladder or the game is paused.
@@ -224,7 +225,7 @@ public class Player : Entity
 			}
 		}
 
-		GameManager.instance.playerStoredAmmo = playerAmmo;
+		//GameManager.instance.playerStoredAmmo = playerAmmo;
 		switch (currentGun)
 		{
 		case CurrentGun.None:

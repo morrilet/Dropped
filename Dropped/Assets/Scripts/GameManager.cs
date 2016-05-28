@@ -136,14 +136,16 @@ public class GameManager : Singleton<GameManager>
 
 	public void ChangeLevel(string levelToChangeTo)
 	{
-		playerStoredAmmo = player.GetComponent<Player> ().playerAmmo;
-		Debug.Log (playerStoredAmmo.pistolAmmo.ammountInClip);
+		//playerStoredAmmo = player.GetComponent<Player> ().playerAmmo;
+		//Debug.Log (playerStoredAmmo.pistolAmmo.ammountInClip);
 		//playerStoredAmmo.machineGunAmmo.ammountInClip = player.GetComponent<Player> ().playerAmmo.machineGunAmmo.ammountInClip;
 		//playerStoredAmmo.shotgunAmmo.ammountInClip = player.GetComponent<Player> ().playerAmmo.shotgunAmmo.ammountInClip;
 		//playerStoredAmmo.pistolAmmo.ammountInClip = player.GetComponent<Player> ().playerAmmo.pistolAmmo.ammountInClip;
 
-		playerStoredGun = player.GetComponent<Player> ().currentGun;
-		playerStoredHealth = player.GetComponent<Player> ().health;
+		//playerStoredGun = player.GetComponent<Player> ().currentGun;
+		//playerStoredHealth = player.GetComponent<Player> ().health;
+
+		StorePlayerInfo ();
 
 		SceneManager.LoadScene (levelToChangeTo, LoadSceneMode.Single);
 
@@ -155,6 +157,13 @@ public class GameManager : Singleton<GameManager>
 	public void RestartLevel()
 	{
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex, LoadSceneMode.Single);
+	}
+
+	public void StorePlayerInfo()
+	{
+		playerStoredHealth = player.GetComponent<Player> ().health;
+		playerStoredAmmo = player.GetComponent<Player> ().playerAmmo;
+		playerStoredGun = player.GetComponent<Player> ().currentGun;
 	}
 
 	public void Sleep(float framesOfSleep)
