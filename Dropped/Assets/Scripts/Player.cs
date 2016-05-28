@@ -632,6 +632,7 @@ public class Player : Entity
 	public struct AmmoType
 	{
 		public int ammountInClip;
+		public int maxAmountInClip;
 		public int maxAmmo;
 		public int currentAmmo;
 

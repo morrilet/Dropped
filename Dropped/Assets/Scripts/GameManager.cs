@@ -114,12 +114,21 @@ public class GameManager : Singleton<GameManager>
 		playerStoredAmmo.pistolAmmo.maxAmmo = 20;
 		playerStoredAmmo.pistolAmmo.Refill ();
 
+		playerStoredAmmo.machineGunAmmo.maxAmountInClip = 15;
+		playerStoredAmmo.machineGunAmmo.ammountInClip = playerStoredAmmo.machineGunAmmo.maxAmountInClip;
+		playerStoredAmmo.shotgunAmmo.maxAmountInClip = 2;
+		playerStoredAmmo.shotgunAmmo.ammountInClip = playerStoredAmmo.shotgunAmmo.maxAmountInClip;
+		playerStoredAmmo.pistolAmmo.maxAmountInClip = 5;
+		playerStoredAmmo.pistolAmmo.ammountInClip = playerStoredAmmo.pistolAmmo.maxAmountInClip;
+
 		player.GetComponent<Player> ().Start ();
 
+		/*
 		playerStoredAmmo.machineGunAmmo.ammountInClip = player.GetComponent<Player> ().machineGun.GetComponent<Gun> ().clipSize;
 		playerStoredAmmo.shotgunAmmo.ammountInClip = player.GetComponent<Player> ().shotGun.GetComponent<Gun> ().clipSize;
 		playerStoredAmmo.pistolAmmo.ammountInClip = player.GetComponent<Player> ().pistol.GetComponent<Gun> ().clipSize;
 		Debug.Log (player.GetComponent<Player> ().pistol.GetComponent<Gun> ().clipSize);
+		*/
 
 		playerStoredHealth = player.GetComponent<Player> ().maxHealth;
 		playerStoredGun = Player.CurrentGun.None;
