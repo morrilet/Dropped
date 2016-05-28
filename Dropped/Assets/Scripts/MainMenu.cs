@@ -26,6 +26,7 @@ public class MainMenu : MonoBehaviour
 	Text musicVolumePercentageText;
 
 	Dropdown resolutionDropdown;
+	int resolutionDropdownValuePrev;
 	Button screenModeButton;
 
 	List<Dropdown.OptionData> resolutions;
@@ -41,6 +42,7 @@ public class MainMenu : MonoBehaviour
 	void Start()
 	{
 		currentMenu = Menu.Main;
+		isFullscreen = Screen.fullScreen;
 		AudioManager.instance.PlayMusic ("BG1_V02");
 
 		supportedResolutions = Screen.resolutions;
@@ -69,18 +71,21 @@ public class MainMenu : MonoBehaviour
 			{
 			case "GlobalVolumeSlider":
 				globalVolumeSlider = audioMenuObjects [i].gameObject.GetComponent<Slider> ();
+				globalVolumeSlider.value = AudioManager.instance.globalVolumeModifier;
 				break;
 			case "GlobalVolumePercentage":
 				globalVolumePercentageText = audioMenuObjects [i].gameObject.GetComponent<Text> ();
 				break;
 			case "MusicVolumeSlider":
 				musicVolumeSlider = audioMenuObjects [i].gameObject.GetComponent<Slider> ();
+				musicVolumeSlider.value = AudioManager.instance.musicVolumeModifier;
 				break;
 			case "MusicVolumePercentage":
 				musicVolumePercentageText = audioMenuObjects [i].gameObject.GetComponent<Text> ();
 				break;
 			case "EffectVolumeSlider":
 				effectVolumeSlider = audioMenuObjects [i].gameObject.GetComponent<Slider> ();
+				effectVolumeSlider.value = AudioManager.instance.effectsVolumeModifier;
 				break;
 			case "EffectVolumePercentage":
 				effectVolumePercentageText = audioMenuObjects [i].gameObject.GetComponent<Text> ();
@@ -90,12 +95,21 @@ public class MainMenu : MonoBehaviour
 
 		resolutionDropdown.ClearOptions ();
 		resolutions = new List<Dropdown.OptionData> ();
-		for (int i = 0; i < Screen.resolutions.Length; i++) 
+		for (int i = 0; i < Screen.resolutions.Length; i++)
 		{
 			resolutions.Add (new Dropdown.OptionData (Screen.resolutions [i].ToString ()));
 		}
 		resolutionDropdown.AddOptions (resolutions);
-		SetResolution ();
+		foreach (Dropdown.OptionData option in resolutionDropdown.options) 
+		{
+			if (Screen.currentResolution.ToString ().Equals (option.text))
+			{
+				resolutionDropdown.value = resolutionDropdown.options.IndexOf (option);
+				resolutionDropdownValuePrev = resolutionDropdown.value;
+				break;
+			}
+		}
+		//SetResolution ();
 
 		if(Screen.fullScreen)
 			screenModeButton.transform.GetChild (0).GetComponent<Text> ().text = "FULLSCREEN";
@@ -103,7 +117,6 @@ public class MainMenu : MonoBehaviour
 			screenModeButton.transform.GetChild (0).GetComponent<Text> ().text = "WINDOWED";
 
 		SwitchToMenu (currentMenu);
-		isFullscreen = Screen.fullScreen;
 	}
 
 	void Update()
@@ -124,6 +137,10 @@ public class MainMenu : MonoBehaviour
 			if (effectVolumeSlider.GetComponent<SliderPointerUpEvent> ().pointerUp)
 				AudioManager.instance.PlaySoundEffect ("Ethan_Gunshot");
 		}
+
+		if (resolutionDropdown.value != resolutionDropdownValuePrev)
+			SetResolution ();	
+		resolutionDropdownValuePrev = resolutionDropdown.value;
 	}
 
 	public void SwitchToMainMenu()

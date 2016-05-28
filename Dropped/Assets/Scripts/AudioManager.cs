@@ -24,6 +24,13 @@ public class AudioManager : Singleton<AudioManager>
 		base.Awake ();
 	}
 
+	public void Start()
+	{
+		globalVolumeModifier = 1f;
+		musicVolumeModifier = 1f;
+		effectsVolumeModifier = 1f;
+	}
+
 	public void PlayMusic(string songName)
 	{
 		for (int i = 0; i < music.Length; i++) 
