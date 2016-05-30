@@ -172,6 +172,11 @@ public class EnemyAI : Entity
 		if (jumpTimer <= jumpTime)
 			jumpTimer += Time.deltaTime;
 
+		if (health <= 0) 
+		{
+			Die (null);
+		}
+
 		jumpingPrevious = jumpingCurrent;
 		enemyInfo.Reset ();
 		previousState = currentState;
@@ -409,7 +414,7 @@ public class EnemyAI : Entity
 
 		if (GetIsTouchingCorpse ()) 
 		{
-			Debug.Log ("Here");
+			//Debug.Log ("Here");
 			if (!jumpingCurrent && jumpTimer > jumpTime) 
 			{
 				jumpTime = Random.Range (jumpTimeRange.x, jumpTimeRange.y);
@@ -590,23 +595,31 @@ public class EnemyAI : Entity
 		//Debug.Log ("Enemies left = " + GameManager.instance.level.GetComponent<Level> ().enemies.Count);
 		//Debug.Log ("Previous enemies left = " + GameManager.instance.level.GetComponent<Level> ().enemiesPrev.Count);
 		//corpseRigidbodies[i].isKinematic = false;
-		if (GameManager.instance.level.GetComponent<Level> ().enemies.Count > 1) 
+		if (bullet != null) 
 		{
-			//corpseRigidbodies[i].AddForceAtPosition (new Vector2 (bullet.corpseKnockback, 0f)
-			//* GameObject.Find ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
-			corpse.GetComponent<CorpseRagdoll>().AddForceAtPosition(new Vector2 (bullet.corpseKnockback, 0f) * player.direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+			if (GameManager.instance.level.GetComponent<Level> ().enemies.Count > 1) 
+			{
+				//corpseRigidbodies[i].AddForceAtPosition (new Vector2 (bullet.corpseKnockback, 0f)
+				//* GameObject.Find ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+				corpse.GetComponent<CorpseRagdoll> ().AddForceAtPosition (new Vector2 (bullet.corpseKnockback, 0f) * player.direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+			} 
+			else 
+			{
+				//corpseRigidbodies[i].AddForceAtPosition (new Vector2 (bullet.corpseKnockback * 2, 0f)
+				//* GameObject.Find ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+				corpse.GetComponent<CorpseRagdoll> ().AddForceAtPosition (new Vector2 (bullet.corpseKnockback * 1.5f, 0f) * player.direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+			}
+
+			Physics2D.IgnoreCollision (controller.coll, bullet.GetComponent<Collider2D> ());
 		}
-		else
+		else 
 		{
-			//corpseRigidbodies[i].AddForceAtPosition (new Vector2 (bullet.corpseKnockback * 2, 0f)
-			//* GameObject.Find ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
-			corpse.GetComponent<CorpseRagdoll>().AddForceAtPosition(new Vector2 (bullet.corpseKnockback * 1.5f, 0f) * player.direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);
+			corpse.GetComponent<CorpseRagdoll> ().AddForce (velocity, ForceMode2D.Impulse);
 		}
 
 		//GameManager.instance.FlashWhite (corpseRigidbodies[i].GetComponent<SpriteRenderer> (), 0.018f, baseColor);
 		//}
 
-		Physics2D.IgnoreCollision (controller.coll, bullet.GetComponent<Collider2D> ());
 		Destroy (gameObject);
 	}
 

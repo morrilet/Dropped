@@ -329,7 +329,7 @@ public class Player : Entity
 
 
 
-		Debug.Log (velocity);
+		//Debug.Log (velocity);
 
 		animator.SetFloat ("PlayerSpeed", Mathf.Abs (velocity.x));
 		//Time.timeScale = .1f;

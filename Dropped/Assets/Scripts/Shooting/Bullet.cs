@@ -62,7 +62,9 @@ public class Bullet : MonoBehaviour {
 		Vector3 velocity = bulletSpeed * transform.right * Time.deltaTime;
 
 		Vector2 startPos = (Vector2)transform.position + (Vector2)(transform.right * GetComponent<Collider2D>().bounds.extents.x);
-		Vector2 endPos = (Vector2)(startPos) + (Vector2)(velocity);
+		Vector2 endPos = (Vector2)(startPos) + (Vector2)(velocity) * 1.5f;
+
+		Debug.DrawLine (new Vector3 (startPos.x, startPos.y + .15f, 0f), new Vector3 (startPos.x, startPos.y - .15f, 0f));
 
 		RaycastHit2D hit = Physics2D.Raycast (startPos, (endPos - startPos).normalized, velocity.magnitude, raycastLayerMask);
 		if (isFirstMovement) 

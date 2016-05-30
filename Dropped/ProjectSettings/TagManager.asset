@@ -14,6 +14,7 @@ TagManager:
   - Door
   - Ragdoll
   - Rope
+  - Fog
   layers:
   - Default
   - TransparentFX
@@ -34,7 +35,7 @@ TagManager:
   - Enemy
   - Ragdoll_Limb
   - Rope
-  - 
+  - Fog
   - 
   - 
   - 
@@ -74,4 +75,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1424110809
+    locked: 0
+  - name: Fog
+    uniqueID: 2502253369
     locked: 0
