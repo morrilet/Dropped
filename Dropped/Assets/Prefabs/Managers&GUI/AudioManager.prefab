@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.638352, y: 2.8708518, z: 0}
+  m_LocalPosition: {x: 5.638352, y: 2.8708518, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -198,6 +198,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPersistant: 0
+  globalVolumeModifier: 0
+  musicVolumeModifier: 0
+  effectsVolumeModifier: 0
   effects:
   - {fileID: 8300000, guid: 539b10ad836faa44b874cb7a2bfd6ecb, type: 3}
   - {fileID: 8300000, guid: 265ee42aa15acd4428a41419aa5e0ea6, type: 3}
@@ -206,6 +209,7 @@ MonoBehaviour:
   music:
   - {fileID: 8300000, guid: 1f60a287e95e46a458061cfdf41ee200, type: 3}
   - {fileID: 8300000, guid: 2c2c03b68b111684591edd685601815c, type: 3}
+  - {fileID: 8300000, guid: 992695a4ea0c43d4a9d54de3031ba0b8, type: 3}
   musicSource: {fileID: 8245290}
   effectSource: {fileID: 8265530}
 --- !u!1001 &100100000

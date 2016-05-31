@@ -46,7 +46,7 @@ public class GameManager : Singleton<GameManager>
 
 		isPaused = false;
 
-		AudioManager.instance.PlayMusic ("BG1_V02");
+		AudioManager.instance.PlayMusic ("bg01_v02 mixed");
 	}
 
 	void Update ()

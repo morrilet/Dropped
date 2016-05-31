@@ -43,7 +43,7 @@ public class MainMenu : MonoBehaviour
 	{
 		currentMenu = Menu.Main;
 		isFullscreen = Screen.fullScreen;
-		AudioManager.instance.PlayMusic ("BG1_V02");
+		AudioManager.instance.PlayMusic ("bg01_v02 mixed");
 
 		supportedResolutions = Screen.resolutions;
 
