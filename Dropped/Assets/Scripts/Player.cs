@@ -461,7 +461,7 @@ public class Player : Entity
 
 	void EscapeGrapple()
 	{
-		GUI.instance.escapeObjectsEnabled = true;
+		GUI_Script.instance.escapeObjectsEnabled = true;
 
 		if (Input.GetAxisRaw("Horizontal") != 0 && horizontalAxisPrev == 0) 
 		{
@@ -471,7 +471,7 @@ public class Player : Entity
 
 		if (grappleEscapeAttempt >= grappleStrength) 
 		{
-			GUI.instance.escapeObjectsEnabled = false;
+			GUI_Script.instance.escapeObjectsEnabled = false;
 
 			canMove = true;
 

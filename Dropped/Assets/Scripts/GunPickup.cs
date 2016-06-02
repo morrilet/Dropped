@@ -60,22 +60,22 @@ public class GunPickup : MonoBehaviour
 			}
 		}
 		if (coll.gameObject.tag == "Player" && coll.GetComponent<Player> ().GetTouchingCorpse () == null)
-			GUI.instance.grabGunText.enabled = true;
+			GUI_Script.instance.grabGunText.enabled = true;
 
 		if (coll.gameObject.tag == "Player" && coll.GetComponent<Player> ().corpseCarried == null)
-			GUI.instance.grabGunText.enabled = true;
+			GUI_Script.instance.grabGunText.enabled = true;
 
 		if (coll.gameObject.tag == "Player" && coll.GetComponent<Player> ().GetTouchingCorpse ())
-			GUI.instance.grabGunText.enabled = false;
+			GUI_Script.instance.grabGunText.enabled = false;
 		
 		if (coll.gameObject.tag == "Player" && coll.GetComponent<Player> ().corpseCarried != null)
-			GUI.instance.grabGunText.enabled = false;
+			GUI_Script.instance.grabGunText.enabled = false;
 	}
 
 	void OnTriggerExit2D(Collider2D coll)
 	{
 		if(coll.gameObject.tag == "Player")
-			GUI.instance.grabGunText.enabled = false;
+			GUI_Script.instance.grabGunText.enabled = false;
 	}
 
 	void Update()
@@ -83,7 +83,7 @@ public class GunPickup : MonoBehaviour
 		float lerpValue = Mathf.PingPong (Time.time, duration) / duration;
 		transform.position = Vector3.Lerp (topPos, bottomPos, lerpValue);
 		if (pickUpGun == Player.CurrentGun.None) {
-			GUI.instance.grabGunText.enabled = false;
+			GUI_Script.instance.grabGunText.enabled = false;
 			Destroy (gameObject);
 		}
 	}
@@ -94,13 +94,13 @@ public class GunPickup : MonoBehaviour
 		{
 			switch (pickUpGun) {
 			case Player.CurrentGun.MachineGun:
-				GUI.instance.weaponPickupYield = "Machine Gun";
+				GUI_Script.instance.weaponPickupYield = "Machine Gun";
 				break;
 			case Player.CurrentGun.Shotgun:
-				GUI.instance.weaponPickupYield = "Shotgun";
+				GUI_Script.instance.weaponPickupYield = "Shotgun";
 				break;
 			case Player.CurrentGun.Pistol:
-				GUI.instance.weaponPickupYield = "Pistol";
+				GUI_Script.instance.weaponPickupYield = "Pistol";
 				break;
 			}
 		}
