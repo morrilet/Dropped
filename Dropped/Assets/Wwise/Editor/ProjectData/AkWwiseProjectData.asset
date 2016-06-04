@@ -16,38 +16,39 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{A840EE89-6550-4B8B-B6DC-0FFA00561821}'
-    m_lastTimePsrt1: 1150044343
-    m_lastTimePart2: -1999402375
+    m_lastTimePsrt1: 21690308
+    m_lastTimePart2: -1999401840
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{EE1587E6-7D7D-43DE-964B-492F29543592}'
-    m_lastTimePsrt1: 1150884391
-    m_lastTimePart2: -1999402375
+    m_lastTimePsrt1: 21880439
+    m_lastTimePart2: -1999401840
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{13A8A204-797B-4540-9A8E-FA812D6B14EC}'
-    m_lastTimePsrt1: 1149894334
-    m_lastTimePart2: -1999402375
+    m_lastTimePsrt1: 23989926
+    m_lastTimePart2: -1999401840
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{629A4B8D-A116-434A-AE4B-96B1BF26B78F}'
-    m_lastTimePsrt1: 1150034342
-    m_lastTimePart2: -1999402375
+    m_lastTimePsrt1: 24029935
+    m_lastTimePart2: -1999401840
     List: []
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{AD7F9F1B-3742-4550-9DD1-5A6EEB06E064}'
-    m_lastTimePsrt1: 1150024342
-    m_lastTimePart2: -1999402375
+    m_lastTimePsrt1: 23909929
+    m_lastTimePart2: -1999401840
     List: []
-  ExpandedItems: []
+  ExpandedItems:
+  - /Wwise_Dropped
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1

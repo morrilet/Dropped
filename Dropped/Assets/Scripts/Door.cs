@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Door : MonoBehaviour 
 {
-	[HideInInspector]
 	public bool isOpen;
 
 	public Sprite closedDoorSprite;
@@ -27,11 +26,10 @@ public class Door : MonoBehaviour
 		Left
 	}		
 	public OpenDirection openDirection;
+	public OpenDirection startingOpenDirection;
 
 	void Start()
 	{
-		isOpen = false;
-
 		player = GameObject.Find ("Player").gameObject;
 
 		coll = GetComponent<Collider2D> ();
@@ -39,6 +37,11 @@ public class Door : MonoBehaviour
 		verts = GetVertexPositions ();
 
 		startingScale = transform.localScale;
+
+		if (isOpen) 
+		{
+			OpenDoor (startingOpenDirection);
+		}
 	}
 
 	//Returns whether the player is within the bounds of the door or not.
@@ -150,6 +153,27 @@ public class Door : MonoBehaviour
 			transform.localScale = new Vector3 (startingScale.x, startingScale.y, startingScale.z);
 		else if(openDirection == OpenDirection.Left)
 			transform.localScale = new Vector3 (-startingScale.x, startingScale.y, startingScale.z);
+		isOpen = true;
+	}
+
+	//This is for opening the door in the start.
+	public void OpenDoor(OpenDirection direction)
+	{
+		this.gameObject.layer = LayerMask.NameToLayer ("Default_Hotspot");
+		GetComponent<SpriteRenderer> ().color = new Color (125f/255f, 125f/255f, 125f/255f, 1);
+		GetComponent<SpriteRenderer> ().sprite = openDoorSprite;
+		switch (direction) 
+		{
+		case OpenDirection.Right:
+			transform.localScale = new Vector3 (startingScale.x, startingScale.y, startingScale.z);
+			break;
+		case OpenDirection.Left:
+			transform.localScale = new Vector3 (-startingScale.x, startingScale.y, startingScale.z);
+			break;
+		case OpenDirection.Both:
+			Debug.Log ("Cannot set both for starting direction.");
+			break;
+		}
 		isOpen = true;
 	}
 
