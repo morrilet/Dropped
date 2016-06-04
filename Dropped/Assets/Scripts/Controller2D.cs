@@ -25,7 +25,7 @@ public class Controller2D : RaycastController
 			if (velocity.y < 0)
 				DescendSlope (ref velocity);
 
-			if (Mathf.Sign(velocity.y) == 1 || Input.GetAxis("Vertical") < 0) 
+			if (Mathf.Sign(velocity.y) == 1 || Input.GetAxisRaw ("Vertical") < 0) 
 			{
 				int semiObstacleLayer = LayerMask.NameToLayer ("Semi_Obstacle");
 				collisionMask = collisionMask & ~(1 << semiObstacleLayer);
@@ -37,7 +37,7 @@ public class Controller2D : RaycastController
 			if (velocity.y != 0)
 				VerticalCollisions (ref velocity); //ref passes a reference to an existing variable, instead of creating a copy of an existing variable.
 
-			if(Mathf.Sign(velocity.y) != 1 && Input.GetAxis("Vertical") >= 0)
+			if(Mathf.Sign(velocity.y) != 1 && Input.GetAxisRaw ("Vertical") >= 0)
 			{
 				int semiObstacleLayer = LayerMask.NameToLayer ("Semi_Obstacle");
 				collisionMask = collisionMask | (1 << semiObstacleLayer);
@@ -71,6 +71,12 @@ public class Controller2D : RaycastController
 			//If the ray hit something...
 			if(hit)
 			{
+
+				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle")) {
+					Debug.Log ("V: " + Vector2.Angle (transform.up, hit.normal));
+					Debug.Log (Mathf.Sign(hit.normal.x - hit.point.x));
+					Debug.DrawLine((Vector3)hit.point, (Vector3)hit.normal + (Vector3)hit.point);
+				}
 				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle") && directionY == 1) 
 				{
 					int semiObstacleLayer = LayerMask.NameToLayer ("Semi_Obstacle");
@@ -145,7 +151,11 @@ public class Controller2D : RaycastController
 			//If the ray hit something...
 			if(hit)
 			{
-				if (hit.collider.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle") && Input.GetAxis ("Vertical") < 0)
+				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle")) {
+					Debug.Log ("H: " + Vector2.Angle (transform.up, hit.normal));
+					Debug.DrawLine((Vector3)hit.point, (Vector3)hit.normal + (Vector3)hit.point);
+				}
+				if (hit.collider.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle") && Input.GetAxisRaw ("Vertical") < 0)
 					break;
 
 				if(hit.distance == 0)
