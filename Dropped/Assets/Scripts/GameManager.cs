@@ -159,6 +159,15 @@ public class GameManager : Singleton<GameManager>
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex, LoadSceneMode.Single);
 	}
 
+	public void RestartLevelFromCheckpoint ()
+	{
+		player.GetComponent<Player> ().LoadInfoFromGameManager ();
+		player.transform.position = level.GetComponent<Level> ().playerSpawnPosition;
+	}
+
+	/// <summary>
+	/// Stores the player info, IE: Health, ammo and gun.
+	/// </summary>
 	public void StorePlayerInfo()
 	{
 		playerStoredHealth = player.GetComponent<Player> ().health;

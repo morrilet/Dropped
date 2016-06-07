@@ -236,6 +236,14 @@ Prefab:
       propertyPath: yMin
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 11460996, guid: d43855c4d283ad449af726ca74fb30eb, type: 2}
+      propertyPath: playerSpawnPosition.x
+      value: -9.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 11460996, guid: d43855c4d283ad449af726ca74fb30eb, type: 2}
+      propertyPath: playerSpawnPosition.y
+      value: -2.38
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d43855c4d283ad449af726ca74fb30eb, type: 2}
   m_IsPrefabParent: 0
@@ -695,6 +703,65 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b58d1b3e70f184449ab1f130c8367d0, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &607045144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 607045147}
+  - 114: {fileID: 607045146}
+  - 114: {fileID: 607045145}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &607045145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 607045144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b8a533a418db04aa5ee0a438ef2b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basePath: Audio\GeneratedSoundBanks
+  language: English(US)
+  defaultPoolSize: 4096
+  lowerPoolSize: 2048
+  streamingPoolSize: 1024
+  preparePoolSize: 0
+  memoryCutoffThreshold: 0.95
+  engineLogging: 1
+--- !u!114 &607045146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 607045144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 291cdae39db19b544a14d21f1e47d5d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &607045147
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 607045144}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1001 &734456797
 Prefab:
   m_ObjectHideFlags: 0
@@ -1068,6 +1135,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &994448080 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 120734, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
+  m_PrefabInternal: {fileID: 994448079}
+--- !u!114 &994448081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 994448080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44fc3266afe59584180f53d26cbb7a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenerId: 0
 --- !u!1001 &1012913484
 Prefab:
   m_ObjectHideFlags: 0

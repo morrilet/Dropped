@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class Level : MonoBehaviour 
 {
+	public Vector3 playerSpawnPosition; //This is where we spawn the player when they die. At start it's set to player position.
+
 	public float xMin, xMax;
 	public float yMin, yMax;
 
@@ -17,6 +19,8 @@ public class Level : MonoBehaviour
 		Debug.Log (enemies.Count);
 		GameManager.instance.level = this.gameObject;
 		GameManager.instance.StorePlayerInfo ();
+
+		Debug.Log ("Start");
 	}
 
 	void Update()
@@ -45,5 +49,8 @@ public class Level : MonoBehaviour
 		//Vert lines.
 		Gizmos.DrawLine (new Vector3 (xMin, yMin), new Vector3 (xMin, yMax));
 		Gizmos.DrawLine (new Vector3 (xMax, yMin), new Vector3 (xMax, yMax));
+
+		Gizmos.color = Color.blue;
+		Gizmos.DrawWireCube (playerSpawnPosition, new Vector3 (.5f, 1.4f, 0f));	
 	}
 }

@@ -177,8 +177,17 @@ public class EnemyAI : Entity
 			Die (null);
 		}
 
+		//Debug.Log (currentState.ToString () + ", " + previousState.ToString ());
+
+		//Reset the grapple modifier when we first grab the player.
+		if (currentState == States.GrabPlayer && previousState != States.GrabPlayer) 
+		{
+			grappleModifier = 1f;
+		}
+
 		jumpingPrevious = jumpingCurrent;
 		enemyInfo.Reset ();
+		//if(currentState == previousState)
 		previousState = currentState;
 	}
 
@@ -485,21 +494,22 @@ public class EnemyAI : Entity
 
 	void GrabPlayer()
 	{
+		//if (previousState != States.GrabPlayer && currentState == States.GrabPlayer) 
+		//{
+			//Debug.Log ("Here 2");
+			//grappleModifier = 1f;
+		//}
 		if (attackTimer >= attackRate && !GameManager.instance.isPaused) 
 		{
 			player.direction = Mathf.Sign (transform.position.x - player.transform.position.x); //Make the player face us.
 			player.canMove = false; //Stop the player from moving.
 
 			isGrapplingPlayer = true;
-			player.grapplingEnemies.Add (this);
+			if(!player.grapplingEnemies.Contains(this))
+				player.grapplingEnemies.Add (this);
 
-			if (previousState != States.GrabPlayer) 
-			{
-				grappleModifier = 1f;
-			}
 			player.grappleStrength += grappleStrength * grappleModifier;
 			grappleModifier *= .65f; //Here is where we decide how strong the next successful attack will be.
-
 			attackTimer = 0;
 			player.health -= attackDamage;
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);

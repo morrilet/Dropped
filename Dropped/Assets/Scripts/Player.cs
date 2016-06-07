@@ -99,6 +99,7 @@ public class Player : Entity
 		shotGun = transform.FindChild ("Gun_Shotgun").gameObject;
 		pistol = transform.FindChild ("Gun_Pistol").gameObject;
 
+		/*
 		currentGun = GameManager.instance.playerStoredGun;
 		activeGun = null;
 
@@ -112,6 +113,8 @@ public class Player : Entity
 
 		if (GameManager.instance.playerStoredHealth != 0)
 			health = GameManager.instance.playerStoredHealth;
+		*/
+		LoadInfoFromGameManager ();
 
 		jumpAbility = GetComponent<JumpAbility> ();
 		controller = GetComponent<Controller2D> ();
@@ -169,9 +172,20 @@ public class Player : Entity
 		//In the future make a die method.
 		if(!isAlive)
 		{
-			GameManager.instance.RestartLevel ();
+			grappleEscapeAttempt = grappleStrength * 1.5f;
+			/*
+			for (int i = 0; i < grapplingEnemies.Count; i++)
+			{
+				grapplingEnemies [i].isGrapplingPlayer = false;
+			}
+			grapplingEnemies.RemoveRange (0, grapplingEnemies.Count);
+*/
+			isAlive = true;
+			//canMove = true;
+			GameManager.instance.RestartLevelFromCheckpoint ();
 			//Application.LoadLevel(Application.loadedLevel);
 		}
+		//Debug.Log (grapplingEnemies.Count + ", " + canMove);
 
 		//Don't apply gravity if we're on the ground or on a ladder or the game is paused.
 		if(controller.collisions.above || controller.collisions.below || ladder != null || GameManager.instance.isPaused)
@@ -258,6 +272,10 @@ public class Player : Entity
 			//activeGun.ammoInClip = GameManager.instance.playerStoredAmmo.pistolAmmo.ammountInClip;
 			playerAmmo.pistolAmmo.ammountInClip = activeGun.ammoInClip; //GameManager.instance.playerStoredAmmo.pistolAmmo.ammountInClip;
 			break;
+		}
+		if (GameManager.instance.playerStoredGun != currentGun) 
+		{
+			GameManager.instance.playerStoredGun = currentGun;
 		}
 
 		corpseThrowForce = Mathf.Clamp((corpseThrowCount / corpseThrowTime), .2f, 1f);
@@ -613,6 +631,23 @@ public class Player : Entity
 			}
 		}
 		return FirstCorpseTouching;
+	}
+
+	public void LoadInfoFromGameManager()
+	{
+		currentGun = GameManager.instance.playerStoredGun;
+		//activeGun = null;
+
+		machineGun.GetComponent<Gun> ().ammoInClip = GameManager.instance.playerStoredAmmo.machineGunAmmo.ammountInClip;
+		shotGun.GetComponent<Gun> ().ammoInClip = GameManager.instance.playerStoredAmmo.shotgunAmmo.ammountInClip;
+		pistol.GetComponent<Gun> ().ammoInClip = GameManager.instance.playerStoredAmmo.pistolAmmo.ammountInClip;
+
+		GameManager.instance.player = transform.gameObject; //On level load, this will allow the gamemanger to track the new player game object
+
+		playerAmmo = GameManager.instance.playerStoredAmmo;
+
+		if (GameManager.instance.playerStoredHealth != 0)
+			health = GameManager.instance.playerStoredHealth;
 	}
 
 	#region Custom Data
