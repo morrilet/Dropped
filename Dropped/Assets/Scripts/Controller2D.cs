@@ -73,8 +73,8 @@ public class Controller2D : RaycastController
 			{
 
 				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle")) {
-					Debug.Log ("V: " + Vector2.Angle (transform.up, hit.normal));
-					Debug.Log (Mathf.Sign(hit.normal.x - hit.point.x));
+					//Debug.Log ("V: " + Vector2.Angle (transform.up, hit.normal));
+					//Debug.Log (Mathf.Sign(hit.normal.x - hit.point.x));
 					Debug.DrawLine((Vector3)hit.point, (Vector3)hit.normal + (Vector3)hit.point);
 				}
 				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle") && directionY == 1) 

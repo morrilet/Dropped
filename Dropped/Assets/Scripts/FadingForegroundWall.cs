@@ -3,9 +3,17 @@ using System.Collections;
 
 public class FadingForegroundWall : MonoBehaviour
 {
+	[HideInInspector]
+	public bool triggered; //Whether the fadewall has been triggered or not.
+	bool triggeredPrev;
+
+	[HideInInspector]
+	public bool touchingPlayer;
+
 	float duration;
 	bool isFaded;
-	bool isFading;
+	[HideInInspector]
+	public bool isFading;
 
 	// Use this for initialization
 	void Start ()
@@ -18,10 +26,24 @@ public class FadingForegroundWall : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	
+		if (triggered && !triggeredPrev) 
+		{
+			if (isFading)
+				StopCoroutine ("Fade");
+			StartCoroutine ("Fade", 0f);
+		}
+		else if (!triggered && triggeredPrev) 
+		{
+			if (isFading)
+				StopCoroutine ("Fade");
+			StartCoroutine ("Fade", 1f);
+		}
+
+		//Debug.Log (triggered);// + ", " + triggeredPrev);
+		triggeredPrev = triggered;
 	}
 
-	IEnumerator Fade (float fadeToValue)
+	public IEnumerator Fade (float fadeToValue)
 	{
 		float startingAlpha = GetComponent<SpriteRenderer> ().color.a;
 		isFading = true;
@@ -37,7 +59,8 @@ public class FadingForegroundWall : MonoBehaviour
 			{
 				for (int j = 0; j < transform.childCount; j++) 
 				{
-					transform.GetChild (j).GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+					if(transform.GetChild(j).gameObject.tag == "Fadewall")
+						transform.GetChild (j).GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
 				}
 			}
 
@@ -46,19 +69,42 @@ public class FadingForegroundWall : MonoBehaviour
 
 		isFading = false;
 	}
-
+		
 	void OnCollisionEnter2D(Collision2D coll)
 	{
+		if (coll.transform.tag == "Player") 
+		{
+			touchingPlayer = true;
+			triggered = true;
+		}
+		/*
 		if (coll.transform.tag == "Player")
 		{
 			isFading = true;
 			StartCoroutine (Fade (0f));
 		}
+		*/
+	}
+
+	void OnCollisitionStay2D(Collision2D coll)
+	{
+		if (coll.transform.tag == "Player") 
+		{
+			touchingPlayer = true;
+			triggered = true;
+		}
 	}
 
 	void OnCollisionExit2D(Collision2D coll)
 	{
+		if (coll.transform.tag == "Player") 
+		{
+			touchingPlayer = false;
+			triggered = false;
+		}
+		/*
 		if (coll.transform.tag == "Player")
 			StartCoroutine (Fade (1));
+		*/
 	}
 }

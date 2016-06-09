@@ -162,7 +162,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164396}
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -257,6 +257,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   controller: {fileID: 0}
   jumpAbility: {fileID: 0}
+  ladder: {fileID: 0}
   corpseCarried: {fileID: 0}
   throwingCorpse: 0
   corpseThrowDirection: {x: 0, y: 0, z: 0}
