@@ -3,24 +3,47 @@ using System.Collections;
 
 public class FadingForegroundTrigger : MonoBehaviour 
 {
-	public FadingForegroundWall fadewall;
+	public FadingForegroundWall[] fadewalls;
+
+	[HideInInspector]
+	public bool touchingPlayer;
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
+		touchingPlayer = true;
+
 		if (other.transform.tag == "Player") 
 		{
-			Debug.Log ("Here");
-			if(!fadewall.touchingPlayer)
-				fadewall.triggered = true;
+			for (int i = 0; i < fadewalls.Length; i++) 
+			{
+				if (!fadewalls[i].touchingPlayer)
+					fadewalls[i].triggered = true;
+			}
+		}
+	}
+
+	void OnTriggerStay2D(Collider2D other)
+	{
+		touchingPlayer = true;
+
+		if (other.transform.tag == "Player") 
+		{
+			for (int i = 0; i < fadewalls.Length; i++) 
+			{
+				if (!fadewalls [i].touchingPlayer)
+					fadewalls [i].triggered = true;
+			}
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D other)
 	{
-		if (other.transform.tag == "Player") 
+		touchingPlayer = false;
+
+		for (int i = 0; i < fadewalls.Length; i++) 
 		{
-			if(!fadewall.touchingPlayer)
-				fadewall.triggered = false;
+			if (!fadewalls[i].touchingPlayer)
+				fadewalls[i].triggered = false;
 		}
 	}
 }

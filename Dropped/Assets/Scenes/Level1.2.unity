@@ -169,9 +169,19 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 56.287342
       objectReference: {fileID: 0}
+    - target: {fileID: 131018, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &104474400 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11447830, guid: cc36e32ec493ff2428be58751c53eab4,
+    type: 2}
+  m_PrefabInternal: {fileID: 104474399}
+  m_Script: {fileID: 11500000, guid: b804427b92e43b946a1ed466c19f1281, type: 3}
 --- !u!4 &123314857 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
@@ -2490,6 +2500,64 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listenerId: 0
+--- !u!1001 &1405910682
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 839045978}
+    m_Modifications:
+    - target: {fileID: 11435026, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: fadewalls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -22.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435026, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: fadewalls.Array.data[0]
+      value: 
+      objectReference: {fileID: 104474400}
+    - target: {fileID: 11435026, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: fadewalls.Array.data[1]
+      value: 
+      objectReference: {fileID: 104474400}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1422877122
 Prefab:
   m_ObjectHideFlags: 0
@@ -2813,6 +2881,72 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
   m_PrefabInternal: {fileID: 1330994048}
+--- !u!1001 &1661922386
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 839045978}
+    m_Modifications:
+    - target: {fileID: 11435026, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: fadewalls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -13.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435026, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: fadewalls.Array.data[0]
+      value: 
+      objectReference: {fileID: 2110920919}
+    - target: {fileID: 11435026, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: fadewalls.Array.data[1]
+      value: 
+      objectReference: {fileID: 2110920919}
+    - target: {fileID: 137914, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_Name
+      value: FadewallTrigger (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1677255519
 Prefab:
   m_ObjectHideFlags: 0
@@ -3307,6 +3441,68 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
   m_PrefabInternal: {fileID: 2024983032}
+--- !u!1001 &2072766068
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 839045978}
+    m_Modifications:
+    - target: {fileID: 11435026, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: fadewalls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -19.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435026, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: fadewalls.Array.data[0]
+      value: 
+      objectReference: {fileID: 104474400}
+    - target: {fileID: 11435026, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: fadewalls.Array.data[1]
+      value: 
+      objectReference: {fileID: 2110920919}
+    - target: {fileID: 137914, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: m_Name
+      value: FadewallTrigger (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &2076409427 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
@@ -3366,6 +3562,16 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 56.287342
       objectReference: {fileID: 0}
+    - target: {fileID: 131018, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &2110920919 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11447830, guid: cc36e32ec493ff2428be58751c53eab4,
+    type: 2}
+  m_PrefabInternal: {fileID: 2110920918}
+  m_Script: {fileID: 11500000, guid: b804427b92e43b946a1ed466c19f1281, type: 3}

@@ -39,6 +39,20 @@ public class FadingForegroundWall : MonoBehaviour
 			StartCoroutine ("Fade", 1f);
 		}
 
+		//A hardcoded solution to fadewalls not going fully transparent/opaque.
+		//Will break things if I go with partially transparent fadewalls in the future.
+		if (GetComponent<SpriteRenderer> ().color.a != 0 || GetComponent<SpriteRenderer> ().color.a != 1) 
+		{
+			if (triggered && !isFading) 
+			{
+				StartCoroutine ("Fade", 0f);
+			}
+			if (!triggered && !isFading) 
+			{
+				StartCoroutine ("Fade", 1f);
+			}
+		}
+
 		//Debug.Log (triggered);// + ", " + triggeredPrev);
 		triggeredPrev = triggered;
 	}

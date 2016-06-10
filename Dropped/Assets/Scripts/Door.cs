@@ -17,6 +17,12 @@ public class Door : MonoBehaviour
 
 	Vector3[] verts;
 
+	/// <summary>
+	/// These are triggers for fadewalls near the door. This allows us to give the player line of sight when the door is open
+	/// by enabling/disabling them.
+	/// </summary>
+	public GameObject[] fadewallTriggers;
+
 	public LayerMask mask;
 
 	public enum OpenDirection
@@ -41,6 +47,36 @@ public class Door : MonoBehaviour
 		if (isOpen) 
 		{
 			OpenDoor (startingOpenDirection);
+		}
+	}
+
+	void Update()
+	{
+		if (fadewallTriggers.Length > 0) 
+		{
+			for (int i = 0; i < fadewallTriggers.Length; i++) 
+			{
+				if (isOpen) 
+				{
+					if (!fadewallTriggers [i].activeSelf)
+						fadewallTriggers [i].SetActive (true);
+				} 
+				else 
+				{
+					if (fadewallTriggers [i].activeSelf) 
+					{
+						if (fadewallTriggers [i].GetComponent<FadingForegroundTrigger> ().touchingPlayer) 
+						{
+							for (int j = 0; j < fadewallTriggers[i].GetComponent<FadingForegroundTrigger> ().fadewalls.Length; j++) 
+							{
+								if (!fadewallTriggers[i].GetComponent<FadingForegroundTrigger> ().fadewalls[j].touchingPlayer)
+									fadewallTriggers[i].GetComponent<FadingForegroundTrigger> ().fadewalls[j].triggered = false;
+							}
+						}
+						fadewallTriggers [i].SetActive (false);
+					}
+				}
+			}
 		}
 	}
 
