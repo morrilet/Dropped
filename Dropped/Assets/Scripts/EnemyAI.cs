@@ -576,6 +576,22 @@ public class EnemyAI : Entity
 
 	public void KnockBack(Vector3 vel, float duration)
 	{
+		//Check for possible collisions.
+		RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, new Vector2(vel.x - transform.position.x, 0f) * Mathf.Sign(vel.x), vel.magnitude, controller.collisionMask);
+		if (hit)
+		{
+			float dir = Mathf.Sign (vel.x);
+
+			//if (hit.collider.gameObject.layer == LayerMask.NameToLayer ("Obstacle"))
+			//{
+			vel.x = (Mathf.Abs(hit.point.x - transform.position.x) * dir) + (controller.coll.bounds.extents.x * -dir);
+			Debug.Log(hit.transform.name + ", " + hit.point + ", " + vel);
+			//Debug.DrawLine (transform.position, vel, Color.red);
+			//}//else
+			//Debug.DrawLine (startPos, startPos + vel, Color.red);
+		}
+		//Debug.DrawLine (transform.position, startPos + vel, Color.red);
+
 		StartCoroutine (knockBack (vel, duration));
 	}
 
@@ -583,7 +599,8 @@ public class EnemyAI : Entity
 	{
 		Vector3 startPos = transform.position;
 		//canMove = false;
-		for (float t = 0; t < duration; t += Time.deltaTime) 
+
+		for (float t = 0; t < duration; t += Time.deltaTime)
 		{
 			transform.position = new Vector3((Mathf.Lerp(startPos.x, startPos.x + vel.x, t / duration)), startPos.y, startPos.z);
 			yield return null;
