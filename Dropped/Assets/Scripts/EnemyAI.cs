@@ -579,20 +579,25 @@ public class EnemyAI : Entity
 	public void KnockBack(Vector3 vel, float duration)
 	{
 		//Check for possible collisions.
-		RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, new Vector2(vel.x - transform.position.x, 0f) * Mathf.Sign(vel.x), vel.magnitude, controller.collisionMask);
-		if (hit)
+		int raycastCount = 4;
+		for (int i = 0; i < raycastCount; i++) 
 		{
-			float dir = Mathf.Sign (vel.x);
+			Vector2 startPoint = (Vector2)transform.position;
+			startPoint.y += ((GetComponent<Collider2D> ().bounds.extents.y * 2f) / (float)raycastCount) * i;
 
-			//if (hit.collider.gameObject.layer == LayerMask.NameToLayer ("Obstacle"))
-			//{
-			vel.x = (Mathf.Abs(hit.point.x - transform.position.x) * dir) + (controller.coll.bounds.extents.x * -dir);
-			Debug.Log(hit.transform.name + ", " + hit.point + ", " + vel);
-			//Debug.DrawLine (transform.position, vel, Color.red);
-			//}//else
-			//Debug.DrawLine (startPos, startPos + vel, Color.red);
+			Vector2 endPoint = new Vector2(vel.x - transform.position.x, 0f) * Mathf.Sign(vel.x);
+			endPoint.y += ((GetComponent<Collider2D> ().bounds.extents.y * 2f) / (float)raycastCount) * i;
+
+			RaycastHit2D hit = Physics2D.Raycast (startPoint, endPoint, vel.magnitude, controller.collisionMask);
+			if (hit) 
+			{
+				float dir = Mathf.Sign (vel.x);
+
+				//Might need a check here to stop us from setting vel if it's bigger than the last vel we set.
+				vel.x = (Mathf.Abs (hit.point.x - transform.position.x) * dir) + (controller.coll.bounds.extents.x * -dir);
+				//Debug.Log (hit.transform.name + ", " + hit.point + ", " + vel);
+			}
 		}
-		//Debug.DrawLine (transform.position, startPos + vel, Color.red);
 
 		StartCoroutine (knockBack (vel, duration));
 	}
