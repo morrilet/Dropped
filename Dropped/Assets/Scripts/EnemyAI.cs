@@ -54,6 +54,8 @@ public class EnemyAI : Entity
 	Vector2 jumpTimeRange; //Range of values for jumpTime. x,y -- min,max;
 	float jumpTime; //How long to wait after jumping before jumping again. Stops enemies from constantly bouncing on corpses.
 	float jumpTimer;
+	[HideInInspector]
+	public bool jumpTriggered; //If the enemy is in a jump trigger that has had its conditions met.
 
 	public enum States
 	{
@@ -129,8 +131,8 @@ public class EnemyAI : Entity
 		//Debug.Log ("Wall: " + enemyInfo.JustHitWall);
 		//Debug.Log ("Platform: " + enemyInfo.IsOnEdgeOfPlatform);
 
-		if (Input.GetKeyDown (KeyCode.L) && !jumpingCurrent)
-			Jump (ref velocity);
+		//if (Input.GetKeyDown (KeyCode.L) && !jumpingCurrent)
+			//Jump (ref velocity);
 
 		switch (currentState) 
 		{
@@ -421,10 +423,10 @@ public class EnemyAI : Entity
 				player.ladder = null;
 		}
 
-		if (GetIsTouchingCorpse ()) 
+		if (GetIsTouchingCorpse () || jumpTriggered) 
 		{
 			//Debug.Log ("Here");
-			if (!jumpingCurrent && jumpTimer > jumpTime) 
+			if (!jumpingCurrent && jumpTimer > jumpTime && controller.collisions.below) 
 			{
 				jumpTime = Random.Range (jumpTimeRange.x, jumpTimeRange.y);
 				jumpTimer = 0f;
