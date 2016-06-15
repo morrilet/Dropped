@@ -5958,6 +5958,7 @@ MonoBehaviour:
   isOpen: 0
   closedDoorSprite: {fileID: 21300000, guid: 7b203076de454124c85d36ec2172d9fb, type: 3}
   openDoorSprite: {fileID: 21300000, guid: 49cdff1aa181d7b4f99c8d56f403be2a, type: 3}
+  fadewallTriggers: []
   mask:
     serializedVersion: 2
     m_Bits: 4096

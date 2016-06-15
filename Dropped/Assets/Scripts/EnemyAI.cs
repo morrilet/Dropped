@@ -360,31 +360,33 @@ public class EnemyAI : Entity
 				if (Vector3.Distance (upperTorso.transform.position, transform.position) < 2f) 
 				{
 					//Because these can rotate, this all won't be SUPER accurate. Hopefully that won't be too bad.
-
-					float upperTorsoMinDistanceX = GetComponent<Collider2D> ().bounds.extents.x + upperTorso.GetComponent<Collider2D> ().bounds.extents.x;
-					float upperTorsoMinDistanceY = GetComponent<Collider2D> ().bounds.extents.y + upperTorso.GetComponent<Collider2D> ().bounds.extents.y;
-					if (Mathf.Abs (transform.position.x - upperTorso.transform.position.x) < upperTorsoMinDistanceX
-						&& Mathf.Abs (transform.position.y - upperTorso.transform.position.y) < upperTorsoMinDistanceY) 
+					if(ragdolls[i].GetComponent<CorpseRagdoll>().attachedRopeSegment == null)
 					{
-						isTouchingCorpse = true;
-					}
-
-					float lowerTorsoMinDistanceX = GetComponent<Collider2D> ().bounds.extents.x + lowerTorso.GetComponent<Collider2D> ().bounds.extents.x;
-					float lowerTorsoMinDistanceY = GetComponent<Collider2D> ().bounds.extents.y + lowerTorso.GetComponent<Collider2D> ().bounds.extents.y;
-					if (Mathf.Abs (transform.position.x - lowerTorso.transform.position.x) < lowerTorsoMinDistanceX
-						&& Mathf.Abs (transform.position.y - lowerTorso.transform.position.y) < lowerTorsoMinDistanceY) 
-					{
-						isTouchingCorpse = true;
-					}
-						
-					for (int j = 0; j < limbs.Length; j++) 
-					{
-						float minDistanceX = GetComponent<Collider2D> ().bounds.extents.x + limbs [j].GetComponent<Collider2D> ().bounds.extents.x;
-						float minDistanceY = GetComponent<Collider2D> ().bounds.extents.y + limbs [j].GetComponent<Collider2D> ().bounds.extents.y;
-						if (Mathf.Abs (transform.position.x - limbs [i].transform.position.x) < minDistanceX
-						   && Mathf.Abs (transform.position.y - limbs [i].transform.position.y) < minDistanceY) 
+						float upperTorsoMinDistanceX = GetComponent<Collider2D> ().bounds.extents.x + upperTorso.GetComponent<Collider2D> ().bounds.extents.x;
+						float upperTorsoMinDistanceY = GetComponent<Collider2D> ().bounds.extents.y + upperTorso.GetComponent<Collider2D> ().bounds.extents.y;
+						if (Mathf.Abs (transform.position.x - upperTorso.transform.position.x) < upperTorsoMinDistanceX
+							&& Mathf.Abs (transform.position.y - upperTorso.transform.position.y) < upperTorsoMinDistanceY) 
 						{
 							isTouchingCorpse = true;
+						}
+
+						float lowerTorsoMinDistanceX = GetComponent<Collider2D> ().bounds.extents.x + lowerTorso.GetComponent<Collider2D> ().bounds.extents.x;
+						float lowerTorsoMinDistanceY = GetComponent<Collider2D> ().bounds.extents.y + lowerTorso.GetComponent<Collider2D> ().bounds.extents.y;
+						if (Mathf.Abs (transform.position.x - lowerTorso.transform.position.x) < lowerTorsoMinDistanceX
+							&& Mathf.Abs (transform.position.y - lowerTorso.transform.position.y) < lowerTorsoMinDistanceY) 
+						{
+							isTouchingCorpse = true;
+						}
+							
+						for (int j = 0; j < limbs.Length; j++) 
+						{
+							float minDistanceX = GetComponent<Collider2D> ().bounds.extents.x + limbs [j].GetComponent<Collider2D> ().bounds.extents.x;
+							float minDistanceY = GetComponent<Collider2D> ().bounds.extents.y + limbs [j].GetComponent<Collider2D> ().bounds.extents.y;
+							if (Mathf.Abs (transform.position.x - limbs [i].transform.position.x) < minDistanceX
+							   && Mathf.Abs (transform.position.y - limbs [i].transform.position.y) < minDistanceY) 
+							{
+								isTouchingCorpse = true;
+							}
 						}
 					}
 				}
