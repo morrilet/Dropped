@@ -172,7 +172,11 @@ public class Player : Entity
 		//In the future make a die method.
 		if(!isAlive)
 		{
+			//Get player out of any current grabs.
 			grappleEscapeAttempt = grappleStrength * 1.5f;
+			//Reset throw strength.
+			throwingCorpse = false;
+			corpseThrowCount = 0f;
 			/*
 			for (int i = 0; i < grapplingEnemies.Count; i++)
 			{
@@ -480,6 +484,11 @@ public class Player : Entity
 	void EscapeGrapple()
 	{
 		GUI_Script.instance.escapeObjectsEnabled = true;
+
+		//Reset corpse throw.
+		corpseCarried = null;
+		throwingCorpse = false;
+		corpseThrowCount = 0f;
 
 		if (Input.GetAxisRaw("Horizontal") != 0 && horizontalAxisPrev == 0) 
 		{

@@ -7,6 +7,10 @@ public class Fog : MonoBehaviour
 	{
 		if (other.tag == "Player") 
 		{
+			if (GameManager.instance.player.GetComponent<Player> ().corpseCarried != null) 
+			{
+				Destroy (GameManager.instance.player.GetComponent<Player> ().corpseCarried.gameObject, .75f);
+			}
 			StartCoroutine (WaitToKillEntity (other.GetComponent<Entity> (), .75f));
 		} 
 		else if (other.tag == "Enemy") 

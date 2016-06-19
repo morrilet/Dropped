@@ -198,7 +198,7 @@ public class Door : MonoBehaviour
 		this.gameObject.layer = LayerMask.NameToLayer ("Default_Hotspot");
 		GetComponent<SpriteRenderer> ().color = new Color (125f/255f, 125f/255f, 125f/255f, 1);
 		GetComponent<SpriteRenderer> ().sprite = openDoorSprite;
-		switch (direction) 
+		switch (direction)
 		{
 		case OpenDirection.Right:
 			transform.localScale = new Vector3 (startingScale.x, startingScale.y, startingScale.z);

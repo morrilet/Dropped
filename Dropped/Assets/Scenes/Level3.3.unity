@@ -6983,6 +6983,52 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 89a2272a3b253e4478821608077a6011, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &585822131
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1761826790}
+    m_Modifications:
+    - target: {fileID: 493174, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 22.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 493174, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 12.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 493174, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493174, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493174, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493174, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493174, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 493174, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
+      propertyPath: m_RootOrder
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 195376, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
+      propertyPath: m_Name
+      value: Checkpoint (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &591250396
 Prefab:
   m_ObjectHideFlags: 0
@@ -19669,6 +19715,10 @@ Prefab:
     - target: {fileID: 131018, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
       propertyPath: m_Name
       value: Bldg2_Level4_Foreground
+      objectReference: {fileID: 0}
+    - target: {fileID: 131018, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}

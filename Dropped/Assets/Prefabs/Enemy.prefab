@@ -86,7 +86,6 @@ MonoBehaviour:
   chaseSpeed: 1.75
   jumpHeight: 2
   timeToJumpApex: 0.2
-  canJump: 0
   sightLayerMask:
     serializedVersion: 2
     m_Bits: 4352
@@ -94,6 +93,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   direction: 1
+  isGrapplingPlayer: 0
+  jumpTriggered: 0
   currentState: 0
 --- !u!114 &11462262
 MonoBehaviour:
