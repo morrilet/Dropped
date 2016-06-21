@@ -173,7 +173,7 @@ public class CorpseRagdoll : MonoBehaviour
 			lowerTorso.GetComponent<HingeJoint2D> ().limits = lowerTorsoLimits;
 
 			//upperTorso.transform.position = transform.position + new Vector3(-.25f, .1f, 0);
-			upperTorso.GetComponent<Rigidbody2D> ().MovePosition((Vector2)player.transform.position + new Vector2(.25f * player.direction, 1f));
+			upperTorso.GetComponent<Rigidbody2D> ().MovePosition(Vector2.Lerp((Vector2)upperTorso.transform.position, (Vector2)player.transform.position + new Vector2(.25f * player.direction, 1f), Time.deltaTime * 30f));
 			upperTorso.GetComponent<Rigidbody2D> ().isKinematic = true;
 			upperTorso.GetComponent<Rigidbody2D> ().MoveRotation (180f);// * direction);
 			upperTorso.layer = LayerMask.NameToLayer("Default");
@@ -322,7 +322,7 @@ public class CorpseRagdoll : MonoBehaviour
 					Physics2D.IgnoreCollision (limbs [i].GetComponent<Collider2D> (), obj.GetComponent<Collider2D> (), false);
 			}
 		}
-		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Corpse")) 
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Corpse"))
 		{
 			if (obj != upperTorso && obj != lowerTorso) 
 			{
@@ -377,11 +377,11 @@ public class CorpseRagdoll : MonoBehaviour
 
 		//Don't know why these two chunks work, but they do. It's not so bad I guess, aside from the wild spinning.
 		lowerTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
-		lowerTorso.GetComponent<Rigidbody2D> ().AddForce (force * .75f, forceMode);
+		//lowerTorso.GetComponent<Rigidbody2D> ().AddForce (force * .75f, forceMode); //Removed to remove rotation speed.
 
 		upperTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
-		upperTorso.GetComponent<Rigidbody2D> ().AddForce (force * .75f, forceMode);
-		upperTorso.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+		upperTorso.GetComponent<Rigidbody2D> ().AddForce (force * 1.025f, forceMode); // Used to be .75f
+		//upperTorso.GetComponent<Rigidbody2D> ().velocity = Vector2.zero; //Removed to remove rotation speed.
 
 		if (attachedRopeSegment != null) 
 		{

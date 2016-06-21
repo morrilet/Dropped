@@ -4277,6 +4277,12 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 443856, guid: 8bae4c14038d5a144a9094e6162c55db, type: 2}
   m_PrefabInternal: {fileID: 1471415870}
+--- !u!114 &220498222 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11447830, guid: cc36e32ec493ff2428be58751c53eab4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1030017659}
+  m_Script: {fileID: 11500000, guid: b804427b92e43b946a1ed466c19f1281, type: 3}
 --- !u!1001 &225580860
 Prefab:
   m_ObjectHideFlags: 0
@@ -9033,11 +9039,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11435026, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
       propertyPath: fadewalls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -21.8
+      value: -20.9
       objectReference: {fileID: 0}
     - target: {fileID: 464580, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -9079,6 +9085,10 @@ Prefab:
       propertyPath: fadewalls.Array.data[0]
       value: 
       objectReference: {fileID: 1966248652}
+    - target: {fileID: 11435026, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+      propertyPath: fadewalls.Array.data[1]
+      value: 
+      objectReference: {fileID: 220498222}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
   m_IsPrefabParent: 0
