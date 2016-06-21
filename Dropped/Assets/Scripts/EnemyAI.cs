@@ -417,14 +417,14 @@ public class EnemyAI : Entity
 			chaseTimer += Time.deltaTime;
 		}
 
-		if (GetIsTouchingPlayer () && player.canBeGrabbed && Vector3.Distance(transform.position, player.transform.position) <= maxGrappleRange) 
+		if (GetIsTouchingPlayer () && player.canBeGrabbed && Vector2.Distance ((Vector2)transform.position, (Vector2)player.transform.position) <= maxGrappleRange) 
 		{
 			currentState = States.GrabPlayer;
 
 			if (player.ladder)
 				player.ladder = null;
 		}
-
+		
 		if (GetIsTouchingCorpse () || jumpTriggered) 
 		{
 			//Debug.Log ("Here");
@@ -503,6 +503,12 @@ public class EnemyAI : Entity
 			//Debug.Log ("Here 2");
 			//grappleModifier = 1f;
 		//}
+		if (Vector2.Distance ((Vector2)transform.position, (Vector2)player.transform.position) > maxGrappleRange) 
+		{
+			isGrapplingPlayer = false;
+			player.grapplingEnemies.Remove (this);
+		}
+
 		if (attackTimer >= attackRate && !GameManager.instance.isPaused) 
 		{
 			player.direction = Mathf.Sign (transform.position.x - player.transform.position.x); //Make the player face us.

@@ -14,7 +14,7 @@ public class AmmoBox : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Player" && player.corpseCarried == null) 
+		if (other.gameObject.tag == "Player" && player.corpseCarried == null && GameObject.Find("Player").GetComponent<Player>().grapplingEnemies.Count == 0) 
 		{
 			GUI_Script.instance.grabAmmoText.enabled = true;
 			if (Input.GetButtonDown("Action")) 
@@ -27,7 +27,7 @@ public class AmmoBox : MonoBehaviour
 
 	void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Player" && player.corpseCarried == null) 
+		if (other.gameObject.tag == "Player" && player.corpseCarried == null && GameObject.Find("Player").GetComponent<Player>().grapplingEnemies.Count == 0) 
 		{
 			GUI_Script.instance.grabAmmoText.enabled = true;
 			if (Input.GetButtonDown("Action")) 

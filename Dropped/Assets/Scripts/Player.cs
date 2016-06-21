@@ -307,13 +307,22 @@ public class Player : Entity
 			ladderExitTimer = 0f;
 		}
 
-		if (grapplingEnemies.Count > 0 && !GameManager.instance.isPaused) 
-		{
+		if (grapplingEnemies.Count > 0 && !GameManager.instance.isPaused) {
 			if (corpseCarried != null)
 				DropCorpse ();
 			EscapeGrapple ();
 			//Debug.Log (grappleEscapeAttempt + ", " + grappleStrength);
+		} 
+		else if (grapplingEnemies.Count == 0)
+		{
+			GUI_Script.instance.escapeObjectsEnabled = false;
+
+			canMove = true;
+
+			grappleStrength = 0;
+			grappleEscapeAttempt = 0;
 		}
+
 		if (!canBeGrabbed) 
 		{
 			grabSafeTimer += Time.deltaTime;

@@ -24,6 +24,7 @@ public class Bullet : MonoBehaviour {
 	public float rangeDamageFallOff;
 
 	public GameObject impactEffect;
+	public TrailRenderer trail;
 
 	public Vector3 startPos;
 
@@ -36,6 +37,10 @@ public class Bullet : MonoBehaviour {
 	void Start()
 	{
 		startPos = transform.position;
+
+		trail.sortingLayerName = "Bullet";
+		trail.sortingOrder = -1;
+
 		bulletSpeed += Random.Range (-1 * bulletSpeedDeviation, bulletSpeedDeviation);
 		damage = maxDamage;
 		enemiesHit = new List<Enemy> ();
