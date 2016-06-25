@@ -27,7 +27,7 @@ public class WeakPoint : Entity
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		if (other.gameObject.tag == "Bullet") 
+		if (other.gameObject.tag == "Bullet")
 		{
 			health -= other.gameObject.GetComponent<Bullet> ().damage / 2f;
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.075f, .025f);

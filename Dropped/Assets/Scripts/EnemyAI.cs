@@ -34,9 +34,9 @@ public class EnemyAI : Entity
 	//AI stuff
 	public LayerMask sightLayerMask; //The layers that the enemy can see.
 	public LayerMask hearingLayerMask; //The layers the enemy can hear.
-	float chaseTime; //How long after losing sight of the player will the enemy continue to chase.
-	float chaseTimer; //Counts up to chaseTime.
-	bool playerDetected; //Whether or not we can see/hear the player.
+	public float chaseTime; //How long after losing sight of the player will the enemy continue to chase.
+	public float chaseTimer; //Counts up to chaseTime.
+	public bool playerDetected; //Whether or not we can see/hear the player.
 
 	public int direction;
 	int storedDirection; //This is the value used to return the enemy to its previous direction when it stops chasing. -1 = left, 1 = right.
@@ -83,6 +83,7 @@ public class EnemyAI : Entity
 		CalculateJumpPhysics ();
 
 		chaseTime = 3f;
+		chaseTimer = chaseTime;
 		playerDetected = false;
 
 		attackRate = 1.5f;
@@ -124,7 +125,7 @@ public class EnemyAI : Entity
 		else
 		{
 			if(velocity.y < 0)
-				velocity.y = -.001f;
+				velocity.y = -.0001f;
 			jumpingCurrent = false;
 		}
 
@@ -382,8 +383,8 @@ public class EnemyAI : Entity
 						{
 							float minDistanceX = GetComponent<Collider2D> ().bounds.extents.x + limbs [j].GetComponent<Collider2D> ().bounds.extents.x;
 							float minDistanceY = GetComponent<Collider2D> ().bounds.extents.y + limbs [j].GetComponent<Collider2D> ().bounds.extents.y;
-							if (Mathf.Abs (transform.position.x - limbs [i].transform.position.x) < minDistanceX
-							   && Mathf.Abs (transform.position.y - limbs [i].transform.position.y) < minDistanceY) 
+							if (Mathf.Abs (transform.position.x - limbs [j].transform.position.x) < minDistanceX
+							   && Mathf.Abs (transform.position.y - limbs [j].transform.position.y) < minDistanceY) 
 							{
 								isTouchingCorpse = true;
 							}
@@ -412,7 +413,8 @@ public class EnemyAI : Entity
 		}
 
 		//If we can't see the player and we haven't run out of time to chase...
-		if (!playerDetected && chaseTimer < chaseTime) 
+		//The + 1 is so that it doesn't dip below chaseTime and change states erratically.
+		if (!playerDetected && chaseTimer < chaseTime + 1) 
 		{
 			chaseTimer += Time.deltaTime;
 		}
@@ -441,7 +443,7 @@ public class EnemyAI : Entity
 	void Patrol()
 	{
 		//If we just switched to patrol reset direction to stored direction.
-		if (previousState != States.Patrol) 
+		if (previousState != States.Patrol)
 		{
 			if (direction != storedDirection)
 				direction *= -1;

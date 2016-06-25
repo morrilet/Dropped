@@ -172,6 +172,16 @@ public class Player : Entity
 		//In the future make a die method.
 		if(!isAlive)
 		{
+			if (grapplingEnemies.Count >= 0) 
+			{
+				for (int i = 0; i < grapplingEnemies.Count; i++) 
+				{
+					grapplingEnemies [i].playerDetected = false;
+					grapplingEnemies [i].chaseTimer = grapplingEnemies [i].chaseTime;
+					grapplingEnemies [i].currentState = EnemyAI.States.Patrol;
+				}
+			}
+
 			//Get player out of any current grabs.
 			grappleEscapeAttempt = grappleStrength * 1.5f;
 			//Reset throw strength.
@@ -183,9 +193,10 @@ public class Player : Entity
 				grapplingEnemies [i].isGrapplingPlayer = false;
 			}
 			grapplingEnemies.RemoveRange (0, grapplingEnemies.Count);
-*/
+			*/
 			isAlive = true;
 			//canMove = true;
+
 			GameManager.instance.RestartLevelFromCheckpoint ();
 			//Application.LoadLevel(Application.loadedLevel);
 		}
@@ -307,7 +318,8 @@ public class Player : Entity
 			ladderExitTimer = 0f;
 		}
 
-		if (grapplingEnemies.Count > 0 && !GameManager.instance.isPaused) {
+		if (grapplingEnemies.Count > 0 && !GameManager.instance.isPaused) 
+		{
 			if (corpseCarried != null)
 				DropCorpse ();
 			EscapeGrapple ();

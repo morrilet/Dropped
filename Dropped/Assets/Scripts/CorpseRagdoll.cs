@@ -161,8 +161,10 @@ public class CorpseRagdoll : MonoBehaviour
 				limbs [i].GetComponent<Rigidbody2D> ().isKinematic = true;
 			}
 
-			if (attachedRopeSegment != null)
+			if (attachedRopeSegment != null) 
+			{
 				attachedRopeSegment = null;
+			}
 
 			StartCoroutine ("IgnoreCorpseCollision");
 		}
@@ -210,7 +212,7 @@ public class CorpseRagdoll : MonoBehaviour
 			}
 		}
 
-		if (attachedRopeSegment != null) 
+		if (attachedRopeSegment != null)
 		{
 			for (int i = 0; i < attachedRope.ropeSegments.Count; i++) 
 			{
@@ -221,6 +223,8 @@ public class CorpseRagdoll : MonoBehaviour
 					Physics2D.IgnoreCollision (limbs [j].GetComponent<Collider2D> (), attachedRope.ropeSegments [i].GetComponent<Collider2D> ());
 				}
 			}
+
+			upperTorso.layer = LayerMask.NameToLayer ("Ragdoll_Limb");
 
 			GameObject head = transform.FindChild ("Head").gameObject;
 			head.GetComponent<Rigidbody2D> ().MovePosition ((Vector2)attachedRopeSegment.transform.position 
