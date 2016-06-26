@@ -160,6 +160,7 @@ MonoBehaviour:
   rangeDamageFallOff: 0
   impactEffect: {fileID: 114012, guid: 518d9df5d6001ae498917e79f2bea35f, type: 2}
   trail: {fileID: 9686970}
+  bloodParticles: {fileID: 139354, guid: 601fbedcdf778ca4ca92006af2c8f173, type: 2}
   startPos: {x: 0, y: 0, z: 0}
   raycastLayerMask:
     serializedVersion: 2

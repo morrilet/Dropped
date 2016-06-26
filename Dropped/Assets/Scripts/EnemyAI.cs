@@ -7,6 +7,8 @@ public class EnemyAI : Entity
 	public GameObject corpsePrefab;
 	Color baseColor;
 
+	public GameObject bloodParticles;
+
 	Player player;
 
 	//[HideInInspector]
@@ -34,7 +36,9 @@ public class EnemyAI : Entity
 	//AI stuff
 	public LayerMask sightLayerMask; //The layers that the enemy can see.
 	public LayerMask hearingLayerMask; //The layers the enemy can hear.
+	[HideInInspector]
 	public float chaseTime; //How long after losing sight of the player will the enemy continue to chase.
+	[HideInInspector]
 	public float chaseTimer; //Counts up to chaseTime.
 	public bool playerDetected; //Whether or not we can see/hear the player.
 
@@ -563,6 +567,9 @@ public class EnemyAI : Entity
 
 			GameManager.instance.FlashWhite (this.GetComponent<SpriteRenderer>(), 0.018f, baseColor);
 
+			GameObject blood = Instantiate (bloodParticles, new Vector3(other.transform.position.x + ((GetComponent<SpriteRenderer>().bounds.extents.x * 3f) * Mathf.Sign(other.transform.right.x)), other.transform.position.y, 0f), 
+				Quaternion.Euler (0f, 0f, Mathf.Sign(other.transform.right.x) * -90f)) as GameObject;
+
 			chaseTimer = 0f;
 			currentState = States.ChasePlayer;
 		}
@@ -589,7 +596,7 @@ public class EnemyAI : Entity
 	public void KnockBack(Vector3 vel, float duration)
 	{
 		//Check for possible collisions.
-		int raycastCount = 4;
+		int raycastCount = 8;
 		for (int i = 0; i < raycastCount; i++) 
 		{
 			Vector2 startPoint = (Vector2)transform.position;
@@ -641,7 +648,7 @@ public class EnemyAI : Entity
 		//corpseRigidbodies[i].isKinematic = false;
 		if (bullet != null) 
 		{
-			if (GameManager.instance.level.GetComponent<Level> ().enemies.Count > 1) 
+			if (GameManager.instance.level.GetComponent<Level> ().enemies.Count > 1)
 			{
 				//corpseRigidbodies[i].AddForceAtPosition (new Vector2 (bullet.corpseKnockback, 0f)
 				//* GameObject.Find ("Player").GetComponent<Player> ().direction, (Vector2)bullet.transform.position, ForceMode2D.Impulse);

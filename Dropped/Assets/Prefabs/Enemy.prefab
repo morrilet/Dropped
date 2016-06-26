@@ -79,6 +79,7 @@ MonoBehaviour:
   maxHealth: 10
   isAlive: 0
   corpsePrefab: {fileID: 160092, guid: c5a9fcd9f96867346932aa371b52434b, type: 2}
+  bloodParticles: {fileID: 139354, guid: 601fbedcdf778ca4ca92006af2c8f173, type: 2}
   controller: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   gravity: -9.81
@@ -92,6 +93,9 @@ MonoBehaviour:
   hearingLayerMask:
     serializedVersion: 2
     m_Bits: 4096
+  chaseTime: 0
+  chaseTimer: 0
+  playerDetected: 0
   direction: 1
   isGrapplingPlayer: 0
   jumpTriggered: 0

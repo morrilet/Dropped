@@ -3247,7 +3247,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 151028, guid: d43855c4d283ad449af726ca74fb30eb, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11460996, guid: d43855c4d283ad449af726ca74fb30eb, type: 2}
       propertyPath: playerSpawnPosition.x
