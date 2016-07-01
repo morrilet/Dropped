@@ -47,6 +47,7 @@ public class WeakPoint : Entity
 		if (other.gameObject.tag == "Player") 
 		{
 			health = 0;
+			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .1f);
 		}
 	}
 }

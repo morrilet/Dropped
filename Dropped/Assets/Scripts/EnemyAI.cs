@@ -114,7 +114,7 @@ public class EnemyAI : Entity
 			enemyInfo.JustHitWall = true;
 		if (controller.collisions.right && !controller.collisions.rightPrev)
 			enemyInfo.JustHitWall = true;
-
+		
 		if (!controller.collisions.belowLeft && controller.collisions.belowLeftPrev) {
 			enemyInfo.IsOnEdgeOfPlatform = true;
 		}
@@ -128,7 +128,7 @@ public class EnemyAI : Entity
 		}
 		else
 		{
-			if(velocity.y < 0)
+			if (velocity.y < 0)
 				velocity.y = -.0001f;
 			jumpingCurrent = false;
 		}

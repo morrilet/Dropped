@@ -102,13 +102,13 @@ public class Controller2D : RaycastController
 				//If this is the leftmost raycastOrigin then our bottom left corner is in a collision.
 				if (i == 0 && directionY == -1)
 					collisions.belowLeft = true;
-				//else
-					//collisions.belowLeft = false;
+				else
+					collisions.belowLeft = false;
 				//If this is the rightmost raycastOrigin then our bottom right corner is in a collision.
 				if (i == verticalRayCount - 1 && directionY == -1)
 					collisions.belowRight = true;
-				//else
-					//collisions.belowRight = false;
+				else
+					collisions.belowRight = false;
 			}
 		}
 
@@ -285,7 +285,7 @@ public class Controller2D : RaycastController
 
 			above = below   = false;
 			left  = right   = false;
-			belowLeft = belowRight = false;
+			//belowLeft = belowRight = false;
 
 			climbingSlope   = false;
 			descendingSlope = false;
