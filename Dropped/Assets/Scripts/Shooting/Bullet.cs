@@ -97,7 +97,7 @@ public class Bullet : MonoBehaviour {
 			//impact.transform.rotation = Quaternion.Euler(rot);
 			Debug.Log (hit.normal);
 		}
-		else if (hit && !isFirstMovement && hit.transform.tag == "Enemy" && !enemiesHit.Contains(hit.transform.GetComponent<Enemy>())) 
+		else if (hit && !isFirstMovement && hit.transform.tag == "Enemy" && !enemiesHit.Contains(hit.transform.GetComponent<Enemy>()))
 		{
 			Debug.DrawLine (startPos, startPos + (Vector2)velocity, Color.blue);
 			hit.transform.GetComponent<Enemy> ().GetHit (this);
