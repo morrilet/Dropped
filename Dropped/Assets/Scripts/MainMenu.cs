@@ -29,7 +29,11 @@ public class MainMenu : MonoBehaviour
 	int resolutionDropdownValuePrev;
 	Button screenModeButton;
 
+	Dropdown qualityDropdown;
+	int qualityDropdownValuePrev;
+
 	List<Dropdown.OptionData> resolutions;
+	List<Dropdown.OptionData> qualities;
 
 	public enum Menu
 	{
@@ -61,6 +65,8 @@ public class MainMenu : MonoBehaviour
 				screenModeButton = settingsObjects [i].GetComponent<Button> ();
 			if (settingsObjects [i].name == "ResolutionDropdown")
 				resolutionDropdown = settingsObjects [i].GetComponent <Dropdown> ();
+			if (settingsObjects [i].name == "QualityDropdown")
+				qualityDropdown = settingsObjects [i].GetComponent<Dropdown> ();
 		}
 
 		audioMenuObjects = new GameObject[audioMenu.transform.childCount];
@@ -111,6 +117,23 @@ public class MainMenu : MonoBehaviour
 		}
 		//SetResolution ();
 
+		qualityDropdown.ClearOptions ();
+		qualities = new List<Dropdown.OptionData> ();
+		for (int i = 0; i < QualitySettings.names.Length; i++) 
+		{
+			qualities.Add (new Dropdown.OptionData (QualitySettings.names [i].ToString ()));
+		}
+		qualityDropdown.AddOptions (qualities);
+		foreach (Dropdown.OptionData option in qualityDropdown.options) 
+		{
+			if (QualitySettings.names [QualitySettings.GetQualityLevel ()] == option.text) 
+			{
+				qualityDropdown.value = qualityDropdown.options.IndexOf (option);
+				qualityDropdownValuePrev = qualityDropdown.value;
+				break;
+			}
+		}
+
 		if(Screen.fullScreen)
 			screenModeButton.transform.GetChild (0).GetComponent<Text> ().text = "FULLSCREEN";
 		else
@@ -141,6 +164,10 @@ public class MainMenu : MonoBehaviour
 		if (resolutionDropdown.value != resolutionDropdownValuePrev)
 			SetResolution ();	
 		resolutionDropdownValuePrev = resolutionDropdown.value;
+
+		if (qualityDropdown.value != qualityDropdownValuePrev)
+			SetQuality ();
+		qualityDropdownValuePrev = qualityDropdown.value;
 	}
 
 	public void SwitchToMainMenu()
@@ -243,5 +270,10 @@ public class MainMenu : MonoBehaviour
 	{
 		Resolution res = Screen.resolutions [resolutionDropdown.value];
 		Screen.SetResolution (res.width, res.height, isFullscreen);
+	}
+
+	public void SetQuality()
+	{
+		QualitySettings.SetQualityLevel (qualityDropdown.value, true);
 	}
 }
