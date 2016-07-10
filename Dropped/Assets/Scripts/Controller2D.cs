@@ -69,13 +69,13 @@ public class Controller2D : RaycastController
 			Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
 
 			//If the ray hit something...
-			if(hit)
+			if (hit) 
 			{
-
-				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle")) {
+				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle")) 
+				{
 					//Debug.Log ("V: " + Vector2.Angle (transform.up, hit.normal));
 					//Debug.Log (Mathf.Sign(hit.normal.x - hit.point.x));
-					Debug.DrawLine((Vector3)hit.point, (Vector3)hit.normal + (Vector3)hit.point);
+					Debug.DrawLine ((Vector3)hit.point, (Vector3)hit.normal + (Vector3)hit.point);
 				}
 				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle") && directionY == 1) 
 				{
@@ -83,16 +83,16 @@ public class Controller2D : RaycastController
 					collisionMask = collisionMask & ~(1 << semiObstacleLayer);
 				}
 
-				if(hit.transform.tag == "MovingPlatform")
-					collisions.movingPlatform = hit.transform.GetComponent<PlatformController>();
+				if (hit.transform.tag == "MovingPlatform")
+					collisions.movingPlatform = hit.transform.GetComponent<PlatformController> ();
 
 				//Set velocity.y to a value that will bring us to what we've hit, while maintaining the same direction.
-				velocity.y = (hit.distance - skinWidth) * directionY; //We subtract skinWidth because we added it to rayLength earlier.
+				velocity.y = (hit.distance - skinWidth) * directionY - .0001f; //We subtract skinWidth because we added it to rayLength earlier.
 				rayLength = hit.distance; //Change rayLength to distance so that the ray doesn't continue on and hit something farther than the first object.
 
-				if(collisions.climbingSlope)
+				if (collisions.climbingSlope)
 				{
-					velocity.x = velocity.y / Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Sign(velocity.x);
+					velocity.x = velocity.y / Mathf.Tan (collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Sign (velocity.x);
 				}
 
 				//Set the apropriate collision value to true based on which way we were going.
@@ -100,17 +100,29 @@ public class Controller2D : RaycastController
 				collisions.above = (directionY == 1);
 
 				//If this is the leftmost raycastOrigin then our bottom left corner is in a collision.
-				if (i == 0 && directionY == -1)
+				if (i == 0 && directionY == -1) 
+				{
 					collisions.belowLeft = true;
-				else
-					collisions.belowLeft = false;
+				}
+				//else
+				//collisions.belowLeft = false;
 				//If this is the rightmost raycastOrigin then our bottom right corner is in a collision.
 				if (i == verticalRayCount - 1 && directionY == -1)
 					collisions.belowRight = true;
-				else
+				//else
+				//collisions.belowRight = false;
+			} 
+			else 
+			{
+				if (i == 0)
+					collisions.belowLeft = false;
+				if (i == verticalRayCount - 1)
 					collisions.belowRight = false;
 			}
 		}
+
+		//if(this.gameObject.name != "Player")
+			//Debug.Log (collisions.belowRight);
 
 		if(collisions.climbingSlope)
 		{
@@ -151,7 +163,8 @@ public class Controller2D : RaycastController
 			//If the ray hit something...
 			if(hit)
 			{
-				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle")) {
+				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Semi_Obstacle"))
+				{
 					Debug.Log ("H: " + Vector2.Angle (transform.up, hit.normal));
 					Debug.DrawLine((Vector3)hit.point, (Vector3)hit.normal + (Vector3)hit.point);
 				}

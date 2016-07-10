@@ -614,10 +614,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b58d1b3e70f184449ab1f130c8367d0, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &198182621 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 137914, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
-  m_PrefabInternal: {fileID: 1186162287}
 --- !u!1 &228388237
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,7 +1975,7 @@ Prefab:
     - target: {fileID: 11435026, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
       propertyPath: fadewalls.Array.data[0]
       value: 
-      objectReference: {fileID: 341209340}
+      objectReference: {fileID: 0}
     - target: {fileID: 137914, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
       propertyPath: m_Name
       value: FadewallTrigger (1)
@@ -2366,6 +2362,10 @@ Prefab:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 121942, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
   m_IsPrefabParent: 0
@@ -2654,9 +2654,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 464417878}
-  - {fileID: 237135143}
   m_Father: {fileID: 1716432379}
-  m_RootOrder: 3
+  m_RootOrder: 6
 --- !u!1001 &667299746
 Prefab:
   m_ObjectHideFlags: 0
@@ -3846,12 +3845,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
   m_PrefabInternal: {fileID: 1140018264}
---- !u!114 &1155303870 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11447830, guid: cc36e32ec493ff2428be58751c53eab4,
-    type: 2}
-  m_PrefabInternal: {fileID: 399958843}
-  m_Script: {fileID: 11500000, guid: b804427b92e43b946a1ed466c19f1281, type: 3}
 --- !u!1001 &1186162287
 Prefab:
   m_ObjectHideFlags: 0
@@ -3906,7 +3899,7 @@ Prefab:
     - target: {fileID: 11435026, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
       propertyPath: fadewalls.Array.data[0]
       value: 
-      objectReference: {fileID: 982820010}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
   m_IsPrefabParent: 0
@@ -5653,7 +5646,7 @@ Prefab:
     - target: {fileID: 11435026, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
       propertyPath: fadewalls.Array.data[0]
       value: 
-      objectReference: {fileID: 341209340}
+      objectReference: {fileID: 0}
     - target: {fileID: 137914, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
       propertyPath: m_Name
       value: FadewallTrigger (2)
@@ -5665,10 +5658,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1274883759 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 137914, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
-  m_PrefabInternal: {fileID: 1274883758}
 --- !u!1 &1289932096
 GameObject:
   m_ObjectHideFlags: 0
@@ -8481,12 +8470,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2127175728}
---- !u!114 &2135148326 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11447830, guid: cc36e32ec493ff2428be58751c53eab4,
-    type: 2}
-  m_PrefabInternal: {fileID: 965061289}
-  m_Script: {fileID: 11500000, guid: b804427b92e43b946a1ed466c19f1281, type: 3}
 --- !u!1 &2137605602
 GameObject:
   m_ObjectHideFlags: 0

@@ -61,6 +61,9 @@ public class EnemyAI : Entity
 	[HideInInspector]
 	public bool jumpTriggered; //If the enemy is in a jump trigger that has had its conditions met.
 
+	//TESTING
+	bool edge;
+
 	public enum States
 	{
 		Patrol,
@@ -122,6 +125,9 @@ public class EnemyAI : Entity
 			enemyInfo.IsOnEdgeOfPlatform = true;
 		}
 
+		//TESTING
+		edge = enemyInfo.IsOnEdgeOfPlatform;
+
 		if (!controller.collisions.below) 
 		{
 			velocity.y += gravity * Time.deltaTime;
@@ -129,7 +135,7 @@ public class EnemyAI : Entity
 		else
 		{
 			if (velocity.y < 0)
-				velocity.y = -.0001f;
+				velocity.y = -.00001f;
 			jumpingCurrent = false;
 		}
 
@@ -293,7 +299,7 @@ public class EnemyAI : Entity
 					canHearPlayer = true;
 					Debug.DrawLine (transform.position, endPoint, Color.blue);
 				} 
-				else 
+				else
 				{
 					Debug.DrawLine (transform.position, endPoint, Color.grey);
 				}
@@ -340,7 +346,7 @@ public class EnemyAI : Entity
 		float minDistanceX = GetComponent<Collider2D> ().bounds.extents.x + player.GetComponent<Collider2D> ().bounds.extents.x;
 		float minDistanceY = GetComponent<Collider2D> ().bounds.extents.y + player.GetComponent<Collider2D> ().bounds.extents.y;
 		if (Mathf.Abs (transform.position.x - player.transform.position.x) < minDistanceX
-		   && Mathf.Abs (transform.position.y - player.transform.position.y) < minDistanceY) 
+		   && Mathf.Abs (transform.position.y - player.transform.position.y) < minDistanceY)
 		{
 			isTouchingPlayer = true;
 		}
@@ -447,30 +453,46 @@ public class EnemyAI : Entity
 	void Patrol()
 	{
 		//If we just switched to patrol reset direction to stored direction.
-		if (previousState != States.Patrol)
+		if (!jumpingCurrent) 
 		{
-			if (direction != storedDirection)
+			if (previousState != States.Patrol) 
+			{
+				if (direction != storedDirection)
+					direction *= -1;
+			} 
+			else if (controller.collisions.left) 
+			{ 
+				//If we just switched to patrol and are touching an obstacle, turn around.
+				if (direction == -1)
+					direction = 1;
+			}
+			else if (controller.collisions.right)
+			{ 
+				//If we just switched to patrol and are touching an obstacle, turn around.
+				if (direction == 1)
+					direction = -1;
+			}
+
+			if (enemyInfo.IsOnEdgeOfPlatform || enemyInfo.JustHitWall) 
+			{
 				direction *= -1;
-		} 
-		else if (controller.collisions.left) //If we just switched to patrol and are touching an obstacle, turn around.
-		{
-			if (direction == -1)
-				direction = 1;
-		}
-		else if (controller.collisions.right) //If we just switched to patrol and are touching an obstacle, turn around.
-		{
-			if (direction == 1)
-				direction = -1;
+			}
 		}
 
 		if (Mathf.Abs (velocity.x) != patrolSpeed)
 			velocity.x = patrolSpeed;
-
+		/*
 		if (enemyInfo.IsOnEdgeOfPlatform || enemyInfo.JustHitWall) 
 		{
-			if(!jumpingCurrent)
-				direction *= -1;
+			if (!jumpingCurrent) 
+			{
+				if(direction == -1)
+					direction = 1;
+				if(direction == 1)
+					direction = -1;
+			}
 		}
+		*/
 
 		KeepDistanceFromEnemies ();
 		//velocity.x *= direction;
