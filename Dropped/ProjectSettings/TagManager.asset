@@ -17,6 +17,7 @@ TagManager:
   - Fog
   - Fadewall
   - FadewallTrigger
+  - JumpTrigger
   layers:
   - Default
   - TransparentFX

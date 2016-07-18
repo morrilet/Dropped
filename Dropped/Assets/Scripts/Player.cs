@@ -633,6 +633,8 @@ public class Player : Entity
 		//corpseCarried.layer = LayerMask.NameToLayer("Obstacle");
 		corpseCarried.GetComponent<CorpseRagdoll>().isCarried = false;
 
+		corpseCarried.GetComponent<CorpseRagdoll> ().Update ();
+
 		Vector2 force = corpseThrowDirection * forceModifier;
 		corpseCarried.GetComponent<CorpseRagdoll> ().AddForce (force, ForceMode2D.Impulse);
 		//for (int i = 0; i < corpseCarried.transform.childCount; i++) 

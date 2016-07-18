@@ -94,7 +94,7 @@ public class EnemyAI : Entity
 		playerDetected = false;
 
 		attackRate = 1.5f;
-		attackTimer = attackRate;
+		attackTimer = 0;
 		attackDamage = 15f;
 
 		grappleStrength = 5f;
@@ -131,12 +131,15 @@ public class EnemyAI : Entity
 		if (!controller.collisions.below) 
 		{
 			velocity.y += gravity * Time.deltaTime;
+			jumpingCurrent = true;
+			Debug.Log ("Here");
 		}
 		else
 		{
 			if (velocity.y < 0)
 				velocity.y = -.00001f;
 			jumpingCurrent = false;
+			Debug.Log ("Here2");
 		}
 
 		//Debug.Log ("Wall: " + enemyInfo.JustHitWall);
@@ -179,8 +182,13 @@ public class EnemyAI : Entity
 		if (currentState != States.GrabPlayer && previousState == States.GrabPlayer)
 			isGrapplingPlayer = false;
 
-		if(attackTimer <= attackRate)
-			attackTimer += Time.deltaTime;
+		if (currentState == States.GrabPlayer)
+		{
+			if (attackTimer <= attackRate)
+				attackTimer += Time.deltaTime;
+		}
+		else
+			attackTimer = 0f;
 
 		if (jumpTimer <= jumpTime)
 			jumpTimer += Time.deltaTime;
@@ -196,6 +204,15 @@ public class EnemyAI : Entity
 		if (currentState == States.GrabPlayer && previousState != States.GrabPlayer) 
 		{
 			grappleModifier = 1f;
+			player.grappleStrength += grappleStrength * grappleModifier;
+
+			player.direction = Mathf.Sign (transform.position.x - player.transform.position.x); //Make the player face us.
+			player.canMove = false; //Stop the player from moving.
+
+			isGrapplingPlayer = true;
+			if(!player.grapplingEnemies.Contains(this))
+				player.grapplingEnemies.Add (this);
+			
 		}
 
 		jumpingPrevious = jumpingCurrent;
@@ -539,13 +556,6 @@ public class EnemyAI : Entity
 
 		if (attackTimer >= attackRate && !GameManager.instance.isPaused) 
 		{
-			player.direction = Mathf.Sign (transform.position.x - player.transform.position.x); //Make the player face us.
-			player.canMove = false; //Stop the player from moving.
-
-			isGrapplingPlayer = true;
-			if(!player.grapplingEnemies.Contains(this))
-				player.grapplingEnemies.Add (this);
-
 			player.grappleStrength += grappleStrength * grappleModifier;
 			grappleModifier *= .65f; //Here is where we decide how strong the next successful attack will be.
 			attackTimer = 0;

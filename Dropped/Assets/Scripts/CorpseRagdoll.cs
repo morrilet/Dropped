@@ -84,8 +84,8 @@ public class CorpseRagdoll : MonoBehaviour
 		//Flip (direction);
 		//SetupLimbsPhysicsDataList();
 
-		ignorePlayerTime = .1f;
-		ignoreCorpseTime = .1f;
+		ignorePlayerTime = .2f;
+		ignoreCorpseTime = .15f;
 	}
 
 	void Start () 
@@ -102,6 +102,7 @@ public class CorpseRagdoll : MonoBehaviour
 		//SetOutline (false);
 
 		isCarried = false;
+		isCarriedPrev = false;
 
 		upperTorso = transform.FindChild ("UpperTorso").gameObject;
 		lowerTorso = transform.FindChild ("LowerTorso").gameObject;
@@ -145,7 +146,7 @@ public class CorpseRagdoll : MonoBehaviour
 		ignoreCorpseTime = .1f;
 	}
 
-	void Update()
+	public void Update()
 	{
 		//Time.timeScale = .5f;
 		for (int i = 0; i < limbPositions.Length; i++) 
@@ -380,14 +381,17 @@ public class CorpseRagdoll : MonoBehaviour
 		//Debug.Log (force);
 
 		//Don't know why these two chunks work, but they do. It's not so bad I guess, aside from the wild spinning.
+		upperTorso.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+		lowerTorso.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
 		lowerTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
-		//lowerTorso.GetComponent<Rigidbody2D> ().AddForce (force * .75f, forceMode); //Removed to remove rotation speed.
-
 		upperTorso.GetComponent<Rigidbody2D> ().isKinematic = false;
-		upperTorso.GetComponent<Rigidbody2D> ().AddForce (force * 1.025f, forceMode); // Used to be .75f
+		//lowerTorso.GetComponent<Rigidbody2D> ().AddForce (force * .5f, forceMode); //Removed to remove rotation speed. Was .75f
+		//upperTorso.GetComponent<Rigidbody2D> ().AddForce (force * .5f, forceMode); // Used to be .75f then was 1.025f
+		lowerTorso.GetComponent<Rigidbody2D>().velocity = new Vector2(player.corpseThrowDirection.x * player.corpseThrowForce * 1.45f, player.corpseThrowDirection.y * player.corpseThrowForce * 1.45f);
+		upperTorso.GetComponent<Rigidbody2D>().velocity = new Vector2(player.corpseThrowDirection.x * player.corpseThrowForce * 1.45f, player.corpseThrowDirection.y * player.corpseThrowForce * 1.45f);
 		//upperTorso.GetComponent<Rigidbody2D> ().velocity = Vector2.zero; //Removed to remove rotation speed.
 
-		if (attachedRopeSegment != null) 
+		if (attachedRopeSegment != null)
 		{
 			attachedRopeSegment.GetComponent<Rigidbody2D> ().AddForce (force, forceMode);
 		}
