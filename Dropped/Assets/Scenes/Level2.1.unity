@@ -207,6 +207,10 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
   m_PrefabInternal: {fileID: 20893255}
+--- !u!1 &29922717 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 137914, guid: b008e59418ae7f74e92f6314946a209e, type: 2}
+  m_PrefabInternal: {fileID: 1707743038}
 --- !u!1 &30117813
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +492,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 0.7422786
       objectReference: {fileID: 0}
+    - target: {fileID: 11436712, guid: ffa97eebe3c178f49b8a8307e91f704f, type: 2}
+      propertyPath: fadewallTriggers.Array.data[0]
+      value: 
+      objectReference: {fileID: 29922717}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ffa97eebe3c178f49b8a8307e91f704f, type: 2}
   m_IsPrefabParent: 0
@@ -776,6 +784,46 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 106038682}
   parameterName: Weakpoint_Window
+  soundEffectNames:
+  - Window_Break
+--- !u!114 &111719216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 111719213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6c39a9616576543a62cbe63952986a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 0
+  listenerMask: 1
+  isStaticObject: 0
+--- !u!114 &111719217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 111719213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8bc1e94545c244845d82498bdc37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 
+  useOtherObject: 0
+  valueGuid: c22a247a4aa31048869e8e86523883bb
+  eventID: -866317595
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
 --- !u!4 &164591003 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
@@ -4527,33 +4575,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11477300, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1453068004}
     - target: {fileID: 11407702, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
       propertyPath: level
       value: 
       objectReference: {fileID: 1070114137}
-    m_RemovedComponents: []
+    - target: {fileID: 11477300, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1453068004}
+    m_RemovedComponents:
+    - {fileID: 11491394, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &869378835 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 120734, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
-  m_PrefabInternal: {fileID: 869378834}
---- !u!114 &869378836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 869378835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44fc3266afe59584180f53d26cbb7a50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listenerId: 0
 --- !u!4 &897908380 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
@@ -4914,6 +4947,44 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
   m_PrefabInternal: {fileID: 547165256}
+--- !u!114 &1015656042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1015656040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8bc1e94545c244845d82498bdc37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 
+  useOtherObject: 0
+  valueGuid: 54bb2a88a3c53f4392145ead1a68a395
+  eventID: -936348670
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+--- !u!114 &1015656043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1015656040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6c39a9616576543a62cbe63952986a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 0
+  listenerMask: 1
+  isStaticObject: 0
 --- !u!114 &1015656044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4926,10 +4997,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 10
+  maxHealth: 7
   isAlive: 0
   weakpointAnimator: {fileID: 106038682}
   parameterName: Weakpoint_Cellar
+  soundEffectNames:
+  - Wood_Break
+  - Rubble_Falling
 --- !u!1001 &1017279666
 Prefab:
   m_ObjectHideFlags: 0

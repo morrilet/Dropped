@@ -18,6 +18,7 @@ TagManager:
   - Fadewall
   - FadewallTrigger
   - JumpTrigger
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX

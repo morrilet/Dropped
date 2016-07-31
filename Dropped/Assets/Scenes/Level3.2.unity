@@ -4117,6 +4117,46 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 358243394}
   parameterName: Window2_Trigger
+  soundEffectNames:
+  - Window_Break
+--- !u!114 &181708281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 181708279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8bc1e94545c244845d82498bdc37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 
+  useOtherObject: 0
+  valueGuid: c22a247a4aa31048869e8e86523883bb
+  eventID: -866317595
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+--- !u!114 &181708282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 181708279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6c39a9616576543a62cbe63952986a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0.0000000024586913, y: -3.663736e-15, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 0
+  listenerMask: 1
+  isStaticObject: 0
 --- !u!1001 &185451095
 Prefab:
   m_ObjectHideFlags: 0
@@ -8116,6 +8156,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1937016495}
   parameterName: FogRise
+  soundEffectNames: []
 --- !u!1001 &713894230
 Prefab:
   m_ObjectHideFlags: 0
@@ -9067,6 +9108,8 @@ GameObject:
   - 4: {fileID: 934229315}
   - 61: {fileID: 934229317}
   - 114: {fileID: 934229316}
+  - 114: {fileID: 934229319}
+  - 114: {fileID: 934229318}
   m_Layer: 8
   m_Name: TriggerObj
   m_TagString: Platforms
@@ -9102,6 +9145,8 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1112361355}
   parameterName: FireEscape_Trigger
+  soundEffectNames:
+  - Wood_Break
 --- !u!61 &934229317
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9116,6 +9161,44 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &934229318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 934229314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6c39a9616576543a62cbe63952986a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 0
+  listenerMask: 1
+  isStaticObject: 0
+--- !u!114 &934229319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 934229314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8bc1e94545c244845d82498bdc37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 
+  useOtherObject: 0
+  valueGuid: 54bb2a88a3c53f4392145ead1a68a395
+  eventID: -936348670
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
 --- !u!1001 &934994343
 Prefab:
   m_ObjectHideFlags: 0
@@ -9290,6 +9373,44 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 121942, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
   m_PrefabInternal: {fileID: 1165983168}
+--- !u!114 &968390270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 968390269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6c39a9616576543a62cbe63952986a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0.0000000024586913, y: -3.663736e-15, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 0
+  listenerMask: 1
+  isStaticObject: 0
+--- !u!114 &968390271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 968390269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8bc1e94545c244845d82498bdc37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 
+  useOtherObject: 0
+  valueGuid: c22a247a4aa31048869e8e86523883bb
+  eventID: -866317595
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
 --- !u!114 &968390272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9306,6 +9427,8 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1896291902}
   parameterName: Window1_Trigger
+  soundEffectNames:
+  - Window_Break
 --- !u!4 &970381221 stripped
 Transform:
   m_PrefabParentObject: {fileID: 443856, guid: 8bae4c14038d5a144a9094e6162c55db, type: 2}
@@ -12326,6 +12449,46 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1875163258}
   parameterName: Window3_Trigger
+  soundEffectNames:
+  - Window_Break
+--- !u!114 &1192879313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192879310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6c39a9616576543a62cbe63952986a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 0
+  listenerMask: 1
+  isStaticObject: 0
+--- !u!114 &1192879314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192879310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8bc1e94545c244845d82498bdc37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 
+  useOtherObject: 0
+  valueGuid: c22a247a4aa31048869e8e86523883bb
+  eventID: -866317595
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
 --- !u!1001 &1197343153
 Prefab:
   m_ObjectHideFlags: 0
@@ -16125,6 +16288,46 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1547828699}
   parameterName: Window4_Trigger
+  soundEffectNames:
+  - Window_Break
+--- !u!114 &2010498436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2010498434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8bc1e94545c244845d82498bdc37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 
+  useOtherObject: 0
+  valueGuid: c22a247a4aa31048869e8e86523883bb
+  eventID: -866317595
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+--- !u!114 &2010498437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2010498434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6c39a9616576543a62cbe63952986a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 0
+  listenerMask: 1
+  isStaticObject: 0
 --- !u!4 &2029650421 stripped
 Transform:
   m_PrefabParentObject: {fileID: 443856, guid: 8bae4c14038d5a144a9094e6162c55db, type: 2}

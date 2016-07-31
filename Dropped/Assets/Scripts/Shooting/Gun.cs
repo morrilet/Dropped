@@ -145,6 +145,7 @@ public class Gun : MonoBehaviour
 			Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D> (), transform.parent.GetComponent<Collider2D> ()); //Bullet will ignore collisions with the gun that instantiated it
 
 			knockBackVelocity = Vector3.zero;
+			knockBackVelocity.y = -.0000001f;
 
 			float targetVelocityX = playerKnockBack * -transform.parent.GetComponent<Player> ().direction;
 			knockBackVelocity.x = Mathf.Lerp(0f, targetVelocityX, 

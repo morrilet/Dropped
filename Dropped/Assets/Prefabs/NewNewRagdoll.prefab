@@ -190,6 +190,8 @@ GameObject:
   - 60: {fileID: 6050542}
   - 50: {fileID: 5047106}
   - 114: {fileID: 11484000}
+  - 114: {fileID: 11498702}
+  - 114: {fileID: 11486326}
   m_Layer: 8
   m_Name: UpperTorso
   m_TagString: Corpse
@@ -1504,7 +1506,7 @@ MonoBehaviour:
   isCarried: 0
   isCarriedPrev: 0
   direction: -1
-  limbsPhysicsData: []
+  attachedRopeSegment: {fileID: 0}
 --- !u!114 &11475250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1538,6 +1540,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9896eb88a34a724498065621654ad9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11486326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6c39a9616576543a62cbe63952986a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 0
+  listenerMask: 1
+  isStaticObject: 0
 --- !u!114 &11492262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1560,6 +1579,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9896eb88a34a724498065621654ad9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11498702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8bc1e94545c244845d82498bdc37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 
+  useOtherObject: 0
+  valueGuid: 4d2850b09abd5a4ea73c3e2dfe8e594e
+  eventID: 1316910230
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
 --- !u!212 &21206368
 SpriteRenderer:
   m_ObjectHideFlags: 1

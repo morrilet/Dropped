@@ -27,6 +27,12 @@ public class PauseMenu : Singleton<PauseMenu>
 		SceneManager.LoadScene ("MainMenu", LoadSceneMode.Single);
 	}
 
+	public void RestartLevel()
+	{
+		GameManager.instance.RestartLevel ();
+		UnpauseGame ();
+	}
+
 	public void PauseGame()
 	{
 		GameManager.instance.player.GetComponent<Player> ().canMove = false;

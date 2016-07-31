@@ -2851,6 +2851,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11406354, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
+      propertyPath: triggerList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 485868, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
       propertyPath: m_LocalPosition.x
       value: -13.336013
@@ -2883,23 +2887,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 11477300, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1266182951}
     - target: {fileID: 11407702, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
       propertyPath: level
       value: 
       objectReference: {fileID: 958857283}
-    - target: {fileID: 11407702, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
-      propertyPath: cameraLockMode
-      value: 1
+    - target: {fileID: 11477300, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1266182951}
+    - target: {fileID: 11406354, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
+      propertyPath: triggerList.Array.data[0]
+      value: -358577003
       objectReference: {fileID: 0}
-    - target: {fileID: 2082192, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
-      propertyPath: far clip plane
-      value: 1000
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11406354, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1517870635 stripped
@@ -2914,10 +2915,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1517870635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44fc3266afe59584180f53d26cbb7a50, type: 3}
+  m_Script: {fileID: 11500000, guid: f8cf6321065e2ae4c9e64275c4887db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listenerId: 0
+  triggerList: 
+  useOtherObject: 0
+  valueGuid: 99c0159ccbeffc44ae8c327146c73a0b
+  eventID: 1334931201
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  multiPositionTypeLabel: 0
+  multiPositionArray: []
 --- !u!1001 &1518544842
 Prefab:
   m_ObjectHideFlags: 0

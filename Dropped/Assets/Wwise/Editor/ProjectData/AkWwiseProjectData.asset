@@ -16,39 +16,240 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{A840EE89-6550-4B8B-B6DC-0FFA00561821}'
-    m_lastTimePsrt1: 21690308
-    m_lastTimePart2: -1999401840
-    List: []
+    m_lastTimePsrt1: 1062493184
+    m_lastTimePart2: -1999393277
+    List:
+    - Name: Door_Close
+      Path: Default Work Unit\Objects\Door\Door_Close
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Objects
+        ObjectType: 4
+      - ElementName: Door
+        ObjectType: 4
+      - ElementName: Door_Close
+        ObjectType: 3
+      ID: 128625444
+      Guid: 4c63659f0349634ab908daada610df43
+      maxAttenuation: 0
+    - Name: Door_Open
+      Path: Default Work Unit\Objects\Door\Door_Open
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Objects
+        ObjectType: 4
+      - ElementName: Door
+        ObjectType: 4
+      - ElementName: Door_Open
+        ObjectType: 3
+      ID: 535830432
+      Guid: b09d3f9874ebcd4293346584bf0daf67
+      maxAttenuation: 0
+    - Name: Growls
+      Path: Default Work Unit\Zombies\Growls
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Zombies
+        ObjectType: 4
+      - ElementName: Growls
+        ObjectType: 3
+      ID: 1957821939
+      Guid: 98105660e985aa489f106febd7635ae3
+      maxAttenuation: 0
+    - Name: Health_Pick_Up
+      Path: Default Work Unit\Objects\Health Object\Health_Pick_Up
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Objects
+        ObjectType: 4
+      - ElementName: Health Object
+        ObjectType: 4
+      - ElementName: Health_Pick_Up
+        ObjectType: 3
+      ID: -1088730973
+      Guid: 3ed62cb2560b61408dc7d9463ed9e8fb
+      maxAttenuation: 0
+    - Name: Impacts
+      Path: Default Work Unit\Objects\Gun\Bullets\Impacts
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Objects
+        ObjectType: 4
+      - ElementName: Gun
+        ObjectType: 4
+      - ElementName: Bullets
+        ObjectType: 4
+      - ElementName: Impacts
+        ObjectType: 3
+      ID: 1316910230
+      Guid: 4d2850b09abd5a4ea73c3e2dfe8e594e
+      maxAttenuation: 0
+    - Name: Jump
+      Path: Default Work Unit\Main Character\Jump
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Main Character
+        ObjectType: 4
+      - ElementName: Jump
+        ObjectType: 3
+      ID: -461315959
+      Guid: d2d74524f357af4ca8286e83e9d9af35
+      maxAttenuation: 0
+    - Name: Ladder_Climb
+      Path: Default Work Unit\Main Character\Ladder_Climb
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Main Character
+        ObjectType: 4
+      - ElementName: Ladder_Climb
+        ObjectType: 3
+      ID: 1707141479
+      Guid: f9892196f371794aa51e075e2691335c
+      maxAttenuation: 0
+    - Name: Land
+      Path: Default Work Unit\Main Character\Land
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Main Character
+        ObjectType: 4
+      - ElementName: Land
+        ObjectType: 3
+      ID: 674522502
+      Guid: bf9a5c9377efdb419b1f797e2671a8a3
+      maxAttenuation: 0
+    - Name: Rubble_Falling
+      Path: Default Work Unit\Objects\Structure Weak Point\Rubble_Falling
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Objects
+        ObjectType: 4
+      - ElementName: Structure Weak Point
+        ObjectType: 4
+      - ElementName: Rubble_Falling
+        ObjectType: 3
+      ID: 2133470015
+      Guid: 1e35d2f64c345f4ca28636a16549bb14
+      maxAttenuation: 0
+    - Name: Squishing
+      Path: Default Work Unit\Zombies\Squishing
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Zombies
+        ObjectType: 4
+      - ElementName: Squishing
+        ObjectType: 3
+      ID: -1201344058
+      Guid: 0d587b1e6892b844ad8aef96a2f016e8
+      maxAttenuation: 0
+    - Name: Time_Slow_Down
+      Path: Default Work Unit\Objects\Time Effect\Time_Slow_Down
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Objects
+        ObjectType: 4
+      - ElementName: Time Effect
+        ObjectType: 4
+      - ElementName: Time_Slow_Down
+        ObjectType: 3
+      ID: 1334931201
+      Guid: 99c0159ccbeffc44ae8c327146c73a0b
+      maxAttenuation: 0
+    - Name: Time_Speed_Up
+      Path: Default Work Unit\Objects\Time Effect\Time_Speed_Up
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Objects
+        ObjectType: 4
+      - ElementName: Time Effect
+        ObjectType: 4
+      - ElementName: Time_Speed_Up
+        ObjectType: 3
+      ID: -1058879742
+      Guid: c2e7b4e516ff294c8b9606f856cc0c66
+      maxAttenuation: 0
+    - Name: Window_Break
+      Path: Default Work Unit\Objects\Window\Window_Break
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Objects
+        ObjectType: 4
+      - ElementName: Window
+        ObjectType: 4
+      - ElementName: Window_Break
+        ObjectType: 3
+      ID: -866317595
+      Guid: c22a247a4aa31048869e8e86523883bb
+      maxAttenuation: 0
+    - Name: Wood_Break
+      Path: Default Work Unit\Objects\Structure Weak Point\Wood_Break
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Objects
+        ObjectType: 4
+      - ElementName: Structure Weak Point
+        ObjectType: 4
+      - ElementName: Wood_Break
+        ObjectType: 3
+      ID: -936348670
+      Guid: 54bb2a88a3c53f4392145ead1a68a395
+      maxAttenuation: 0
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{EE1587E6-7D7D-43DE-964B-492F29543592}'
-    m_lastTimePsrt1: 21880439
-    m_lastTimePart2: -1999401840
+    m_lastTimePsrt1: 1082493184
+    m_lastTimePart2: -1999393277
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{13A8A204-797B-4540-9A8E-FA812D6B14EC}'
-    m_lastTimePsrt1: 23989926
-    m_lastTimePart2: -1999401840
+    m_lastTimePsrt1: 1082493184
+    m_lastTimePart2: -1999393277
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{629A4B8D-A116-434A-AE4B-96B1BF26B78F}'
-    m_lastTimePsrt1: 24029935
-    m_lastTimePart2: -1999401840
+    m_lastTimePsrt1: 1102493184
+    m_lastTimePart2: -1999393277
     List: []
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{AD7F9F1B-3742-4550-9DD1-5A6EEB06E064}'
-    m_lastTimePsrt1: 23909929
-    m_lastTimePart2: -1999401840
-    List: []
+    m_lastTimePsrt1: 1082493184
+    m_lastTimePart2: -1999393277
+    List:
+    - Name: Miasmaclysm_Sound_Bank
+      Path: Default Work Unit\Miasmaclysm_Sound_Bank
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Miasmaclysm_Sound_Bank
+        ObjectType: 7
+      ID: 1959728158
+      Guid: 901e4da0c81eb64c8653c8823dae737b
   ExpandedItems:
   - /Wwise_Dropped
+  - /Wwise_Dropped/Events
+  - /Wwise_Dropped/Events/Default Work Unit
+  - /Wwise_Dropped/Events/Default Work Unit/Objects
+  - /Wwise_Dropped/Events/Default Work Unit/Objects/Window
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1

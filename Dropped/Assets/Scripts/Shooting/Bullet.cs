@@ -83,7 +83,7 @@ public class Bullet : MonoBehaviour {
 				Debug.DrawLine (startPos, startPos + (Vector2)velocity, Color.blue);
 				GameObject impact = Instantiate (impactEffect, hit.point, Quaternion.FromToRotation ((velocity.x > 0) ? -transform.right : transform.right, hit.normal)) as GameObject;
 				Vector3 rot = new Vector3 (0f, 0f, impact.transform.rotation.eulerAngles.z);
-				//Destroy (this.gameObject);
+				Destroy (this.gameObject);
 			}
 		}
 		Debug.DrawLine (startPos, endPos, Color.red);
@@ -136,6 +136,9 @@ public class Bullet : MonoBehaviour {
 
 		if (coll.gameObject.tag == "Corpse") 
 		{
+
+			AkSoundEngine.PostEvent ("Impacts", coll.transform.parent.FindChild("UpperTorso").gameObject);
+
 			//coll.transform.parent.GetComponent<CorpseRagdoll> ().AddForceAtPosition (new Vector2(bulletSpeed / 5f, 0f)
 				//* GameObject.Find ("Player").GetComponent<Player>().direction, transform.position, ForceMode2D.Impulse);
 			coll.transform.parent.GetComponent<CorpseRagdoll> ().AddForceAtPosition (new Vector2(corpseKnockback / 1.5f, 0f)

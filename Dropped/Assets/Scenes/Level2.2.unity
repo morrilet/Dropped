@@ -912,6 +912,8 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 365503501}
   parameterName: HitOne
+  soundEffectNames:
+  - Rubble_Falling
 --- !u!114 &167591204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -928,6 +930,47 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 365503501}
   parameterName: HitTwo
+  soundEffectNames:
+  - Wood_Break
+  - Rubble_Falling
+--- !u!114 &167591205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 167591202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6c39a9616576543a62cbe63952986a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 0
+  listenerMask: 1
+  isStaticObject: 0
+--- !u!114 &167591206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 167591202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8bc1e94545c244845d82498bdc37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 
+  useOtherObject: 0
+  valueGuid: 1e35d2f64c345f4ca28636a16549bb14
+  eventID: 2133470015
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
 --- !u!1001 &209493812
 Prefab:
   m_ObjectHideFlags: 0
@@ -3231,7 +3274,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 451676, guid: d43855c4d283ad449af726ca74fb30eb, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11460996, guid: d43855c4d283ad449af726ca74fb30eb, type: 2}
       propertyPath: xMin
@@ -4033,33 +4076,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11477300, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 719534047}
     - target: {fileID: 11407702, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
       propertyPath: level
       value: 
       objectReference: {fileID: 223284928}
+    - target: {fileID: 11477300, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 719534047}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1072336728 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 120734, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
-  m_PrefabInternal: {fileID: 1072336727}
---- !u!114 &1072336729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1072336728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44fc3266afe59584180f53d26cbb7a50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listenerId: 0
 --- !u!1001 &1096516019
 Prefab:
   m_ObjectHideFlags: 0
@@ -5145,6 +5172,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11429010, guid: 19a0c8dd707687845abbb4a230b7af63, type: 2}
+      propertyPath: triggerList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429010, guid: 19a0c8dd707687845abbb4a230b7af63, type: 2}
+      propertyPath: unloadTriggerList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 455926, guid: 19a0c8dd707687845abbb4a230b7af63, type: 2}
       propertyPath: m_LocalPosition.x
       value: 1.5518125
@@ -5176,6 +5211,18 @@ Prefab:
     - target: {fileID: 455926, guid: 19a0c8dd707687845abbb4a230b7af63, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429010, guid: 19a0c8dd707687845abbb4a230b7af63, type: 2}
+      propertyPath: triggerList.Array.data[0]
+      value: 1281810935
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429010, guid: 19a0c8dd707687845abbb4a230b7af63, type: 2}
+      propertyPath: triggerList.Array.data[1]
+      value: 1281810935
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429010, guid: 19a0c8dd707687845abbb4a230b7af63, type: 2}
+      propertyPath: unloadTriggerList.Array.data[0]
+      value: -358577003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19a0c8dd707687845abbb4a230b7af63, type: 2}

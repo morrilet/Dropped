@@ -42,6 +42,8 @@ public class Player : Entity
 	public GameObject ladder; //The ladder that the player is on. Null if not on a ladder.
 	float ladderExitTime;  //How long it takes to get off of the ladder via left and right input.
 	float ladderExitTimer; //Timer to count up to ladderExitTime.
+	float ladderFootstepTime;
+	float ladderFootstepTimer;
 
 	[HideInInspector]
 	public GameObject corpseCarried; //The corpse that is being carried. Null if no corpse is carried.
@@ -125,6 +127,8 @@ public class Player : Entity
 
 		ladderExitTime = .25f;
 		ladderExitTimer = 0;
+		ladderFootstepTime = .25f;
+		ladderFootstepTimer = 0;
 
 		grapplingEnemies = new List<EnemyAI> ();
 		canBeGrabbed = true;
@@ -141,8 +145,11 @@ public class Player : Entity
 		base.Update ();
 
 		//Getting playerInfo falling and landing states.
-		if (controller.collisions.below && !controller.collisions.belowPrev)
+		if (controller.collisions.below && !controller.collisions.belowPrev) 
+		{
 			playerInfo.JustLanded = true;
+			AkSoundEngine.PostEvent ("Land", this.gameObject);
+		}
 		else if (controller.collisions.movingPlatform != null) //A hacky fix for not being able to jump from moving platforms due to not being considered on the ground.
 			playerInfo.JustLanded = true;
 		if (!controller.collisions.below && controller.collisions.belowPrev && !playerInfo.JustJumped)
@@ -181,6 +188,8 @@ public class Player : Entity
 					grapplingEnemies [i].currentState = EnemyAI.States.Patrol;
 				}
 			}
+
+			grapplingEnemies.Clear ();
 
 			//Get player out of any current grabs.
 			grappleEscapeAttempt = grappleStrength * 1.5f;
@@ -236,22 +245,37 @@ public class Player : Entity
 			transform.localScale = new Vector3 (baseScaleX * direction, transform.localScale.y, transform.localScale.z);
 		}
 
-		if (ladder != null)
+		if (ladder != null) 
 		{
 			velocity.y = input.y * moveSpeed / 2f;
 			velocity.x = 0;
 			transform.position = new Vector3 (ladder.transform.position.x, transform.position.y, transform.position.z);
 
 			if (transform.position.y - controller.coll.bounds.extents.y
-				> ladder.transform.position.y + ladder.GetComponent<Collider2D> ().bounds.extents.y)  //If bottom is higher than ladder top... 
-			{
-				ladder = null;
-			} 
-			else if (transform.position.y + controller.coll.bounds.extents.y
-				< ladder.transform.position.y - ladder.GetComponent<Collider2D> ().bounds.extents.y) //If top is lower than ladder bottom...
-			{ 
+			    > ladder.transform.position.y + ladder.GetComponent<Collider2D> ().bounds.extents.y)
+			{  //If bottom is higher than ladder top... 
 				ladder = null;
 			}
+			else if (transform.position.y + controller.coll.bounds.extents.y
+			         < ladder.transform.position.y - ladder.GetComponent<Collider2D> ().bounds.extents.y) 
+			{ //If top is lower than ladder bottom...
+				ladder = null;
+			}
+
+			if (input.y != 0) 
+			{
+				if (ladderFootstepTimer >= ladderFootstepTime) 
+				{
+					AkSoundEngine.PostEvent ("Ladder_Climb", Camera.main.gameObject);
+					ladderFootstepTimer = 0;
+				}
+
+				ladderFootstepTimer += Time.deltaTime;
+			}
+		} 
+		else 
+		{
+			ladderFootstepTimer = 0;
 		}
 
 		//GameManager.instance.playerStoredAmmo = playerAmmo;
@@ -397,7 +421,8 @@ public class Player : Entity
 		{
 			if(jumpAbility != null && jumpAbility.canJump)
 			{
-				AudioManager.instance.PlaySoundEffectVariation ("JumpSound", .85f, 1.15f);
+				//AudioManager.instance.PlaySoundEffectVariation ("JumpSound", .85f, 1.15f);
+				AkSoundEngine.PostEvent("Jump", Camera.main.gameObject);
 				jumpAbility.Jump(ref velocity);
 			}
 
@@ -454,7 +479,7 @@ public class Player : Entity
 			ladder = null;
 		}
 
-		if (activeGun != null) 
+		if (activeGun != null && !GameManager.instance.isPaused) 
 		{
 			if (activeGun.isAuto) 
 			{
@@ -614,6 +639,8 @@ public class Player : Entity
 		//corpseCarried.GetComponent<Rigidbody2D> ().isKinematic = true;
 		//corpseCarried.transform.rotation = Quaternion.identity;
 		//corpseCarried.layer = LayerMask.NameToLayer("Default");
+
+		AkSoundEngine.PostEvent ("Squishing", Camera.main.gameObject);
 	}
 
 	void DropCorpse()

@@ -6,6 +6,8 @@ public class WeakPoint : Entity
 	public Animator weakpointAnimator; //The animator that this weakpoint will trigger.
 	public string parameterName; //The parameter to set to true.
 
+	public string[] soundEffectNames;
+
 	void Awake()
 	{
 		base.Awake ();
@@ -18,9 +20,13 @@ public class WeakPoint : Entity
 	{
 		base.Update ();
 
-		if (!isAlive) 
+		if (!isAlive)
 		{
 			weakpointAnimator.SetTrigger (parameterName);
+			for (int i = 0; i < soundEffectNames.Length; i++) 
+			{
+				AkSoundEngine.PostEvent (soundEffectNames[i], this.gameObject);
+			}
 			Destroy (GetComponent<WeakPoint> ());
 		}
 	}

@@ -245,6 +245,54 @@ public class CorpseRagdoll : MonoBehaviour
 			attachedRope = null;
 		}
 
+		#region SquishingEffect
+		bool squished = false;
+		for (int i = 0; i < limbs.Count; i++) 
+		{
+			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Corpse")) 
+			{
+				if (!limbs.Contains (obj) && obj != upperTorso && obj != lowerTorso) 
+				{
+					if (limbs [i].GetComponent<Collider2D> ().IsTouching (obj.GetComponent<Collider2D> ())) 
+					{
+						if (limbs [i].GetComponent<Rigidbody2D> ().velocity.magnitude >= 3.5f)
+						{
+							AkSoundEngine.PostEvent ("Squishing", upperTorso.gameObject);
+							squished = true;
+							break;
+						}
+					}
+				}
+				if(squished)
+					break;
+			}
+		}
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Corpse"))
+		{
+			if (!limbs.Contains(obj) && obj != upperTorso && obj != lowerTorso && !squished)
+			{
+				if(upperTorso.GetComponent<Collider2D> ().IsTouching (obj.GetComponent<Collider2D> ()))
+					if (upperTorso.GetComponent<Rigidbody2D>().velocity.magnitude >= 2.5f) 
+					{
+						AkSoundEngine.PostEvent ("Squishing", upperTorso.gameObject);
+						squished = true;
+						break;
+					}
+				if (lowerTorso.GetComponent<Collider2D> ().IsTouching (obj.GetComponent<Collider2D> ()))
+					if (lowerTorso.GetComponent<Rigidbody2D> ().velocity.magnitude >= 2.5f) 
+					{
+						AkSoundEngine.PostEvent ("Squishing", upperTorso.gameObject);
+						squished = true;
+						break;
+					}
+				if(squished)
+					break;
+				//Physics2D.IgnoreCollision (upperTorso.GetComponent<Collider2D> (), obj.GetComponent<Collider2D> (), false);
+				//Physics2D.IgnoreCollision (lowerTorso.GetComponent<Collider2D> (), obj.GetComponent<Collider2D> (), false);
+			}
+		}
+		#endregion
+
 		isCarriedPrev = isCarried;
 	}
 

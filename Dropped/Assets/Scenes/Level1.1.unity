@@ -1314,6 +1314,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listenerId: 0
+--- !u!114 &1120099693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120099691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8cf6321065e2ae4c9e64275c4887db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 
+  useOtherObject: 0
+  valueGuid: 99c0159ccbeffc44ae8c327146c73a0b
+  eventID: 1334931201
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  multiPositionTypeLabel: 0
+  multiPositionArray: []
+--- !u!114 &1120099694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120099691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6c39a9616576543a62cbe63952986a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 0
+  listenerMask: 1
+  isStaticObject: 0
 --- !u!1001 &1121426124
 Prefab:
   m_ObjectHideFlags: 0
@@ -2091,6 +2131,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 124706, guid: 19a0c8dd707687845abbb4a230b7af63, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19a0c8dd707687845abbb4a230b7af63, type: 2}
   m_IsPrefabParent: 0
@@ -2163,10 +2207,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1062596396}
     m_Modifications:
-    - target: {fileID: 11436712, guid: ffa97eebe3c178f49b8a8307e91f704f, type: 2}
-      propertyPath: fadewallTriggers.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 484332, guid: ffa97eebe3c178f49b8a8307e91f704f, type: 2}
       propertyPath: m_LocalPosition.x
       value: -7.5

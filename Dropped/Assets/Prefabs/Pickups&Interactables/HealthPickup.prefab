@@ -11,6 +11,8 @@ GameObject:
   - 212: {fileID: 21263406}
   - 114: {fileID: 11436098}
   - 61: {fileID: 6128584}
+  - 114: {fileID: 11400200}
+  - 114: {fileID: 11438946}
   m_Layer: 0
   m_Name: HealthPickup
   m_TagString: Untagged
@@ -44,6 +46,23 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
+--- !u!114 &11400200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6c39a9616576543a62cbe63952986a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 0
+  listenerMask: 1
+  isStaticObject: 0
 --- !u!114 &11436098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55,6 +74,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f186ffab71a34d14e99017535ea32b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11438946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8bc1e94545c244845d82498bdc37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 
+  useOtherObject: 0
+  valueGuid: 3ed62cb2560b61408dc7d9463ed9e8fb
+  eventID: -1088730973
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
 --- !u!212 &21263406
 SpriteRenderer:
   m_ObjectHideFlags: 1

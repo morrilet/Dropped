@@ -14,6 +14,8 @@ GameObject:
   - 114: {fileID: 11468714}
   - 114: {fileID: 11411382}
   - 114: {fileID: 11462262}
+  - 114: {fileID: 11478664}
+  - 114: {fileID: 11444158}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -100,6 +102,23 @@ MonoBehaviour:
   isGrapplingPlayer: 0
   jumpTriggered: 0
   currentState: 0
+--- !u!114 &11444158
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6c39a9616576543a62cbe63952986a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 0
+  listenerMask: 1
+  isStaticObject: 0
 --- !u!114 &11462262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,6 +157,27 @@ MonoBehaviour:
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
   coll: {fileID: 0}
+--- !u!114 &11478664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8bc1e94545c244845d82498bdc37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 
+  useOtherObject: 0
+  valueGuid: 4d2850b09abd5a4ea73c3e2dfe8e594e
+  eventID: 1316910230
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
 --- !u!212 &21299452
 SpriteRenderer:
   m_ObjectHideFlags: 1

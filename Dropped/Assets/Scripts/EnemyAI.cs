@@ -125,6 +125,11 @@ public class EnemyAI : Entity
 			enemyInfo.IsOnEdgeOfPlatform = true;
 		}
 
+		if (Random.Range (0, GameManager.instance.level.GetComponent<Level>().enemies.Count * 100) == 5 * GameManager.instance.level.GetComponent<Level>().enemies.Count) 
+		{
+			AkSoundEngine.PostEvent ("Growls", this.gameObject);
+		}
+
 		//TESTING
 		edge = enemyInfo.IsOnEdgeOfPlatform;
 
@@ -557,7 +562,7 @@ public class EnemyAI : Entity
 		if (attackTimer >= attackRate && !GameManager.instance.isPaused) 
 		{
 			player.grappleStrength += grappleStrength * grappleModifier;
-			grappleModifier *= .65f; //Here is where we decide how strong the next successful attack will be.
+			grappleModifier *= Mathf.Pow(Mathf.Pow(1f/25f, 1f/3f), player.grapplingEnemies.Count); //Here is where we decide how strong the next successful attack will be.
 			attackTimer = 0;
 			player.health -= attackDamage;
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
@@ -604,6 +609,8 @@ public class EnemyAI : Entity
 
 			chaseTimer = 0f;
 			currentState = States.ChasePlayer;
+
+			AkSoundEngine.PostEvent ("Impacts", this.gameObject);
 		}
 	}
 

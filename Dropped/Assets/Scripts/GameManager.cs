@@ -65,16 +65,22 @@ public class GameManager : Singleton<GameManager>
 				timeSlowed = true;
 				timeSlowedCounter = 0;
 				StartCoroutine (LerpTimeScale (.2f, .05f));
+
+				AkSoundEngine.PostEvent ("Time_Slow_Down", GameObject.FindGameObjectWithTag("MainCamera").gameObject);
 			}
 
 		if (timeSlowedCounter >= 2 && timeSlowed)
 		{
 			timeSlowed = false;
 			StartCoroutine (LerpTimeScale (1f, .4f));
+
+			AkSoundEngine.PostEvent ("Time_Speed_Up", GameObject.FindGameObjectWithTag("MainCamera").gameObject);
 		}
 
 		if(!isPaused)
 			timeSlowedCounter += Time.deltaTime / Time.timeScale;
+
+		//AkSoundEngine.RenderAudio ();
 	}
 
 	void HandleInput()

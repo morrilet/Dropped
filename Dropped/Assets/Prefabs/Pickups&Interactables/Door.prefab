@@ -11,6 +11,8 @@ GameObject:
   - 212: {fileID: 21217146}
   - 114: {fileID: 11436712}
   - 61: {fileID: 6159286}
+  - 114: {fileID: 11451286}
+  - 114: {fileID: 11451488}
   m_Layer: 8
   m_Name: Door
   m_TagString: Door
@@ -120,10 +122,53 @@ MonoBehaviour:
   isOpen: 0
   closedDoorSprite: {fileID: 21300000, guid: 7b203076de454124c85d36ec2172d9fb, type: 3}
   openDoorSprite: {fileID: 21300000, guid: 49cdff1aa181d7b4f99c8d56f403be2a, type: 3}
+  fadewallTriggers:
+  - {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 4096
   openDirection: 0
+  startingOpenDirection: 0
+--- !u!114 &11451286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6c39a9616576543a62cbe63952986a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 0
+  listenerMask: 1
+  isStaticObject: 0
+--- !u!114 &11451488
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8cf6321065e2ae4c9e64275c4887db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 
+  useOtherObject: 0
+  valueGuid: b09d3f9874ebcd4293346584bf0daf67
+  eventID: 535830432
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  multiPositionTypeLabel: 0
+  multiPositionArray: []
 --- !u!114 &11480852
 MonoBehaviour:
   m_ObjectHideFlags: 1

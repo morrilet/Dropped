@@ -1,6 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" SchemaVersion="70">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="Main Character" ID="{24067124-6DBE-4877-B6FE-E4EA93D0FAF0}" ShortID="775934304">
+					<ChildrenList>
+						<Event Name="Jump" ID="{2445D7D2-57F3-4CAF-A828-6E83E9D9AF35}">
+							<ChildrenList>
+								<Action Name="Play" ID="{7EA94B4B-0F73-4DF9-B3A2-998B6245041D}" ShortID="21433777" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{7826A0D9-5401-4060-A197-04CC2F900954}" Global="false">
+											<ObjectRef Name="Jump" ID="{71F42F7B-9C15-4F51-A077-2811789CEDA7}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Land" ID="{935C9ABF-EF77-41DB-9B1F-797E2671A8A3}">
+							<ChildrenList>
+								<Action Name="Play" ID="{945E7892-4877-42DB-A285-EE5C9A4AECF2}" ShortID="467197826" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{48EE8243-8E81-4D19-87AF-08E657647A3F}" Global="false">
+											<ObjectRef Name="Land" ID="{5AB3C47F-2993-494A-AD91-388AD8C80670}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Ladder_Climb" ID="{962189F9-71F3-4A79-A51E-075E2691335C}">
+							<ChildrenList>
+								<Action Name="Play" ID="{85DA8F6B-F179-40E5-8D5F-3E407D79D4FD}" ShortID="495311266" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{A0DEF68C-5916-46B7-A2E3-43783B580E70}" Global="false">
+											<ObjectRef Name="Ladder Climb" ID="{D291E399-98C7-450D-9EE3-E5FDA1D051DC}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Objects" ID="{ECC9D55C-D11A-40C2-9B9E-F546461B99CB}" ShortID="79131940">
+					<ChildrenList>
+						<Folder Name="Door" ID="{880171F7-18D1-419A-8093-D5862C4DE64C}" ShortID="204480935">
+							<ChildrenList>
+								<Event Name="Door_Open" ID="{983F9DB0-EB74-42CD-9334-6584BF0DAF67}">
+									<ChildrenList>
+										<Action Name="Play" ID="{C7A26C19-315A-436E-B8C6-989F10F34AA3}" ShortID="73467655" Type="Play" Scope="One" Global="false">
+											<ElementList>
+												<Element ID="{4433FBF0-39B7-4052-93A2-EBB7D75A0DE5}" Global="false">
+													<ObjectRef Name="Door Open" ID="{E57C974D-0DE8-4808-A603-2D190F99DC42}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+												</Element>
+											</ElementList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Door_Close" ID="{9F65634C-4903-4A63-B908-DAADA610DF43}">
+									<ChildrenList>
+										<Action Name="Play" ID="{7ABF364A-520C-4B50-8B71-29CEDE697736}" ShortID="793402338" Type="Play" Scope="One" Global="false">
+											<ElementList>
+												<Element ID="{946790C7-FC84-4AFF-9ABA-85F8C3D98E05}" Global="false">
+													<ObjectRef Name="Door Close" ID="{FF0A494E-1635-4D4D-B448-17DFD0085B3E}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+												</Element>
+											</ElementList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="Gun" ID="{2330AE14-7C90-4F29-BA5B-54E6397340F7}" ShortID="468877215">
+							<ChildrenList>
+								<Folder Name="Bullets" ID="{CF3BE9D7-BCAC-4171-9E1E-4807692DBEC4}" ShortID="745436879">
+									<ChildrenList>
+										<Event Name="Impacts" ID="{B050284D-BD9A-4E5A-A73C-3E2DFE8E594E}">
+											<ChildrenList>
+												<Action Name="Play" ID="{4BAD4C25-8C69-4B0C-BDD4-6E9E11F3EAED}" ShortID="1056226472" Type="Play" Scope="One" Global="false">
+													<ElementList>
+														<Element ID="{821457EB-D4A1-4D59-BDF3-12F18D31509E}" Global="false">
+															<ObjectRef Name="Impacts" ID="{CE048966-2200-49A0-8A17-D054AC965B9B}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+														</Element>
+													</ElementList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="Health Object" ID="{7629420E-2340-4563-BD64-518D6EF394B1}" ShortID="492372753">
+							<ChildrenList>
+								<Event Name="Health_Pick_Up" ID="{B22CD63E-0B56-4061-8DC7-D9463ED9E8FB}">
+									<ChildrenList>
+										<Action Name="Play" ID="{612C54A8-7DE7-407D-9411-3C85A87FF064}" ShortID="615305092" Type="Play" Scope="One" Global="false">
+											<ElementList>
+												<Element ID="{BA5F1D3F-98D9-4566-8DD9-1CD264DE1C1F}" Global="false">
+													<ObjectRef Name="Health Pick Up" ID="{D6973920-4B20-4B94-AA6F-7E2573F2EE3C}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+												</Element>
+											</ElementList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="Structure Weak Point" ID="{475D5B0A-FE70-47EF-8392-F4D842EA82B8}" ShortID="885382003">
+							<ChildrenList>
+								<Event Name="Rubble_Falling" ID="{F6D2351E-344C-4C5F-A286-36A16549BB14}">
+									<ChildrenList>
+										<Action Name="Play" ID="{7F586625-E7B4-4F38-8809-9356463BB644}" ShortID="453964274" Type="Play" Scope="One" Global="false">
+											<ElementList>
+												<Element ID="{D16EACD6-2734-4854-B217-AC05E68EACAB}" Global="false">
+													<ObjectRef Name="Rubble Falling" ID="{E4EF5579-8D7E-49B4-9E8B-4721A7DD0AE7}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+												</Element>
+											</ElementList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Wood_Break" ID="{882ABB54-C5A3-433F-9214-5EAD1A68A395}">
+									<ChildrenList>
+										<Action Name="Play" ID="{4887EBFF-ED3D-4B7D-B40F-44747D81EED8}" ShortID="1010960666" Type="Play" Scope="One" Global="false">
+											<ElementList>
+												<Element ID="{BB9D099E-3C5E-4518-A43F-1866C921B79A}" Global="false">
+													<ObjectRef Name="Wood Break" ID="{489BE3EF-8960-497A-9BE2-77F54FC5CC9E}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+												</Element>
+											</ElementList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="Time Effect" ID="{1C161E35-B9B2-408C-83A4-EF851C192A6B}" ShortID="740615821">
+							<ChildrenList>
+								<Event Name="Time_Speed_Up" ID="{E5B4E7C2-FF16-4C29-8B96-06F856CC0C66}">
+									<ChildrenList>
+										<Action Name="Play" ID="{E82DF19F-C969-422F-94C4-62A55751F0A9}" ShortID="35236947" Type="Play" Scope="One" Global="false">
+											<ElementList>
+												<Element ID="{A92ABC71-1FA8-47CE-BB73-B5CA54629358}" Global="false">
+													<ObjectRef Name="Time Speed Up" ID="{C6FB12DB-CD96-4207-B591-B10B4EDDC3D8}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+												</Element>
+											</ElementList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Time_Slow_Down" ID="{9C15C099-EFCB-44FC-AE8C-327146C73A0B}">
+									<ChildrenList>
+										<Action Name="Play" ID="{810174CE-4487-4D08-93A9-00AFE878EAC7}" ShortID="621568804" Type="Play" Scope="One" Global="false">
+											<ElementList>
+												<Element ID="{E0008553-A31C-4F4A-9091-6FB02FF4D2AF}" Global="false">
+													<ObjectRef Name="Time Slow Down" ID="{B70D2EFD-F301-4596-BD10-12C6DDA8A2B4}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+												</Element>
+											</ElementList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="Window" ID="{DBEDADD3-EB56-494E-A15A-104F479F465D}" ShortID="460180792">
+							<ChildrenList>
+								<Event Name="Window_Break" ID="{7A242AC2-A34A-4810-869E-8E86523883BB}">
+									<ChildrenList>
+										<Action Name="Play" ID="{5E77B3D0-78CF-4C56-A2B5-1721F899F504}" ShortID="387404277" Type="Play" Scope="One" Global="false">
+											<ElementList>
+												<Element ID="{A57C51D3-D02B-4639-B741-FA4656CD6ED4}" Global="false">
+													<ObjectRef Name="Window Break" ID="{C0C670A1-4AE5-4B78-B572-12A42D3B954A}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+												</Element>
+											</ElementList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Zombies" ID="{7DCB3196-BBB8-4019-A88C-8366D38A3D03}" ShortID="883929418">
+					<ChildrenList>
+						<Event Name="Growls" ID="{60561098-85E9-48AA-9F10-6FEBD7635AE3}">
+							<ChildrenList>
+								<Action Name="Play" ID="{090A69CC-0E4E-4653-A2C3-90F533409EA9}" ShortID="742689081" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{812EF443-3F77-4B43-98DF-CAD8028741C7}" Global="false">
+											<ObjectRef Name="Growls" ID="{4A092DD6-F51F-426F-BB9A-CE8DF75F001E}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Squishing" ID="{1E7B580D-9268-44B8-AD8A-EF96A2F016E8}">
+							<ChildrenList>
+								<Action Name="Play" ID="{344E39B6-39CA-47C6-912F-2F6819B19A93}" ShortID="1016966649" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{E91E6EBA-0952-4B5E-861E-B6398095A755}" Global="false">
+											<ObjectRef Name="Squishing" ID="{36F2C356-8FFB-4C9B-A7A8-67E147E1E3A9}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

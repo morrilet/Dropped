@@ -20,6 +20,7 @@ public class HealthPickup : MonoBehaviour
 		if (coll.gameObject.tag == "Player")
 		{
 			coll.GetComponent<Player> ().health = coll.GetComponent<Player> ().maxHealth;
+			AkSoundEngine.PostEvent ("Health_Pick_Up", this.gameObject);
 			Destroy(gameObject);
 		}
 	}

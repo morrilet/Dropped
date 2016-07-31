@@ -190,6 +190,8 @@ public class Door : MonoBehaviour
 		else if(openDirection == OpenDirection.Left)
 			transform.localScale = new Vector3 (-startingScale.x, startingScale.y, startingScale.z);
 		isOpen = true;
+
+		AkSoundEngine.PostEvent ("Door_Open", this.gameObject);
 	}
 
 	//This is for opening the door in the start.
@@ -198,6 +200,7 @@ public class Door : MonoBehaviour
 		this.gameObject.layer = LayerMask.NameToLayer ("Default_Hotspot");
 		GetComponent<SpriteRenderer> ().color = new Color (125f/255f, 125f/255f, 125f/255f, 1);
 		GetComponent<SpriteRenderer> ().sprite = openDoorSprite;
+
 		switch (direction)
 		{
 		case OpenDirection.Right:
@@ -220,6 +223,8 @@ public class Door : MonoBehaviour
 		GetComponent<SpriteRenderer> ().sprite = closedDoorSprite;
 		transform.localScale = new Vector3 (startingScale.x * Mathf.Sign (player.GetComponent<Player> ().direction), startingScale.y, startingScale.z);
 		isOpen = false;
+
+		AkSoundEngine.PostEvent ("Door_Close", this.gameObject);
 	}
 
 	void OnDrawGizmos()
