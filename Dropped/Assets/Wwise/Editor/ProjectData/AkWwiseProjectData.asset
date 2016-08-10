@@ -16,8 +16,8 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{A840EE89-6550-4B8B-B6DC-0FFA00561821}'
-    m_lastTimePsrt1: 1062493184
-    m_lastTimePart2: -1999393277
+    m_lastTimePsrt1: -2126466304
+    m_lastTimePart2: -1999390800
     List:
     - Name: Door_Close
       Path: Default Work Unit\Objects\Door\Door_Close
@@ -32,7 +32,7 @@ MonoBehaviour:
         ObjectType: 3
       ID: 128625444
       Guid: 4c63659f0349634ab908daada610df43
-      maxAttenuation: 0
+      maxAttenuation: 100
     - Name: Door_Open
       Path: Default Work Unit\Objects\Door\Door_Open
       PathAndIcons:
@@ -46,7 +46,7 @@ MonoBehaviour:
         ObjectType: 3
       ID: 535830432
       Guid: b09d3f9874ebcd4293346584bf0daf67
-      maxAttenuation: 0
+      maxAttenuation: 100
     - Name: Growls
       Path: Default Work Unit\Zombies\Growls
       PathAndIcons:
@@ -58,7 +58,7 @@ MonoBehaviour:
         ObjectType: 3
       ID: 1957821939
       Guid: 98105660e985aa489f106febd7635ae3
-      maxAttenuation: 0
+      maxAttenuation: 100
     - Name: Health_Pick_Up
       Path: Default Work Unit\Objects\Health Object\Health_Pick_Up
       PathAndIcons:
@@ -73,8 +73,8 @@ MonoBehaviour:
       ID: -1088730973
       Guid: 3ed62cb2560b61408dc7d9463ed9e8fb
       maxAttenuation: 0
-    - Name: Impacts
-      Path: Default Work Unit\Objects\Gun\Bullets\Impacts
+    - Name: Impacts_General
+      Path: Default Work Unit\Objects\Gun\Bullets\Impacts_General
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
@@ -84,11 +84,43 @@ MonoBehaviour:
         ObjectType: 4
       - ElementName: Bullets
         ObjectType: 4
-      - ElementName: Impacts
+      - ElementName: Impacts_General
         ObjectType: 3
-      ID: 1316910230
-      Guid: 4d2850b09abd5a4ea73c3e2dfe8e594e
+      ID: -387374049
+      Guid: bd475300e8a82d4ca40654c2691a4ca6
       maxAttenuation: 0
+    - Name: Impacts_Metal
+      Path: Default Work Unit\Objects\Gun\Bullets\Impacts_Metal
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Objects
+        ObjectType: 4
+      - ElementName: Gun
+        ObjectType: 4
+      - ElementName: Bullets
+        ObjectType: 4
+      - ElementName: Impacts_Metal
+        ObjectType: 3
+      ID: 856508550
+      Guid: 0fae549e06329244969d28cba3153734
+      maxAttenuation: 0
+    - Name: Impacts_Zombie
+      Path: Default Work Unit\Objects\Gun\Bullets\Impacts_Zombie
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Objects
+        ObjectType: 4
+      - ElementName: Gun
+        ObjectType: 4
+      - ElementName: Bullets
+        ObjectType: 4
+      - ElementName: Impacts_Zombie
+        ObjectType: 3
+      ID: -515351809
+      Guid: 4d2850b09abd5a4ea73c3e2dfe8e594e
+      maxAttenuation: 100
     - Name: Jump
       Path: Default Work Unit\Main Character\Jump
       PathAndIcons:
@@ -125,6 +157,18 @@ MonoBehaviour:
       ID: 674522502
       Guid: bf9a5c9377efdb419b1f797e2671a8a3
       maxAttenuation: 0
+    - Name: Music_Loop
+      Path: Default Work Unit\Music\Music_Loop
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: Music_Loop
+        ObjectType: 3
+      ID: -357268161
+      Guid: e8b319e09dca1b4bab0cb8d8be131e67
+      maxAttenuation: 0
     - Name: Rubble_Falling
       Path: Default Work Unit\Objects\Structure Weak Point\Rubble_Falling
       PathAndIcons:
@@ -150,7 +194,7 @@ MonoBehaviour:
         ObjectType: 3
       ID: -1201344058
       Guid: 0d587b1e6892b844ad8aef96a2f016e8
-      maxAttenuation: 0
+      maxAttenuation: 100
     - Name: Time_Slow_Down
       Path: Default Work Unit\Objects\Time Effect\Time_Slow_Down
       PathAndIcons:
@@ -192,7 +236,7 @@ MonoBehaviour:
         ObjectType: 3
       ID: -866317595
       Guid: c22a247a4aa31048869e8e86523883bb
-      maxAttenuation: 0
+      maxAttenuation: 100
     - Name: Wood_Break
       Path: Default Work Unit\Objects\Structure Weak Point\Wood_Break
       PathAndIcons:
@@ -211,29 +255,29 @@ MonoBehaviour:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{EE1587E6-7D7D-43DE-964B-492F29543592}'
-    m_lastTimePsrt1: 1082493184
-    m_lastTimePart2: -1999393277
+    m_lastTimePsrt1: -2106466304
+    m_lastTimePart2: -1999390800
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{13A8A204-797B-4540-9A8E-FA812D6B14EC}'
-    m_lastTimePsrt1: 1082493184
-    m_lastTimePart2: -1999393277
+    m_lastTimePsrt1: -2106466304
+    m_lastTimePart2: -1999390800
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{629A4B8D-A116-434A-AE4B-96B1BF26B78F}'
-    m_lastTimePsrt1: 1102493184
-    m_lastTimePart2: -1999393277
+    m_lastTimePsrt1: -2086466304
+    m_lastTimePart2: -1999390800
     List: []
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{AD7F9F1B-3742-4550-9DD1-5A6EEB06E064}'
-    m_lastTimePsrt1: 1082493184
-    m_lastTimePart2: -1999393277
+    m_lastTimePsrt1: 57710040
+    m_lastTimePart2: -1999388728
     List:
     - Name: Miasmaclysm_Sound_Bank
       Path: Default Work Unit\Miasmaclysm_Sound_Bank
@@ -249,7 +293,7 @@ MonoBehaviour:
   - /Wwise_Dropped/Events
   - /Wwise_Dropped/Events/Default Work Unit
   - /Wwise_Dropped/Events/Default Work Unit/Objects
-  - /Wwise_Dropped/Events/Default Work Unit/Objects/Window
+  - /Wwise_Dropped/Events/Default Work Unit/Objects/Structure Weak Point
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1

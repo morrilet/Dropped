@@ -584,7 +584,7 @@ public class Player : Entity
 			} 
 			else if(activeGun.fireRateCount >= activeGun.fireRate)
 			{
-				AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
+				//AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
 				activeGun.fireRateCount = 0;
 			}
 			break;
@@ -595,7 +595,7 @@ public class Player : Entity
 			}
 			else if(activeGun.fireRateCount >= activeGun.fireRate)
 			{
-				AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
+				//AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
 				activeGun.fireRateCount = 0;
 			}
 			break;
@@ -606,7 +606,7 @@ public class Player : Entity
 			}
 			else if(activeGun.fireRateCount >= activeGun.fireRate)
 			{
-				AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
+				//AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
 				activeGun.fireRateCount = 0;
 			}
 			break;

@@ -72,12 +72,34 @@
 							<ChildrenList>
 								<Folder Name="Bullets" ID="{CF3BE9D7-BCAC-4171-9E1E-4807692DBEC4}" ShortID="745436879">
 									<ChildrenList>
-										<Event Name="Impacts" ID="{B050284D-BD9A-4E5A-A73C-3E2DFE8E594E}">
+										<Event Name="Impacts_Zombie" ID="{B050284D-BD9A-4E5A-A73C-3E2DFE8E594E}">
 											<ChildrenList>
 												<Action Name="Play" ID="{4BAD4C25-8C69-4B0C-BDD4-6E9E11F3EAED}" ShortID="1056226472" Type="Play" Scope="One" Global="false">
 													<ElementList>
 														<Element ID="{821457EB-D4A1-4D59-BDF3-12F18D31509E}" Global="false">
-															<ObjectRef Name="Impacts" ID="{CE048966-2200-49A0-8A17-D054AC965B9B}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+															<ObjectRef Name="Impact Zombie" ID="{CF457B0A-C18A-47CC-BB3B-1E62F6705B05}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+														</Element>
+													</ElementList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="Impacts_Metal" ID="{9E54AE0F-3206-4492-969D-28CBA3153734}">
+											<ChildrenList>
+												<Action Name="Play" ID="{4C8DFD0E-F2F8-4303-9174-EFF37CCC4234}" ShortID="82819068" Type="Play" Scope="One" Global="false">
+													<ElementList>
+														<Element ID="{D7D4CE9D-A13E-419B-BD0C-AE31B0C09E30}" Global="false">
+															<ObjectRef Name="Impact Metal" ID="{EAFE1A05-8B1A-4D06-8DC9-F2B0B3A1B339}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+														</Element>
+													</ElementList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="Impacts_General" ID="{005347BD-A8E8-4C2D-A406-54C2691A4CA6}">
+											<ChildrenList>
+												<Action Name="Play" ID="{C9454C72-E369-4EE7-A5FF-D5E7DCC7930C}" ShortID="219263252" Type="Play" Scope="One" Global="false">
+													<ElementList>
+														<Element ID="{CFCE47A0-27CC-4153-9CAA-D2784024A0FC}" Global="false">
+															<ObjectRef Name="Impact General" ID="{FCCEB008-AC68-4F83-86C4-6DA1A4A23A7C}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
 														</Element>
 													</ElementList>
 												</Action>
@@ -190,6 +212,21 @@
 									<ElementList>
 										<Element ID="{E91E6EBA-0952-4B5E-861E-B6398095A755}" Global="false">
 											<ObjectRef Name="Squishing" ID="{36F2C356-8FFB-4C9B-A7A8-67E147E1E3A9}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Music" ID="{FAEEA9BA-9F48-4966-9004-CA101EF5C333}" ShortID="262123654">
+					<ChildrenList>
+						<Event Name="Music_Loop" ID="{E019B3E8-CA9D-4B1B-AB0C-B8D8BE131E67}">
+							<ChildrenList>
+								<Action Name="Play" ID="{05A39FC8-1D15-4F87-915C-DE4860351A83}" ShortID="1070535456" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{84A136F6-941F-4C2E-91F7-72A82FFF18CB}" Global="false">
+											<ObjectRef Name="Music Loop" ID="{E142808A-C76A-406D-BE4E-A22878A868D7}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
 										</Element>
 									</ElementList>
 								</Action>

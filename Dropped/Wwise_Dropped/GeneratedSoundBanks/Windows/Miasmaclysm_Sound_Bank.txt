@@ -2,7 +2,6 @@ Event	ID	Name			Wwise Object Path	Notes
 	128625444	Door_Close			\Default Work Unit\Objects\Door\Door_Close	
 	535830432	Door_Open			\Default Work Unit\Objects\Door\Door_Open	
 	674522502	Land			\Default Work Unit\Main Character\Land	
-	1316910230	Impacts			\Default Work Unit\Objects\Gun\Bullets\Impacts	
 	1334931201	Time_Slow_Down			\Default Work Unit\Objects\Time Effect\Time_Slow_Down	
 	1707141479	Ladder_Climb			\Default Work Unit\Main Character\Ladder_Climb	
 	1957821939	Growls			\Default Work Unit\Zombies\Growls	
@@ -12,12 +11,16 @@ Event	ID	Name			Wwise Object Path	Notes
 	3236087554	Time_Speed_Up			\Default Work Unit\Objects\Time Effect\Time_Speed_Up	
 	3358618626	Wood_Break			\Default Work Unit\Objects\Structure Weak Point\Wood_Break	
 	3428649701	Window_Break			\Default Work Unit\Objects\Window\Window_Break	
+	3779615487	Impacts_Zombie			\Default Work Unit\Objects\Gun\Bullets\Impacts_Zombie	
 	3833651337	Jump			\Default Work Unit\Main Character\Jump	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	8528424	Impact Zombie 1	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\bullet impact zombie_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Gun\Bullets\Impacts\Impact Zombie\Impact Zombie 1		96064
 	13147857	Growl 3	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\zombie growl_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Zombies\Growls\Growl 3		324064
+	39233883	Impact Zombie 4	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\bullet impact zombie_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Gun\Bullets\Impacts\Impact Zombie\Impact Zombie 4		110848
 	69230979	Squish 4	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\squish_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Zombies\Squishing\Squish 4		180064
 	72824129	Squish 8	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\squish_08_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Zombies\Squishing\Squish 8		144064
+	123920512	Impact Zombie 2	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\bullet impact zombie_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Gun\Bullets\Impacts\Impact Zombie\Impact Zombie 2		84408
 	127155577	Health Pick Up	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\health pack_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Health Object\Health Pick Up		384064
 	141313228	Land	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\land poof_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Main Character\Land\Land		48564
 	174086634	Squish 7	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\squish_07_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Zombies\Squishing\Squish 7		132064
@@ -30,19 +33,15 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	359922000	Squish 2	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\squish_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Zombies\Squishing\Squish 2		156064
 	389437807	Ladder 5	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\ladder step_05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Main Character\Ladder Climb\Ladder 5		43708
 	396660469	Squish 9	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\squish_09_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Zombies\Squishing\Squish 9		156064
-	403253941	Impact 1	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\bullet impact_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Gun\Bullets\Impacts\Impact 1		96064
 	409362605	Growl 5	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\zombie growl_05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Zombies\Growls\Growl 5		360064
 	445995669	Squish 6	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\squish_06_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Zombies\Squishing\Squish 6		109712
-	450485199	Door Close	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\door close_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Door\New Switch Container\Door Close		103224
-	485856363	Door Open	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\door open_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Door\New Switch Container\Door Open		103224
+	450485199	Door Close	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\door close_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Door\Door Action\Door Close		103224
+	485856363	Door Open	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\door open_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Door\Door Action\Door Open		103224
 	503200730	Wood Break	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\wood crash_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Structure Weak Point\Weak Point Hit\Wood Break		384064
-	541431795	Impact 2	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\bullet impact_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Gun\Bullets\Impacts\Impact 2		84408
 	543389951	Growl 4	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\zombie growl_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Zombies\Growls\Growl 4		360064
-	570923709	Impact 3	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\bullet impact_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Gun\Bullets\Impacts\Impact 3		95540
 	602015592	Ladder 2	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\ladder step_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Main Character\Ladder Climb\Ladder 2		44948
 	612256110	Growl 8	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\zombie growl_08_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Zombies\Growls\Growl 8		336064
-	670638920	Rubble Falling 2	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\wood debris_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Structure Weak Point\Weak Point Hit\Rubble Falling\Rubble Falling 2		312064
-	711496074	Impact 4	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\bullet impact_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Gun\Bullets\Impacts\Impact 4		110848
+	670638920	Rubble Falling 2	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\wood debris_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Structure Weak Point\Weak Point Hit\Rubble Falling\Rubble Falling 2		384064
 	740677022	Growl 6	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\zombie growl_06_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Zombies\Growls\Growl 6		252064
 	762350949	Window Break	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\window break_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Window\Window Break		384064
 	790837329	Squish 5	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\squish_05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Zombies\Squishing\Squish 5		92740
@@ -53,6 +52,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	937149240	Time Speed Up	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\time speed up_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Time Effect\Time Speeds\Time Speed Up		384064
 	964583442	Squish 10	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\squish_10_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Zombies\Squishing\Squish 10		132064
 	984497733	Ladder 4	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\ladder step_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Main Character\Ladder Climb\Ladder 4		38000
+	1007209499	Impact Zombie 3	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\bullet impact zombie_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Objects\Gun\Bullets\Impacts\Impact Zombie\Impact Zombie 3		95540
 	1057583867	Ladder 3	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\ladder step_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Main Character\Ladder Climb\Ladder 3		39300
 	1066741158	Growl 10	C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\SFX\zombie growl_10_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Zombies\Growls\Growl 10		337512
 

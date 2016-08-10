@@ -87,7 +87,7 @@ public class DoorTrigger : MonoBehaviour
 			if (door.GetPlayerFacingDoor () && GameObject.Find ("Player").GetComponent<Player>().corpseCarried == null 
 				&& GameObject.Find("Player").GetComponent<Player>().grapplingEnemies.Count == 0)
 			{
-				GUI_Script.instance.openDoorText.enabled = true;
+				GUI_Script.instance.openDoorText.SetActive (true);
 				if (Input.GetButtonDown("Action") && !door.GetPlayerInsideDoor ()) 
 				{
 					if (!door.isOpen)
@@ -98,7 +98,7 @@ public class DoorTrigger : MonoBehaviour
 			}
 			else
 			{
-				GUI_Script.instance.openDoorText.enabled = false;
+				GUI_Script.instance.openDoorText.SetActive (false);
 			}
 		}
 	}
@@ -111,7 +111,7 @@ public class DoorTrigger : MonoBehaviour
 				&& GameObject.Find ("Player").GetComponent<Player>().GetTouchingCorpse() == null 
 				&& GameObject.Find("Player").GetComponent<Player>().grapplingEnemies.Count == 0) 
 			{
-				GUI_Script.instance.openDoorText.enabled = true;
+				GUI_Script.instance.openDoorText.SetActive (true);
 				if (Input.GetButtonDown("Action") && !door.GetPlayerInsideDoor ()) 
 				{
 					if (!door.isOpen)
@@ -122,14 +122,14 @@ public class DoorTrigger : MonoBehaviour
 			}
 			else
 			{
-				GUI_Script.instance.openDoorText.enabled = false;
+				GUI_Script.instance.openDoorText.SetActive (false);
 			}
 		}
 	}
 
 	void OnCollisionExit2D(Collision2D other)
 	{
-		if(other.gameObject.tag == "Player")
-			GUI_Script.instance.openDoorText.enabled = false;
+		if (other.gameObject.tag == "Player")
+			GUI_Script.instance.openDoorText.SetActive (false);
 	}
 }

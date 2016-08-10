@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{AD7F9F1B-3742-4550-9DD1-5A6EEB06E064}" SchemaVersion="70">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{AD7F9F1B-3742-4550-9DD1-5A6EEB06E064}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Miasmaclysm_Sound_Bank" ID="{A04D1E90-1EC8-4CB6-8653-C8823DAE737B}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Squishing" ID="{1E7B580D-9268-44B8-AD8A-EF96A2F016E8}" WorkUnitID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Rubble_Falling" ID="{F6D2351E-344C-4C5F-A286-36A16549BB14}" WorkUnitID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Health_Pick_Up" ID="{B22CD63E-0B56-4061-8DC7-D9463ED9E8FB}" WorkUnitID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Door_Close" ID="{9F65634C-4903-4A63-B908-DAADA610DF43}" WorkUnitID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Impacts_Zombie" ID="{B050284D-BD9A-4E5A-A73C-3E2DFE8E594E}" WorkUnitID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Wood_Break" ID="{882ABB54-C5A3-433F-9214-5EAD1A68A395}" WorkUnitID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Growls" ID="{60561098-85E9-48AA-9F10-6FEBD7635AE3}" WorkUnitID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Time_Slow_Down" ID="{9C15C099-EFCB-44FC-AE8C-327146C73A0B}" WorkUnitID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Door_Open" ID="{983F9DB0-EB74-42CD-9334-6584BF0DAF67}" WorkUnitID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Land" ID="{935C9ABF-EF77-41DB-9B1F-797E2671A8A3}" WorkUnitID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Window_Break" ID="{7A242AC2-A34A-4810-869E-8E86523883BB}" WorkUnitID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Time_Speed_Up" ID="{E5B4E7C2-FF16-4C29-8B96-06F856CC0C66}" WorkUnitID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Jump" ID="{2445D7D2-57F3-4CAF-A828-6E83E9D9AF35}" WorkUnitID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Ladder_Climb" ID="{962189F9-71F3-4A79-A51E-075E2691335C}" WorkUnitID="{A840EE89-6550-4B8B-B6DC-0FFA00561821}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

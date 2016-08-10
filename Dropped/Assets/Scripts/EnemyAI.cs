@@ -137,14 +137,14 @@ public class EnemyAI : Entity
 		{
 			velocity.y += gravity * Time.deltaTime;
 			jumpingCurrent = true;
-			Debug.Log ("Here");
+			//Debug.Log ("Here");
 		}
 		else
 		{
 			if (velocity.y < 0)
 				velocity.y = -.00001f;
 			jumpingCurrent = false;
-			Debug.Log ("Here2");
+			//Debug.Log ("Here2");
 		}
 
 		//Debug.Log ("Wall: " + enemyInfo.JustHitWall);
@@ -610,7 +610,7 @@ public class EnemyAI : Entity
 			chaseTimer = 0f;
 			currentState = States.ChasePlayer;
 
-			AkSoundEngine.PostEvent ("Impacts", this.gameObject);
+			AkSoundEngine.PostEvent ("Impacts_Zombie", this.gameObject);
 		}
 	}
 

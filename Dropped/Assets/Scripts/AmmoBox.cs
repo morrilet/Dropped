@@ -16,7 +16,7 @@ public class AmmoBox : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player" && player.corpseCarried == null && GameObject.Find("Player").GetComponent<Player>().grapplingEnemies.Count == 0) 
 		{
-			GUI_Script.instance.grabAmmoText.enabled = true;
+			GUI_Script.instance.grabAmmoText.SetActive (true);
 			if (Input.GetButtonDown("Action")) 
 			{
 				player.playerAmmo.RefillAll ();
@@ -29,7 +29,7 @@ public class AmmoBox : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player" && player.corpseCarried == null && GameObject.Find("Player").GetComponent<Player>().grapplingEnemies.Count == 0) 
 		{
-			GUI_Script.instance.grabAmmoText.enabled = true;
+			GUI_Script.instance.grabAmmoText.SetActive (true);
 			if (Input.GetButtonDown("Action")) 
 			{
 				player.playerAmmo.RefillAll ();
@@ -42,7 +42,7 @@ public class AmmoBox : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player") 
 		{
-			GUI_Script.instance.grabAmmoText.enabled = false;
+			GUI_Script.instance.grabAmmoText.SetActive (false);
 		}
 	}
 }

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Level : MonoBehaviour 
+public class Level : MonoBehaviour
 {
 	public Vector3 playerSpawnPosition; //This is where we spawn the player when they die. At start it's set to player position.
 
@@ -18,8 +18,11 @@ public class Level : MonoBehaviour
 		InitializeLists ();
 		Debug.Log (enemies.Count);
 		GameManager.instance.level = this.gameObject;
-		if(GameManager.instance.player != null)
+		if (GameManager.instance.player != null) 
+		{
 			GameManager.instance.StorePlayerInfo ();
+			GameManager.instance.playerStartingGun = GameManager.instance.player.GetComponent<Player>().currentGun;
+		}
 
 		Debug.Log ("Start");
 	}

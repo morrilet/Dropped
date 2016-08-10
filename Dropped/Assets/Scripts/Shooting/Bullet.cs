@@ -134,10 +134,9 @@ public class Bullet : MonoBehaviour {
 			Destroy (gameObject);
 		}
 
-		if (coll.gameObject.tag == "Corpse") 
+		if (coll.gameObject.tag == "Corpse")
 		{
-
-			AkSoundEngine.PostEvent ("Impacts", coll.transform.parent.FindChild("UpperTorso").gameObject);
+			AkSoundEngine.PostEvent ("Impacts_Zombie", coll.transform.parent.FindChild("UpperTorso").gameObject);
 
 			//coll.transform.parent.GetComponent<CorpseRagdoll> ().AddForceAtPosition (new Vector2(bulletSpeed / 5f, 0f)
 				//* GameObject.Find ("Player").GetComponent<Player>().direction, transform.position, ForceMode2D.Impulse);

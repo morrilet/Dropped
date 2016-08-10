@@ -6,6 +6,7 @@ public class GameManager : Singleton<GameManager>
 {
 	public Player.PlayerAmmo playerStoredAmmo;
 	public Player.CurrentGun playerStoredGun;
+	public Player.CurrentGun playerStartingGun; //The gun the player starts the level with. Used for resetting.
 	public float playerStoredHealth;
 	public GameObject player;
 	public GameObject level;
@@ -162,6 +163,7 @@ public class GameManager : Singleton<GameManager>
 
 	public void RestartLevel()
 	{
+		player.GetComponent<Player> ().currentGun = playerStartingGun;
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex, LoadSceneMode.Single);
 	}
 

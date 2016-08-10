@@ -61,22 +61,22 @@ public class GunPickup : MonoBehaviour
 			}
 		}
 		if (coll.gameObject.tag == "Player" && coll.GetComponent<Player> ().GetTouchingCorpse () == null)
-			GUI_Script.instance.grabGunText.enabled = true;
+			GUI_Script.instance.grabGunText.SetActive (true);
 
 		if (coll.gameObject.tag == "Player" && coll.GetComponent<Player> ().corpseCarried == null)
-			GUI_Script.instance.grabGunText.enabled = true;
+			GUI_Script.instance.grabGunText.SetActive (true);
 
 		if (coll.gameObject.tag == "Player" && coll.GetComponent<Player> ().GetTouchingCorpse ())
-			GUI_Script.instance.grabGunText.enabled = false;
+			GUI_Script.instance.grabGunText.SetActive (false);
 		
 		if (coll.gameObject.tag == "Player" && coll.GetComponent<Player> ().corpseCarried != null)
-			GUI_Script.instance.grabGunText.enabled = false;
+			GUI_Script.instance.grabGunText.SetActive (false);
 	}
 
 	void OnTriggerExit2D(Collider2D coll)
 	{
-		if(coll.gameObject.tag == "Player")
-			GUI_Script.instance.grabGunText.enabled = false;
+		if (coll.gameObject.tag == "Player")
+			GUI_Script.instance.grabGunText.SetActive (false);
 	}
 
 	void Update()
@@ -84,7 +84,7 @@ public class GunPickup : MonoBehaviour
 		float lerpValue = Mathf.PingPong (Time.time, duration) / duration;
 		transform.position = Vector3.Lerp (topPos, bottomPos, lerpValue);
 		if (pickUpGun == Player.CurrentGun.None) {
-			GUI_Script.instance.grabGunText.enabled = false;
+			GUI_Script.instance.grabGunText.SetActive (false);
 			Destroy (gameObject);
 		}
 	}

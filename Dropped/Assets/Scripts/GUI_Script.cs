@@ -13,11 +13,11 @@ public class GUI_Script : Singleton<GUI_Script>
 	public Text shotGunAmmoText;
 	public Text machineGunAmmoText;
 
-	public Text openDoorText;
-	public Text grabAmmoText;
-	public Text grabGunText;
+	public GameObject openDoorText;
+	public GameObject grabAmmoText;
+	public GameObject grabGunText;
 
-	public Text escapeGrabText;
+	public GameObject escapeGrabText;
 	public GameObject escapeBar;
 	public bool escapeObjectsEnabled;
 
@@ -32,10 +32,10 @@ public class GUI_Script : Singleton<GUI_Script>
 	{
 		player = GameObject.Find ("Player").GetComponent<Player> ();
 
-		openDoorText.enabled = false;
-		grabAmmoText.enabled = false;
-		grabGunText.enabled = false;
-		escapeGrabText.enabled = false;
+		openDoorText.SetActive (false);
+		grabAmmoText.SetActive (false);
+		grabGunText.SetActive (false);
+		escapeGrabText.SetActive (false);
 
 		escapeObjectsEnabled = false;
 
@@ -46,24 +46,26 @@ public class GUI_Script : Singleton<GUI_Script>
 	{
 		if (escapeObjectsEnabled == true) 
 		{
-			escapeGrabText.enabled = true;
+			escapeGrabText.SetActive (true);
 			escapeBar.GetComponent<EscapeBar>().SetBarActive(true);
 
-			openDoorText.enabled = false;
-			grabAmmoText.enabled = false;
-			grabGunText.enabled = false;
+			openDoorText.SetActive (false);
+			grabAmmoText.SetActive (false);
+			grabGunText.SetActive (false);
 		} 
 		else 
 		{
-			escapeGrabText.enabled = false;
+			escapeGrabText.SetActive (false);
 			escapeBar.GetComponent<EscapeBar>().SetBarActive(false);
 		}
 
-		pistolAmmoText.text = "Pistol Ammo: " + player.playerAmmo.pistolAmmo.ammountInClip + " / " + player.playerAmmo.pistolAmmo.currentAmmo;
-		shotGunAmmoText.text = "Shotgun Ammo: " + player.playerAmmo.shotgunAmmo.ammountInClip + " / " + player.playerAmmo.shotgunAmmo.currentAmmo;
-		machineGunAmmoText.text = "MachineGun Ammo: " + player.playerAmmo.machineGunAmmo.ammountInClip+ " / " + player.playerAmmo.machineGunAmmo.currentAmmo;
-		grabGunText.text = "Press E to pick up " + weaponPickupYield + ".";
+		pistolAmmoText.text = player.playerAmmo.pistolAmmo.ammountInClip + "\n\n\n" + player.playerAmmo.pistolAmmo.currentAmmo;
+		shotGunAmmoText.text = player.playerAmmo.shotgunAmmo.ammountInClip + "\n\n\n" + player.playerAmmo.shotgunAmmo.currentAmmo;
+		machineGunAmmoText.text = player.playerAmmo.machineGunAmmo.ammountInClip+ "\n\n\n" + player.playerAmmo.machineGunAmmo.currentAmmo;
 
+		//This changes the text shown when the player tries to grab different kinds of guns. Doesn't work well with the
+		//background of the text... Need to make different background sizes for each gun or do it by code.
+		//grabGunText.transform.GetComponentInChildren<Text> ().text = "Press E to pick up " + weaponPickupYield + ".";
 	}
 		
 }
