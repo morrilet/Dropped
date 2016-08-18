@@ -278,7 +278,7 @@ public class EnemyAI : Entity
 
 			if (raycastHits[i].transform != null) 
 			{
-				if (raycastHits [i].transform.tag == "Player") 
+				if (raycastHits [i].transform.tag == "Player")
 				{
 					canSeePlayer = true;
 					Debug.DrawLine (transform.position, raycastHits[i].point, Color.blue);
@@ -569,10 +569,13 @@ public class EnemyAI : Entity
 		}
 			
 		//Move, but only with the force of gravity.
-		velocity.y += gravity * Time.deltaTime;
+		if (controller.collisions.movingPlatform == null) 
+		{
+			velocity.y += gravity * Time.deltaTime;
+		}
 		velocity.x = 0f;
 		KeepDistanceFromEnemies ();
-		controller.Move (new Vector3 (velocity.x, velocity.y, 0f) * Time.deltaTime);
+		controller.Move (new Vector3 (velocity.x, velocity.y, 0f) * Time.deltaTime, (controller.collisions.movingPlatform == null) ? false : true);
 	}
 
 	void JumpOverCorpse()

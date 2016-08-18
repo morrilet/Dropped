@@ -449,8 +449,8 @@ public class CorpseRagdoll : MonoBehaviour
 			//limbs [i].GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
 		//}
 		
-		Debug.Log ("UT-V: " + upperTorso.GetComponent<Rigidbody2D> ().velocity);
-		Debug.Log ("LT-V: " + lowerTorso.GetComponent<Rigidbody2D> ().velocity);
+		//Debug.Log ("UT-V: " + upperTorso.GetComponent<Rigidbody2D> ().velocity);
+		//Debug.Log ("LT-V: " + lowerTorso.GetComponent<Rigidbody2D> ().velocity);
 	}
 
 	public void AddForceAtPosition(Vector2 force, Vector2 position, ForceMode2D forceMode)

@@ -139,14 +139,17 @@ public class PlatformController : RaycastController
 		{
 			//We store a passenger dictionary so that we don't have to use GetComponent every 
 			//frame for every passenger. Instead, we will only use it for new passengers.
-			if(!passengerDictionary.ContainsKey(passenger.transform))
+			if (passenger.transform.GetComponent<Controller2D> () != null) 
 			{
-				passengerDictionary.Add(passenger.transform, passenger.transform.GetComponent<Controller2D>());
-			}
+				if (!passengerDictionary.ContainsKey (passenger.transform)) 
+				{
+					passengerDictionary.Add (passenger.transform, passenger.transform.GetComponent<Controller2D> ());
+				}
 
-			if(passenger.moveBeforePlatform == beforeMovePlatform) //Notice the way we use beforeMovePlatform here and in Update.
-			{
-				passengerDictionary[passenger.transform].Move(passenger.velocity, passenger.standingOnPlatform);
+				if (passenger.moveBeforePlatform == beforeMovePlatform) 
+				{ //Notice the way we use beforeMovePlatform here and in Update.
+					passengerDictionary [passenger.transform].Move (passenger.velocity, passenger.standingOnPlatform);
+				}
 			}
 		}
 	}
@@ -172,7 +175,8 @@ public class PlatformController : RaycastController
 				Vector2 rayOrigin = (directionY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topLeft;
 				rayOrigin += Vector2.right * (verticalRaySpacing * i);
 
-				RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, passengerMask);
+				RaycastHit2D hit = Physics2D.Raycast (rayOrigin, Vector2.up * directionY, rayLength, passengerMask);
+				RaycastHit2D enemyhit = Physics2D.Raycast (rayOrigin, Vector2.up * directionY, rayLength); //This one checks if we hit any gameobjs tagged enemy.
 
 				if(hit)
 				{
@@ -184,6 +188,19 @@ public class PlatformController : RaycastController
 						float pushY = velocity.y - (hit.distance - skinWidth) * directionY;
 
 						passengerMovement.Add(new PassengerMovement(hit.transform, new Vector3(pushX, pushY), directionY == 1, true));
+					}
+				}
+
+				if (enemyhit && enemyhit.transform.gameObject.tag == "Enemy") 
+				{
+					if(!movedPassengers.Contains(enemyhit.transform))
+					{
+						movedPassengers.Add (enemyhit.transform);
+
+						float pushX = (directionY == 1) ? velocity.x : 0;
+						float pushY = velocity.y - (enemyhit.distance - skinWidth) * directionY;
+
+						passengerMovement.Add(new PassengerMovement(enemyhit.transform, new Vector3(pushX, pushY), directionY == 1, true));
 					}
 				}
 			}
@@ -200,6 +217,7 @@ public class PlatformController : RaycastController
 				rayOrigin += Vector2.right * (verticalRaySpacing * i + velocity.x);
 
 				RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, passengerMask);
+				RaycastHit2D enemyhit = Physics2D.Raycast (rayOrigin, Vector2.up * directionY, rayLength); //This one checks if we hit any gameobjs tagged enemy.
 
 				if(hit)
 				{
@@ -213,6 +231,19 @@ public class PlatformController : RaycastController
 						passengerMovement.Add(new PassengerMovement(hit.transform, new Vector3(pushX, pushY), false, true));
 					}
 				}
+
+				if (enemyhit && enemyhit.transform.gameObject.tag == "Enemy") 
+				{
+					if(!movedPassengers.Contains(enemyhit.transform))
+					{
+						movedPassengers.Add (enemyhit.transform);
+
+						float pushX = velocity.x - (enemyhit.distance - skinWidth) * directionX;
+						float pushY = -skinWidth;
+
+						passengerMovement.Add(new PassengerMovement(enemyhit.transform, new Vector3(pushX, pushY), false, true));
+					}
+				}
 			}
 		}
 
@@ -224,7 +255,9 @@ public class PlatformController : RaycastController
 			for(int i = 0; i < verticalRayCount; i++)
 			{
 				Vector2 rayOrigin = raycastOrigins.topLeft + Vector2.right * (verticalRaySpacing * i);
+
 				RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up, rayLength, passengerMask);
+				RaycastHit2D enemyhit = Physics2D.Raycast (rayOrigin, Vector2.up * directionY, rayLength); //This one checks if we hit any gameobjs tagged enemy.
 
 				if(hit)
 				{
@@ -236,6 +269,19 @@ public class PlatformController : RaycastController
 						float pushY = velocity.y;
 
 						passengerMovement.Add(new PassengerMovement(hit.transform, new Vector3(pushX, pushY), true, false));
+					}
+				}
+
+				if (enemyhit && enemyhit.transform.gameObject.tag == "Enemy") 
+				{
+					if(!movedPassengers.Contains(enemyhit.transform))
+					{
+						movedPassengers.Add (enemyhit.transform);
+
+						float pushX = velocity.x;
+						float pushY = velocity.y;
+
+						passengerMovement.Add(new PassengerMovement(enemyhit.transform, new Vector3(pushX, pushY), true, false));
 					}
 				}
 			}

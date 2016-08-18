@@ -21,6 +21,8 @@ public class Player : Entity
 
 	Vector2 input;
 
+	private bool isOnMovingPlatform = false;
+
 	[HideInInspector]
 	public bool canMove; //Determines whether or not the player is allowed to move.
 
@@ -149,9 +151,14 @@ public class Player : Entity
 		{
 			playerInfo.JustLanded = true;
 			AkSoundEngine.PostEvent ("Land", this.gameObject);
-		}
-		else if (controller.collisions.movingPlatform != null) //A hacky fix for not being able to jump from moving platforms due to not being considered on the ground.
+		} 
+		else if (controller.collisions.movingPlatform != null && !isOnMovingPlatform) 
+		{ //A hacky fix for not being able to jump from moving platforms due to not being considered on the ground.
 			playerInfo.JustLanded = true;
+			isOnMovingPlatform = true;
+		}
+		isOnMovingPlatform = (controller.collisions.movingPlatform == null) ? false : true;
+
 		if (!controller.collisions.below && controller.collisions.belowPrev && !playerInfo.JustJumped)
 			playerInfo.JustFell = true;
 
@@ -212,7 +219,8 @@ public class Player : Entity
 		//Debug.Log (grapplingEnemies.Count + ", " + canMove);
 
 		//Don't apply gravity if we're on the ground or on a ladder or the game is paused.
-		if(controller.collisions.above || controller.collisions.below || ladder != null || GameManager.instance.isPaused)
+		//Note: The paused part of this needs to be separate. It stops the current jump. Need to store and restore velocity on pause/unpause.
+		if(controller.collisions.above || controller.collisions.below || ladder != null)
 		{
 			velocity.y = 0;
 		}
@@ -379,7 +387,7 @@ public class Player : Entity
 			//Debug.Log ("JustJumped");
 			animator.SetTrigger ("JustJumped");
 		}
-		if (playerInfo.JustLanded) 
+		if (playerInfo.JustLanded)
 		{
 			//Debug.Log ("JustLanded");
 			animator.SetTrigger ("JustLanded");
@@ -393,8 +401,6 @@ public class Player : Entity
 			animator.SetTrigger ("Falling");
 			//Debug.Log ("Falling");
 		}
-
-
 
 		//Debug.Log (velocity);
 

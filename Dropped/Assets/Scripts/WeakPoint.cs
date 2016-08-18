@@ -8,6 +8,8 @@ public class WeakPoint : Entity
 
 	public string[] soundEffectNames;
 
+	public bool triggeredByEnemy;
+
 	void Awake()
 	{
 		base.Awake ();
@@ -40,7 +42,7 @@ public class WeakPoint : Entity
 			GameManager.instance.Sleep (other.gameObject.GetComponent<Bullet>().sleepFramesOnHit);
 		}
 
-		if (other.gameObject.tag == "Corpse") 
+		if (other.gameObject.tag == "Corpse")
 		{
 			health -= Mathf.Abs (other.gameObject.GetComponent<Rigidbody2D> ().velocity.magnitude);
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .075f);
@@ -50,10 +52,21 @@ public class WeakPoint : Entity
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Player") 
+		if (!triggeredByEnemy)
 		{
-			health = 0;
-			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .1f);
+			if (other.gameObject.tag == "Player")
+			{
+				health = 0;
+				Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .1f);
+			}
+		} 
+		if(triggeredByEnemy)
+		{
+			if (other.gameObject.tag == "Enemy")
+			{
+				health = 0;
+				//Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.1f, .1f);
+			}
 		}
 	}
 }

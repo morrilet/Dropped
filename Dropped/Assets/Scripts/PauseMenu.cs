@@ -6,6 +6,8 @@ public class PauseMenu : Singleton<PauseMenu>
 {
 	GameObject[] menuObjects;
 
+	private Vector3 playerStoredVelocity; //This is to resume the player velocity after pausing.
+
 	public override void Awake()
 	{
 		isPersistant = false;
@@ -35,6 +37,8 @@ public class PauseMenu : Singleton<PauseMenu>
 
 	public void PauseGame()
 	{
+		playerStoredVelocity = GameManager.instance.player.GetComponent<Player> ().velocity;
+		GameManager.instance.player.GetComponent<Player> ().velocity = Vector3.zero;
 		GameManager.instance.player.GetComponent<Player> ().canMove = false;
 
 		GameObject[] ragdolls = GameObject.FindGameObjectsWithTag ("Ragdoll");
@@ -54,6 +58,7 @@ public class PauseMenu : Singleton<PauseMenu>
 	public void UnpauseGame()
 	{
 		GameManager.instance.player.GetComponent<Player> ().canMove = true;
+		GameManager.instance.player.GetComponent<Player> ().velocity = playerStoredVelocity;
 
 		GameObject[] ragdolls = GameObject.FindGameObjectsWithTag ("Ragdoll");
 		for (int i = 0; i < ragdolls.Length; i++) 
