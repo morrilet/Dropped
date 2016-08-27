@@ -3,7 +3,7 @@
 	<Platform GUID="{51110E58-5F55-42AD-8444-600C6280BA75}">
 		<Language ID="0">
 			<Bank Name="Init" Hash="1710263250" StreamHash="157587662" Timestamp="131142708025909000"/>
-			<Bank Name="Miasmaclysm_Sound_Bank" Hash="1993869166" StreamHash="157587662" Timestamp="131142708025359000"/>
+			<Bank Name="Miasmaclysm_Sound_Bank" Hash="3276821945" StreamHash="157587662" Timestamp="131166641678265000"/>
 		</Language>
 	</Platform>
 </IncrementalBankBuild>

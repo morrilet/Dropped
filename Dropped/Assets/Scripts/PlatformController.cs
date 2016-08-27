@@ -65,7 +65,7 @@ public class PlatformController : RaycastController
 		UpdateRaycastOrigins ();
 
 		Vector3 velocity = Vector3.zero; 
-		if(shouldMove)
+		if(shouldMove && GameManager.instance.isPaused == false)
 		{
 			velocity = CalculatePlatformMovement();
 		}

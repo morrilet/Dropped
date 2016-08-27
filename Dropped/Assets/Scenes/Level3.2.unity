@@ -4119,6 +4119,7 @@ MonoBehaviour:
   parameterName: Window2_Trigger
   soundEffectNames:
   - Window_Break
+  triggeredByEnemy: 0
 --- !u!114 &181708281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8157,6 +8158,7 @@ MonoBehaviour:
   weakpointAnimator: {fileID: 1937016495}
   parameterName: FogRise
   soundEffectNames: []
+  triggeredByEnemy: 0
 --- !u!1001 &713894230
 Prefab:
   m_ObjectHideFlags: 0
@@ -9147,6 +9149,7 @@ MonoBehaviour:
   parameterName: FireEscape_Trigger
   soundEffectNames:
   - Wood_Break
+  triggeredByEnemy: 0
 --- !u!61 &934229317
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9429,6 +9432,7 @@ MonoBehaviour:
   parameterName: Window1_Trigger
   soundEffectNames:
   - Window_Break
+  triggeredByEnemy: 0
 --- !u!4 &970381221 stripped
 Transform:
   m_PrefabParentObject: {fileID: 443856, guid: 8bae4c14038d5a144a9094e6162c55db, type: 2}
@@ -12451,6 +12455,7 @@ MonoBehaviour:
   parameterName: Window3_Trigger
   soundEffectNames:
   - Window_Break
+  triggeredByEnemy: 0
 --- !u!114 &1192879313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16290,6 +16295,7 @@ MonoBehaviour:
   parameterName: Window4_Trigger
   soundEffectNames:
   - Window_Break
+  triggeredByEnemy: 0
 --- !u!114 &2010498436
 MonoBehaviour:
   m_ObjectHideFlags: 0

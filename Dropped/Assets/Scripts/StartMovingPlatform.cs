@@ -27,6 +27,8 @@ public class StartMovingPlatform : MonoBehaviour
 			{
 				movingPlatforms [i].speed = platformStartingSpeeds [i];
 			}
+
+			Destroy (this.GetComponent<StartMovingPlatform> ());
 		}
 	}
 }

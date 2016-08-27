@@ -16,6 +16,8 @@ public class StopMovingPlatform : MonoBehaviour
 			{
 				movingPlatforms [i].speed = 0f;
 			}
+
+			Destroy (this.GetComponent<StopMovingPlatform> ());
 		}
 	}
 }

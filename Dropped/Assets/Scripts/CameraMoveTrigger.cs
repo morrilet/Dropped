@@ -51,4 +51,17 @@ public class CameraMoveTrigger : MonoBehaviour
 		if(other.gameObject.tag == "Player")
 			cam.movementOverridden = false;
 	}
+
+	/* Tried to make this work but it was a little off and not really worth the effort at this point.
+	void OnDrawGizmos()
+	{
+		Gizmos.color = Color.magenta;
+
+		Vector2 camExtents;
+		camExtents.y = Camera.main.orthographicSize;
+		camExtents.x = (camExtents.y * Screen.width) / Screen.height;
+
+		Gizmos.DrawWireCube (cameraPositionToMoveTo, new Vector3(camExtents.x * 2f, camExtents.y * 2f, 0f));
+	}
+	*/
 }

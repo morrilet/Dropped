@@ -88,7 +88,7 @@ MonoBehaviour:
         ObjectType: 3
       ID: -387374049
       Guid: bd475300e8a82d4ca40654c2691a4ca6
-      maxAttenuation: 0
+      maxAttenuation: 100
     - Name: Impacts_Metal
       Path: Default Work Unit\Objects\Gun\Bullets\Impacts_Metal
       PathAndIcons:
@@ -104,7 +104,7 @@ MonoBehaviour:
         ObjectType: 3
       ID: 856508550
       Guid: 0fae549e06329244969d28cba3153734
-      maxAttenuation: 0
+      maxAttenuation: 100
     - Name: Impacts_Zombie
       Path: Default Work Unit\Objects\Gun\Bullets\Impacts_Zombie
       PathAndIcons:
@@ -293,7 +293,8 @@ MonoBehaviour:
   - /Wwise_Dropped/Events
   - /Wwise_Dropped/Events/Default Work Unit
   - /Wwise_Dropped/Events/Default Work Unit/Objects
-  - /Wwise_Dropped/Events/Default Work Unit/Objects/Structure Weak Point
+  - /Wwise_Dropped/Events/Default Work Unit/Objects/Gun
+  - /Wwise_Dropped/Events/Default Work Unit/Objects/Gun/Bullets
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1

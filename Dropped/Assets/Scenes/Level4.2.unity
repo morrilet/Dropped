@@ -719,6 +719,7 @@ MonoBehaviour:
   parameterName: PlaneFront_Trigger
   soundEffectNames:
   - Rubble_Falling
+  triggeredByEnemy: 0
 --- !u!114 &140682535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2887,6 +2888,7 @@ MonoBehaviour:
   parameterName: PlaneFront_Trigger
   soundEffectNames:
   - Rubble_Falling
+  triggeredByEnemy: 0
 --- !u!114 &210293336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3810,7 +3812,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 115576, guid: cc7cd3f8da870a647ab747ad0c96dda7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc7cd3f8da870a647ab747ad0c96dda7, type: 2}
@@ -9560,7 +9562,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 189130, guid: 781100e92fbd0bc459f9b1bda8b903b3, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 781100e92fbd0bc459f9b1bda8b903b3, type: 2}
@@ -13403,6 +13405,7 @@ MonoBehaviour:
   parameterName: Window1_Trigger
   soundEffectNames:
   - Window_Break
+  triggeredByEnemy: 0
 --- !u!114 &2034909744
 MonoBehaviour:
   m_ObjectHideFlags: 0
