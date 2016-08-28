@@ -7,6 +7,8 @@ public class PauseMenu : Singleton<PauseMenu>
 	GameObject[] menuObjects;
 
 	private Vector3 playerStoredVelocity; //This is to resume the player velocity after pausing.
+	private Animator[] animatorObjs; //This is used for pausing all animators in the scene.
+	private ParticleSystem[] particleObjs; //For pausing particle systems.
 
 	public override void Awake()
 	{
@@ -22,6 +24,8 @@ public class PauseMenu : Singleton<PauseMenu>
 			menuObjects [i] = transform.GetChild (i).gameObject;
 			menuObjects [i].gameObject.SetActive (false);
 		}
+			
+		animatorObjs = GameObject.FindObjectsOfType<Animator> ();
 	}
 
 	public void ReturnToMainMenu()
@@ -52,6 +56,19 @@ public class PauseMenu : Singleton<PauseMenu>
 			menuObjects [i].gameObject.SetActive (true);
 		}
 
+		for (int i = 0; i < animatorObjs.Length; i++) 
+		{
+			if(animatorObjs[i] != null)
+				animatorObjs [i].speed = 0f;
+		}
+
+		//Pause any active particle systems... Would declare in start but they're largely inactive.
+		particleObjs = GameObject.FindObjectsOfType<ParticleSystem>();
+		for (int i = 0; i < particleObjs.Length; i++) 
+		{
+			particleObjs [i].Pause ();
+		}
+
 		GameManager.instance.isPaused = true;
 	}
 
@@ -69,6 +86,17 @@ public class PauseMenu : Singleton<PauseMenu>
 		for (int i = 0; i < menuObjects.Length; i++) 
 		{
 			menuObjects [i].gameObject.SetActive (false);
+		}
+
+		for (int i = 0; i < animatorObjs.Length; i++) 
+		{
+			if(animatorObjs[i] != null)
+				animatorObjs [i].speed = 1f;
+		}
+
+		for (int i = 0; i < particleObjs.Length; i++) 
+		{
+			particleObjs [i].Play ();
 		}
 
 		GameManager.instance.isPaused = false;

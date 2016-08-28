@@ -190,6 +190,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Offset.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Offset.y
+      value: 0.093263626
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Size.y
+      value: 2.36135
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
   m_IsPrefabParent: 0
@@ -231,6 +243,14 @@ Prefab:
     - target: {fileID: 474112, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Offset.y
+      value: 0.09095955
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Size.y
+      value: 2.3567414
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
@@ -333,6 +353,9 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1052414134}
   parameterName: Beam3_Trigger
+  soundEffectNames:
+  - Wood_Break
+  triggeredByEnemy: 0
 --- !u!1001 &33867159
 Prefab:
   m_ObjectHideFlags: 0
@@ -1188,6 +1211,9 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 893732031}
   parameterName: Window4_Trigger
+  soundEffectNames:
+  - Window_Break
+  triggeredByEnemy: 0
 --- !u!1001 &95527803
 Prefab:
   m_ObjectHideFlags: 0
@@ -4709,6 +4735,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Offset.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Offset.y
+      value: 0.09095955
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Size.y
+      value: 2.3567414
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
   m_IsPrefabParent: 0
@@ -6998,7 +7036,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 493174, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 22.53
+      value: 19.9
       objectReference: {fileID: 0}
     - target: {fileID: 493174, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
       propertyPath: m_LocalPosition.y
@@ -7031,6 +7069,14 @@ Prefab:
     - target: {fileID: 195376, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
       propertyPath: m_Name
       value: Checkpoint (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 493174, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 458674, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.166
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e0c21810a1bb564bb388d961f51ee46, type: 2}
@@ -8099,6 +8145,9 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 576266173}
   parameterName: Window3_Trigger
+  soundEffectNames:
+  - Window_Break
+  triggeredByEnemy: 0
 --- !u!1 &723756909
 GameObject:
   m_ObjectHideFlags: 0
@@ -12281,6 +12330,18 @@ Prefab:
     - target: {fileID: 474112, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Offset.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Offset.y
+      value: 0.09342575
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Size.y
+      value: 2.3616745
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
@@ -18679,6 +18740,9 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 328135105}
   parameterName: Beam1_Trigger
+  soundEffectNames:
+  - Wood_Break
+  triggeredByEnemy: 0
 --- !u!1001 &1195618821
 Prefab:
   m_ObjectHideFlags: 0
@@ -20408,6 +20472,18 @@ Prefab:
     - target: {fileID: 474112, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Offset.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Offset.y
+      value: 0.093110085
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Size.y
+      value: 2.361042
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
@@ -27426,6 +27502,9 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 468295374}
   parameterName: Window1_Trigger
+  soundEffectNames:
+  - Window_Break
+  triggeredByEnemy: 0
 --- !u!1001 &1809171255
 Prefab:
   m_ObjectHideFlags: 0
@@ -27670,6 +27749,10 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1019356422}
   parameterName: Beam4_Trigger
+  soundEffectNames:
+  - Wood_Break
+  - Rubble_Falling
+  triggeredByEnemy: 0
 --- !u!1001 &1848934989
 Prefab:
   m_ObjectHideFlags: 0
@@ -28211,6 +28294,9 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1240383072}
   parameterName: Window2_Trigger
+  soundEffectNames:
+  - Window_Break
+  triggeredByEnemy: 0
 --- !u!1001 &1901367594
 Prefab:
   m_ObjectHideFlags: 0
@@ -28669,6 +28755,9 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 61658910}
   parameterName: Beam2_Trigger
+  soundEffectNames:
+  - Wood_Break
+  triggeredByEnemy: 0
 --- !u!4 &1932145636 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
@@ -28905,6 +28994,60 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
   m_PrefabInternal: {fileID: 1949775040}
+--- !u!1 &1950117985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1950117986}
+  - 61: {fileID: 1950117988}
+  - 114: {fileID: 1950117987}
+  m_Layer: 8
+  m_Name: KillPlayerTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1950117986
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1950117985}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.15799999, y: 0.13519098, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1864242521}
+  m_RootOrder: 0
+--- !u!114 &1950117987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1950117985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff798d175169fc4db209252f13b6676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1950117988
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1950117985}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1001 &1955417770
 Prefab:
   m_ObjectHideFlags: 0

@@ -6652,6 +6652,7 @@ MonoBehaviour:
   parameterName: Window2_Trigger
   soundEffectNames:
   - Window_Break
+  triggeredByEnemy: 0
 --- !u!114 &1069696965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6743,6 +6744,7 @@ MonoBehaviour:
   parameterName: FloorFall_Trigger
   soundEffectNames:
   - Rubble_Falling
+  triggeredByEnemy: 0
 --- !u!61 &1101373417
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7649,6 +7651,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Offset.y
+      value: 0.092410564
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Size.y
+      value: 2.359644
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
   m_IsPrefabParent: 0
@@ -8495,6 +8505,7 @@ MonoBehaviour:
   parameterName: Window1_Trigger
   soundEffectNames:
   - Window_Break
+  triggeredByEnemy: 0
 --- !u!114 &1702317904
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -295,6 +295,7 @@ MonoBehaviour:
   - /Wwise_Dropped/Events/Default Work Unit/Objects
   - /Wwise_Dropped/Events/Default Work Unit/Objects/Gun
   - /Wwise_Dropped/Events/Default Work Unit/Objects/Gun/Bullets
+  - /Wwise_Dropped/Events/Default Work Unit/Objects/Structure Weak Point
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1

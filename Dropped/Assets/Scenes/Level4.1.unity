@@ -1849,6 +1849,7 @@ MonoBehaviour:
   parameterName: Window1_Trigger
   soundEffectNames:
   - Window_Break
+  triggeredByEnemy: 0
 --- !u!114 &522504892
 MonoBehaviour:
   m_ObjectHideFlags: 0

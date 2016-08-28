@@ -585,7 +585,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 474112, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.61
+      value: 2.54
       objectReference: {fileID: 0}
     - target: {fileID: 474112, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -610,6 +610,18 @@ Prefab:
     - target: {fileID: 474112, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 474112, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.974416
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Offset.y
+      value: 0.097457625
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140978, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_Size.y
+      value: 2.3697386
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
@@ -785,6 +797,10 @@ Prefab:
     - target: {fileID: 22433216, guid: cc7cd3f8da870a647ab747ad0c96dda7, type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 115576, guid: cc7cd3f8da870a647ab747ad0c96dda7, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc7cd3f8da870a647ab747ad0c96dda7, type: 2}
@@ -2553,7 +2569,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 474112, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.009
+      value: 0.98
       objectReference: {fileID: 0}
     - target: {fileID: 474112, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2582,6 +2598,10 @@ Prefab:
     - target: {fileID: 154072, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
       propertyPath: m_Name
       value: Ladder_Metal (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 474112, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.974416
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb230a33333af84499bb6f288c2d390e, type: 2}

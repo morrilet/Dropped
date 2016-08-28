@@ -786,6 +786,7 @@ MonoBehaviour:
   parameterName: Weakpoint_Window
   soundEffectNames:
   - Window_Break
+  triggeredByEnemy: 0
 --- !u!114 &111719216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1352,6 +1353,10 @@ Prefab:
     - target: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
       propertyPath: m_LocalScale.x
       value: 95.626076
+      objectReference: {fileID: 0}
+    - target: {fileID: 131018, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11447830, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
@@ -5004,6 +5009,7 @@ MonoBehaviour:
   soundEffectNames:
   - Wood_Break
   - Rubble_Falling
+  triggeredByEnemy: 0
 --- !u!1001 &1017279666
 Prefab:
   m_ObjectHideFlags: 0
@@ -7277,6 +7283,14 @@ Prefab:
     - target: {fileID: 439354, guid: 25192f24640ee084ca0cae34cf6c6084, type: 2}
       propertyPath: m_LocalScale.y
       value: 0.77161586
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149538, guid: 25192f24640ee084ca0cae34cf6c6084, type: 2}
+      propertyPath: m_Offset.y
+      value: 0.02226801
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149538, guid: 25192f24640ee084ca0cae34cf6c6084, type: 2}
+      propertyPath: m_Size.y
+      value: 2.2193584
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25192f24640ee084ca0cae34cf6c6084, type: 2}

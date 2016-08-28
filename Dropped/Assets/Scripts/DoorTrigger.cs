@@ -6,7 +6,7 @@ public class DoorTrigger : MonoBehaviour
 {
 	Door door;
 
-	bool playerIntersectsDoor;
+	//bool playerIntersectsDoor;
 	BoxCollider2D triggerCollider;
 
 	Vector2 triggerStartScale;
@@ -14,20 +14,29 @@ public class DoorTrigger : MonoBehaviour
 
 	bool knockedBackEnemies;
 
+	private Player player;
+
 	void Start()
 	{
 		door = transform.parent.GetComponent<Door>();
-		playerIntersectsDoor = false;
+		//playerIntersectsDoor = false;
 		triggerCollider = GetComponent<BoxCollider2D> ();
 
 		triggerStartScale = triggerCollider.size;
 		triggerStartOffset = triggerCollider.offset;
 
 		knockedBackEnemies = false;
+
+		player = GameManager.instance.player.GetComponent<Player> ();
 	}
 
 	void Update()
 	{
+		if (player == null) 
+		{
+			player = GameManager.instance.player.GetComponent<Player> ();
+		}
+
 		if (door.isOpen) 
 		{
 			if (door.transform.localScale.x < 0) 
@@ -84,8 +93,8 @@ public class DoorTrigger : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player") 
 		{
-			if (door.GetPlayerFacingDoor () && GameObject.Find ("Player").GetComponent<Player>().corpseCarried == null 
-				&& GameObject.Find("Player").GetComponent<Player>().grapplingEnemies.Count == 0)
+			if (door.GetPlayerFacingDoor () && player.corpseCarried == null 
+				&& player.grapplingEnemies.Count == 0)
 			{
 				GUI_Script.instance.openDoorText.SetActive (true);
 				if (Input.GetButtonDown("Action") && !door.GetPlayerInsideDoor ()) 
@@ -107,9 +116,9 @@ public class DoorTrigger : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player") 
 		{
-			if (door.GetPlayerFacingDoor () && GameObject.Find ("Player").GetComponent<Player>().corpseCarried == null 
-				&& GameObject.Find ("Player").GetComponent<Player>().GetTouchingCorpse() == null 
-				&& GameObject.Find("Player").GetComponent<Player>().grapplingEnemies.Count == 0) 
+			if (door.GetPlayerFacingDoor () && player.corpseCarried == null 
+				&& player.GetTouchingCorpse() == null 
+				&& player.grapplingEnemies.Count == 0) 
 			{
 				GUI_Script.instance.openDoorText.SetActive (true);
 				if (Input.GetButtonDown("Action") && !door.GetPlayerInsideDoor ()) 

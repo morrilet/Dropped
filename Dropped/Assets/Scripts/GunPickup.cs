@@ -25,7 +25,8 @@ public class GunPickup : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D coll)
 	{
-		if (coll.gameObject.tag == "Player") {
+		if (coll.gameObject.tag == "Player") 
+		{
 			SetGuiText (coll);
 //			GUI.instance.grabGunText.enabled = true;
 		}

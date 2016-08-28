@@ -248,7 +248,7 @@ public class PlatformController : RaycastController
 		}
 
 		//Passenger on top of a horizontally or downward moving platform
-		if (directionY == -1 || velocity.y == 0 && velocity.x != 0) 
+		if (directionY == -1 || velocity.y == 0 && velocity.x != 0)
 		{
 			float rayLength = skinWidth * 2;
 
