@@ -250,7 +250,6 @@
 										</ModifierInfo>
 									</ModifierList>
 								</Property>
-								<Property Name="PositioningType" Type="int16" Value="1"/>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -784,6 +783,9 @@
 							</ChildrenList>
 						</RandomSequenceContainer>
 					</ChildrenList>
+					<PositioningInfo>
+						<Panner Name="" ID="{EBE2E3D2-E877-464F-B550-AF595348FFAE}"/>
+					</PositioningInfo>
 				</ActorMixer>
 				<ActorMixer Name="Objects" ID="{6115653F-777D-43DB-8169-396E3C946F12}" ShortID="797747770">
 					<ReferenceList>
@@ -1767,6 +1769,7 @@
 					<ChildrenList>
 						<Sound Name="Music Loop" ID="{E142808A-C76A-406D-BE4E-A22878A868D7}" ShortID="749510330" Type="SoundFX">
 							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>2</Value>

@@ -218,14 +218,13 @@ public class Player : Entity
 		}
 		//Debug.Log (grapplingEnemies.Count + ", " + canMove);
 
-		//Don't apply gravity if we're on the ground or on a ladder or the game is paused.
-		//Note: The paused part of this needs to be separate. It stops the current jump. Need to store and restore velocity on pause/unpause.
+		//Don't apply gravity if we're on the ground or on a ladder.
 		if(controller.collisions.above || controller.collisions.below || ladder != null)
 		{
 			velocity.y = 0;
 		}
 
-		if (throwingCorpse) 
+		if (throwingCorpse && !GameManager.instance.isPaused) 
 		{
 			corpseThrowCount += Time.deltaTime;
 			//Debug.Log (corpseThrowCount / corpseThrowTime);
@@ -238,7 +237,7 @@ public class Player : Entity
 			//corpseCarried.GetComponent<Rigidbody2D> ().MovePosition ((Vector2)transform.position + new Vector2 (0f, .9f));
 			//corpseCarried.GetComponent<CorpseRagdoll>().upperTorso.GetComponent<Rigidbody2D>().MovePosition(transform.position + new Vector3 (0, .9f, 0));
 
-		if (canMove)
+		if (canMove && !GameManager.instance.isPaused)
 			HandleInput ();
 		else
 			input = Vector2.zero;
@@ -591,6 +590,7 @@ public class Player : Entity
 			else if(activeGun.fireRateCount >= activeGun.fireRate)
 			{
 				//AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
+				AkSoundEngine.PostEvent ("Empty_Trigger", Camera.main.gameObject);
 				activeGun.fireRateCount = 0;
 			}
 			break;
@@ -602,6 +602,7 @@ public class Player : Entity
 			else if(activeGun.fireRateCount >= activeGun.fireRate)
 			{
 				//AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
+				AkSoundEngine.PostEvent ("Empty_Trigger", Camera.main.gameObject);
 				activeGun.fireRateCount = 0;
 			}
 			break;
@@ -613,6 +614,7 @@ public class Player : Entity
 			else if(activeGun.fireRateCount >= activeGun.fireRate)
 			{
 				//AudioManager.instance.PlaySoundEffect ("GunEmptyClick");
+				AkSoundEngine.PostEvent ("Empty_Trigger", Camera.main.gameObject);
 				activeGun.fireRateCount = 0;
 			}
 			break;

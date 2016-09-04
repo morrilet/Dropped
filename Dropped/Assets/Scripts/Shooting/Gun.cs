@@ -90,7 +90,8 @@ public class Gun : MonoBehaviour
 	{
 		if (fireRateCount >= fireRate && ammoInClip > 0 && !isReloading) 
 		{
-			AudioManager.instance.PlaySoundEffectVariation ("Ethan_Gunshot", .9f, 1.1f);
+			//AudioManager.instance.PlaySoundEffectVariation ("Ethan_Gunshot", .9f, 1.1f);
+			AkSoundEngine.PostEvent("Gunshot", Camera.main.gameObject);
 
 			if(isKnockingBack)
 				StopCoroutine (KickBack());
@@ -160,7 +161,8 @@ public class Gun : MonoBehaviour
 	{
 		bulletsToLoad = bulletsAvailableToLoad;
 		isReloading = true;
-		AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
+		//AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
+		AkSoundEngine.PostEvent("Ammo_Pickup", Camera.main.gameObject);
 		reloadCount = 0;
 	}
 

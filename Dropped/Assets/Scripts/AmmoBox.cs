@@ -20,7 +20,8 @@ public class AmmoBox : MonoBehaviour
 			if (Input.GetButtonDown("Action")) 
 			{
 				player.playerAmmo.RefillAll ();
-				AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
+				//AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
+				AkSoundEngine.PostEvent("Ammo_Pickup", Camera.main.gameObject);
 			}
 		}
 	}
@@ -33,7 +34,8 @@ public class AmmoBox : MonoBehaviour
 			if (Input.GetButtonDown("Action")) 
 			{
 				player.playerAmmo.RefillAll ();
-				AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
+				//AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
+				AkSoundEngine.PostEvent("Ammo_Pickup", Camera.main.gameObject);
 			}
 		}
 	}

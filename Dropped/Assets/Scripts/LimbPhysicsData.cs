@@ -50,8 +50,8 @@ public class LimbPhysicsData : MonoBehaviour
 		if (hinge != null) 
 		{
 			JointAngleLimits2D tempLimits = new JointAngleLimits2D ();
-			tempLimits.min = 0;
-			tempLimits.max = 0;
+			tempLimits.min = hinge.jointAngle;
+			tempLimits.max = hinge.jointAngle;
 			hinge.limits = tempLimits;
 		}
 

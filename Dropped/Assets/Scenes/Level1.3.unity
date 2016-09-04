@@ -2857,10 +2857,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11406354, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
-      propertyPath: triggerList.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 485868, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
       propertyPath: m_LocalPosition.x
       value: -13.336013
@@ -2901,41 +2897,9 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1266182951}
-    - target: {fileID: 11406354, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
-      propertyPath: triggerList.Array.data[0]
-      value: -358577003
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 11406354, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1517870635 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 120734, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
-  m_PrefabInternal: {fileID: 1517870634}
---- !u!114 &1517870636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1517870635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8cf6321065e2ae4c9e64275c4887db9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: 
-  useOtherObject: 0
-  valueGuid: 99c0159ccbeffc44ae8c327146c73a0b
-  eventID: 1334931201
-  soundEmitterObject: {fileID: 0}
-  enableActionOnEvent: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  transitionDuration: 0
-  m_callbackData: {fileID: 0}
-  multiPositionTypeLabel: 0
-  multiPositionArray: []
 --- !u!1001 &1518544842
 Prefab:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class GunPickup : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D coll)
 	{
-		if (coll.gameObject.tag == "Player") 
+		if (coll.gameObject.tag == "Player")
 		{
 			SetGuiText (coll);
 //			GUI.instance.grabGunText.enabled = true;
@@ -38,7 +38,8 @@ public class GunPickup : MonoBehaviour
 			!GameObject.Find ("Player").GetComponent<Player>().GetTouchingCorpse() && GameObject.Find ("Player").GetComponent<Player>().corpseCarried == null
 			&& GameObject.Find("Player").GetComponent<Player>().grapplingEnemies.Count == 0) 
 		{
-			AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
+			//AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
+			AkSoundEngine.PostEvent("Ammo_Pickup", Camera.main.gameObject);
 			switch (pickUpGun) 
 			{
 			case Player.CurrentGun.MachineGun:
@@ -84,7 +85,8 @@ public class GunPickup : MonoBehaviour
 	{
 		float lerpValue = Mathf.PingPong (Time.time, duration) / duration;
 		transform.position = Vector3.Lerp (topPos, bottomPos, lerpValue);
-		if (pickUpGun == Player.CurrentGun.None) {
+		if (pickUpGun == Player.CurrentGun.None) 
+		{
 			GUI_Script.instance.grabGunText.SetActive (false);
 			Destroy (gameObject);
 		}

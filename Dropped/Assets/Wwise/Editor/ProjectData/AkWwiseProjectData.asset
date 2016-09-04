@@ -16,9 +16,25 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{A840EE89-6550-4B8B-B6DC-0FFA00561821}'
-    m_lastTimePsrt1: -2126466304
-    m_lastTimePart2: -1999390800
+    m_lastTimePsrt1: -1223235648
+    m_lastTimePart2: -1999384076
     List:
+    - Name: Ammo_Pickup
+      Path: Default Work Unit\Objects\Gun\Bullets\Ammo_Pickup
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Objects
+        ObjectType: 4
+      - ElementName: Gun
+        ObjectType: 4
+      - ElementName: Bullets
+        ObjectType: 4
+      - ElementName: Ammo_Pickup
+        ObjectType: 3
+      ID: -41387586
+      Guid: 0f842f292c119c40ab73888d2573540b
+      maxAttenuation: 0
     - Name: Door_Close
       Path: Default Work Unit\Objects\Door\Door_Close
       PathAndIcons:
@@ -47,6 +63,22 @@ MonoBehaviour:
       ID: 535830432
       Guid: b09d3f9874ebcd4293346584bf0daf67
       maxAttenuation: 100
+    - Name: Empty_Trigger
+      Path: Default Work Unit\Objects\Gun\Bullets\Empty_Trigger
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Objects
+        ObjectType: 4
+      - ElementName: Gun
+        ObjectType: 4
+      - ElementName: Bullets
+        ObjectType: 4
+      - ElementName: Empty_Trigger
+        ObjectType: 3
+      ID: 1596305413
+      Guid: 0b198fd67e4adc40ab685a78211ef23c
+      maxAttenuation: 0
     - Name: Growls
       Path: Default Work Unit\Zombies\Growls
       PathAndIcons:
@@ -59,6 +91,22 @@ MonoBehaviour:
       ID: 1957821939
       Guid: 98105660e985aa489f106febd7635ae3
       maxAttenuation: 100
+    - Name: Gunshot
+      Path: Default Work Unit\Objects\Gun\Bullets\Gunshot
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Objects
+        ObjectType: 4
+      - ElementName: Gun
+        ObjectType: 4
+      - ElementName: Bullets
+        ObjectType: 4
+      - ElementName: Gunshot
+        ObjectType: 3
+      ID: 1287408361
+      Guid: 3e7485bba3af004581ec8faf25954bd6
+      maxAttenuation: 0
     - Name: Health_Pick_Up
       Path: Default Work Unit\Objects\Health Object\Health_Pick_Up
       PathAndIcons:
@@ -255,29 +303,29 @@ MonoBehaviour:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{EE1587E6-7D7D-43DE-964B-492F29543592}'
-    m_lastTimePsrt1: -2106466304
+    m_lastTimePsrt1: 1031089992
     m_lastTimePart2: -1999390800
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{13A8A204-797B-4540-9A8E-FA812D6B14EC}'
-    m_lastTimePsrt1: -2106466304
-    m_lastTimePart2: -1999390800
+    m_lastTimePsrt1: 289665792
+    m_lastTimePart2: -1999393975
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{629A4B8D-A116-434A-AE4B-96B1BF26B78F}'
-    m_lastTimePsrt1: -2086466304
-    m_lastTimePart2: -1999390800
+    m_lastTimePsrt1: 289665792
+    m_lastTimePart2: -1999393975
     List: []
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{AD7F9F1B-3742-4550-9DD1-5A6EEB06E064}'
-    m_lastTimePsrt1: 57710040
-    m_lastTimePart2: -1999388728
+    m_lastTimePsrt1: -1142328760
+    m_lastTimePart2: -1999384464
     List:
     - Name: Miasmaclysm_Sound_Bank
       Path: Default Work Unit\Miasmaclysm_Sound_Bank
@@ -292,10 +340,7 @@ MonoBehaviour:
   - /Wwise_Dropped
   - /Wwise_Dropped/Events
   - /Wwise_Dropped/Events/Default Work Unit
-  - /Wwise_Dropped/Events/Default Work Unit/Objects
-  - /Wwise_Dropped/Events/Default Work Unit/Objects/Gun
-  - /Wwise_Dropped/Events/Default Work Unit/Objects/Gun/Bullets
-  - /Wwise_Dropped/Events/Default Work Unit/Objects/Structure Weak Point
+  - /Wwise_Dropped/Events/Default Work Unit/Zombies
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1

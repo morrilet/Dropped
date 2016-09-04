@@ -47,7 +47,8 @@ public class MainMenu : MonoBehaviour
 	{
 		currentMenu = Menu.Main;
 		isFullscreen = Screen.fullScreen;
-		AudioManager.instance.PlayMusic ("bg01_v02 mixed");
+		//AudioManager.instance.PlayMusic ("bg01_v02 mixed");
+		//AkSoundEngine.PostEvent("Music_Loop", Camera.main.transform.GetChild(0).gameObject);
 
 		supportedResolutions = Screen.resolutions;
 

@@ -47,7 +47,8 @@ public class GameManager : Singleton<GameManager>
 
 		isPaused = false;
 
-		AudioManager.instance.PlayMusic ("bg01_v02 mixed");
+		//AudioManager.instance.PlayMusic ("bg01_v02 mixed");
+		//AkSoundEngine.PostEvent("Music_Loop", Camera.main.transform.GetChild(0).gameObject);
 	}
 
 	void Update ()
@@ -104,7 +105,7 @@ public class GameManager : Singleton<GameManager>
 				PauseMenu.instance.PauseGame ();
 				isPaused = true;
 			} 
-			else 
+			else
 			{
 				PauseMenu.instance.UnpauseGame ();
 				isPaused = false;

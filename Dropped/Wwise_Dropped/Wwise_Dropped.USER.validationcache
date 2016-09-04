@@ -1,39 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ValidationCache Version="1" SchemaVersion="70">
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1530276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Actor-Mixer Hierarchy\Factory SoundSeed Air Objects.wwu" DateLow="1550276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Actor-Mixer Hierarchy\Factory Synth One.wwu" DateLow="1550276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Attenuations\Default Work Unit.wwu" DateLow="1550276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Control Surface Sessions\Default Work Unit.wwu" DateLow="1570276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Conversion Settings\Default Work Unit.wwu" DateLow="1570276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Conversion Settings\Factory Conversion Settings.wwu" DateLow="1570276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1570276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Default Work Unit.wwu" DateLow="1570276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory Auro Headphone.wwu" DateLow="1570276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory Effects.wwu" DateLow="1570276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory iZotope Box Modeler.wwu" DateLow="1570276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory iZotope Delay.wwu" DateLow="1570276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory iZotope Dynamics.wwu" DateLow="1590276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory iZotope Filters.wwu" DateLow="1590276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory iZotope Hybrid Reverb Effects.wwu" DateLow="1590276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory iZotope Multiband Distortion.wwu" DateLow="1590276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory iZotope Singleband Distortion.wwu" DateLow="1590276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory McDSP Effects.wwu" DateLow="1590276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Events\Default Work Unit.wwu" DateLow="1590276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Game Parameters\Default Work Unit.wwu" DateLow="1590276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Game Parameters\Factory SoundSeed Air Game Syncs.wwu" DateLow="1590276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1590276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1610276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Mixing Sessions\Default Work Unit.wwu" DateLow="1610276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Modulators\Default Work Unit.wwu" DateLow="1610276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Presets\Default Work Unit.wwu" DateLow="1610276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Queries\Default Work Unit.wwu" DateLow="1610276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Queries\Factory Queries.wwu" DateLow="1610276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\SoundBanks\Default Work Unit.wwu" DateLow="3774453208" DateHigh="30536112"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1610276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\States\Default Work Unit.wwu" DateLow="1610276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Switches\Default Work Unit.wwu" DateLow="1630276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Triggers\Default Work Unit.wwu" DateLow="1630276864" DateHigh="30534041"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Wwise_Dropped.USER.wsettings" DateLow="3036958685" DateHigh="30539924"/>
-	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Wwise_Dropped.wproj" DateLow="3632503552" DateHigh="30539613"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="2113607928" DateHigh="30540382"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Actor-Mixer Hierarchy\Factory SoundSeed Air Objects.wwu" DateLow="3921261824" DateHigh="30531531"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Actor-Mixer Hierarchy\Factory Synth One.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Attenuations\Default Work Unit.wwu" DateLow="2155994232" DateHigh="30534033"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Control Surface Sessions\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Conversion Settings\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Conversion Settings\Factory Conversion Settings.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Dynamic Dialogue\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Effects\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Effects\Factory Auro Headphone.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Effects\Factory Effects.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Effects\Factory iZotope Box Modeler.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Effects\Factory iZotope Delay.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Effects\Factory iZotope Dynamics.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Effects\Factory iZotope Filters.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Effects\Factory iZotope Hybrid Reverb Effects.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Effects\Factory iZotope Multiband Distortion.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Effects\Factory iZotope Singleband Distortion.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Effects\Factory McDSP Effects.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Events\Default Work Unit.wwu" DateLow="1419489984" DateHigh="30535821"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Game Parameters\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Game Parameters\Factory SoundSeed Air Game Syncs.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="452865864" DateHigh="30534041"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Mixing Sessions\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Modulators\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Presets\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Queries\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Queries\Factory Queries.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\SoundBanks\Default Work Unit.wwu" DateLow="2574414408" DateHigh="30540377"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Soundcaster Sessions\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\States\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Switches\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Triggers\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Wwise_Dropped.USER.wsettings" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Desktop\Wwise_Dropped\Wwise_Dropped.wproj" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="3550514357" DateHigh="30540755"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Actor-Mixer Hierarchy\Factory SoundSeed Air Objects.wwu" DateLow="3921261824" DateHigh="30531531"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Actor-Mixer Hierarchy\Factory Synth One.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Attenuations\Default Work Unit.wwu" DateLow="2155994232" DateHigh="30534033"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Control Surface Sessions\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Conversion Settings\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Conversion Settings\Factory Conversion Settings.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Dynamic Dialogue\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory Auro Headphone.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory Effects.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory iZotope Box Modeler.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory iZotope Delay.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory iZotope Dynamics.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory iZotope Filters.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory iZotope Hybrid Reverb Effects.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory iZotope Multiband Distortion.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory iZotope Singleband Distortion.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Effects\Factory McDSP Effects.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Events\Default Work Unit.wwu" DateLow="1419489984" DateHigh="30535821"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Game Parameters\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Game Parameters\Factory SoundSeed Air Game Syncs.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="452865864" DateHigh="30534041"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Mixing Sessions\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Modulators\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Presets\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Queries\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Queries\Factory Queries.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\SoundBanks\Default Work Unit.wwu" DateLow="2574414408" DateHigh="30540377"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Soundcaster Sessions\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\States\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Switches\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Triggers\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Wwise_Dropped.USER.wsettings" DateLow="749284308" DateHigh="30540761"/>
+	<ValidationCacheItem File="C:\Users\USER\Documents\GitHub\Dropped\Dropped\Wwise_Dropped\Wwise_Dropped.wproj" DateLow="4006408960" DateHigh="30530865"/>
 </ValidationCache>

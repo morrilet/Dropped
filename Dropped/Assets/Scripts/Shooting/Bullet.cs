@@ -50,9 +50,14 @@ public class Bullet : MonoBehaviour {
 
 	void Update () 
 	{
-		if (!GameManager.instance.isPaused)
+		if (GameManager.instance.isPaused) 
+		{
+			GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+		}
+		if (!GameManager.instance.isPaused) 
+		{
 			MoveBullet ();
-
+		}
 		if (maxRange <= Mathf.Abs(startPos.x - transform.position.x))
 		{
 			Destroy (gameObject);

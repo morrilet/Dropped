@@ -9,6 +9,9 @@ public class PauseMenu : Singleton<PauseMenu>
 	private Vector3 playerStoredVelocity; //This is to resume the player velocity after pausing.
 	private Animator[] animatorObjs; //This is used for pausing all animators in the scene.
 	private ParticleSystem[] particleObjs; //For pausing particle systems.
+	private Rope[] ropes; //For pausing ropes.
+	private TrailRenderer[] trailObjs;
+	private float[] trailObjsStoredTimes;
 
 	public override void Awake()
 	{
@@ -26,6 +29,7 @@ public class PauseMenu : Singleton<PauseMenu>
 		}
 			
 		animatorObjs = GameObject.FindObjectsOfType<Animator> ();
+		ropes = GameObject.FindObjectsOfType<Rope> ();
 	}
 
 	public void ReturnToMainMenu()
@@ -69,6 +73,21 @@ public class PauseMenu : Singleton<PauseMenu>
 			particleObjs [i].Pause ();
 		}
 
+		//Pause any bullets.
+		trailObjs = GameObject.FindObjectsOfType<TrailRenderer>();
+		for (int i = 0; i < trailObjs.Length; i++) 
+		{
+			trailObjsStoredTimes = new float[trailObjs.Length];
+			trailObjsStoredTimes [i] = trailObjs [i].time;
+			trailObjs [i].time = float.PositiveInfinity;
+		}
+
+		//Pause any ropes.
+		for (int i = 0; i < ropes.Length; i++) 
+		{
+			ropes [i].Pause ();
+		}
+
 		GameManager.instance.isPaused = true;
 	}
 
@@ -97,6 +116,18 @@ public class PauseMenu : Singleton<PauseMenu>
 		for (int i = 0; i < particleObjs.Length; i++) 
 		{
 			particleObjs [i].Play ();
+		}
+
+		//Pause any bullets.
+		for (int i = 0; i < trailObjs.Length; i++) 
+		{
+			trailObjs [i].time = trailObjsStoredTimes [i];
+		}
+
+		//Resume any ropes.
+		for (int i = 0; i < ropes.Length; i++) 
+		{
+			ropes [i].Resume ();
 		}
 
 		GameManager.instance.isPaused = false;

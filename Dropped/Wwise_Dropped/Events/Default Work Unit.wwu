@@ -105,6 +105,39 @@
 												</Action>
 											</ChildrenList>
 										</Event>
+										<Event Name="Ammo_Pickup" ID="{292F840F-112C-409C-AB73-888D2573540B}">
+											<ChildrenList>
+												<Action Name="Play" ID="{499E0B68-62F3-477F-9823-7AA6F4113B18}" ShortID="739819533" Type="Play" Scope="One" Global="false">
+													<ElementList>
+														<Element ID="{8A214F75-7789-4DB0-B110-59A3C94238DC}" Global="false">
+															<ObjectRef Name="Ammo Pickup" ID="{44B32A2C-3C39-4883-A3D7-3C6119A1762C}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+														</Element>
+													</ElementList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="Empty_Trigger" ID="{D68F190B-4A7E-40DC-AB68-5A78211EF23C}">
+											<ChildrenList>
+												<Action Name="Play" ID="{7C39221E-97E4-4B7C-9ECB-190803577DE7}" ShortID="393727150" Type="Play" Scope="One" Global="false">
+													<ElementList>
+														<Element ID="{44B44251-54A8-4E13-ABA0-4E0CA22E37FD}" Global="false">
+															<ObjectRef Name="Empty Trigger" ID="{B846A478-0C74-4074-B49B-BC0287F53EFC}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+														</Element>
+													</ElementList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="Gunshot" ID="{BB85743E-AFA3-4500-81EC-8FAF25954BD6}">
+											<ChildrenList>
+												<Action Name="Play" ID="{830DD9CD-970C-4406-84D9-9AF0B8A6CED6}" ShortID="46886590" Type="Play" Scope="One" Global="false">
+													<ElementList>
+														<Element ID="{A6BA0955-906D-4BBE-BA5A-644249C801A5}" Global="false">
+															<ObjectRef Name="Gunshot" ID="{9EECB5C8-28C6-49CA-9635-881DFFDD8F1A}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+														</Element>
+													</ElementList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

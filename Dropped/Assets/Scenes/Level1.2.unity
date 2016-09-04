@@ -2475,7 +2475,7 @@ Prefab:
       objectReference: {fileID: 1512188217}
     - target: {fileID: 11407702, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
       propertyPath: cameraLockMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11407702, guid: db9cae3b2113cce49a2875e5c21e1aa8, type: 2}
       propertyPath: cameraFollowMode
