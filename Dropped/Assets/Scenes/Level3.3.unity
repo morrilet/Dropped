@@ -353,6 +353,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1052414134}
   parameterName: Beam3_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Wood_Break
   triggeredByEnemy: 0
@@ -1211,6 +1212,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 893732031}
   parameterName: Window4_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0
@@ -8145,6 +8147,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 576266173}
   parameterName: Window3_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0
@@ -17366,6 +17369,8 @@ Transform:
   - {fileID: 1373614892}
   - {fileID: 1160493387}
   - {fileID: 258883164}
+  - {fileID: 1865300811}
+  - {fileID: 1265697064}
   m_Father: {fileID: 1084611556}
   m_RootOrder: 27
 --- !u!95 &1019356422
@@ -18322,7 +18327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1160493387
 Transform:
   m_ObjectHideFlags: 0
@@ -18740,6 +18745,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 328135105}
   parameterName: Beam1_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Wood_Break
   triggeredByEnemy: 0
@@ -19106,6 +19112,96 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7437ef5dc9a25f94f8d23393e8f20d15, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1265697063
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1019356421}
+    m_Modifications:
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: EmissionModule.rate.minCurve.m_Curve.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 14.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -28.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 479130, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6177836, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_Size.x
+      value: 11.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6177836, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193398, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_Size.x
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: InitialModule.maxNumParticles
+      value: 3522
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: ShapeModule.boxX
+      value: 11.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: ShapeModule.boxY
+      value: 21.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: EmissionModule.rate.scalar
+      value: 3522.1875
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: EmissionModule.rate.minCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120558, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_Name
+      value: NewFog (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1265697064 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+  m_PrefabInternal: {fileID: 1265697063}
 --- !u!4 &1267429410 stripped
 Transform:
   m_PrefabParentObject: {fileID: 433298, guid: d43855c4d283ad449af726ca74fb30eb, type: 2}
@@ -20220,7 +20316,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1373614892
 Transform:
   m_ObjectHideFlags: 0
@@ -27502,6 +27598,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 468295374}
   parameterName: Window1_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0
@@ -27749,6 +27846,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1019356422}
   parameterName: Beam4_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Wood_Break
   - Rubble_Falling
@@ -27953,6 +28051,92 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
   m_PrefabInternal: {fileID: 1864242520}
+--- !u!1001 &1865300810
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1019356421}
+    m_Modifications:
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: EmissionModule.rate.minCurve.m_Curve.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -16.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -28.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 479130, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6177836, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_Size.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6177836, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193398, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_Size.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: InitialModule.maxNumParticles
+      value: 2709
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: ShapeModule.boxX
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: ShapeModule.boxY
+      value: 21.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: EmissionModule.rate.scalar
+      value: 2709.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: EmissionModule.rate.minCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1865300811 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+  m_PrefabInternal: {fileID: 1865300810}
 --- !u!1001 &1868099105
 Prefab:
   m_ObjectHideFlags: 0
@@ -28294,6 +28478,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1240383072}
   parameterName: Window2_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0
@@ -28755,6 +28940,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 61658910}
   parameterName: Beam2_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Wood_Break
   triggeredByEnemy: 0

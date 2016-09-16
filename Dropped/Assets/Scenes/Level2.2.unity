@@ -702,6 +702,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 89a2272a3b253e4478821608077a6011, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &125249308 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 132588, guid: abfae4b3fd6c4814a9011e5a2ac6692e, type: 2}
+  m_PrefabInternal: {fileID: 1411213184}
+--- !u!114 &125249312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 125249308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a2b0441f6dc594fb3c45c93e8d0a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectName: Impacts_Metal
 --- !u!1001 &131618676
 Prefab:
   m_ObjectHideFlags: 0
@@ -893,6 +909,10 @@ Prefab:
       propertyPath: m_Color.r
       value: 0.478
       objectReference: {fileID: 0}
+    - target: {fileID: 11403098, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
+      propertyPath: effectName
+      value: Impacts_Metal
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
   m_IsPrefabParent: 0
@@ -920,6 +940,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 365503501}
   parameterName: HitOne
+  hitEffectName: Impacts_Metal
   soundEffectNames:
   - Rubble_Falling
   triggeredByEnemy: 0
@@ -939,6 +960,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 365503501}
   parameterName: HitTwo
+  hitEffectName: Impacts_Metal
   soundEffectNames:
   - Wood_Break
   - Rubble_Falling
@@ -1856,6 +1878,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &480764290 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 132588, guid: abfae4b3fd6c4814a9011e5a2ac6692e, type: 2}
+  m_PrefabInternal: {fileID: 1551126863}
+--- !u!114 &480764294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 480764290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a2b0441f6dc594fb3c45c93e8d0a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectName: Impacts_Metal
 --- !u!1001 &485328757
 Prefab:
   m_ObjectHideFlags: 0
@@ -2682,6 +2720,7 @@ GameObject:
   - 4: {fileID: 675748508}
   - 212: {fileID: 675748510}
   - 60: {fileID: 675748509}
+  - 114: {fileID: 675748511}
   m_Layer: 8
   m_Name: Shelf_Short
   m_TagString: Platforms
@@ -2777,6 +2816,18 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &675748511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 675748507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a2b0441f6dc594fb3c45c93e8d0a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectName: Impacts_Metal
 --- !u!4 &682687138 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}

@@ -151,12 +151,15 @@ public class MainMenu : MonoBehaviour
 			musicVolumePercentageText.text = (int)(musicVolumeSlider.normalizedValue * 100f) + "%";
 			effectVolumePercentageText.text = (int)(effectVolumeSlider.normalizedValue * 100f) + "%";
 
-			AudioManager.instance.globalVolumeModifier = globalVolumeSlider.normalizedValue;
-			AudioManager.instance.musicVolumeModifier = musicVolumeSlider.normalizedValue;
-			AudioManager.instance.effectsVolumeModifier = effectVolumeSlider.normalizedValue;
+			//Use this!
+			//AkSoundEngine.SetRTPCValue()
 
-			AudioManager.instance.SetEffectVolume ();
-			AudioManager.instance.SetMusicVolume ();
+			//AudioManager.instance.globalVolumeModifier = globalVolumeSlider.normalizedValue;
+			//AudioManager.instance.musicVolumeModifier = musicVolumeSlider.normalizedValue;
+			//AudioManager.instance.effectsVolumeModifier = effectVolumeSlider.normalizedValue;
+
+			//AudioManager.instance.SetEffectVolume ();
+			//AudioManager.instance.SetMusicVolume ();
 
 			if (effectVolumeSlider.GetComponent<SliderPointerUpEvent> ().pointerUp)
 				AudioManager.instance.PlaySoundEffect ("Ethan_Gunshot");
@@ -228,7 +231,7 @@ public class MainMenu : MonoBehaviour
 
 	public void Play()
 	{
-		SceneManager.LoadScene ("Level1.1", LoadSceneMode.Single);
+		SceneManager.LoadScene ("OpeningCutscene", LoadSceneMode.Single);
 	}
 
 	/*

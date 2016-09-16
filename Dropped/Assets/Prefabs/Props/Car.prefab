@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 402374}
   - 212: {fileID: 21216054}
   - 60: {fileID: 6032692}
+  - 114: {fileID: 11426352}
   m_Layer: 8
   m_Name: Car
   m_TagString: Platforms
@@ -78,6 +79,18 @@ PolygonCollider2D:
     - - {x: -0.744, y: 0.30666667}
       - {x: -0.7413333, y: 0.30666667}
       - {x: -0.7152319, y: 0.31508732}
+--- !u!114 &11426352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a2b0441f6dc594fb3c45c93e8d0a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectName: Impacts_Metal
 --- !u!212 &21216054
 SpriteRenderer:
   m_ObjectHideFlags: 1

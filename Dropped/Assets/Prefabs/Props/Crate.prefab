@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 498648}
   - 212: {fileID: 21262718}
   - 61: {fileID: 6123342}
+  - 114: {fileID: 11443516}
   m_Layer: 8
   m_Name: Crate
   m_TagString: Platforms
@@ -43,6 +44,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1.2, y: 1.2}
+--- !u!114 &11443516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a2b0441f6dc594fb3c45c93e8d0a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectName: Impacts_General
 --- !u!212 &21262718
 SpriteRenderer:
   m_ObjectHideFlags: 1

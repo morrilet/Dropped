@@ -17,7 +17,7 @@ public class AudioManager : Singleton<AudioManager>
 
 	public override void Awake()
 	{
-		isPersistant = true;
+		//isPersistant = true;
 
 		effectStartPitch = effectSource.pitch;
 

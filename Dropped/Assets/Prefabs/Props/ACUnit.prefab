@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 490912}
   - 212: {fileID: 21225782}
   - 60: {fileID: 6010060}
+  - 114: {fileID: 11414970}
   m_Layer: 8
   m_Name: ACUnit
   m_TagString: Platforms
@@ -49,6 +50,18 @@ PolygonCollider2D:
       - {x: 1.5964718, y: 1.1889515}
       - {x: 1.5820236, y: -1.1957474}
       - {x: -1.5999999, y: -1.1999999}
+--- !u!114 &11414970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a2b0441f6dc594fb3c45c93e8d0a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectName: Impacts_Metal
 --- !u!212 &21225782
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -2789,6 +2789,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1129653132}
   parameterName: Window3_Trigger_FromLeft
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 1
@@ -3644,6 +3645,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1181849410}
   parameterName: Window4_Trigger_FromRight
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0
@@ -4629,6 +4631,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 388061083}
   parameterName: Window1_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0
@@ -5705,6 +5708,10 @@ Prefab:
     - target: {fileID: 409954, guid: 465787abb85c2914a97b84cd384303dc, type: 2}
       propertyPath: m_LocalPosition.y
       value: -4.181
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118584, guid: 465787abb85c2914a97b84cd384303dc, type: 2}
+      propertyPath: m_Offset.y
+      value: -1.94
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 465787abb85c2914a97b84cd384303dc, type: 2}
@@ -7408,6 +7415,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1181849410}
   parameterName: Window4_Trigger_FromLeft
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 1
@@ -9458,6 +9466,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1266120661}
   parameterName: Window2_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0
@@ -14078,6 +14087,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 126979736}
   parameterName: Window5_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0
@@ -24046,6 +24056,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 469436144}
   parameterName: FogRise
+  hitEffectName: 
   soundEffectNames: []
   triggeredByEnemy: 0
 --- !u!1001 &1445003570
@@ -26945,6 +26956,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1129653132}
   parameterName: Window3_Trigger_FromRight
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0
@@ -29501,6 +29513,10 @@ Prefab:
     - target: {fileID: 11444158, guid: 1b58d1b3e70f184449ab1f130c8367d0, type: 2}
       propertyPath: m_positionOffsetData.positionOffset.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478664, guid: 1b58d1b3e70f184449ab1f130c8367d0, type: 2}
+      propertyPath: eventID
+      value: -387374049
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b58d1b3e70f184449ab1f130c8367d0, type: 2}

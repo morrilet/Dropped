@@ -130,12 +130,16 @@ public class Bullet : MonoBehaviour {
 			//GameObject impact = Instantiate (impactEffect, transform.position, transform.rotation) as GameObject;
 //			Vector3 impactCollisionNormalNormalized = impactCollisionNormal.normalized;
 //			impact.transform.rotation.eulerAngles = impactCollisionNormalNormalized;
+			if(coll.gameObject.GetComponent<BulletImpact_SFX>() != null)
+				AkSoundEngine.PostEvent(coll.gameObject.GetComponent<BulletImpact_SFX>().effectName, Camera.main.gameObject);
 			Destroy (gameObject);
 		}
 
 		if (coll.gameObject.tag == "Door" && !coll.gameObject.GetComponent<Door> ().isOpen) 
 		{
 			Instantiate (impactEffect, transform.position, transform.rotation);
+			if(coll.gameObject.GetComponent<BulletImpact_SFX>() != null)
+				AkSoundEngine.PostEvent(coll.gameObject.GetComponent<BulletImpact_SFX>().effectName, Camera.main.gameObject);
 			Destroy (gameObject);
 		}
 

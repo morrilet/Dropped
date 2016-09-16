@@ -4117,6 +4117,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 358243394}
   parameterName: Window2_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0
@@ -4226,7 +4227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &192397257
 Transform:
   m_ObjectHideFlags: 0
@@ -4306,7 +4307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &201164534
 Transform:
   m_ObjectHideFlags: 0
@@ -4445,7 +4446,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 409954, guid: 465787abb85c2914a97b84cd384303dc, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.26
+      value: -1.42
       objectReference: {fileID: 0}
     - target: {fileID: 409954, guid: 465787abb85c2914a97b84cd384303dc, type: 2}
       propertyPath: m_LocalPosition.y
@@ -4477,7 +4478,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 409954, guid: 465787abb85c2914a97b84cd384303dc, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1.4518806
+      value: 1.3902496
       objectReference: {fileID: 0}
     - target: {fileID: 409954, guid: 465787abb85c2914a97b84cd384303dc, type: 2}
       propertyPath: m_LocalScale.y
@@ -4810,6 +4811,92 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
   m_PrefabInternal: {fileID: 2088272707}
+--- !u!1001 &341682904
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1937016494}
+    m_Modifications:
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: EmissionModule.rate.minCurve.m_Curve.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -20.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 479130, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6177836, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_Size.x
+      value: 7.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 6177836, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193398, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_Size.x
+      value: 8.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: InitialModule.maxNumParticles
+      value: 2208
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: ShapeModule.boxX
+      value: 6.9275
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: ShapeModule.boxY
+      value: 21.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: EmissionModule.rate.scalar
+      value: 2208.1404
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: EmissionModule.rate.minCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &341682905 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+  m_PrefabInternal: {fileID: 341682904}
 --- !u!1001 &343165628
 Prefab:
   m_ObjectHideFlags: 0
@@ -5625,6 +5712,96 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 474112, guid: cb230a33333af84499bb6f288c2d390e, type: 2}
   m_PrefabInternal: {fileID: 507340099}
+--- !u!1001 &518814796
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1937016494}
+    m_Modifications:
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: EmissionModule.rate.minCurve.m_Curve.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 21.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -20.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 479130, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6177836, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_Size.x
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6177836, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193398, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_Size.x
+      value: 7.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: InitialModule.maxNumParticles
+      value: 2004
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: ShapeModule.boxX
+      value: 6.2900014
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: ShapeModule.boxY
+      value: 21.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: EmissionModule.rate.scalar
+      value: 2004.938
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832404, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: EmissionModule.rate.minCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120558, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+      propertyPath: m_Name
+      value: NewFog (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &518814797 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 428620, guid: 2bd80207d247ba347ac5cd2399d2ecfd, type: 2}
+  m_PrefabInternal: {fileID: 518814796}
 --- !u!1001 &524403469
 Prefab:
   m_ObjectHideFlags: 0
@@ -8223,6 +8400,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1937016495}
   parameterName: FogRise
+  hitEffectName: 
   soundEffectNames: []
   triggeredByEnemy: 0
 --- !u!1001 &713894230
@@ -8424,7 +8602,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 409954, guid: 465787abb85c2914a97b84cd384303dc, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.264
+      value: -1.42
       objectReference: {fileID: 0}
     - target: {fileID: 409954, guid: 465787abb85c2914a97b84cd384303dc, type: 2}
       propertyPath: m_LocalPosition.y
@@ -8456,7 +8634,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 409954, guid: 465787abb85c2914a97b84cd384303dc, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1.4518806
+      value: 1.3902496
       objectReference: {fileID: 0}
     - target: {fileID: 409954, guid: 465787abb85c2914a97b84cd384303dc, type: 2}
       propertyPath: m_LocalScale.y
@@ -8872,7 +9050,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 409954, guid: 465787abb85c2914a97b84cd384303dc, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.264
+      value: -1.42
       objectReference: {fileID: 0}
     - target: {fileID: 409954, guid: 465787abb85c2914a97b84cd384303dc, type: 2}
       propertyPath: m_LocalPosition.y
@@ -8904,7 +9082,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 409954, guid: 465787abb85c2914a97b84cd384303dc, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1.4518806
+      value: 1.3902496
       objectReference: {fileID: 0}
     - target: {fileID: 409954, guid: 465787abb85c2914a97b84cd384303dc, type: 2}
       propertyPath: m_LocalScale.y
@@ -9213,6 +9391,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1112361355}
   parameterName: FireEscape_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Wood_Break
   triggeredByEnemy: 0
@@ -9496,6 +9675,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1896291902}
   parameterName: Window1_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0
@@ -12519,6 +12699,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1875163258}
   parameterName: Window3_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0
@@ -12837,7 +13018,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1309273327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.73, y: 0, z: 0}
+  m_LocalPosition: {x: -1.02, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1547828698}
@@ -14750,11 +14931,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 33.302
+      value: 33.012
       objectReference: {fileID: 0}
     - target: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.0953
+      value: 9.1247
       objectReference: {fileID: 0}
     - target: {fileID: 429602, guid: cc36e32ec493ff2428be58751c53eab4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -15855,6 +16036,8 @@ Transform:
   - {fileID: 683144200}
   - {fileID: 192397257}
   - {fileID: 201164534}
+  - {fileID: 341682905}
+  - {fileID: 518814797}
   m_Father: {fileID: 906180495}
   m_RootOrder: 25
 --- !u!95 &1937016495
@@ -16376,6 +16559,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 1547828699}
   parameterName: Window4_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0

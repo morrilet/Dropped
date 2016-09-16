@@ -6,7 +6,8 @@ public class WeakPoint : Entity
 	public Animator weakpointAnimator; //The animator that this weakpoint will trigger.
 	public string parameterName; //The parameter to set to true.
 
-	public string[] soundEffectNames;
+	public string hitEffectName; //The effect to be played when hit by a bullet.
+	public string[] soundEffectNames; //The effect(s) to be played when destroyed.
 
 	public bool triggeredByEnemy;
 
@@ -21,6 +22,11 @@ public class WeakPoint : Entity
 	void Update()
 	{
 		base.Update ();
+
+		if (hitEffectName == "")
+		{
+			hitEffectName = "Impacts_General";
+		}
 
 		if (!isAlive)
 		{
@@ -40,6 +46,7 @@ public class WeakPoint : Entity
 			health -= other.gameObject.GetComponent<Bullet> ().damage / 2f;
 			Camera.main.GetComponent<CameraFollowTrap> ().ScreenShake (.075f, .025f);
 			GameManager.instance.Sleep (other.gameObject.GetComponent<Bullet>().sleepFramesOnHit);
+			AkSoundEngine.PostEvent (hitEffectName, this.gameObject);
 		}
 
 		if (other.gameObject.tag == "Corpse")
