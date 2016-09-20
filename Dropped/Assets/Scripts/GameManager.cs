@@ -48,7 +48,7 @@ public class GameManager : Singleton<GameManager>
 		isPaused = false;
 
 		//AudioManager.instance.PlayMusic ("bg01_v02 mixed");
-		//AkSoundEngine.PostEvent("Music_Loop", Camera.main.transform.GetChild(0).gameObject);
+		AkSoundEngine.PostEvent("Music_Loop", Camera.main.gameObject);
 	}
 
 	void Update ()
@@ -59,24 +59,24 @@ public class GameManager : Singleton<GameManager>
 			Destroy (instance.gameObject);
 
 		HandleInput ();
-		if(level != null)
-			if (level.GetComponent<Level> ().enemies.Count == 0 && level.GetComponent<Level> ().enemiesPrev.Count != 0)
+		if (level != null) 
+		{
+			if (level.GetComponent<Level> ().enemies.Count == 0 && level.GetComponent<Level> ().enemiesPrev.Count != 0) 
 			{
+				AkSoundEngine.PostEvent ("Time_Slow_Down", Camera.main.gameObject);
 				StopCoroutine ("ApplySleep");
 				Time.timeScale = 1;
 				timeSlowed = true;
 				timeSlowedCounter = 0;
 				StartCoroutine (LerpTimeScale (.2f, .05f));
-
-				AkSoundEngine.PostEvent ("Time_Slow_Down", GameObject.FindGameObjectWithTag("MainCamera").gameObject);
 			}
-
+		}
 		if (timeSlowedCounter >= 2 && timeSlowed)
 		{
 			timeSlowed = false;
 			StartCoroutine (LerpTimeScale (1f, .4f));
 
-			AkSoundEngine.PostEvent ("Time_Speed_Up", GameObject.FindGameObjectWithTag("MainCamera").gameObject);
+			AkSoundEngine.PostEvent ("Time_Speed_Up", Camera.main.gameObject);
 		}
 
 		if(!isPaused)
@@ -142,6 +142,7 @@ public class GameManager : Singleton<GameManager>
 		playerStoredGun = Player.CurrentGun.None;
 	}
 
+	//Outdated. Replaced by functionality in ChangeLevelTrigger.
 	public void ChangeLevel(string levelToChangeTo)
 	{
 		//playerStoredAmmo = player.GetComponent<Player> ().playerAmmo;

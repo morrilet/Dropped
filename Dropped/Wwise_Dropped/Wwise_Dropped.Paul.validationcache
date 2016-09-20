@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ValidationCache Version="1" SchemaVersion="70">
-	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="2113607928" DateHigh="30540382"/>
+	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1954557672" DateHigh="30543643"/>
 	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Actor-Mixer Hierarchy\Factory SoundSeed Air Objects.wwu" DateLow="3921261824" DateHigh="30531531"/>
 	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Actor-Mixer Hierarchy\Factory Synth One.wwu" DateLow="4006408960" DateHigh="30530865"/>
 	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Attenuations\Default Work Unit.wwu" DateLow="2155994232" DateHigh="30534033"/>
@@ -20,10 +20,10 @@
 	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Effects\Factory iZotope Singleband Distortion.wwu" DateLow="4006408960" DateHigh="30530865"/>
 	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Effects\Factory McDSP Effects.wwu" DateLow="4006408960" DateHigh="30530865"/>
 	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Events\Default Work Unit.wwu" DateLow="1419489984" DateHigh="30535821"/>
-	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Game Parameters\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
+	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Game Parameters\Default Work Unit.wwu" DateLow="4213893080" DateHigh="30543645"/>
 	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Game Parameters\Factory SoundSeed Air Game Syncs.wwu" DateLow="4006408960" DateHigh="30530865"/>
 	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
-	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="452865864" DateHigh="30534041"/>
+	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="4213853080" DateHigh="30543645"/>
 	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Mixing Sessions\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
 	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Modulators\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
 	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Presets\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
@@ -34,6 +34,6 @@
 	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\States\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
 	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Switches\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
 	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Triggers\Default Work Unit.wwu" DateLow="4006408960" DateHigh="30530865"/>
-	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Wwise_Dropped.Paul.wsettings" DateLow="3637163336" DateHigh="30540384"/>
+	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Wwise_Dropped.Paul.wsettings" DateLow="666785784" DateHigh="30543646"/>
 	<ValidationCacheItem File="C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\Wwise_Dropped.wproj" DateLow="4006408960" DateHigh="30530865"/>
 </ValidationCache>

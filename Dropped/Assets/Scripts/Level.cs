@@ -24,7 +24,7 @@ public class Level : MonoBehaviour
 			GameManager.instance.playerStartingGun = GameManager.instance.player.GetComponent<Player>().currentGun;
 		}
 
-		Debug.Log ("Start");
+		FaderController.instance.FadeIn (.75f);
 	}
 
 	void Update()

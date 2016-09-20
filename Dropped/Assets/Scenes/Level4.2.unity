@@ -767,6 +767,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 680588044}
   parameterName: PlaneFront_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Rubble_Falling
   triggeredByEnemy: 0
@@ -2948,6 +2949,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 680588044}
   parameterName: PlaneFront_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Rubble_Falling
   triggeredByEnemy: 0
@@ -4442,6 +4444,88 @@ Transform:
   - {fileID: 1983346059}
   m_Father: {fileID: 1091196779}
   m_RootOrder: 6
+--- !u!1001 &444651737
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &449590871
 Prefab:
   m_ObjectHideFlags: 0
@@ -13489,6 +13573,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 659561448}
   parameterName: Window1_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0

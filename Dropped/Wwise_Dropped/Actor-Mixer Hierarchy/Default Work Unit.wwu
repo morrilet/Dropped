@@ -250,6 +250,7 @@
 										</ModifierInfo>
 									</ModifierList>
 								</Property>
+								<Property Name="PositioningType" Type="int16" Value="1"/>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -783,9 +784,6 @@
 							</ChildrenList>
 						</RandomSequenceContainer>
 					</ChildrenList>
-					<PositioningInfo>
-						<Panner Name="" ID="{EBE2E3D2-E877-464F-B550-AF595348FFAE}"/>
-					</PositioningInfo>
 				</ActorMixer>
 				<ActorMixer Name="Objects" ID="{6115653F-777D-43DB-8169-396E3C946F12}" ShortID="797747770">
 					<ReferenceList>
@@ -1274,6 +1272,10 @@
 											</GroupingInfo>
 										</SwitchContainer>
 										<SwitchContainer Name="Fire" ID="{85E77DE3-A658-4765-919C-48BD22BDA87C}" ShortID="777029247">
+											<PropertyList>
+												<Property Name="EnableLoudnessNormalization" Type="bool" Value="True"/>
+												<Property Name="OverrideAnalysis" Type="bool" Value="True"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{65326150-CDB3-43F6-ADFA-45D702D654A9}"/>
@@ -1285,6 +1287,8 @@
 											<ChildrenList>
 												<Sound Name="Gunshot" ID="{9EECB5C8-28C6-49CA-9635-881DFFDD8F1A}" ShortID="841474159" Type="SoundFX">
 													<PropertyList>
+														<Property Name="EnableLoudnessNormalization" Type="bool" Value="True"/>
+														<Property Name="OverrideAnalysis" Type="bool" Value="True"/>
 														<Property Name="Pitch" Type="int32">
 															<ModifierList>
 																<ModifierInfo>
@@ -1717,7 +1721,7 @@
 											<PropertyList>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>12</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>

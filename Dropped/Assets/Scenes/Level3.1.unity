@@ -2284,6 +2284,88 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400992, guid: 1e8b6ce1f1156d44f863b400f5174a2f, type: 2}
   m_PrefabInternal: {fileID: 746824479}
+--- !u!1001 &748270126
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22499662, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 516780bba7c3cbe4cae6936d95dc980c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &752806979
 Prefab:
   m_ObjectHideFlags: 0
@@ -6650,6 +6732,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 89006490}
   parameterName: Window2_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0
@@ -6742,6 +6825,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 106055785}
   parameterName: FloorFall_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Rubble_Falling
   triggeredByEnemy: 0
@@ -8503,6 +8587,7 @@ MonoBehaviour:
   isAlive: 0
   weakpointAnimator: {fileID: 898409217}
   parameterName: Window1_Trigger
+  hitEffectName: 
   soundEffectNames:
   - Window_Break
   triggeredByEnemy: 0

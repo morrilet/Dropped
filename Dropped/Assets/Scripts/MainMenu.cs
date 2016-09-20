@@ -35,6 +35,8 @@ public class MainMenu : MonoBehaviour
 	List<Dropdown.OptionData> resolutions;
 	List<Dropdown.OptionData> qualities;
 
+	AsyncOperation loader; //For loading the level to start in the background.
+
 	public enum Menu
 	{
 		Main, 
@@ -48,7 +50,10 @@ public class MainMenu : MonoBehaviour
 		currentMenu = Menu.Main;
 		isFullscreen = Screen.fullScreen;
 		//AudioManager.instance.PlayMusic ("bg01_v02 mixed");
-		//AkSoundEngine.PostEvent("Music_Loop", Camera.main.transform.GetChild(0).gameObject);
+		AkSoundEngine.PostEvent("Music_Loop", Camera.main.gameObject);
+
+		loader = SceneManager.LoadSceneAsync ("OpeningCutscene", LoadSceneMode.Single);
+		loader.allowSceneActivation = false;
 
 		supportedResolutions = Screen.resolutions;
 
@@ -70,6 +75,9 @@ public class MainMenu : MonoBehaviour
 				qualityDropdown = settingsObjects [i].GetComponent<Dropdown> ();
 		}
 
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		////////// TODO: Find a way to set slider value for global as well as set other slider values without globals influence //////////
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		audioMenuObjects = new GameObject[audioMenu.transform.childCount];
 		for (int i = 0; i < audioMenu.transform.childCount; i++) 
 		{
@@ -78,21 +86,21 @@ public class MainMenu : MonoBehaviour
 			{
 			case "GlobalVolumeSlider":
 				globalVolumeSlider = audioMenuObjects [i].gameObject.GetComponent<Slider> ();
-				globalVolumeSlider.value = AudioManager.instance.globalVolumeModifier;
+				//globalVolumeSlider.value = 
 				break;
 			case "GlobalVolumePercentage":
 				globalVolumePercentageText = audioMenuObjects [i].gameObject.GetComponent<Text> ();
 				break;
 			case "MusicVolumeSlider":
 				musicVolumeSlider = audioMenuObjects [i].gameObject.GetComponent<Slider> ();
-				musicVolumeSlider.value = AudioManager.instance.musicVolumeModifier;
+				//musicVolumeSlider.value = AudioManager.instance.musicVolumeModifier;
 				break;
 			case "MusicVolumePercentage":
 				musicVolumePercentageText = audioMenuObjects [i].gameObject.GetComponent<Text> ();
 				break;
 			case "EffectVolumeSlider":
 				effectVolumeSlider = audioMenuObjects [i].gameObject.GetComponent<Slider> ();
-				effectVolumeSlider.value = AudioManager.instance.effectsVolumeModifier;
+				//effectVolumeSlider.value = AudioManager.instance.effectsVolumeModifier;
 				break;
 			case "EffectVolumePercentage":
 				effectVolumePercentageText = audioMenuObjects [i].gameObject.GetComponent<Text> ();
@@ -140,7 +148,9 @@ public class MainMenu : MonoBehaviour
 		else
 			screenModeButton.transform.GetChild (0).GetComponent<Text> ().text = "WINDOWED";
 
+		FaderController.instance.FadeIn (.75f);
 		SwitchToMenu (currentMenu);
+		//StartCoroutine(FadeToMenu(currentMenu));
 	}
 
 	void Update()
@@ -151,8 +161,13 @@ public class MainMenu : MonoBehaviour
 			musicVolumePercentageText.text = (int)(musicVolumeSlider.normalizedValue * 100f) + "%";
 			effectVolumePercentageText.text = (int)(effectVolumeSlider.normalizedValue * 100f) + "%";
 
-			//Use this!
-			//AkSoundEngine.SetRTPCValue()
+			//Used 75f for effects because I found the effects (minus the gunshot) to be a little quiet. 50f is default.
+			float effectsVolume = (effectVolumeSlider.normalizedValue * 75f) * globalVolumeSlider.normalizedValue;
+			float musicVolume = (musicVolumeSlider.normalizedValue * 50f) * globalVolumeSlider.normalizedValue;
+
+			AkSoundEngine.SetRTPCValue ("Zombie_Volume", effectsVolume);
+			AkSoundEngine.SetRTPCValue("Gun_Volume", effectsVolume);
+			AkSoundEngine.SetRTPCValue ("Music_Volume", musicVolume);
 
 			//AudioManager.instance.globalVolumeModifier = globalVolumeSlider.normalizedValue;
 			//AudioManager.instance.musicVolumeModifier = musicVolumeSlider.normalizedValue;
@@ -161,8 +176,37 @@ public class MainMenu : MonoBehaviour
 			//AudioManager.instance.SetEffectVolume ();
 			//AudioManager.instance.SetMusicVolume ();
 
-			if (effectVolumeSlider.GetComponent<SliderPointerUpEvent> ().pointerUp)
-				AudioManager.instance.PlaySoundEffect ("Ethan_Gunshot");
+			int lastValue = -1; //This is used for randomizing the effects played when the effect slider is clicked.
+			if (effectVolumeSlider.GetComponent<SliderPointerUpEvent> ().pointerUp) 
+			{
+				int randomValue = Random.Range(0, 6);
+				while (randomValue == lastValue && lastValue != -1) 
+				{
+					randomValue = Random.Range (0, 6);
+				}
+				switch (randomValue) 
+				{
+				case 0:
+					AkSoundEngine.PostEvent ("Ammo_Pickup", Camera.main.gameObject);
+					break;
+				case 1:
+					AkSoundEngine.PostEvent ("Empty_Trigger", Camera.main.gameObject);
+					break;
+				case 2:
+					AkSoundEngine.PostEvent ("Gunshot", Camera.main.gameObject);
+					break;
+				case 3:
+					AkSoundEngine.PostEvent ("Impacts_General", Camera.main.gameObject);
+					break;
+				case 4:
+					AkSoundEngine.PostEvent ("Impacts_Metal", Camera.main.gameObject);
+					break;
+				case 5:
+					AkSoundEngine.PostEvent ("Impacts_Zombie", Camera.main.gameObject);
+					break;
+				}
+				lastValue = randomValue;
+			}
 		}
 
 		if (resolutionDropdown.value != resolutionDropdownValuePrev)
@@ -176,17 +220,28 @@ public class MainMenu : MonoBehaviour
 
 	public void SwitchToMainMenu()
 	{
-		SwitchToMenu (Menu.Main);
+		//SwitchToMenu (Menu.Main);
+		StartCoroutine(FadeToMenu(Menu.Main));
 	}
 
 	public void SwitchToSettingsMenu()
 	{
-		SwitchToMenu (Menu.Settings);
+		//SwitchToMenu (Menu.Settings);
+		StartCoroutine(FadeToMenu(Menu.Settings));
 	}
 
 	public void SwitchToAudioMenu()
 	{
-		SwitchToMenu (Menu.Audio);
+		//SwitchToMenu (Menu.Audio);
+		StartCoroutine(FadeToMenu(Menu.Audio));
+	}
+
+	private IEnumerator FadeToMenu(Menu targetMenu)
+	{
+		FaderController.instance.FadeOut (.4f);
+		yield return new WaitForSeconds (.4f);
+		SwitchToMenu (targetMenu);
+		FaderController.instance.FadeIn (.4f);
 	}
 
 	void SwitchToMenu(Menu targetMenu)
@@ -231,7 +286,15 @@ public class MainMenu : MonoBehaviour
 
 	public void Play()
 	{
-		SceneManager.LoadScene ("OpeningCutscene", LoadSceneMode.Single);
+		//SceneManager.LoadScene ("OpeningCutscene", LoadSceneMode.Single);
+		StartCoroutine(FadeToPlay());
+	}
+
+	private IEnumerator FadeToPlay()
+	{
+		FaderController.instance.FadeOut (1.25f);
+		yield return new WaitForSeconds (1.25f);
+		loader.allowSceneActivation = true;
 	}
 
 	/*

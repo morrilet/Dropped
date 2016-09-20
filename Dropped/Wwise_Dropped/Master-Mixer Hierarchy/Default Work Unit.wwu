@@ -7,11 +7,104 @@
 					<ChildrenList>
 						<Bus Name="Sound fx" ID="{F5D2C0E0-115D-4B45-8211-9E138457E7FD}">
 							<ChildrenList>
-								<Bus Name="Zombies" ID="{40C1E2C5-A309-44F2-970F-29E9B82D620D}"/>
-								<Bus Name="Gun" ID="{B8F41E27-560D-4D61-802F-E36DEDE75C3C}"/>
+								<Bus Name="Zombies" ID="{40C1E2C5-A309-44F2-970F-29E9B82D620D}">
+									<PropertyList>
+										<Property Name="BusVolume" Type="Real64">
+											<RTPCList>
+												<RTPC Name="" ID="{F1727749-B993-4126-AC2B-20677B897638}" ShortID="653876687">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Zombie_Volume" ID="{7EB22683-6333-4E4F-B541-449417DE8D08}" WorkUnitID="{8CAC3A43-E9FF-440B-9FBF-FE9C96E41189}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{6A2DA2F6-E71D-46EF-83A9-18F325F1F9C9}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-200</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>200</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+									</PropertyList>
+								</Bus>
+								<Bus Name="Gun" ID="{B8F41E27-560D-4D61-802F-E36DEDE75C3C}">
+									<PropertyList>
+										<Property Name="BusVolume" Type="Real64">
+											<RTPCList>
+												<RTPC Name="" ID="{31A9BED4-DDF2-4670-BE40-197DCD9C2090}" ShortID="478618413">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Gun_Volume" ID="{0DE5DF50-309D-4107-B531-2AE2542C7063}" WorkUnitID="{8CAC3A43-E9FF-440B-9FBF-FE9C96E41189}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{29F850DD-EB14-494E-942F-8045F537758B}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-200</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>200</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+									</PropertyList>
+								</Bus>
 							</ChildrenList>
 						</Bus>
-						<Bus Name="Music" ID="{27068308-55E7-45A7-9602-7E0A9B72C64E}"/>
+						<Bus Name="Music" ID="{27068308-55E7-45A7-9602-7E0A9B72C64E}">
+							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<RTPCList>
+										<RTPC Name="" ID="{8DE27568-1D66-4F40-AA78-D2A731B1C435}" ShortID="551634483">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="Music_Volume" ID="{DE73DF69-12F5-419F-A493-CF1A17DCEF1E}" WorkUnitID="{8CAC3A43-E9FF-440B-9FBF-FE9C96E41189}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{5DF72E98-E267-4584-9185-B59FB14C5F6E}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-200</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
+						</Bus>
 					</ChildrenList>
 				</Bus>
 				<Bus Name="Master Secondary Bus" ID="{D2E0BC7E-7B3F-4FFE-A670-FAE02761B631}"/>

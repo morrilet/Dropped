@@ -37,7 +37,7 @@ public class AmmoPickup : MonoBehaviour
 	{
 		if (coll.gameObject.tag == "Player")
 		{
-			AudioManager.instance.PlaySoundEffect ("Ethan_AmmoBoxSound");
+			AkSoundEngine.PostEvent ("Health_Pick_Up", Camera.main.gameObject);
 			
 			switch (ammoType) 
 			{

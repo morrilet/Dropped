@@ -129,6 +129,16 @@
 										</Event>
 										<Event Name="Gunshot" ID="{BB85743E-AFA3-4500-81EC-8FAF25954BD6}">
 											<ChildrenList>
+												<Action Name="Set Voice Volume" ID="{1E8F4BE9-A90A-40A1-992C-7875ABE23DAB}" ShortID="502849074" Type="ChangeVolume" Scope="One" Global="false">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64" Value="-15"/>
+													</PropertyList>
+													<ElementList>
+														<Element ID="{53C747A4-6CA6-4161-ABAC-35356FD24BC6}" Global="false">
+															<ObjectRef Name="Gunshot" ID="{9EECB5C8-28C6-49CA-9635-881DFFDD8F1A}" WorkUnitID="{3E56CDF0-ABBD-49F5-B6DC-1C61B560EFB5}"/>
+														</Element>
+													</ElementList>
+												</Action>
 												<Action Name="Play" ID="{830DD9CD-970C-4406-84D9-9AF0B8A6CED6}" ShortID="46886590" Type="Play" Scope="One" Global="false">
 													<ElementList>
 														<Element ID="{A6BA0955-906D-4BBE-BA5A-644249C801A5}" Global="false">

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="10" SoundbankVersion="113">
+	<RootPaths>
+		<ProjectRoot>C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>C:\Users\Paul\Documents\Unity\Video Games\Miasmaclysm\Dropped-master\Dropped\Wwise_Dropped\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="1959728158" Language="SFX">
+			<ShortName>Miasmaclysm_Sound_Bank</ShortName>
+			<Path>Miasmaclysm_Sound_Bank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="4253579710" Name="Ammo_Pickup"/>
+				<Event Id="128625444" Name="Door_Close" MaxAttenuation="100.000000"/>
+				<Event Id="535830432" Name="Door_Open" MaxAttenuation="100.000000"/>
+				<Event Id="1596305413" Name="Empty_Trigger"/>
+				<Event Id="1957821939" Name="Growls" MaxAttenuation="100.000000"/>
+				<Event Id="1287408361" Name="Gunshot"/>
+				<Event Id="3206236323" Name="Health_Pick_Up"/>
+				<Event Id="3907593247" Name="Impacts_General" MaxAttenuation="100.000000"/>
+				<Event Id="856508550" Name="Impacts_Metal" MaxAttenuation="100.000000"/>
+				<Event Id="3779615487" Name="Impacts_Zombie" MaxAttenuation="100.000000"/>
+				<Event Id="3833651337" Name="Jump"/>
+				<Event Id="1707141479" Name="Ladder_Climb"/>
+				<Event Id="674522502" Name="Land"/>
+				<Event Id="3937699135" Name="Music_Loop"/>
+				<Event Id="2133470015" Name="Rubble_Falling"/>
+				<Event Id="3093623238" Name="Squishing" MaxAttenuation="100.000000"/>
+				<Event Id="1334931201" Name="Time_Slow_Down"/>
+				<Event Id="3236087554" Name="Time_Speed_Up"/>
+				<Event Id="3428649701" Name="Window_Break" MaxAttenuation="100.000000"/>
+				<Event Id="3358618626" Name="Wood_Break"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="8528424" Language="SFX">
+					<ShortName>bullet impact zombie_01.wav</ShortName>
+					<Path>SFX\bullet impact zombie_01_9E69E797.wem</Path>
+				</File>
+				<File Id="13147857" Language="SFX">
+					<ShortName>zombie growl_03.wav</ShortName>
+					<Path>SFX\zombie growl_03_9E69E797.wem</Path>
+				</File>
+				<File Id="13781964" Language="SFX">
+					<ShortName>bullet impact metal_03.wav</ShortName>
+					<Path>SFX\bullet impact metal_03_9E69E797.wem</Path>
+				</File>
+				<File Id="39233883" Language="SFX">
+					<ShortName>bullet impact zombie_04.wav</ShortName>
+					<Path>SFX\bullet impact zombie_04_9E69E797.wem</Path>
+				</File>
+				<File Id="44128839" Language="SFX">
+					<ShortName>bg01_v02.wav</ShortName>
+					<Path>SFX\bg01_v02_4B8CC0C5.wem</Path>
+				</File>
+				<File Id="58891772" Language="SFX">
+					<ShortName>Ethan_AmmoBoxSound.wav</ShortName>
+					<Path>SFX\Ethan_AmmoBoxSound_9E69E797.wem</Path>
+				</File>
+				<File Id="69230979" Language="SFX">
+					<ShortName>squish_04.wav</ShortName>
+					<Path>SFX\squish_04_9E69E797.wem</Path>
+				</File>
+				<File Id="72824129" Language="SFX">
+					<ShortName>squish_08.wav</ShortName>
+					<Path>SFX\squish_08_9E69E797.wem</Path>
+				</File>
+				<File Id="77477427" Language="SFX">
+					<ShortName>bullet impact metal_04.wav</ShortName>
+					<Path>SFX\bullet impact metal_04_9E69E797.wem</Path>
+				</File>
+				<File Id="123920512" Language="SFX">
+					<ShortName>bullet impact zombie_02.wav</ShortName>
+					<Path>SFX\bullet impact zombie_02_9E69E797.wem</Path>
+				</File>
+				<File Id="127155577" Language="SFX">
+					<ShortName>health pack_01.wav</ShortName>
+					<Path>SFX\health pack_01_9E69E797.wem</Path>
+				</File>
+				<File Id="141313228" Language="SFX">
+					<ShortName>land poof_01.wav</ShortName>
+					<Path>SFX\land poof_01_9E69E797.wem</Path>
+				</File>
+				<File Id="174086634" Language="SFX">
+					<ShortName>squish_07.wav</ShortName>
+					<Path>SFX\squish_07_9E69E797.wem</Path>
+				</File>
+				<File Id="189472884" Language="SFX">
+					<ShortName>Ethan_Gunshot.wav</ShortName>
+					<Path>SFX\Ethan_Gunshot_9E69E797.wem</Path>
+				</File>
+				<File Id="209432970" Language="SFX">
+					<ShortName>time slow down_01.wav</ShortName>
+					<Path>SFX\time slow down_01_9E69E797.wem</Path>
+				</File>
+				<File Id="265009831" Language="SFX">
+					<ShortName>jump boost_01.wav</ShortName>
+					<Path>SFX\jump boost_01_9E69E797.wem</Path>
+				</File>
+				<File Id="271431411" Language="SFX">
+					<ShortName>bullet impact general_02.wav</ShortName>
+					<Path>SFX\bullet impact general_02_9E69E797.wem</Path>
+				</File>
+				<File Id="284870418" Language="SFX">
+					<ShortName>ladder step_01.wav</ShortName>
+					<Path>SFX\ladder step_01_9E69E797.wem</Path>
+				</File>
+				<File Id="288139591" Language="SFX">
+					<ShortName>zombie growl_07.wav</ShortName>
+					<Path>SFX\zombie growl_07_9E69E797.wem</Path>
+				</File>
+				<File Id="289010681" Language="SFX">
+					<ShortName>bullet impact general_01.wav</ShortName>
+					<Path>SFX\bullet impact general_01_9E69E797.wem</Path>
+				</File>
+				<File Id="292625428" Language="SFX">
+					<ShortName>bullet impact general_03.wav</ShortName>
+					<Path>SFX\bullet impact general_03_9E69E797.wem</Path>
+				</File>
+				<File Id="310172196" Language="SFX">
+					<ShortName>zombie growl_01.wav</ShortName>
+					<Path>SFX\zombie growl_01_9E69E797.wem</Path>
+				</File>
+				<File Id="324210944" Language="SFX">
+					<ShortName>wood debris_01.wav</ShortName>
+					<Path>SFX\wood debris_01_9E69E797.wem</Path>
+				</File>
+				<File Id="340022728" Language="SFX">
+					<ShortName>GunHandGunFoley 6077_17_4.wav</ShortName>
+					<Path>SFX\GunHandGunFoley 6077_17_4_9E69E797.wem</Path>
+				</File>
+				<File Id="359922000" Language="SFX">
+					<ShortName>squish_02.wav</ShortName>
+					<Path>SFX\squish_02_9E69E797.wem</Path>
+				</File>
+				<File Id="389437807" Language="SFX">
+					<ShortName>ladder step_05.wav</ShortName>
+					<Path>SFX\ladder step_05_9E69E797.wem</Path>
+				</File>
+				<File Id="396660469" Language="SFX">
+					<ShortName>squish_09.wav</ShortName>
+					<Path>SFX\squish_09_9E69E797.wem</Path>
+				</File>
+				<File Id="409362605" Language="SFX">
+					<ShortName>zombie growl_05.wav</ShortName>
+					<Path>SFX\zombie growl_05_9E69E797.wem</Path>
+				</File>
+				<File Id="445995669" Language="SFX">
+					<ShortName>squish_06.wav</ShortName>
+					<Path>SFX\squish_06_9E69E797.wem</Path>
+				</File>
+				<File Id="450485199" Language="SFX">
+					<ShortName>door close_01.wav</ShortName>
+					<Path>SFX\door close_01_9E69E797.wem</Path>
+				</File>
+				<File Id="485856363" Language="SFX">
+					<ShortName>door open_01.wav</ShortName>
+					<Path>SFX\door open_01_9E69E797.wem</Path>
+				</File>
+				<File Id="503200730" Language="SFX">
+					<ShortName>wood crash_01.wav</ShortName>
+					<Path>SFX\wood crash_01_9E69E797.wem</Path>
+				</File>
+				<File Id="543389951" Language="SFX">
+					<ShortName>zombie growl_04.wav</ShortName>
+					<Path>SFX\zombie growl_04_9E69E797.wem</Path>
+				</File>
+				<File Id="602015592" Language="SFX">
+					<ShortName>ladder step_02.wav</ShortName>
+					<Path>SFX\ladder step_02_9E69E797.wem</Path>
+				</File>
+				<File Id="612256110" Language="SFX">
+					<ShortName>zombie growl_08.wav</ShortName>
+					<Path>SFX\zombie growl_08_9E69E797.wem</Path>
+				</File>
+				<File Id="670638920" Language="SFX">
+					<ShortName>wood debris_02.wav</ShortName>
+					<Path>SFX\wood debris_02_9E69E797.wem</Path>
+				</File>
+				<File Id="740677022" Language="SFX">
+					<ShortName>zombie growl_06.wav</ShortName>
+					<Path>SFX\zombie growl_06_9E69E797.wem</Path>
+				</File>
+				<File Id="762350949" Language="SFX">
+					<ShortName>window break_01.wav</ShortName>
+					<Path>SFX\window break_01_9E69E797.wem</Path>
+				</File>
+				<File Id="774716237" Language="SFX">
+					<ShortName>bullet impact metal_01.wav</ShortName>
+					<Path>SFX\bullet impact metal_01_9E69E797.wem</Path>
+				</File>
+				<File Id="790837329" Language="SFX">
+					<ShortName>squish_05.wav</ShortName>
+					<Path>SFX\squish_05_9E69E797.wem</Path>
+				</File>
+				<File Id="794498610" Language="SFX">
+					<ShortName>zombie growl_02.wav</ShortName>
+					<Path>SFX\zombie growl_02_9E69E797.wem</Path>
+				</File>
+				<File Id="826542092" Language="SFX">
+					<ShortName>zombie growl_09.wav</ShortName>
+					<Path>SFX\zombie growl_09_9E69E797.wem</Path>
+				</File>
+				<File Id="867621944" Language="SFX">
+					<ShortName>squish_03.wav</ShortName>
+					<Path>SFX\squish_03_9E69E797.wem</Path>
+				</File>
+				<File Id="904638364" Language="SFX">
+					<ShortName>squish_01.wav</ShortName>
+					<Path>SFX\squish_01_9E69E797.wem</Path>
+				</File>
+				<File Id="937149240" Language="SFX">
+					<ShortName>time speed up_01.wav</ShortName>
+					<Path>SFX\time speed up_01_9E69E797.wem</Path>
+				</File>
+				<File Id="958344497" Language="SFX">
+					<ShortName>bullet impact metal_02.wav</ShortName>
+					<Path>SFX\bullet impact metal_02_9E69E797.wem</Path>
+				</File>
+				<File Id="964583442" Language="SFX">
+					<ShortName>squish_10.wav</ShortName>
+					<Path>SFX\squish_10_9E69E797.wem</Path>
+				</File>
+				<File Id="984497733" Language="SFX">
+					<ShortName>ladder step_04.wav</ShortName>
+					<Path>SFX\ladder step_04_9E69E797.wem</Path>
+				</File>
+				<File Id="1007209499" Language="SFX">
+					<ShortName>bullet impact zombie_03.wav</ShortName>
+					<Path>SFX\bullet impact zombie_03_9E69E797.wem</Path>
+				</File>
+				<File Id="1057583867" Language="SFX">
+					<ShortName>ladder step_03.wav</ShortName>
+					<Path>SFX\ladder step_03_9E69E797.wem</Path>
+				</File>
+				<File Id="1066741158" Language="SFX">
+					<ShortName>zombie growl_10.wav</ShortName>
+					<Path>SFX\zombie growl_10_9E69E797.wem</Path>
+				</File>
+				<File Id="1070214108" Language="SFX">
+					<ShortName>bullet impact general_04.wav</ShortName>
+					<Path>SFX\bullet impact general_04_9E69E797.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

@@ -16,8 +16,8 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{A840EE89-6550-4B8B-B6DC-0FFA00561821}'
-    m_lastTimePsrt1: -1223235648
-    m_lastTimePart2: -1999384076
+    m_lastTimePsrt1: -1519206767
+    m_lastTimePart2: -1999380680
     List:
     - Name: Ammo_Pickup
       Path: Default Work Unit\Objects\Gun\Bullets\Ammo_Pickup
@@ -303,8 +303,8 @@ MonoBehaviour:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{EE1587E6-7D7D-43DE-964B-492F29543592}'
-    m_lastTimePsrt1: 1031089992
-    m_lastTimePart2: -1999390800
+    m_lastTimePsrt1: 497109912
+    m_lastTimePart2: -1999381195
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -343,7 +343,7 @@ MonoBehaviour:
   - /Wwise_Dropped/Events/Default Work Unit/Objects
   - /Wwise_Dropped/Events/Default Work Unit/Objects/Gun
   - /Wwise_Dropped/Events/Default Work Unit/Objects/Gun/Bullets
-  - /Wwise_Dropped/Events/Default Work Unit/Zombies
+  - /Wwise_Dropped/Events/Default Work Unit/Objects/Time Effect
   - /Wwise_Dropped/SoundBanks
   - /Wwise_Dropped/SoundBanks/Default Work Unit
   m_lastPopulateTimePsrt1: 0

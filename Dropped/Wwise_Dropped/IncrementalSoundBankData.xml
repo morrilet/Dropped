@@ -2,8 +2,8 @@
 <IncrementalBankBuild Version="4" Flags="878078161">
 	<Platform GUID="{51110E58-5F55-42AD-8444-600C6280BA75}">
 		<Language ID="0">
-			<Bank Name="Init" Hash="1710263250" StreamHash="157587662" Timestamp="131142708025909000"/>
-			<Bank Name="Miasmaclysm_Sound_Bank" Hash="3276821945" StreamHash="157587662" Timestamp="131169926117825000"/>
+			<Bank Name="Init" Hash="2702538890" StreamHash="157587662" Timestamp="131183960886997000"/>
+			<Bank Name="Miasmaclysm_Sound_Bank" Hash="152349083" StreamHash="157587662" Timestamp="131183960886457000"/>
 		</Language>
 	</Platform>
 </IncrementalBankBuild>

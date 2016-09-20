@@ -85,6 +85,7 @@ public class GunPickup : MonoBehaviour
 	{
 		float lerpValue = Mathf.PingPong (Time.time, duration) / duration;
 		transform.position = Vector3.Lerp (topPos, bottomPos, lerpValue);
+
 		if (pickUpGun == Player.CurrentGun.None) 
 		{
 			GUI_Script.instance.grabGunText.SetActive (false);

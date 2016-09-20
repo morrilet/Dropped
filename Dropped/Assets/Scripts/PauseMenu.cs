@@ -34,11 +34,29 @@ public class PauseMenu : Singleton<PauseMenu>
 
 	public void ReturnToMainMenu()
 	{
-		SceneManager.LoadScene ("MainMenu", LoadSceneMode.Single);
+		StartCoroutine (FadeToMainMenu ());
+	}
+
+	private IEnumerator FadeToMainMenu()
+	{
+		//Loading the main menu async may be overkill but I figure it buys an 
+		//extra half second of load time that the user doesn't sit through.
+		AsyncOperation tempLoader = SceneManager.LoadSceneAsync ("MainMenu", LoadSceneMode.Single);
+		tempLoader.allowSceneActivation = false;
+		FaderController.instance.FadeOut (.75f);
+		yield return new WaitForSeconds (.75f);
+		tempLoader.allowSceneActivation = true;
 	}
 
 	public void RestartLevel()
 	{
+		StartCoroutine (FadeToRestartLevel ());
+	}
+
+	private IEnumerator FadeToRestartLevel()
+	{
+		FaderController.instance.FadeOut (.4f);
+		yield return new WaitForSeconds (.4f);
 		GameManager.instance.RestartLevel ();
 		UnpauseGame ();
 	}
