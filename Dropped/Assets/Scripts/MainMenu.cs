@@ -12,18 +12,18 @@ public class MainMenu : MonoBehaviour
 	public Canvas settingsMenu;
 	GameObject[] settingsObjects;
 
-	public Canvas audioMenu;
-	GameObject[] audioMenuObjects;
+	//public Canvas audioMenu;
+	//GameObject[] audioMenuObjects;
 
 	public Canvas mainMenu;
 	GameObject[] mainMenuObjects;
 
-	Slider globalVolumeSlider;
-	Text globalVolumePercentageText;
-	Slider effectVolumeSlider;
-	Text effectVolumePercentageText;
-	Slider musicVolumeSlider;
-	Text musicVolumePercentageText;
+	//Slider globalVolumeSlider;
+	//Text globalVolumePercentageText;
+	//Slider effectVolumeSlider;
+	//Text effectVolumePercentageText;
+	//Slider musicVolumeSlider;
+	//Text musicVolumePercentageText;
 
 	Dropdown resolutionDropdown;
 	int resolutionDropdownValuePrev;
@@ -50,8 +50,29 @@ public class MainMenu : MonoBehaviour
 		currentMenu = Menu.Main;
 		isFullscreen = Screen.fullScreen;
 		//AudioManager.instance.PlayMusic ("bg01_v02 mixed");
+
+		//This ensures that the music is played correctly during main menu and cutscene and doesn't overlap itself.
+		//This may cause problems when loading a game is implemented, if ever.
+		if (GameObject.Find("GameManager") != null)
+			GameObject.Destroy (GameObject.Find("GameManager"));
+
+		//Stop all music to avoid overlap, then start playing music again.
+		AkSoundEngine.StopAll();
 		AkSoundEngine.PostEvent("Music_Loop", Camera.main.gameObject);
 
+		//If there are any scenes loaded in that aren't MainMenu, remove them.
+		for (int i = 0; i < SceneManager.sceneCount; i++) 
+		{
+			if (GameObject.Find (SceneManager.GetSceneAt (i).name) != null) 
+			{
+				if (SceneManager.GetSceneAt (i).name != "MainMenu") 
+				{
+					GameObject.Destroy (GameObject.Find (SceneManager.GetSceneAt (i).name));
+				}
+			}
+		}
+
+		//Load the opening cutscene in the background.
 		loader = SceneManager.LoadSceneAsync ("OpeningCutscene", LoadSceneMode.Single);
 		loader.allowSceneActivation = false;
 
@@ -78,6 +99,7 @@ public class MainMenu : MonoBehaviour
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		////////// TODO: Find a way to set slider value for global as well as set other slider values without globals influence //////////
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		/*
 		audioMenuObjects = new GameObject[audioMenu.transform.childCount];
 		for (int i = 0; i < audioMenu.transform.childCount; i++) 
 		{
@@ -107,6 +129,7 @@ public class MainMenu : MonoBehaviour
 				break;
 			}
 		}
+		*/
 
 		resolutionDropdown.ClearOptions ();
 		resolutions = new List<Dropdown.OptionData> ();
@@ -155,6 +178,7 @@ public class MainMenu : MonoBehaviour
 
 	void Update()
 	{
+		/*
 		if (currentMenu == Menu.Audio) 
 		{
 			globalVolumePercentageText.text = (int)(globalVolumeSlider.normalizedValue * 100f) + "%";
@@ -208,6 +232,7 @@ public class MainMenu : MonoBehaviour
 				lastValue = randomValue;
 			}
 		}
+		*/
 
 		if (resolutionDropdown.value != resolutionDropdownValuePrev)
 			SetResolution ();	
@@ -256,10 +281,11 @@ public class MainMenu : MonoBehaviour
 		{
 			settingsObjects [i].SetActive (false);
 		}
-		for (int i = 0; i < audioMenuObjects.Length; i++)
-		{
-			audioMenuObjects [i].SetActive (false);
-		}
+		AudioManager.instance.SetAudioMenuActive (false);
+		//for (int i = 0; i < audioMenuObjects.Length; i++)
+		//{
+			//audioMenuObjects [i].SetActive (false);
+		//}
 
 		switch (targetMenu) 
 		{
@@ -276,10 +302,11 @@ public class MainMenu : MonoBehaviour
 			}
 			break;
 		case Menu.Audio:
-			for (int i = 0; i < audioMenuObjects.Length; i++) 
-			{
-				audioMenuObjects [i].SetActive (true);
-			}
+			AudioManager.instance.SetAudioMenuActive (true);
+			//for (int i = 0; i < audioMenuObjects.Length; i++) 
+			//{
+				//audioMenuObjects [i].SetActive (true);
+			//}
 			break;
 		}
 	}
@@ -294,6 +321,7 @@ public class MainMenu : MonoBehaviour
 	{
 		FaderController.instance.FadeOut (1.25f);
 		yield return new WaitForSeconds (1.25f);
+		AkSoundEngine.StopAll ();
 		loader.allowSceneActivation = true;
 	}
 

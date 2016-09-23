@@ -30,6 +30,8 @@ public class PauseMenu : Singleton<PauseMenu>
 			
 		animatorObjs = GameObject.FindObjectsOfType<Animator> ();
 		ropes = GameObject.FindObjectsOfType<Rope> ();
+
+		AudioManager.instance.SetAudioMenuActive (false);
 	}
 
 	public void ReturnToMainMenu()
@@ -41,11 +43,12 @@ public class PauseMenu : Singleton<PauseMenu>
 	{
 		//Loading the main menu async may be overkill but I figure it buys an 
 		//extra half second of load time that the user doesn't sit through.
-		AsyncOperation tempLoader = SceneManager.LoadSceneAsync ("MainMenu", LoadSceneMode.Single);
-		tempLoader.allowSceneActivation = false;
+		//AsyncOperation tempLoader = SceneManager.LoadSceneAsync ("MainMenu", LoadSceneMode.Single);
+		//tempLoader.allowSceneActivation = false;
 		FaderController.instance.FadeOut (.75f);
 		yield return new WaitForSeconds (.75f);
-		tempLoader.allowSceneActivation = true;
+		//tempLoader.allowSceneActivation = true;
+		SceneManager.LoadScene ("MainMenu", LoadSceneMode.Single);
 	}
 
 	public void RestartLevel()
@@ -59,6 +62,26 @@ public class PauseMenu : Singleton<PauseMenu>
 		yield return new WaitForSeconds (.4f);
 		GameManager.instance.RestartLevel ();
 		UnpauseGame ();
+	}
+
+	public void EnableAudioMenu()
+	{
+		AudioManager.instance.SetAudioMenuActive (true);
+		foreach (GameObject menuObj in menuObjects) 
+		{
+			if(menuObj.name != "Background")
+				menuObj.SetActive (false);
+		}
+	}
+
+	public void DisableAudioMenu()
+	{
+		AudioManager.instance.SetAudioMenuActive (false);
+		foreach (GameObject menuObj in menuObjects) 
+		{
+			if(menuObj.name != "Background")
+				menuObj.SetActive (true);
+		}
 	}
 
 	public void PauseGame()

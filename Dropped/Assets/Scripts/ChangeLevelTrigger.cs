@@ -8,20 +8,22 @@ public class ChangeLevelTrigger : MonoBehaviour
 	public string levelToChangeTo;
 
 	AsyncOperation loader;
+	bool activated;
 
 	void Start()
 	{
 		loader = SceneManager.LoadSceneAsync (levelToChangeTo, LoadSceneMode.Single);
 		loader.allowSceneActivation = false;
+		activated = false;
 	}
 
 	void Update()
 	{
-		if (FaderController.instance.JustFadedOut) 
+		if (FaderController.instance.JustFadedOut && activated) 
 		{
 			loader.allowSceneActivation = true;
 		}
-		if (FaderController.instance.FadingOut) 
+		if (FaderController.instance.FadingOut && activated) 
 		{
 			GameManager.instance.player.GetComponent<Player> ().canMove = false;
 		}
@@ -31,6 +33,8 @@ public class ChangeLevelTrigger : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player") 
 		{
+			activated = true;
+
 			Debug.Log (other.gameObject.GetComponent<Player> ().canMove);
 			FaderController.instance.FadeOut (1.25f);
 			GameManager.instance.StorePlayerInfo ();
