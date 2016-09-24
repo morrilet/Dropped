@@ -459,10 +459,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45227de8b2695b64e800df86170ed0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPersistant: 0
+  isPersistant: 1
   globalVolumeModifier: 0
   musicVolumeModifier: 0
   effectsVolumeModifier: 0
+  backButton: {fileID: 0}
 --- !u!114 &11406100
 MonoBehaviour:
   m_ObjectHideFlags: 1

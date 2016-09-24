@@ -22,7 +22,7 @@ public class FaderController : Singleton<FaderController>
 	public bool JustFadedOut {get{ return justFadedOut; } }
 	public bool JustFadedIn  {get{ return justFadedIn; } }
 
-	void Start()
+	public void Start()
 	{
 		fadeImage = instance.transform.FindChild ("FadeOverlay").GetComponent<Image> ();
 	}

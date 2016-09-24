@@ -49,7 +49,8 @@ public class MainMenu : MonoBehaviour
 	{
 		currentMenu = Menu.Main;
 		isFullscreen = Screen.fullScreen;
-		//AudioManager.instance.PlayMusic ("bg01_v02 mixed");
+		//AudioManager.instance.PlayMusic ("bg01_v02 mixed");'
+		AudioManager.instance.Start();
 
 		//This ensures that the music is played correctly during main menu and cutscene and doesn't overlap itself.
 		//This may cause problems when loading a game is implemented, if ever.
@@ -171,6 +172,7 @@ public class MainMenu : MonoBehaviour
 		else
 			screenModeButton.transform.GetChild (0).GetComponent<Text> ().text = "WINDOWED";
 
+		FaderController.instance.Start ();
 		FaderController.instance.FadeIn (.75f);
 		SwitchToMenu (currentMenu);
 		//StartCoroutine(FadeToMenu(currentMenu));

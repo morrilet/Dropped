@@ -31,6 +31,7 @@ public class PauseMenu : Singleton<PauseMenu>
 		animatorObjs = GameObject.FindObjectsOfType<Animator> ();
 		ropes = GameObject.FindObjectsOfType<Rope> ();
 
+		AudioManager.instance.Start ();
 		AudioManager.instance.SetAudioMenuActive (false);
 	}
 

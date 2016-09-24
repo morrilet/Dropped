@@ -42,17 +42,32 @@ public class AudioManager : Singleton<AudioManager> //Does this need to be a sin
 
 	public void Start()
 	{
-		globalVolumeModifier = 1f;
-		musicVolumeModifier = 1f;
-		effectsVolumeModifier = 1f;
+		UpdateVolumeModifiers ();
 
 		audioMenuCanvas = GetComponent<Canvas> ();
 
+		InitializeAudioObjects ();
+
+		backButton.onClick.RemoveAllListeners ();
+		//Sets the back buttons behaviour as long as there is a pause menu in the scene.
+		//The check ensures that this won't overwrite the button behaviour on main menu.
+		if (GameObject.Find ("PauseMenu") != null) 
+		{
+			backButton.onClick.AddListener (() => { GameObject.Find ("PauseMenu").GetComponent<PauseMenu> ().DisableAudioMenu (); });
+		}
+		if (GameObject.Find("MainMenu") != null)
+		{
+			backButton.onClick.AddListener (() => { GameObject.Find ("MainMenu").GetComponent<MainMenu> ().SwitchToSettingsMenu (); });
+		}
+	}
+
+	void InitializeAudioObjects()
+	{
 		audioMenuObjects = new GameObject[transform.childCount];
 		for (int i = 0; i < transform.childCount; i++) 
 		{
 			audioMenuObjects [i] = transform.GetChild (i).gameObject;
-			switch (audioMenuObjects [i].gameObject.name) 
+			switch (audioMenuObjects [i].gameObject.name)
 			{
 			case "GlobalVolumeSlider":
 				globalVolumeSlider = audioMenuObjects [i].gameObject.GetComponent<Slider> ();
@@ -63,14 +78,14 @@ public class AudioManager : Singleton<AudioManager> //Does this need to be a sin
 				break;
 			case "MusicVolumeSlider":
 				musicVolumeSlider = audioMenuObjects [i].gameObject.GetComponent<Slider> ();
-				//musicVolumeSlider.value = AudioManager.instance.musicVolumeModifier;
+				musicVolumeSlider.value = musicVolumeModifier / 100f;
 				break;
 			case "MusicVolumePercentage":
 				musicVolumePercentageText = audioMenuObjects [i].gameObject.GetComponent<Text> ();
 				break;
 			case "EffectVolumeSlider":
 				effectVolumeSlider = audioMenuObjects [i].gameObject.GetComponent<Slider> ();
-				//effectVolumeSlider.value = AudioManager.instance.effectsVolumeModifier;
+				effectVolumeSlider.value = effectsVolumeModifier / 100f;
 				break;
 			case "EffectVolumePercentage":
 				effectVolumePercentageText = audioMenuObjects [i].gameObject.GetComponent<Text> ();
@@ -80,42 +95,53 @@ public class AudioManager : Singleton<AudioManager> //Does this need to be a sin
 				break;
 			}
 		}
+	}
 
-		//Sets the back buttons behaviour as long as there is a pause menu in the scene.
-		//The check ensures that this won't overwrite the button behaviour on main menu.
-		if (GameObject.Find ("PauseMenu") != null) 
-		{
-			backButton.onClick.AddListener (() => { GameObject.Find ("PauseMenu").GetComponent<PauseMenu> ().DisableAudioMenu (); });
-		}
+	void UpdateVolumeModifiers()
+	{
+		globalVolumeModifier = 1f;
+
+		int musicRTPCType = (int)RTPCValue_type.RTPCValue_GameObject;
+		float musicRTPCValue;
+		AkSoundEngine.GetRTPCValue ("Music_Volume", Camera.main.gameObject, out musicRTPCValue, ref musicRTPCType);
+		float tempValue = musicRTPCValue;
+		musicVolumeModifier = tempValue;
+
+		int gunRTPCType = (int)RTPCValue_type.RTPCValue_GameObject;
+		float gunRTPCValue;
+		AkSoundEngine.GetRTPCValue ("Gun_Volume", Camera.main.gameObject, out gunRTPCValue, ref gunRTPCType);
+		effectsVolumeModifier = gunRTPCValue;
+
+		Debug.Log (globalVolumeModifier + ", " + musicVolumeModifier + ", " + effectsVolumeModifier);
 	}
 
 	void Update()
 	{
 		if (audioMenuActive) 
 		{
+			UpdateVolumeModifiers ();
+
 			//Write percents under the bars.
 			globalVolumePercentageText.text = (int)(globalVolumeSlider.normalizedValue * 100f) + "%";
 			musicVolumePercentageText.text = (int)(musicVolumeSlider.normalizedValue * 100f) + "%";
 			effectVolumePercentageText.text = (int)(effectVolumeSlider.normalizedValue * 100f) + "%";
 
-			//Set RTPC values. Need to start using the predefined vars for this.
+			//The values we multiply by become the MAX VALUES for the RTPC, anywhere from 0-100.
 			//Used 75f for effects because I found the effects (minus the gunshot) to be a little quiet. 50f is default.
-			float effectsVolume = (effectVolumeSlider.normalizedValue * 75f) * globalVolumeSlider.normalizedValue;
-			float musicVolume = (musicVolumeSlider.normalizedValue * 50f) * globalVolumeSlider.normalizedValue;
-			AkSoundEngine.SetRTPCValue ("Zombie_Volume", effectsVolume);
-			AkSoundEngine.SetRTPCValue("Gun_Volume", effectsVolume);
-			AkSoundEngine.SetRTPCValue ("Music_Volume", musicVolume);
+			AkSoundEngine.SetRTPCValue ("Zombie_Volume", effectVolumeSlider.normalizedValue * 75f * globalVolumeModifier);
+			AkSoundEngine.SetRTPCValue("Gun_Volume", effectVolumeSlider.normalizedValue * 75f * globalVolumeModifier);
+			AkSoundEngine.SetRTPCValue ("Music_Volume", musicVolumeSlider.normalizedValue * 100f * globalVolumeModifier);
 
 			//Randomly play an effect when effect slider is released.
 			int lastValue = -1;
 			if (effectVolumeSlider.GetComponent<SliderPointerUpEvent> ().pointerUp)
 			{
 				int randomValue = Random.Range(0, 6);
-				while (randomValue == lastValue && lastValue != -1) 
+				while (randomValue == lastValue && lastValue != -1)
 				{
 					randomValue = Random.Range (0, 6);
 				}
-				switch (randomValue) 
+				switch (randomValue)
 				{
 				case 0:
 					AkSoundEngine.PostEvent ("Ammo_Pickup", Camera.main.gameObject);
