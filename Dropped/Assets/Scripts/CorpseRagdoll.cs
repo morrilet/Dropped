@@ -149,13 +149,13 @@ public class CorpseRagdoll : MonoBehaviour
 	public void Update()
 	{
 		//Time.timeScale = .5f;
-		for (int i = 0; i < limbPositions.Length; i++)
-		{
+		//for (int i = 0; i < limbPositions.Length; i++)
+		//{
 			//limbs [i].transform.localPosition = limbPositions [i];
-		}
+		//}
 
 		JointAngleLimits2D lowerTorsoLimits = new JointAngleLimits2D ();
-		if (isCarried && !isCarriedPrev) 
+		if (isCarried && !isCarriedPrev)
 		{
 			for (int i = 0; i < limbs.Count; i++)
 			{

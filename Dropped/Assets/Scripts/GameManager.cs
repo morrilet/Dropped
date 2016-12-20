@@ -105,10 +105,14 @@ public class GameManager : Singleton<GameManager>
 				PauseMenu.instance.PauseGame ();
 				isPaused = true;
 			} 
-			else
+			else if (!AudioManager.instance.AudioMenuActive) 
 			{
 				PauseMenu.instance.UnpauseGame ();
 				isPaused = false;
+			} 
+			else 
+			{
+				PauseMenu.instance.DisableAudioMenu ();
 			}
 		}
 	}

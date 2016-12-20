@@ -74,9 +74,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpGun: 3
-  pistolImage: {fileID: 21300000, guid: 460832af12c873c42880dc2f4510cb1d, type: 3}
-  shotgunImage: {fileID: 21300000, guid: c01c4ed3acfcb744a86a4cc95b3ca6b1, type: 3}
-  machineGunImage: {fileID: 21300000, guid: 8b04b12a98a2da147aba0c52f6c6d6a1, type: 3}
+  pistolImage: {fileID: 21300000, guid: 3dd8c3912fefd904c81fa8a25080ad51, type: 3}
+  shotgunImage: {fileID: 21300000, guid: a231e45c48c199c4f8960673b96cea0a, type: 3}
+  machineGunImage: {fileID: 21300000, guid: 13375c6ffb6dfca45868e4dfd316952b, type: 3}
 --- !u!212 &21268898
 SpriteRenderer:
   m_ObjectHideFlags: 1

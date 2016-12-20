@@ -9,6 +9,10 @@ public class AudioManager : Singleton<AudioManager> //Does this need to be a sin
 	public float effectsVolumeModifier;
 
 	bool audioMenuActive = false;
+	public bool AudioMenuActive
+	{
+		get{ return audioMenuActive; }
+	}
 
 	Canvas audioMenuCanvas;
 	GameObject[] audioMenuObjects;
@@ -85,7 +89,7 @@ public class AudioManager : Singleton<AudioManager> //Does this need to be a sin
 				break;
 			case "EffectVolumeSlider":
 				effectVolumeSlider = audioMenuObjects [i].gameObject.GetComponent<Slider> ();
-				effectVolumeSlider.value = effectsVolumeModifier / 100f;
+				effectVolumeSlider.value = effectsVolumeModifier / 75f;
 				break;
 			case "EffectVolumePercentage":
 				effectVolumePercentageText = audioMenuObjects [i].gameObject.GetComponent<Text> ();
@@ -97,6 +101,7 @@ public class AudioManager : Singleton<AudioManager> //Does this need to be a sin
 		}
 	}
 
+	//Modifiers are used for persistent audio stuff between scenes.
 	void UpdateVolumeModifiers()
 	{
 		globalVolumeModifier = 1f;
@@ -128,6 +133,8 @@ public class AudioManager : Singleton<AudioManager> //Does this need to be a sin
 
 			//The values we multiply by become the MAX VALUES for the RTPC, anywhere from 0-100.
 			//Used 75f for effects because I found the effects (minus the gunshot) to be a little quiet. 50f is default.
+			// ----> Using .75f was causing a discrepancy between main menu and pause menu effects audio values.
+			// ----> Also causing an issue at 100% where no effect is played on releasing the slider.
 			AkSoundEngine.SetRTPCValue ("Zombie_Volume", effectVolumeSlider.normalizedValue * 75f * globalVolumeModifier);
 			AkSoundEngine.SetRTPCValue("Gun_Volume", effectVolumeSlider.normalizedValue * 75f * globalVolumeModifier);
 			AkSoundEngine.SetRTPCValue ("Music_Volume", musicVolumeSlider.normalizedValue * 100f * globalVolumeModifier);
